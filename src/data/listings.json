@@ -1,1 +1,526 @@
-[]
+[
+  {
+    "id": "sony-world-photography-awards-single-image-competition-2027",
+    "title": "Sony World Photography Awards 2027: Single Image Competition",
+    "organiser": "World Photography Organisation / Sony",
+    "type": "Prize",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "United Kingdom",
+    "region": "Global",
+    "deadline": "2027-01-05",
+    "eligibility": "Open to all members of the public; single images taken in 2026",
+    "entry_fee": "Free",
+    "fee_details": "Up to 3 single images free; optional paid image bundles to enter more",
+    "selected_fee": "None",
+    "prizes": [
+      "$5,000 Overall Winner",
+      "Sony Digital Imaging equipment",
+      "Flights and accommodation to the awards ceremony in London",
+      "Inclusion in the Sony World Photography Awards exhibition",
+      "Publication in the Awards book"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Publication",
+      "Other"
+    ],
+    "prize_value": 5000,
+    "currency": "USD",
+    "apply_url": "https://www.worldphoto.org/sony-world-photography-awards/single-image",
+    "image_url": "https://www.worldphoto.org/sites/default/files/styles/social_card/public/image_media-files-05/Single%20Image_0.jpg?h=4bfe631c&itok=jGCGgViP",
+    "source": "https://www.worldphoto.org/sony-world-photography-awards/single-image",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "wildlife-photographer-of-the-year-63-2027",
+    "title": "Wildlife Photographer of the Year 2027 (63rd competition)",
+    "organiser": "Natural History Museum, London",
+    "type": "Prize",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "United Kingdom",
+    "region": "Global",
+    "deadline": "2026-12-03",
+    "eligibility": "Adult competition for photographers aged 18 and over; Young WPY for under-18s; professional or amateur",
+    "entry_fee": "Paid",
+    "fee_amount": 35,
+    "currency": "GBP",
+    "fee_details": "£35 for up to 25 photos across 19 categories; free for Young WPY (under 18), entrants aged 18-26, and residents of listed countries",
+    "selected_fee": "Unknown",
+    "prizes": [
+      "£15,000 Grand Title (on top of category prize)",
+      "£2,500 Portfolio Award",
+      "£2,500 Photojournalist Story Award",
+      "£1,500 Rising Star Portfolio Award",
+      "£1,250 per category winner",
+      "Trip to London for the awards ceremony",
+      "Publication in the WPY Portfolio book",
+      "£2,000 Young WPY Grand Title"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Publication",
+      "Mentoring",
+      "Other"
+    ],
+    "prize_value": 15000,
+    "apply_url": "https://www.nhm.ac.uk/wildlife-photographer-of-the-year/competition.html",
+    "image_url": "https://www.nhm.ac.uk/content/dam/nhm-events/EXH-WPY62/EXH-WPY62.jpg",
+    "source": "https://www.nhm.ac.uk/wildlife-photographer-of-the-year/competition.html",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "cupoty-challenge-close-to-home-2026",
+    "title": "CUPOTY Challenge 2026: Close to Home",
+    "organiser": "Close-up Photographer of the Year",
+    "type": "Prize",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "United Kingdom",
+    "region": "Global",
+    "deadline": "2026-11-30",
+    "eligibility": "Anyone can enter, of any age, from any country, using any type of camera, phone or microscope",
+    "entry_fee": "Paid",
+    "fee_amount": 11,
+    "currency": "GBP",
+    "fee_details": "£11 for 1 picture, £16 for 3 pictures (early-bird offer ended 8 Nov); images can be uploaded until 7 Dec",
+    "selected_fee": "None",
+    "prizes": [
+      "£300 winner",
+      "£125 second place",
+      "£75 third place",
+      "Full-page features in the CUPOTY eBook",
+      "Online winners gallery"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Publication"
+    ],
+    "prize_value": 300,
+    "apply_url": "https://www.cupoty.com/how-to-enter-challenge",
+    "image_url": "https://static1.squarespace.com/static/5aae554545776e4f59c31b2c/t/6af04a4cb02a1d51529c2c63/1794132556595/Screenshot+2026-11-07+at+17.44.49.png?format=1500w",
+    "source": "https://www.cupoty.com/cupoty-challenge",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "world-press-photo-contest-2027",
+    "title": "World Press Photo Contest 2027",
+    "organiser": "World Press Photo Foundation",
+    "type": "Prize",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "Online",
+    "timezone": "Europe/Amsterdam",
+    "city": "",
+    "country": "Netherlands",
+    "region": "Global",
+    "deadline": "2027-01-13",
+    "eligibility": "Open to all professional photographers working in the field of photojournalism and/or documentary photography (entries open 1 December 2026)",
+    "entry_fee": "Free",
+    "fee_details": "Free to enter",
+    "selected_fee": "None",
+    "prizes": [
+      "€1,000 for each winner",
+      "Additional €10,000 for the World Press Photo of the Year",
+      "Inclusion in the annual travelling exhibition (60+ cities)",
+      "Fujifilm cameras"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Other"
+    ],
+    "prize_value": 11000,
+    "currency": "EUR",
+    "apply_url": "https://www.worldpressphoto.org/contest/how-to-enter",
+    "source": "https://www.worldpressphoto.org/contest/2027",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "prs-foundation-tempo-shift-2026",
+    "title": "Tempo Shift: grants for women and gender-diverse music creators",
+    "organiser": "PRS Foundation",
+    "type": "Grant",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "United Kingdom",
+    "region": "UK",
+    "deadline": "2026-12-14",
+    "eligibility": "Women and gender-diverse music creators based in the UK, 18+, with a track record of over 18 months; PRS members or in a position to join",
+    "entry_fee": "Free",
+    "fee_details": "No application fee stated; apply online via PRS Foundation's Flexigrant portal",
+    "selected_fee": "None",
+    "prizes": [
+      "Grants of up to £5,000",
+      "Up to £500 extra for childcare/caring costs",
+      "Three mentor sessions per grantee plus workshops and meet-ups"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Mentoring"
+    ],
+    "prize_value": 5000,
+    "currency": "GBP",
+    "apply_url": "https://prsformusicfoundation.flexigrant.com/",
+    "image_url": "https://prsfoundation.com/wp-content/uploads/2026/11/Electronic-or-Dance_2-scaled.jpg",
+    "source": "https://prsfoundation.com/funding-support/deadlines/",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "ink-still-wet-composer-conductor-workshop-2027",
+    "title": "Ink Still Wet 2027: Composer-Conductor Workshop with Steve Reich",
+    "organiser": "Grafenegg Festival",
+    "type": "Fellowship",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Vienna",
+    "city": "Grafenegg",
+    "country": "Austria",
+    "region": "Europe",
+    "venue": "Grafenegg (Lower Austria) and New York City",
+    "lat": 48.4283,
+    "lng": 15.7378,
+    "deadline": "2026-11-25",
+    "start_date": "2027-04-12",
+    "end_date": "2027-08-28",
+    "eligibility": "Composers and composition students from around the world; no age limit; conducting experience an advantage but not required",
+    "entry_fee": "Unknown",
+    "fee_details": "No application fee mentioned on the call page; apply via MUVAC",
+    "selected_fee": "None",
+    "prizes": [
+      "Fully funded places for up to 5 composers (accommodation, international travel, meals)",
+      "Premiere of your new orchestral work, conducted by you, with the Tonkünstler Orchestra",
+      "Mentoring from Steve Reich and conducting coaching from David Robertson"
+    ],
+    "prize_kinds": [
+      "Mentoring",
+      "Other"
+    ],
+    "apply_url": "https://www.muvac.com/en/masterclass/grafenegg-inkstillwet",
+    "image_url": "https://noeku.on.damlivery.com/s/8e8ef267d08d2d418bfee9152d88c519/noeku/858602/rm:fill/h:627/w:1200/q:90/rs:originalSizePng/f:webp/g:fp:0.5:0.5",
+    "source": "https://www.grafenegg.com/en/ink-still-wet/call-for-compositions",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "graz-international-composition-competition-2027",
+    "title": "International Composition Competition 2027 (piano duo and string quartet)",
+    "organiser": "University of Music and Performing Arts Graz (Franz Schubert and Modern Music)",
+    "type": "Prize",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "Online",
+    "timezone": "Europe/Vienna",
+    "city": "",
+    "country": "Austria",
+    "region": "Global",
+    "deadline": "2027-03-10",
+    "eligibility": "Composers of all nationalities and stateless persons, born 1986 and later",
+    "entry_fee": "Paid",
+    "fee_amount": 30,
+    "currency": "EUR",
+    "fee_details": "€30 application fee via MUVAC",
+    "selected_fee": "Unknown",
+    "prizes": [
+      "€5,000 prize money",
+      "Winning work becomes a compulsory piece and is premiered at the competition final in Graz, February 2028"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Other"
+    ],
+    "prize_value": 5000,
+    "apply_url": "https://www.muvac.com/en/competition/int-chamber-music-competition-franz-schubert-and-modern-music-31ndxg81",
+    "source": "https://schubert.kug.ac.at/en/information/2028/composition-competition-2027",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "montpellier-2028-residency-visual-arts-and-music-2027",
+    "title": "Montpellier 2028 residency: visual arts and music/sound in the Hérault valley",
+    "organiser": "Montpellier 2028 – Terres de culture / Communauté de communes Vallée de l'Hérault",
+    "type": "Residency",
+    "disciplines": [
+      "Music",
+      "Sound",
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Paris",
+    "city": "Aniane",
+    "country": "France",
+    "region": "Europe",
+    "venue": "Former abbey of Aniane",
+    "lat": 43.6856,
+    "lng": 3.5867,
+    "deadline": "2026-11-16",
+    "start_date": "2027-01-01",
+    "end_date": "2027-04-30",
+    "eligibility": "Visual artists and music/sound creators, alone or as a duo; no age limit or geographic condition",
+    "entry_fee": "Free",
+    "fee_details": "Free; apply by email with portfolio and 2-page note",
+    "selected_fee": "None",
+    "prizes": [
+      "€6,000 bursary per artist (fee, per diems and return travel)",
+      "Accommodation covered when needed",
+      "Rehearsal and recording spaces in the abbey"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency"
+    ],
+    "prize_value": 6000,
+    "currency": "EUR",
+    "apply_url": "https://www.montpellier2028.eu/en/appel-a-candidatures-residence-une-vallee-vivante-evocation-sensible-de-la-vallee-de-lherault/",
+    "image_url": "https://www.montpellier2028.eu/wp-content/uploads/2026/10/Bandeaux-site-1500x670-Residences-2026-scaled.jpg",
+    "source": "https://www.montpellier2028.eu/en/appel-a-candidatures-residence-une-vallee-vivante-evocation-sensible-de-la-vallee-de-lherault/",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "2200-residency-emerging-artists-2027",
+    "title": "2200 Residency 2027 for emerging artists (Swiss Alps)",
+    "organiser": "2200 (CCAA Centro di Cultura e d'Arte Ascona)",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Zurich",
+    "city": "Flims",
+    "country": "Switzerland",
+    "region": "Europe",
+    "venue": "Die Alte Post, Flims (also Furka Pass from summer 2027)",
+    "lat": 46.8356,
+    "lng": 9.2847,
+    "deadline": "2026-12-31",
+    "eligibility": "Emerging artists, mainly visual arts: just out of uni, still studying or entirely autodidact; project must draw from one of the locations",
+    "entry_fee": "Free",
+    "fee_details": "No application fee mentioned; apply via the online form on 2200.ch",
+    "selected_fee": "None",
+    "prizes": [
+      "About three months' studio and accommodation",
+      "CHF 500 monthly stipend",
+      "Mentoring on presenting work and planning exhibitions"
+    ],
+    "prize_kinds": [
+      "Residency",
+      "Cash",
+      "Mentoring"
+    ],
+    "prize_value": 500,
+    "currency": "CHF",
+    "apply_url": "https://2200.ch/",
+    "image_url": "https://2200.ch/media/share-1a7695fd1a.jpg",
+    "source": "https://2200.ch/",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "ubah-rumah-residency-2027",
+    "title": "Ubah Rumah Residency 2027/2028",
+    "organiser": "Ubah Rumah Residency",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Asia/Jakarta",
+    "city": "Nikoi Island, Bintan",
+    "country": "Indonesia",
+    "region": "Asia",
+    "lat": 1.06,
+    "lng": 104.74,
+    "deadline": "2026-11-30",
+    "eligibility": "All artists from or based in Southeast Asia, whose practices engage with art, ecology and hospitality",
+    "entry_fee": "Free",
+    "fee_details": "No fee mentioned; apply via Google Form",
+    "selected_fee": "Unknown",
+    "prizes": [
+      "4–6 week residency in 2027 or 2028",
+      "Accommodation",
+      "Round-trip travel within Southeast Asia"
+    ],
+    "prize_kinds": [
+      "Residency"
+    ],
+    "apply_url": "https://docs.google.com/forms/d/e/1FAIpQLSfeIjzUn_bzblPLauXjnRTxa7D-pqVhYAzTjx-wIS31rLSYCw/viewform",
+    "source": "https://www.ubahrumah.com/ubah-rumah-residency/ubah-rumah-residency-open-call",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "adirondack-experience-artist-in-residence-2027",
+    "title": "Adirondack Experience Artist-in-Residence 2027",
+    "organiser": "Adirondack Experience, The Museum on Blue Mountain Lake (ADKX)",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "America/New_York",
+    "city": "Blue Mountain Lake",
+    "country": "United States",
+    "region": "North America",
+    "lat": 43.8706,
+    "lng": -74.4468,
+    "deadline": "2026-12-11",
+    "start_date": "2027-06-01",
+    "end_date": "2027-09-30",
+    "eligibility": "Applicants from across cultural disciplines, any nationality, who make work with a direct connection to the visual arts",
+    "entry_fee": "Free",
+    "fee_details": "Free; apply by emailing a proposal package",
+    "selected_fee": "None",
+    "prizes": [
+      "$5,000 stipend",
+      "$500 travel allowance",
+      "On-site housing (no cost)",
+      "One-month residency (June, July, August or September)"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency"
+    ],
+    "prize_value": 5000,
+    "currency": "USD",
+    "apply_url": "https://www.theadkx.org/adirondack-experience-artist-in-residence/",
+    "source": "https://www.theadkx.org/adirondack-experience-artist-in-residence/",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "international-artist-mobility-coffee-morning-2026",
+    "title": "International Artist Mobility Coffee Morning: international networks",
+    "organiser": "Arts Infopoint UK",
+    "type": "Meetup",
+    "disciplines": [
+      "Any medium",
+      "Performance"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "United Kingdom",
+    "region": "Global",
+    "start_date": "2026-11-18",
+    "end_date": "2026-11-18",
+    "eligibility": "Cultural workers, artists and arts organisations, members of networks or curious about them",
+    "apply_url": "https://www.eventbrite.co.uk/e/international-artist-mobility-coffee-morning-a-space-to-share-and-connect-tickets-2003660489461",
+    "image_url": "https://www.eventbrite.co.uk/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F1196184739%252F534298868425%252F1%252Foriginal.20261020-132704%3Fcrop%3Dfocalpoint%26fit%3Dcrop%26w%3D940%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26fp-x%3D1.0%26fp-y%3D0.018%26s%3Dc323d00679a7f08c3a977c4951e622bc&w=940&q=75",
+    "source": "https://www.eventbrite.co.uk/e/international-artist-mobility-coffee-morning-a-space-to-share-and-connect-tickets-2003660489461",
+    "entry_fee": "Free",
+    "fee_details": "Free, registration required",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "added": "2026-11-12"
+  },
+  {
+    "id": "vcca-art-residency-application-primer-2026",
+    "title": "Art Residency Application Primer: An Interactive Conversation",
+    "organiser": "Virginia Center for the Creative Arts (VCCA) Fellows Council",
+    "type": "Workshop",
+    "disciplines": [
+      "Any medium",
+      "Writing",
+      "Music"
+    ],
+    "format": "Online",
+    "timezone": "America/New_York",
+    "city": "",
+    "country": "United States",
+    "region": "Global",
+    "start_date": "2026-12-04",
+    "end_date": "2026-12-04",
+    "eligibility": "Artists, writers and composers thinking about applying to residencies",
+    "apply_url": "https://www.eventbrite.com/e/dec-4-2026-art-residency-application-primer-an-interactive-conversation-tickets-2004679199450",
+    "image_url": "https://www.eventbrite.com/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F748166209%252F2115612230223%252F1%252Foriginal.20240420-062605%3Fw%3D940%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26rect%3D1%252C141%252C1248%252C624%26s%3D090fced113996cda3d7bd30a4a12a896&w=940&q=75",
+    "source": "https://www.eventbrite.com/e/dec-4-2026-art-residency-application-primer-an-interactive-conversation-tickets-2004679199450",
+    "entry_fee": "Free",
+    "fee_details": "Free, registration required",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "added": "2026-11-12"
+  },
+  {
+    "id": "london-creative-artists-network-networking-drinks-november-2026",
+    "title": "London Creative Artists Network: Networking Drinks",
+    "organiser": "London Creative Artists Network",
+    "type": "Meetup",
+    "disciplines": [
+      "Any medium",
+      "Performance",
+      "Film & video",
+      "Writing",
+      "Design"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "409 Clapham Road, Clapham North",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "start_date": "2026-11-23",
+    "end_date": "2026-11-23",
+    "eligibility": "London's emerging artists and creative professionals, including actors, designers, writers and filmmakers",
+    "apply_url": "https://www.eventbrite.co.uk/e/london-creative-artists-network-networking-drinks-tickets-2004452485342",
+    "image_url": "https://www.eventbrite.co.uk/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F1197380521%252F2876278293121%252F1%252Foriginal.20261105-205808%3Fcrop%3Dfocalpoint%26fit%3Dcrop%26w%3D940%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26fp-x%3D0.485%26fp-y%3D0.465%26s%3Df2a4e0959a2c9f42858ffc25cd46d62f&w=940&q=75",
+    "source": "https://www.eventbrite.co.uk/e/london-creative-artists-network-networking-drinks-tickets-2004452485342",
+    "entry_fee": "Free",
+    "fee_details": "Free, registration required",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "added": "2026-11-12"
+  },
+  {
+    "id": "open-project-dialogue-kim-women-artists-reframed-2026",
+    "title": "Open Project Dialogue: Kim? Women Artists Reframed",
+    "organiser": "TAM Museum Berlin with İzmir Museum of Painting and Sculpture",
+    "type": "Workshop",
+    "disciplines": [
+      "Any medium",
+      "Painting",
+      "Sculpture"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Berlin",
+    "city": "Berlin",
+    "country": "Germany",
+    "region": "Europe",
+    "venue": "SİNEMA TRANSTOPIA, Lindower Straße 20/22, Haus C",
+    "lat": 52.52,
+    "lng": 13.405,
+    "start_date": "2026-11-28",
+    "end_date": "2026-11-28",
+    "eligibility": "Primarily cultural practitioners: artists, museum professionals, researchers, curators and initiatives (in English and Turkish)",
+    "apply_url": "https://www.eventbrite.de/e/open-project-dialogue-kim-women-artists-reframed-tickets-2004380575257",
+    "image_url": "https://www.eventbrite.de/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F1197269942%252F3001654930835%252F1%252Foriginal.20261104-162019%3Fcrop%3Dfocalpoint%26fit%3Dcrop%26w%3D940%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26fp-x%3D0.5%26fp-y%3D0.5%26s%3Df734cda3c1c3cf59115bfe001ab0ebe9&w=940&q=75",
+    "source": "https://www.eventbrite.de/e/open-project-dialogue-kim-women-artists-reframed-tickets-2004380575257",
+    "entry_fee": "Free",
+    "fee_details": "Free, registration required",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "added": "2026-11-12"
+  }
+]

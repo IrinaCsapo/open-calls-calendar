@@ -18,10 +18,11 @@ export function convert(amount: number, from: Currency, to: Currency): number {
 }
 
 export function formatMoney(amount: number, currency: Currency, approx = false): string {
-  const whole = Number.isInteger(amount) || amount >= 100;
+  const value = approx && amount >= 10 ? Math.round(amount) : amount;
+  const whole = Number.isInteger(value) || value >= 100;
   const s = new Intl.NumberFormat('en-GB', {
     style: 'currency', currency, maximumFractionDigits: whole ? 0 : 2, minimumFractionDigits: whole ? 0 : 2,
-  }).format(approx && amount >= 10 ? Math.round(amount) : amount);
+  }).format(value);
   return approx ? `≈ ${s}` : s;
 }
 

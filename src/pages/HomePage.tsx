@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { LISTINGS } from '../lib/listings';
 import { isLive, urgencyGroup, useNow } from '../lib/dates';
 import { applyFilters, defaultFilters, filtersFromQuery, filtersToQuery, sortListings, type Filters } from '../lib/filters';
@@ -26,6 +26,15 @@ export function HomePage() {
   const fallbackCurrency = useMemo(guessCurrency, []);
   const [filters, setFiltersState] = useState<Filters>(() => filtersFromQuery(query, fallbackCurrency));
   const [view, setViewState] = useState<View>(query.get('view') === 'calendar' ? 'calendar' : 'list');
+
+  // A hashchange means a link was followed (our own filter changes use replaceState, which doesn't fire one),
+  // so take the filters from the new URL.
+  const queryString = query.toString();
+  useEffect(() => {
+    const q = new URLSearchParams(queryString);
+    setFiltersState(filtersFromQuery(q, fallbackCurrency));
+    setViewState(q.get('view') === 'calendar' ? 'calendar' : 'list');
+  }, [queryString, fallbackCurrency]);
 
   const sync = (f: Filters, v: View) => {
     const q = new URLSearchParams(filtersToQuery(f, fallbackCurrency));

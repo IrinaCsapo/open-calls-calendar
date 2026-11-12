@@ -47,8 +47,9 @@ main:focus { outline: none; }
 .filters { background: var(--surface); border-radius: var(--radius); padding: 1rem; margin: 1.5rem 0 1rem; display: grid; gap: 1rem; }
 .filters__row { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: flex-end; }
 .filters fieldset { border: 0; padding: 0; margin: 0; }
-.filters__money { border-top: 1px solid var(--line) !important; padding-top: 0.75rem !important; }
-.filters__money > legend { font-weight: 700; padding: 0; margin-bottom: 0.5rem; float: left; width: 100%; }
+.filters__money { border-top: 1px solid var(--line); padding-top: 0.75rem; }
+.filters__heading { font-weight: 700; margin: 0 0 0.5rem; }
+.filters__money .checks { flex-direction: column; gap: 0; }
 .field { display: grid; gap: 0.25rem; font-size: 0.875rem; font-weight: 600; min-width: 0; }
 .field--grow { flex: 1 1 240px; }
 .field legend { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; }

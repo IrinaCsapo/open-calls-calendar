@@ -95,8 +95,8 @@ export function FilterPanel({ filters: f, onChange, onReset }: Props) {
         </fieldset>
       </div>
 
-      <fieldset className="filters__money">
-        <legend>Money</legend>
+      <div className="filters__money" role="group" aria-labelledby={`${id}-money`}>
+        <p className="filters__heading" id={`${id}-money`}>Money</p>
         <div className="filters__row">
           <label className="field">
             <span>Price</span>
@@ -126,7 +126,7 @@ export function FilterPanel({ filters: f, onChange, onReset }: Props) {
           </div>
         </div>
         {f.maxFee > 0 && <p className="hint">Fees in other currencies are converted roughly. Calls that don't say their fee are hidden.</p>}
-      </fieldset>
+      </div>
 
       {active > 0 && (
         <button type="button" className="link-button" onClick={onReset}>Clear {active} {active === 1 ? 'filter' : 'filters'}</button>
