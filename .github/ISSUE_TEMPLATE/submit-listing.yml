@@ -1,0 +1,59 @@
+# Submission form. Fields mirror src/types/listing.ts.
+# To approve: check the official page, add it to src/data/listings.json, push, close the issue.
+name: Submit an open call or event
+description: Suggest an open call, prize, residency, grant or event for artists.
+title: "[Listing] "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for adding to the calendar! We check every submission before it goes live.
+        **Please include every fee**, including anything artists pay if they're selected. That's the point of this site.
+  - type: input
+    id: title
+    attributes: { label: Name, placeholder: John Ruskin Prize 2027 }
+    validations: { required: true }
+  - type: input
+    id: organiser
+    attributes: { label: Organiser }
+    validations: { required: true }
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options: [Open call, Prize, Residency, Grant, Fellowship, Commission, Event, Meetup, Workshop]
+    validations: { required: true }
+  - type: input
+    id: apply_url
+    attributes: { label: Link to apply or register, description: The official page }
+    validations: { required: true }
+  - type: input
+    id: deadline
+    attributes: { label: Deadline, description: "YYYY-MM-DD. For events: the date it starts.", placeholder: "2027-01-15" }
+    validations: { required: true }
+  - type: input
+    id: where
+    attributes: { label: Where, description: City and country, or "Online" }
+    validations: { required: true }
+  - type: input
+    id: disciplines
+    attributes: { label: Disciplines, placeholder: "Painting, photography, any medium…" }
+  - type: input
+    id: eligibility
+    attributes: { label: Who can apply, placeholder: "UK-based artists over 18" }
+    validations: { required: true }
+  - type: input
+    id: entry_fee
+    attributes: { label: Entry fee, description: 'Write "Free" if free', placeholder: "£15 per work, 3 for £35" }
+    validations: { required: true }
+  - type: input
+    id: selected_fee
+    attributes: { label: Anything to pay if selected?, description: "Hanging / exhibition / participation fees, framing, shipping… Write \"None\" if nothing.", placeholder: "None" }
+    validations: { required: true }
+  - type: input
+    id: commission
+    attributes: { label: Commission on sales (optional), placeholder: "30%" }
+  - type: textarea
+    id: prizes
+    attributes: { label: Prizes, description: One per line, placeholder: "£5,000 first prize\nExhibition in London" }
