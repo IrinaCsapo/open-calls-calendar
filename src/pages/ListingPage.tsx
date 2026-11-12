@@ -53,7 +53,11 @@ export function ListingPage({ id }: { id: string }) {
           {opp && (
             <>
               <dt>If you're selected</dt>
-              <dd>{l.selected_fee === 'Yes' ? l.selected_fee_details : l.selected_fee === 'None' ? 'Nothing more to pay' : 'Not stated by the organiser. Check their terms before you apply.'}</dd>
+              <dd>
+                {l.selected_fee === 'Yes' ? l.selected_fee_details
+                  : l.selected_fee === 'None' ? `Nothing more to pay the organiser.${l.selected_fee_details ? ` Your own costs: ${l.selected_fee_details}` : ''}`
+                  : `Not stated by the organiser. Check their terms before you apply.${l.selected_fee_details ? ` ${l.selected_fee_details}` : ''}`}
+              </dd>
             </>
           )}
           {l.commission && (<><dt>Commission on sales</dt><dd>{l.commission}</dd></>)}

@@ -44,14 +44,13 @@ These publish open calls constantly. Open each, list what's currently open, chec
 
 | Source | What |
 |---|---|
-| https://www.artstoheartsproject.com/open-calls (and https://apply.artstoheartsproject.com/) | Arts to Hearts Project: awards, Artsy themed exhibitions |
+| https://apply.artstoheartsproject.com/open-calls | Arts to Hearts Project: awards, themed exhibitions, art books. Needs a browser; fees are in the FAQ tab |
 | https://www.opencallforartists.com/ (and https://submit.opencallforartists.com/) | virtual exhibitions |
-| https://www.parkerharris.co.uk/ | UK prizes and society opens (John Ruskin Prize, RWS Open, Works on Paper, …) |
-| https://www.curatorspace.com/opportunities | UK & international open calls |
+| https://www.artopps.co.uk/ | Parker Harris live calls (John Ruskin Prize, RWS Open, Works on Paper, Biscuit Factory…). Needs a browser; fees are on each call's `/rules` and `/faqs` subpages |
+| https://www.curatorspace.com/opportunities?page=1 (then 2, 3…) | UK & international; works with curl; each call has a "Submission fees" block and a "How much does it cost?" FAQ |
 | https://www.artrabbit.com/artist-opportunities | international open calls, residencies |
-| https://artist.callforentry.org/festivals.php | CaFÉ (US calls; filter by deadline) |
-| https://www.re-title.com/opportunities/ | international |
-| https://www.a-n.co.uk/opportunities/ | UK (some members-only: skip those) |
+| https://opportunities.wearecreativewest.org/search?feesTo=0 | CaFÉ (US calls; this URL lists free ones). Read each call's "Additional Fees" section: that's where selection fees hide |
+| https://www.mallgalleries.org.uk/open-calls/ | UK society opens (RBA, RI, Pastel Society, RP…) |
 | https://www.transartists.org/en/air | residencies worldwide |
 | https://www.resartis.org/open-calls/ | residencies worldwide |
 | https://www.lensculture.com/competitions | photography |
@@ -60,6 +59,12 @@ These publish open calls constantly. Open each, list what's currently open, chec
 | https://www.helpmusicians.org.uk/creative-programmes | music funding (UK) |
 | https://soundandmusic.org/opportunities/ | music and sound |
 | https://www.musicboard-berlin.de/en/ | music funding (Berlin) |
+| https://on-the-move.org/news | global mobility calls, residencies, all disciplines (has RSS; follow each "More info & apply" to the official page) |
+| https://www.muvac.com/en/browse/competitions | music competitions |
+| https://bachtrack.com/competitions | classical music competitions |
+| https://www.artsinfopoint.uk/ | UK artist mobility; free online coffee mornings |
+| https://www.worldpressphoto.org/ and https://www.nhm.ac.uk/wpy | photography contests |
+| https://www.eventbrite.com/d/online/free--events/artist-talk/ | free online artist talks (event pages carry JSON-LD with startDate, isFree, price) |
 
 Add new good sources you find to this table in the same commit (keep it short, one line each).
 
@@ -99,6 +104,8 @@ Open the call's page **and** its FAQ / terms / "how to apply" / submission platf
 - **Prizes** (`prizes`, `prize_kinds`, `prize_value`): list every prize as stated (`"£10,000 first prize"`,
   `"Solo show at X gallery"`, `"Feature in Y magazine"`). For grants, the grant amount (`"Up to £5,000"`).
   `prize_value` = largest single cash prize as a number, only if stated. Events usually have `[]`.
+
+Tiered fees: use the standard price for one work (not age/student/international discounts) and put the rest in `fee_details`. Fee only visible after login: `entry_fee: "Unknown"`, and say so in `fee_details`. If there's no organiser fee but selected artists cover their own framing / delivery / insurance, use `selected_fee: "None"` and list those costs in `selected_fee_details` (shown on the listing page).
 
 Never guess an amount. Never copy a fee from a previous edition.
 

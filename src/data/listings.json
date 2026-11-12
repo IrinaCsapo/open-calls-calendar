@@ -522,5 +522,731 @@
     "prizes": [],
     "prize_kinds": [],
     "added": "2026-11-12"
+  },
+  {
+    "id": "birds-and-the-art-of-nature-2026",
+    "title": "Birds & the Art of Nature (virtual exhibition)",
+    "organiser": "Open Call for Artists",
+    "type": "Open call",
+    "disciplines": [
+      "Painting",
+      "Drawing",
+      "Printmaking",
+      "Sculpture",
+      "Illustration",
+      "Digital art",
+      "Photography"
+    ],
+    "format": "Online",
+    "timezone": "UTC",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "deadline": "2026-11-30",
+    "eligibility": "Artists worldwide, 18+; emerging, self-taught and established; work connected to birds or the natural world",
+    "entry_fee": "Paid",
+    "fee_amount": 12,
+    "currency": "USD",
+    "fee_details": "$12 for up to 3 artworks (non-refundable); optional $19 'artist interview' add-on that the page tells you to keep selected at checkout",
+    "selected_fee": "Unknown",
+    "prizes": [
+      "Place in the 3D virtual exhibition",
+      "Exhibition catalogue listing",
+      "Possible feature on website and social media"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Publication"
+    ],
+    "apply_url": "https://submit.opencallforartists.com/virtual-exhibition-birds-and-the-art-of-nature/",
+    "source": "https://submit.opencallforartists.com/virtual-exhibition-birds-and-the-art-of-nature/",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "the-woman-artist-award-7th-edition-2026",
+    "title": "The Woman Artist Award 2026 (7th Edition)",
+    "organiser": "Arts to Hearts Project",
+    "type": "Prize",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "Online",
+    "timezone": "America/New_York",
+    "city": "",
+    "country": "United States",
+    "region": "Global",
+    "deadline": "2026-11-30",
+    "eligibility": "Women artists worldwide, 18+, emerging and mid-career; open theme, all mediums",
+    "entry_fee": "Paid",
+    "fee_amount": 21,
+    "currency": "USD",
+    "fee_details": "US$21 for 1 artwork, $35 for 3, $47 for 5, $62 for 10, $100 for 20 (non-refundable; prices only in the FAQ, the form needs a login); optional paid 'Customized Artist Interview' add-on (price not shown publicly)",
+    "selected_fee": "Unknown",
+    "prizes": [
+      "US$500 cash award (Main Prize Winner)",
+      "Glass trophy and certificate for winner and two runners-up",
+      "Full-length interview in the hardcover book Women Artists on the Rise – 5th Edition (winner)",
+      "Selected artists published in Women Artists on the Rise – 5th Edition",
+      "Mentorship calls with art professionals (top three)",
+      "One-year Women in Arts Network portfolio feature, valued at US$196",
+      "Arts to Hearts magazine subscription"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Publication",
+      "Mentoring",
+      "Other"
+    ],
+    "prize_value": 500,
+    "apply_url": "https://apply.artstoheartsproject.com/open-call/the-woman-artist-award-7th-edition",
+    "source": "https://apply.artstoheartsproject.com/open-call/the-woman-artist-award-7th-edition",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "101-art-book-garden-edition-2026",
+    "title": "101 Art Book: Garden Edition",
+    "organiser": "Arts to Hearts Project",
+    "type": "Open call",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "Online",
+    "timezone": "America/New_York",
+    "city": "",
+    "country": "United States",
+    "region": "Global",
+    "deadline": "2026-12-13",
+    "eligibility": "Individual artists worldwide, 18+, any career stage; work on the theme 'Garden'; no AI-generated work",
+    "entry_fee": "Unknown",
+    "currency": "USD",
+    "fee_details": "The FAQ confirms there is a non-refundable entry fee, but the amount is only shown after logging in to the application form",
+    "selected_fee": "None",
+    "selected_fee_details": "FAQ: no publication or page fee if selected. No free copy: selected artists can buy the book at an artist price",
+    "prizes": [
+      "Publication in the hardcover 101 Art Book: Garden Edition (101 artists)",
+      "US$500 cash award and 4-page feature (winner)",
+      "2-page feature for two runners-up",
+      "Glass trophy, certificate and Artsy artist listing (top three)"
+    ],
+    "prize_kinds": [
+      "Publication",
+      "Cash",
+      "Other"
+    ],
+    "prize_value": 500,
+    "apply_url": "https://apply.artstoheartsproject.com/open-call/101-art-book-garden-edition",
+    "source": "https://apply.artstoheartsproject.com/open-call/101-art-book-garden-edition",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "john-ruskin-prize-2026",
+    "title": "The John Ruskin Prize 2026: Not for Present Delight",
+    "organiser": "Guild of St George / Parker Harris",
+    "type": "Prize",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "Trinity Buoy Wharf",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "deadline": "2026-11-17",
+    "start_date": "2027-01-28",
+    "end_date": "2027-02-21",
+    "eligibility": "Artists, designers and makers worldwide, amateur or professional, 18+; work made in the last 4 years on the theme",
+    "entry_fee": "Paid",
+    "fee_amount": 25,
+    "currency": "GBP",
+    "fee_details": "Standard: £25 for 1 work, £40 for 2, £50 for 3. Under 26: £20/£30/£38. International: £15/£20/£30 (no need to ship work). Non-refundable",
+    "selected_fee": "None",
+    "selected_fee_details": "No hanging fee in the terms. Shortlisted UK artists pay their own packing, delivery, insurance and framing",
+    "prizes": [
+      "£3,000 1st Prize",
+      "£3,000 Ruskin Mill Trust Prize",
+      "£2,500 Chelsea Arts Club Trust Prize for mid-career artists",
+      "£1,000 Alan Davidson Under 26 Prize",
+      "GreatArt People's Choice Award: £500 of art materials",
+      "Shortlist exhibition at Trinity Buoy Wharf, London"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Other"
+    ],
+    "prize_value": 3000,
+    "apply_url": "https://artopps.co.uk/opportunities/johnruskinprize-26",
+    "source": "https://artopps.co.uk/opportunities/johnruskinprize-26/rules",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "green-and-stone-works-on-paper-2027",
+    "title": "Works on Paper 2027",
+    "organiser": "The Gallery at Green & Stone / Parker Harris",
+    "type": "Open call",
+    "disciplines": [
+      "Drawing",
+      "Painting",
+      "Printmaking",
+      "Illustration"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "The Gallery at Green & Stone, 251 Fulham Road",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "deadline": "2026-11-25",
+    "start_date": "2027-01-11",
+    "end_date": "2027-02-03",
+    "eligibility": "Artists, designers and makers worldwide, 18+; work made on or of paper since 2024, for sale, max 100 cm",
+    "entry_fee": "Paid",
+    "fee_amount": 20,
+    "currency": "GBP",
+    "fee_details": "£20 first work, £15 second, £10 third. Aged 30 or under: £15 / £12 / £8. Non-refundable",
+    "selected_fee": "None",
+    "selected_fee_details": "Terms: 'No other charges will be made'. But you must frame to their spec (they can reframe at your cost), deliver and collect in person in London, and pay for storage if you don't collect",
+    "commission": "40% on sales (including private sales from the show)",
+    "prizes": [
+      "Exhibition at The Gallery at Green & Stone, Chelsea, London (centenary year)"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Sales"
+    ],
+    "apply_url": "https://artopps.co.uk/opportunities/gs-worksonpaper27",
+    "source": "https://artopps.co.uk/opportunities/gs-worksonpaper27/rules",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "rws-open-2027",
+    "title": "RWS Open 2027",
+    "organiser": "Royal Watercolour Society / Parker Harris",
+    "type": "Open call",
+    "disciplines": [
+      "Painting"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "Bankside Gallery and RWS Gallery",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "deadline": "2026-12-08",
+    "start_date": "2027-04-16",
+    "end_date": "2027-05-03",
+    "eligibility": "Artists in the UK and worldwide, 18+; original work mainly in water-based media on paper, last 4 years, priced at £250 or more; RWS members can't enter",
+    "entry_fee": "Paid",
+    "fee_amount": 20,
+    "currency": "GBP",
+    "fee_details": "£20 for 1 work, £36 for 2, £46 for 3, up to £76 for 6. Full-time students £12 per work. Free for Watercolour Artist Friends of Bankside Gallery. Non-refundable",
+    "selected_fee": "None",
+    "selected_fee_details": "No hanging fee in the terms. Work must be framed and glazed; delivery, collection, customs and insurance are at your cost. Overseas sellers must register for UK VAT",
+    "commission": "45% on sales",
+    "prizes": [
+      "David Gluck Memorial Award",
+      "2x David Benson Memorial Awards",
+      "2x RWS New Graduate Awards",
+      "2x RWS Young Artist Awards",
+      "2x RWS Portfolio Review Awards",
+      "The Cass Art Solo Show Award",
+      "Bankside Gallery and RWS Gallery Publicity Prizes",
+      "Sponsored materials prizes (GreatArt, St Cuthbert's Mill, Seawhite and others)"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Mentoring",
+      "Other"
+    ],
+    "apply_url": "https://artopps.co.uk/opportunities/rws",
+    "source": "https://artopps.co.uk/opportunities/rws/rules",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "biscuit-factory-art-prize-2027",
+    "title": "The Biscuit Factory Art Prize 2027",
+    "organiser": "The Biscuit Factory / Parker Harris",
+    "type": "Prize",
+    "disciplines": [
+      "Painting",
+      "Sculpture",
+      "Printmaking",
+      "Photography",
+      "Ceramics",
+      "Textiles"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "Newcastle upon Tyne",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "The Biscuit Factory",
+    "lat": 54.9783,
+    "lng": -1.6178,
+    "deadline": "2027-01-08",
+    "start_date": "2027-02-26",
+    "end_date": "2027-04-25",
+    "eligibility": "Artists and makers in the UK and worldwide, 18+; work from 2024–2026, for sale; no video or installation",
+    "entry_fee": "Paid",
+    "fee_amount": 20,
+    "currency": "GBP",
+    "fee_details": "£20 first work, £10 each additional (up to 4)",
+    "selected_fee": "None",
+    "selected_fee_details": "No hanging fee in the terms. You pay all shipping and insurance; the venue takes no liability for damage",
+    "commission": "40% + VAT on sales",
+    "prizes": [
+      "£5,000 prize and solo show presentation (The Biscuit Factory Award)",
+      "£1,000 Public Choice award"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Sales"
+    ],
+    "prize_value": 5000,
+    "apply_url": "https://artopps.co.uk/opportunities/thebiscuitfactoryartprize",
+    "source": "https://artopps.co.uk/opportunities/thebiscuitfactoryartprize/rules",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "jerwood-artist-in-residence-at-the-soane-2027",
+    "title": "Jerwood Artist in Residence at the Soane 2027",
+    "organiser": "Sir John Soane's Museum / Parker Harris",
+    "type": "Residency",
+    "disciplines": [
+      "Drawing"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "Sir John Soane's Museum (Drawing Office)",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "deadline": "2027-01-20",
+    "eligibility": "Artists, makers, architects and designers, 18+, UK or international; drawing must be central to your practice",
+    "entry_fee": "Free",
+    "currency": "GBP",
+    "fee_details": "No application fee",
+    "selected_fee": "None",
+    "selected_fee_details": "They pay you. International travel and visa costs are your own",
+    "prizes": [
+      "£4,000 honorarium per artist or collaboration",
+      "Possible accommodation allowance (case by case)",
+      "Three-month residency (Spring or Autumn 2027)"
+    ],
+    "prize_kinds": [
+      "Residency",
+      "Cash"
+    ],
+    "prize_value": 4000,
+    "apply_url": "https://artopps.co.uk/opportunities/jerwoodartistsoane-2027",
+    "source": "https://artopps.co.uk/opportunities/jerwoodartistsoane-2027",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "first-plinth-public-art-award-2027",
+    "title": "First Plinth: Public Art Award 2027",
+    "organiser": "Royal Society of Sculptors",
+    "type": "Prize",
+    "disciplines": [
+      "Sculpture"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "Dora House, 108 Old Brompton Road",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "deadline": "2027-01-12",
+    "eligibility": "Artists of any age and nationality working in three dimensions who haven't yet won a public art commission over £20,000; at least 3 years' post-graduate experience if formally trained",
+    "entry_fee": "Paid",
+    "fee_amount": 34,
+    "currency": "GBP",
+    "fee_details": "£34 (RSS members £24). Early bird £17 (members £12) until 12pm UK time, 17 November 2026",
+    "selected_fee": "None",
+    "selected_fee_details": "Each of the five finalists gets £1,000 to make a maquette and proposal; finalists must attend an interview in London on 24 April 2027",
+    "prizes": [
+      "£20,000 to produce a large-scale sculpture",
+      "£1,000 for each of five finalists",
+      "Exhibition on the sculpture terrace at Dora House in 2028, then a second site",
+      "Technical mentoring from engineers and consultants"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Commission",
+      "Exhibition",
+      "Mentoring"
+    ],
+    "prize_value": 20000,
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/first-plinth-public-art-award--royal-society-of-sculptors/11261",
+    "source": "https://www.curatorspace.com/opportunities/detail/first-plinth-public-art-award--royal-society-of-sculptors/11261",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "gwen-may-trust-recent-graduate-award-2027",
+    "title": "Gwen May Trust Recent Graduate Award",
+    "organiser": "Royal Society of Painter-Printmakers (RE)",
+    "type": "Prize",
+    "disciplines": [
+      "Printmaking"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "Bankside Gallery",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "deadline": "2027-01-29",
+    "eligibility": "Anyone who studied printmaking at undergraduate or postgraduate level and graduated in 2026; textile work not eligible",
+    "entry_fee": "Free",
+    "currency": "GBP",
+    "fee_details": "Free to enter",
+    "selected_fee": "Unknown",
+    "prizes": [
+      "£1,000 each to two winners",
+      "Two-year RE student membership",
+      "Chance to exhibit at Bankside Gallery and other RE venues"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Other"
+    ],
+    "prize_value": 1000,
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/gwen-may-trust-recent-graduate-award/11221",
+    "source": "https://www.curatorspace.com/opportunities/detail/gwen-may-trust-recent-graduate-award/11221",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "diversamente-art-prize-autumn-edition-2026",
+    "title": "DiversaMente Art Prize – Autumn Edition 2026",
+    "organiser": "DiversaMente Arte (Simona Rossi)",
+    "type": "Prize",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "Online",
+    "timezone": "Europe/Rome",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "deadline": "2026-11-15",
+    "eligibility": "Contemporary artists worldwide; one artwork",
+    "entry_fee": "Free",
+    "fee_details": "Free to apply",
+    "selected_fee": "Yes",
+    "selected_fee_details": "€30 participation fee if selected. Printed catalogue is a separate optional purchase",
+    "prizes": [
+      "Publication in the official bilingual catalogue",
+      "Artwork published on diversamentearte.com",
+      "Certificate of Merit",
+      "Winner: six-month virtual solo exhibition on Arte Galleria (up to 30 works) and a critical text"
+    ],
+    "prize_kinds": [
+      "Publication",
+      "Exhibition",
+      "Other"
+    ],
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/diversamente-art-prize--autumn-edition/11188",
+    "source": "https://www.curatorspace.com/opportunities/detail/diversamente-art-prize--autumn-edition/11188",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "the-inner-city-shanghai-2026",
+    "title": "The Inner City: small-format exhibition in Shanghai",
+    "organiser": "Zhen Yi Gallery",
+    "type": "Open call",
+    "disciplines": [
+      "Painting",
+      "Drawing"
+    ],
+    "format": "In person",
+    "timezone": "Asia/Shanghai",
+    "city": "Shanghai",
+    "country": "China",
+    "region": "Asia",
+    "venue": "Former French Concession, Shanghai",
+    "lat": 31.2304,
+    "lng": 121.4737,
+    "deadline": "2026-11-30",
+    "eligibility": "International emerging and mid-career artists who can arrange delivery of their work; small-format painting, drawing and works on paper",
+    "entry_fee": "Free",
+    "fee_details": "No submission fee listed on the application page",
+    "selected_fee": "Yes",
+    "selected_fee_details": "£170 / €200 'exhibition participation contribution' if selected, plus shipping to Shanghai and back at your cost",
+    "prizes": [
+      "Group exhibition in Shanghai, second half of December 2026",
+      "Instagram feature",
+      "Certificate of participation"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Other"
+    ],
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/open-call-the-inner-city--exhibition-in-shanghai-china-december---small-formats/11339",
+    "source": "https://www.curatorspace.com/opportunities/detail/open-call-the-inner-city--exhibition-in-shanghai-china-december---small-formats/11339",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "san-rafael-temporary-sculpture-exhibition-2027",
+    "title": "San Rafael Temporary Sculpture Exhibition (City Hall)",
+    "organiser": "City of San Rafael / San Rafael Arts / Local Edition Creative",
+    "type": "Commission",
+    "disciplines": [
+      "Sculpture"
+    ],
+    "format": "In person",
+    "timezone": "America/Los_Angeles",
+    "city": "San Rafael",
+    "country": "United States",
+    "region": "North America",
+    "venue": "San Rafael City Hall",
+    "lat": 37.9735,
+    "lng": -122.5311,
+    "deadline": "2026-11-20",
+    "eligibility": "Individual artists and teams living in California, Nevada, Oregon or Washington; one existing outdoor sculpture, 8–18 ft tall",
+    "entry_fee": "Free",
+    "currency": "USD",
+    "fee_details": "Entry fee: $0",
+    "selected_fee": "None",
+    "selected_fee_details": "They pay you a $5,000–$7,000 stipend, but it must cover engineering, transport, installation labour, insurance and maintenance",
+    "prizes": [
+      "$5,000–$7,000 artist stipend",
+      "One-year display at San Rafael City Hall (Aug 2027–Aug 2028)"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition"
+    ],
+    "prize_value": 7000,
+    "apply_url": "https://artist.callforentry.org/agreetoterms.php?ID=18247",
+    "source": "https://opportunities.wearecreativewest.org/opportunity/18247/CAFE",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "melancholy-2027",
+    "title": "Melancholy 2027 (online juried exhibition)",
+    "organiser": "Gallerium",
+    "type": "Open call",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "Online",
+    "timezone": "America/Vancouver",
+    "city": "",
+    "country": "Canada",
+    "region": "Global",
+    "deadline": "2026-11-20",
+    "start_date": "2027-03-23",
+    "end_date": "2027-05-23",
+    "eligibility": "All visual artists worldwide; 2D and 3D work in any medium",
+    "entry_fee": "Free",
+    "fee_details": "No submission fee (up to 10 works)",
+    "selected_fee": "Yes",
+    "selected_fee_details": "US$40 selection fee if selected (US$34 early bird); refundable until the exhibition opens",
+    "prizes": [
+      "Two-month online group exhibition",
+      "Catalogue",
+      "Artsy marketplace listing",
+      "Chance of publication in The Book of Arts",
+      "Up to 10 Honorable Mention digital certificates"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Publication",
+      "Sales",
+      "Other"
+    ],
+    "apply_url": "https://artist.callforentry.org/agreetoterms.php?ID=18469",
+    "source": "https://opportunities.wearecreativewest.org/opportunity/18469/CAFE",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "talents-contemporains-water-16th-edition-2026",
+    "title": "Talents Contemporains: Water (16th edition)",
+    "organiser": "Fondation François Schneider",
+    "type": "Prize",
+    "disciplines": [
+      "Painting",
+      "Drawing",
+      "Sculpture",
+      "Photography",
+      "Film & video",
+      "Textiles"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Paris",
+    "city": "Wattwiller",
+    "country": "France",
+    "region": "Europe",
+    "venue": "Fondation François Schneider art centre",
+    "lat": 47.8361,
+    "lng": 7.1756,
+    "deadline": "2026-11-22",
+    "eligibility": "Visual artists of any nationality, of legal age, with a professional track record over the last five years; one work or project on the theme of water",
+    "entry_fee": "Free",
+    "currency": "EUR",
+    "fee_details": "No application fee in the rules; apply through the online registration form",
+    "selected_fee": "None",
+    "selected_fee_details": "The Foundation pays transport and installation. Winners supply framing and display materials at no extra pay",
+    "prizes": [
+      "€15,000 per laureate (up to 7) for acquisition of the work (€8,000 for editioned photo/video)",
+      "Production budget up to €50,000 for sculpture or installation projects",
+      "Group exhibition of the winners at the Wattwiller art centre"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Commission"
+    ],
+    "prize_value": 15000,
+    "apply_url": "https://talentscontemporains-eau.fondationfrancoisschneider.org/inscription_individuel-en.php",
+    "image_url": "https://www.fondationfrancoisschneider.org/wp-content/uploads/2019/01/Visuel_TC7_web.jpg",
+    "source": "https://www.fondationfrancoisschneider.org/en/contemporary-talents-competition/contemporary-talents-competition-water-wattwiller/",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "eulsukdo-land-ecological-art-open-call-2026",
+    "title": "Open Call for Land·Ecological Art on Eulsukdo, Busan",
+    "organiser": "Eulsukdo Open Call Secretariat",
+    "type": "Commission",
+    "disciplines": [
+      "Sculpture",
+      "Design"
+    ],
+    "format": "In person",
+    "timezone": "Asia/Seoul",
+    "city": "Busan",
+    "country": "South Korea",
+    "region": "Asia",
+    "venue": "Eulsukdo, Saha-gu",
+    "lat": 35.1796,
+    "lng": 129.0756,
+    "deadline": "2026-11-22",
+    "eligibility": "Individuals or teams working professionally in art, landscape architecture, architecture, design or related fields; one site-specific proposal",
+    "entry_fee": "Free",
+    "fee_details": "No application fee stated; proposals go in by email",
+    "selected_fee": "None",
+    "selected_fee_details": "Winner gets KRW 380 million covering production, installation and stays, plus a KRW 20 million artist fee",
+    "prizes": [
+      "KRW 380 million production support",
+      "KRW 20 million artist fee"
+    ],
+    "prize_kinds": [
+      "Commission",
+      "Cash"
+    ],
+    "apply_url": "https://eulsukdo-ecoart.com/en/",
+    "image_url": "https://eulsukdo-ecoart.com/wp-content/uploads/eulsukdo/eulsukdo-aerial2.webp",
+    "source": "https://eulsukdo-ecoart.com/en/",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "ravenswood-australian-womens-art-prize-2027",
+    "title": "Ravenswood Australian Women's Art Prize 2027",
+    "organiser": "Ravenswood School for Girls",
+    "type": "Prize",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Australia/Sydney",
+    "city": "Sydney",
+    "country": "Australia",
+    "region": "Oceania",
+    "venue": "Ravenswood School for Girls, Gordon NSW",
+    "lat": -33.8688,
+    "lng": 151.2093,
+    "deadline": "2027-02-10",
+    "start_date": "2027-05-15",
+    "end_date": "2027-05-30",
+    "eligibility": "Women artists, 18+, living in Australia for the 12 months before entries close; work from the last 24 months, for sale",
+    "entry_fee": "Paid",
+    "fee_amount": 30,
+    "currency": "AUD",
+    "fee_details": "A$30 per work (Emerging and Indigenous Emerging categories), A$50 per work (Professional). Up to 2 works. Non-refundable",
+    "selected_fee": "None",
+    "selected_fee_details": "No hanging fee in the terms. Finalists pay their own delivery and collection; work is insured by the school while it has it",
+    "commission": "30% on sales (20% gallery + 30% school if you have a gallery)",
+    "prizes": [
+      "A$35,000 Professional Artist Prize (acquisitive)",
+      "A$7,500 Emerging Artist Prize (acquisitive)",
+      "A$7,500 Indigenous Emerging Artist Prize (acquisitive)",
+      "A$2,000 People's Choice Award plus A$500 art pack",
+      "Six Highly Commended Awards of A$1,000"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Sales"
+    ],
+    "prize_value": 35000,
+    "apply_url": "https://www.ravenswoodartprize.com.au/app/enter/",
+    "image_url": "https://www.ravenswoodartprize.com.au/wp-content/uploads/sites/3/2026/05/Art-Prize-2026-Pre-8.jpg",
+    "source": "https://www.ravenswoodartprize.com.au/wp-content/uploads/sites/3/2026/10/2027-Ravenswood-Australian-Womens-Art-Prize-TCs.pdf",
+    "added": "2026-11-12"
+  },
+  {
+    "id": "rba-annual-exhibition-2027",
+    "title": "Royal Society of British Artists Annual Exhibition 2027",
+    "organiser": "Royal Society of British Artists / Mall Galleries",
+    "type": "Open call",
+    "disciplines": [
+      "Painting",
+      "Drawing",
+      "Printmaking",
+      "Sculpture"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "Mall Galleries, 17 Carlton House Terrace",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "deadline": "2027-01-08",
+    "start_date": "2027-02-25",
+    "end_date": "2027-03-06",
+    "eligibility": "Artists 18+ from anywhere in the world; work not shown in London before, for sale",
+    "entry_fee": "Paid",
+    "fee_amount": 22,
+    "currency": "GBP",
+    "fee_details": "£22 per work, £14.50 per work if 35 or under. Up to 6 works. Non-refundable",
+    "selected_fee": "None",
+    "selected_fee_details": "No hanging fee in the terms. You deliver and collect at your own cost; minimum price £300 (prints £120–£180)",
+    "commission": "45% + VAT on sales",
+    "prizes": [
+      "£10,000 Huaicun Zhang Award for Excellence",
+      "£2,000 de Laszlo Foundation Award (35 or under) plus four £300 Highly Commended",
+      "£500 John Lynn Commemorative Award for a Young Artist",
+      "£500 Ronald Benham Memorial Award",
+      "Art materials prizes (Michael Harding, Daler-Rowney, Winsor & Newton)",
+      "Exhibition at Mall Galleries, London"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Sales",
+      "Other"
+    ],
+    "prize_value": 10000,
+    "apply_url": "https://www.mallgalleries.org.uk/open-calls/royal-society-british-artists",
+    "image_url": "https://www.mallgalleries.org.uk/sites/default/files/styles/meta_facebook/public/banner-images/RBA26%20015%202.jpg?itok=rA2ShJ6I",
+    "source": "https://www.mallgalleries.org.uk/open-calls/royal-society-british-artists",
+    "added": "2026-11-12"
   }
 ]
