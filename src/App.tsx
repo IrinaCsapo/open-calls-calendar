@@ -4,6 +4,7 @@ import { ListingPage } from './pages/ListingPage';
 import { SubmitPage } from './pages/SubmitPage';
 import { AboutPage } from './pages/AboutPage';
 import { StartPage } from './pages/StartPage';
+import { SubscribePage } from './pages/SubscribePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { useHashRoute } from './lib/useHashRoute';
 import { SITE_NAME } from './lib/site';
@@ -21,6 +22,7 @@ export function App() {
   else if (path === '/submit') page = <SubmitPage />;
   else if (path === '/about') page = <AboutPage />;
   else if (path === '/start') page = <StartPage />;
+  else if (path === '/subscribe') page = <SubscribePage />;
   else page = <NotFoundPage />;
 
   // On page change (not filter changes): scroll to top and focus the new h1 for screen readers.
@@ -54,6 +56,7 @@ export function App() {
       <main id="main" tabIndex={-1}>{page}</main>
       <footer className="site-footer">
         <nav className="site-footer__links" aria-label="More">
+          <a href="#/subscribe">Subscribe to deadlines</a>
           <a href="#/about">How we label fees</a>
           <a href="#/start">Tell us what you make</a>
         </nav>

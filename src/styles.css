@@ -411,6 +411,10 @@ main:focus { outline: none; }
 .listing-panel__note { margin: -0.35rem 0 0.25rem; text-align: center; font-size: 0.85rem; color: var(--muted); }
 .listing-panel__status { margin: -0.4rem 0 0; min-height: 1.2em; text-align: center; font-size: 0.85rem; }
 .listing-page__related { margin-top: 4rem; }
+.subscribe__list { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: 1.1rem; }
+.subscribe__list .hint { margin: 0.35rem 0 0 0.25rem; }
+.subscribe__button { gap: 0.5rem; min-width: min(100%, 22rem); justify-content: flex-start; }
+.subscribe code { font-size: 0.85em; word-break: break-all; }
 .row__note { margin: -0.6rem 0 1.1rem; font-size: 0.9rem; color: var(--muted); }
 .filters__hint { margin: -0.3rem 0 0.6rem; }
 /* Phones: deadline, fees and Apply come straight after the title, not after all the details */
