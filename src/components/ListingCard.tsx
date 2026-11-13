@@ -72,7 +72,7 @@ function Media({ l }: { l: Listing }) {
 }
 
 /**
- * The money, as one line: "✓ Free to enter · ⚠ Pays if selected". Only the warning is coloured;
+ * The money, as one line: "✓ Free to enter · ⚠ Pay if selected". Only the warning is coloured;
  * the full amounts are on the listing page.
  */
 function FeeLine({ l }: { l: Listing }) {
@@ -88,7 +88,7 @@ function FeeLine({ l }: { l: Listing }) {
       <span className="card__fee-part">{entry}</span>
       {apply && l.selected_fee === 'Yes' && (
         <span className="card__fee-part card__fee-part--warn" title={l.selected_fee_details}>
-          <IconWarn />Pays if selected<span className="sr-only">: {l.selected_fee_details}</span>
+          <IconWarn />Pay if selected<span className="sr-only">: {l.selected_fee_details}</span>
         </span>
       )}
       {apply && l.selected_fee === 'None' && <span className="card__fee-part">No fees if selected</span>}
