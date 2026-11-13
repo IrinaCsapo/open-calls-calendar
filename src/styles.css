@@ -260,6 +260,8 @@ main:focus { outline: none; }
 
 /* ---- Rows and cards (BuilderBee layout) ---- */
 .rows { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem; margin-top: 2rem; }
+/* Desktop: the card rows run the full width of the window (with a margin); each row fits as many cards as there's room for */
+@media (min-width: 64rem) { .rows { width: 100vw; margin-left: calc(50% - 50vw); padding-inline: clamp(16px, 3vw, 56px); } }
 .row { min-width: 0; }
 .row__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: flex-start; gap: 0.25rem 0.75rem;
   padding-bottom: 0.75rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--ink); }
@@ -273,8 +275,7 @@ main:focus { outline: none; }
 .row__toggle:hover { text-decoration-thickness: 2px; }
 @media (max-width: 40rem) { .row__toggle::before { display: none; } }
 .row__aside { margin-left: auto; align-self: center; }
-.row__items { display: grid; min-width: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.25rem; margin: 0; padding: 0; list-style: none; }
-@media (max-width: 64rem) { .row__items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.row__items { display: grid; min-width: 0; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 2rem 1.25rem; margin: 0; padding: 0; list-style: none; }
 @media (max-width: 40rem) {
   .row__items:not(.is-expanded) { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory;
     scroll-padding-inline: 16px; margin-inline: -16px; padding: 0 16px 0.75rem; }
@@ -290,7 +291,14 @@ main:focus { outline: none; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 .card:hover .card__media { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.45); }
 .card__img { position: relative; width: 100%; height: 100%; object-fit: contain; display: block; filter: drop-shadow(0 10px 18px rgba(31, 52, 86, 0.25)); }
-.card__placeholder { width: 100%; height: 100%; display: grid; place-items: center; padding: 1.25rem; }
+.card__placeholder { position: relative; width: 100%; height: 100%; display: grid; place-items: center; padding: 1.25rem; }
+.card__placeholder::before { content: ''; position: absolute; inset: 0; opacity: 0.3; mix-blend-mode: multiply; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.card__placeholder span { position: relative; }
+/* Phones: grainier colour washes */
+@media (max-width: 40rem) {
+  .card__placeholder::before, .card__media--image::before, .listing-page__media::before { opacity: 0.55; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.15' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.45 0 0 0 0 0.45 0 0 0 0.75 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0.25 0.6 0.85'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 140px 140px; }
+  .row__aside .view-switch { display: none; }   /* no List / Calendar switch on phones */
+}
 .card__placeholder span { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.3rem, 1vw + 1rem, 1.8rem); line-height: 1.05;
   text-align: center; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 .card__pills, .card__chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }

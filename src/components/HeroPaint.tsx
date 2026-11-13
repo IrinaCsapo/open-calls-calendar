@@ -47,6 +47,8 @@ export function HeroPaint() {
     const paint = document.createElement('canvas');      // where the blobs live (offscreen)
     const ctx = paint.getContext('2d')!;
     const grain = view.createPattern(makeGrain(), 'repeat')!;
+    // Grainier on phones, where the blobs are smaller and the texture would otherwise get lost
+    const grainAlpha = window.matchMedia('(max-width: 40rem)').matches ? 0.36 : 0.2;
     const canFilter = 'filter' in view;                   // canvas blur; older Safari falls back to CSS blur
     if (!canFilter) canvas.classList.add('hero-paint__canvas--css-blur');
 
@@ -75,7 +77,7 @@ export function HeroPaint() {
         view.filter = 'none';
         // grain only where there is colour
         view.globalCompositeOperation = 'source-atop';
-        view.globalAlpha = 0.2;
+        view.globalAlpha = grainAlpha;
         view.fillStyle = grain;
         view.fillRect(0, 0, vw, vh);
         view.globalAlpha = 1;
