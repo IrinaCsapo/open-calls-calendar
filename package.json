@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run validate && tsc --noEmit && vite build && tsx scripts/build-feed.ts",
+    "build": "npm run validate && tsc --noEmit && vite build && tsx scripts/build-feed.ts && cp dist/index.html dist/404.html",
     "preview": "vite preview",
     "validate": "tsx scripts/validate-listings.ts",
     "check-links": "tsx scripts/check-links.ts"

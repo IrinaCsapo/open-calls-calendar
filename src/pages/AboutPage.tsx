@@ -116,8 +116,8 @@ export function AboutPage() {
         <h2>Know an open call we're missing?</h2>
         <p>Organisers and artists can send us calls, prizes, residencies and events. We check every one before it goes live.</p>
         <p className="about-cta__actions">
-          <a className="button" href="#/submit">Submit an open call</a>
-          <a className="button button--secondary" href="#/">Browse calls</a>
+          <a className="button" href="/submit">Submit an open call</a>
+          <a className="button button--secondary" href="/">Browse calls</a>
         </p>
       </section>
     </div>

@@ -34,7 +34,7 @@ export function HomePage() {
 
   const [view, setViewState] = useState<View>(query.get('view') === 'calendar' ? 'calendar' : 'list');
 
-  // A hashchange means a link was followed (our own filter changes use replaceState, which doesn't fire one),
+  // A route change means a link was followed (our own filter changes use replaceState, which doesn't fire one),
   // so take the filters from the new URL.
   const queryString = query.toString();
   useEffect(() => {
@@ -95,7 +95,7 @@ export function HomePage() {
           <button type="button" className="button hero__button" onClick={() => document.getElementById('browse')?.scrollIntoView({ behavior: 'smooth' })}>
             Browse calls
           </button>
-          <a className="button button--secondary hero__button" href="#/submit">Submit a call</a>
+          <a className="button button--secondary hero__button" href="/submit">Submit a call</a>
         </div>
         <p className="hero__hint" aria-hidden="true"><span className="hero__hint--mouse">Click and drag to paint</span><span className="hero__hint--touch">Drag sideways to paint</span></p>
       </section>
@@ -115,7 +115,7 @@ export function HomePage() {
       {shown.length === 0 ? (
         <div className="empty">
           <h2>Nothing matches those filters</h2>
-          <p>Try fewer filters, or <a href="#/">see everything</a>.</p>
+          <p>Try fewer filters, or <a href="/">see everything</a>.</p>
         </div>
       ) : view === 'calendar' ? (
         <CalendarView listings={shown} />

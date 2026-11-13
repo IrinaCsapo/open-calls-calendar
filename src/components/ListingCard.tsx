@@ -119,7 +119,7 @@ export function ListingCard({ listing: l, now }: { listing: Listing; now: number
       </p>
 
       <h3 className="card__title">
-        <a href={`#/listing/${l.id}`}>{l.title}</a>
+        <a href={`/listing/${l.id}`}>{l.title}</a>
       </h3>
 
       <FeeLine l={l} />

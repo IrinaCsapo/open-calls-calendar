@@ -3,6 +3,7 @@ import type { Discipline } from '../types/listing';
 import { DISCIPLINE_GROUPS, DISCIPLINES_QUERY, loadPicks, savePicks, toggleInList } from '../lib/filters';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
 import { Chip } from '../components/Chip';
+import { navigate } from '../lib/useHashRoute';
 
 /**
  * "What do you make?": shown on a first visit (and from "Edit" on the list). The picks are kept in this
@@ -14,7 +15,7 @@ export function StartPage() {
 
   const finish = (chosen: Discipline[]) => {
     savePicks(chosen);
-    window.location.hash = chosen.length ? `#/?${DISCIPLINES_QUERY(chosen)}` : '#/';
+    navigate(chosen.length ? `/?${DISCIPLINES_QUERY(chosen)}` : '/');
   };
 
   return (

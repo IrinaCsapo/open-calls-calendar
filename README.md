@@ -34,7 +34,7 @@ Then open http://localhost:5173/open-calls-calendar/
   can pick a place, turn it off, or "Use my exact location" (asks the browser; sorts in-person events by distance;
   the coordinates never leave their browser). See [`src/lib/location.ts`](src/lib/location.ts).
 
-- **"What do you make?"** (`#/start`, linked in the footer): pick disciplines as chips; Continue shows the list filtered
+- **"What do you make?"** (`/start`, linked in the footer): pick disciplines as chips; Continue shows the list filtered
   to them. The picks are remembered on that page (in the visitor's browser only); a plain visit always opens unfiltered. Skipping shows everything.
 
 - **Closing soonest first**, grouped into "Closing this week", "Closing in the next month" and "Later". Countdowns
@@ -50,7 +50,7 @@ Then open http://localhost:5173/open-calls-calendar/
   closing within N days, and search. Every filtered view is a shareable link.
 - **Prizes** listed on every card and page. Sort by biggest cash prize or cheapest to enter.
 - **Calendar view** (deadlines and event dates on a month grid), **add one deadline to your calendar**, and a
-  feed of every deadline (`deadlines.ics`), with a **Subscribe** page (`#/subscribe`, not linked anywhere for now) that has one
+  feed of every deadline (`deadlines.ics`), with a **Subscribe** page (`/subscribe`, not linked anywhere for now) that has one
   button per calendar: Google, Apple, Outlook, plus copy-the-link. (A single `webcal://` link does nothing for most Google Calendar users.)
 
 ## The daily scout (7:00 London)
@@ -87,7 +87,9 @@ Approximate exchange rates for comparing fees are in [`src/lib/money.ts`](src/li
 
 Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml): `npm ci`,
 `npm run build`, publish `dist/` to GitHub Pages. One-time setup: **Settings → Pages → Source: GitHub Actions**.
-Hash URLs (`#/listing/<id>`, `#/?price=free-entry`) mean no server config is needed. The site lives at its own domain,
+Pages have normal addresses (`/about`, `/listing/<id>`, `/?price=free-entry`). GitHub Pages has no server, so the build
+copies `index.html` to `dist/404.html`: any address it doesn't know loads the app, which shows the right page. Old
+`/#/...` links are converted on load ([`src/lib/useHashRoute.ts`](src/lib/useHashRoute.ts)). The site lives at its own domain,
 **magpie.cool** (bought on Squarespace; DNS points at GitHub Pages): `public/CNAME`, `base: '/'` in `vite.config.ts` and
 `SITE_URL` in `src/lib/site.ts`.
 

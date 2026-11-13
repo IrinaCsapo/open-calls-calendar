@@ -55,7 +55,7 @@ export function CalendarView({ listings }: { listings: Listing[] }) {
                 <div role="cell" key={i} className={`calendar__cell${day === today ? ' is-today' : ''}${!day ? ' is-empty' : ''}`}>
                   {day && <span className="calendar__day">{Number(day.slice(8))}</span>}
                   {items.map((l) => (
-                    <a key={l.id} href={`#/listing/${l.id}`} className={`calendar__item ${isOpportunity(l) ? 'is-deadline' : 'is-event'}`}>
+                    <a key={l.id} href={`/listing/${l.id}`} className={`calendar__item ${isOpportunity(l) ? 'is-deadline' : 'is-event'}`}>
                       <span className="sr-only">{isOpportunity(l) ? 'Deadline: ' : 'Event: '}</span>
                       {l.title}
                     </a>
