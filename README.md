@@ -85,7 +85,9 @@ domain: set `base: '/'` in `vite.config.ts`, add `public/CNAME`, and update `SIT
 ## Design
 
 Soft warm-white background (`#FAF9F6`), a BuilderBee-style centred hero, accent colours blue, sky, orange,
-lavender, teal and butter, BuilderBee-style rows of square cards, Medium-style chips, navy (`#1F3456`) and white fully rounded buttons, navy text throughout, big headlines in **Sorts Mill Goudy**, the wordmark in **Crimson Text** semibold and body text in **Inter** (all Google Fonts).
+lavender, teal and butter, BuilderBee-style rows of square cards, Medium-style chips, navy (`#1F3456`) and white fully rounded buttons, navy text throughout, big headlines in **Sorts Mill Goudy**, body text in **Inter** (all Google Fonts).
 For a different headline face (e.g. **Exposure** by 205TF, paid): add the font files and
 change `--font-display` in [`src/styles.css`](src/styles.css). All colours are tokens at the top of that file,
-with contrast ratios noted. The site name is `SITE_NAME` in [`src/lib/site.ts`](src/lib/site.ts) (plus `index.html`).
+with contrast ratios noted. The logo is [`src/assets/magpie-logo-colour-horizontal.png`](src/assets/magpie-logo-colour-horizontal.png) (the header uses a 640px copy,
+`magpie-logo-header.png`); `public/favicon.png` is the bird on its own and `public/og-image.jpg` the link-preview image.
+The site name is `SITE_NAME` in [`src/lib/site.ts`](src/lib/site.ts) (plus `index.html`).

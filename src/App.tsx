@@ -8,9 +8,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { useHashRoute } from './lib/useHashRoute';
 import { SITE_NAME } from './lib/site';
 
-// The magpie mark: drop an image named magpie-mark (.png, .webp or .svg) into src/assets/ and it appears
-// next to the wordmark. Until then the header shows the name alone.
-const MARK = Object.values(import.meta.glob<string>('./assets/magpie-mark.{png,webp,svg}', { eager: true, import: 'default' }))[0];
+import logo from './assets/magpie-logo-header.png';
 
 export function App() {
   const { path } = useHashRoute();
@@ -41,8 +39,7 @@ export function App() {
       </a>
       <header className="site-header">
         <a href="#/" className="site-name">
-          {MARK && <img className="site-name__mark" src={MARK} alt="" />}
-          {SITE_NAME}
+          <img className="site-name__logo" src={logo} alt={SITE_NAME} width="640" height="169" />
         </a>
         <nav aria-label="Main" className="site-nav">
           <a href="#/" aria-current={path === '/' || path.startsWith('/listing/') ? 'page' : undefined}>Events</a>

@@ -49,7 +49,8 @@ h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 40
 .site-header, main, .site-footer { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 .site-header { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; padding-block: 1.1rem; }
 .site-name { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-wordmark); font-weight: 600; font-size: 2rem; line-height: 1; color: var(--brand); text-decoration: none; }
-.site-name__mark { height: 2.2rem; width: auto; }
+.site-name__logo { display: block; height: 52px; width: auto; }
+@media (max-width: 40rem) { .site-name__logo { height: 30px; } .site-header { flex-wrap: nowrap; gap: 0.5rem; } }
 .site-nav { display: flex; align-items: center; gap: clamp(0.75rem, 3vw, 2.5rem); }
 .site-nav a { color: var(--ink); text-decoration: none; font-size: 1.1rem; padding: 0.4rem 0; min-height: 44px; display: inline-flex; align-items: center;
   text-underline-offset: 0.3em; text-decoration-thickness: 1.5px; }
@@ -57,9 +58,10 @@ h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 40
 .site-nav__submit { gap: 0.28em; padding: 0 1.4rem !important; border: 1.5px solid var(--ink); border-radius: 999px; min-height: 48px !important; }
 .site-nav__submit:hover, .site-nav__submit[aria-current='page'] { text-decoration: none !important; background: var(--ink); color: #fff !important; }
 @media (max-width: 40rem) {
-  .site-nav a { font-size: 1rem; }
+  .site-nav { gap: 0.8rem; }
+  .site-nav a { font-size: 0.95rem; }
   .site-nav__long { display: none; }   /* "Submit" on phones */
-  .site-nav__submit { padding: 0 1rem !important; min-height: 44px !important; }
+  .site-nav__submit { padding: 0 0.85rem !important; min-height: 44px !important; }
 }
 main { padding-block: 1.5rem 3rem; }
 main:focus { outline: none; }
