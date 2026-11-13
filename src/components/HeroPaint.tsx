@@ -116,7 +116,7 @@ export function HeroPaint() {
     let autoResumeAt = 0;           // after the visitor paints, wait before carrying on
     let autoT = 0, autoPrev = 0;
     let autoLast: { x: number; y: number } | null = null;
-    const AUTO_LOOP = 12;           // seconds per loop
+    const AUTO_LOOP = 8;            // seconds per loop
     const AUTO_STRENGTH = 0.42;     // softer than a hand-made stroke
 
     const autoPoint = (t: number) => {
