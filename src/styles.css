@@ -440,7 +440,9 @@ main:focus { outline: none; }
 
 /* ---- About page ---- */
 .about { padding-bottom: 1rem; }
-.about-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; padding: clamp(1.5rem, 4vw, 3.5rem) 0 2rem; }
+.about-hero { position: relative; isolation: isolate; cursor: crosshair; touch-action: pan-y; user-select: none; -webkit-user-select: none; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; padding: clamp(1.5rem, 4vw, 3.5rem) 0 2rem; }
+.about-hero > :not(.hero-paint) { position: relative; z-index: 1; }
+.about-hero__hint { margin-top: 1.25rem; }
 .about-eyebrow { margin: 0 0 0.75rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .about-hero h1 { margin: 0 0 1.25rem; font-size: clamp(2.6rem, 5vw + 0.6rem, 5rem); line-height: 1; letter-spacing: -0.02em; text-wrap: balance; }
 .about-lede { margin: 0; font-size: 1.15rem; max-width: 52ch; color: #3a4a66; }

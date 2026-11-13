@@ -93,6 +93,8 @@ export function HeroPaint() {
     let last: { x: number; y: number } | null = null;
     let painting = false;
     let raf = 0;
+    let disposed = false;          // set on unmount: a stale copy must never draw again
+    let startTimer = 0;
     let lastStroke = 0;
     let lastFade = 0;
 
@@ -145,6 +147,7 @@ export function HeroPaint() {
     };
 
     const tick = (t: number) => {
+      if (disposed) return;
       if (autoStep(t)) lastStroke = performance.now();
       if (t - lastFade >= FADE_EVERY) {
         lastFade = t;
@@ -158,6 +161,7 @@ export function HeroPaint() {
       render();
     };
     const wake = () => {
+      if (disposed) return;
       lastStroke = performance.now();
       if (!raf) { lastFade = autoPrev = lastStroke; raf = requestAnimationFrame(tick); }
     };
@@ -212,11 +216,13 @@ export function HeroPaint() {
       for (let i = 0; i <= 24; i++) { const p = autoPoint((i / 24) * AUTO_LOOP * 0.5); if (p) stamp(p.x, p.y, radius(), 0.7); }
       render();
     } else {
-      window.setTimeout(wake, 300);
+      startTimer = window.setTimeout(wake, 300);
     }
 
     return () => {
       autoOn = false;
+      disposed = true;
+      window.clearTimeout(startTimer);
       io.disconnect();
       cancelAnimationFrame(raf);
       ro.disconnect();

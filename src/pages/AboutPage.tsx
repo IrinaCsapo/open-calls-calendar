@@ -7,6 +7,7 @@ import {
   IconBadge, IconCalendar, IconCheck, IconClock, IconMoney, IconPin, IconRefresh, IconSearch, IconUnknown, IconWarn,
 } from '../components/Icons';
 import bird from '../assets/magpie-bird.png';
+import { HeroPaint } from '../components/HeroPaint';
 
 function Feature({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
   return (
@@ -41,12 +42,14 @@ export function AboutPage() {
   return (
     <div className="about">
       <section className="about-hero">
+        <HeroPaint />
         <div className="about-hero__text">
           <p className="about-eyebrow">About Magpie</p>
           <h1>Every open call, every fee, <em>in one place</em></h1>
           <p className="about-lede">Open calls are scattered across websites, newsletters and Instagram posts, and too many
             only mention the fees once you've filled in a long form. Like a magpie, we collect the good ones, check the costs,
             and put them in one calendar, closing soonest first.</p>
+          <p className="hero__hint about-hero__hint" aria-hidden="true"><span className="hero__hint--mouse">Click and drag to paint</span><span className="hero__hint--touch">Drag sideways to paint</span></p>
         </div>
         <div className="about-hero__art" style={{ background: wash('about-magpie') }} aria-hidden="true">
           <img src={bird} alt="" width="440" height="440" />
