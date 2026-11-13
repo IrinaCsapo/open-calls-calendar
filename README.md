@@ -88,7 +88,8 @@ Approximate exchange rates for comparing fees are in [`src/lib/money.ts`](src/li
 Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml): `npm ci`,
 `npm run build`, publish `dist/` to GitHub Pages. One-time setup: **Settings → Pages → Source: GitHub Actions**.
 Pages have normal addresses (`/about`, `/listing/<id>`, `/?price=free-entry`). GitHub Pages has no server, so the build
-copies `index.html` to `dist/404.html`: any address it doesn't know loads the app, which shows the right page. Old
+writes a real HTML file for every page ([`scripts/build-pages.ts`](scripts/build-pages.ts)), each listing with its own
+link-preview title and description, and copies `index.html` to `dist/404.html` as the fallback for anything else. Old
 `/#/...` links are converted on load ([`src/lib/useHashRoute.ts`](src/lib/useHashRoute.ts)). The site lives at its own domain,
 **magpie.cool** (bought on Squarespace; DNS points at GitHub Pages): `public/CNAME`, `base: '/'` in `vite.config.ts` and
 `SITE_URL` in `src/lib/site.ts`.
