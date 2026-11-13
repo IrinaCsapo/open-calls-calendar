@@ -46,19 +46,19 @@ h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 40
 .skip-link { position: absolute; left: -9999px; }
 .skip-link:focus { left: 1rem; top: 1rem; background: var(--bg); padding: 0.5rem 1rem; z-index: 10; }
 
-.today { margin: 0 0 0 auto; font-size: 0.9rem; color: var(--ink); white-space: nowrap; }   /* sits just left of the nav links */
+/* A small strip above the navbar, right-aligned over the "Submit an open call" button */
+.today-strip { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0.6rem 16px 0; display: flex; justify-content: flex-end; }
+.today { margin: 0; font-size: 0.82rem; color: var(--ink); white-space: nowrap; }
 .today__label { font-weight: 700; }
 .today__tz { color: var(--muted); }
 .today__short { display: none; }
-@media (max-width: 78rem) { .today__tz { display: none; } }
-@media (max-width: 64rem) { .today__long { display: none; } .today__short { display: inline; } }
+@media (max-width: 40rem) { .today__long, .today__tz { display: none; } .today__short { display: inline; } }
 /* Phones: its own small line under the logo and links */
-@media (max-width: 40rem) { .today { order: 3; flex-basis: 100%; margin: 0; font-size: 0.82rem; } }
 .site-header, main, .site-footer { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-.site-header { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; justify-content: space-between; align-items: center; padding-block: 1.1rem; }
+.site-header { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; padding-block: 1.1rem; }
 .site-name { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-wordmark); font-weight: 600; font-size: 2rem; line-height: 1; color: var(--brand); text-decoration: none; }
 .site-name__logo { display: block; height: 58px; width: auto; }
-@media (max-width: 40rem) { .site-name__logo { height: 34px; } .site-header { flex-wrap: wrap; gap: 0.25rem 0.5rem; } .site-header .site-nav { margin-left: auto; } }
+@media (max-width: 40rem) { .site-name__logo { height: 34px; } .site-header { flex-wrap: nowrap; gap: 0.5rem; } }
 .site-nav { display: flex; align-items: center; gap: clamp(0.75rem, 3vw, 2.5rem); }
 .site-nav a { color: var(--ink); text-decoration: none; font-size: 1.1rem; padding: 0.4rem 0; min-height: 44px; display: inline-flex; align-items: center;
   text-underline-offset: 0.3em; text-decoration-thickness: 1.5px; }
