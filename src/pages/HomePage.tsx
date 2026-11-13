@@ -51,6 +51,11 @@ export function HomePage() {
   return (
     <>
       <section className="intro">
+        <div className="orbs" aria-hidden="true">
+          <span className="orb orb--warm" />
+          <span className="orb orb--blue" />
+          <span className="orb orb--cool" />
+        </div>
         <h1>Open calls, prizes and events for artists</h1>
         <p>{SITE_TAGLINE} Updated every morning.</p>
         <p className="intro__links">
