@@ -14,7 +14,6 @@ export function TodayBar() {
   const now = new Date(useNow(30_000));
   return (
     <p className="today" title={city ? `${city} time` : undefined}>
-      <span className="today__label">Today</span>{' '}
       <time dateTime={now.toISOString()}>
         <span className="today__long">{longDate.format(now)}</span>
         <span className="today__short">{shortDate.format(now)}</span>
