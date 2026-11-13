@@ -11,7 +11,7 @@
   --accent: #1d5cb4;         /* links, 6.4:1 */
   --brand: #233456;          /* magpie navy, from the logo: 11.9:1 */
 
-  /* Accent colours (from the orb reference): tints, the ribbon and its watercolour blooms. */
+  /* Accent colours (from the orb reference): tints, pills and the placeholder washes. */
   --orb-blue: #5ca3f8;  --orb-sky: #88c6ee;  --orb-orange: #f7932e;
   --orb-lavender: #aa92b5;  --orb-teal: #4be6cb;  --orb-green: #44dd7c;  --butter: #f1d79c;
 
@@ -54,21 +54,31 @@ main { padding-block: 1.5rem 3rem; }
 main:focus { outline: none; }
 .site-footer { border-top: 1px solid var(--line); padding-block: 1.5rem; color: var(--muted); font-size: 0.875rem; }
 
-/* ---- Hero: left-aligned headline with the watercolour ribbon behind, bottom right ---- */
-.intro { position: relative; overflow: hidden; border-radius: 20px; background: #fff; border: 1px solid var(--line);
-  min-height: clamp(380px, 46vw, 520px); padding: clamp(1.5rem, 5vw, 4rem); display: flex; align-items: flex-start; }
-.intro__text { position: relative; z-index: 1; max-width: 640px; }
-.intro__text a { position: relative; }
-.intro h1 { margin: clamp(1rem, 6vw, 4rem) 0 1rem; font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 1; text-wrap: balance; }
-.intro p { margin: 0 0 0.5rem; max-width: 46ch; }
-.ribbon { position: absolute; right: 0; bottom: 0; width: min(64%, 860px); height: 80%; pointer-events: none; }
-.ribbon__blooms { mix-blend-mode: multiply; }
-.ribbon__bloom { transform-box: fill-box; transform-origin: center; animation: bloom 2.6s cubic-bezier(.2,.7,.3,1) forwards; }
-@keyframes bloom { from { transform: scale(0.12); opacity: 0.95; } 55% { opacity: 0.8; } to { transform: scale(1.15); opacity: 0; } }
-@media (max-width: 640px) {
-  .intro { min-height: 520px; }
-  .ribbon { width: 150%; height: 46%; }
+/* ---- Hero (BuilderBee layout): centred headline with a rotating last word, lede, two buttons ---- */
+.hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(3rem, 9vw, 7rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
+.hero__title { margin: 0; font-size: clamp(2.6rem, 7vw + 0.4rem, 6rem); line-height: 1; letter-spacing: -0.02em; }
+.hero__lede { margin: 1.5rem 0 0; font-size: 1.2rem; max-width: 60ch; }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2.25rem; }
+.hero__button { min-width: 14rem; min-height: 3rem; font-size: 1.05rem; }
+.hero__links { margin: 1.25rem 0 0; }
+.browse-anchor { scroll-margin-top: 1rem; }
+@media (max-width: 40rem) {
+  .hero__lede { font-size: 1rem; }
+  .hero__actions { flex-wrap: nowrap; width: 100%; }
+  .hero__button { flex: 1; min-width: 0; padding: 0 0.75rem; font-size: 1rem; }
 }
+
+/* Rotating last word of the headline (WordRotator.tsx), from BuilderBee */
+.word-rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; padding-bottom: 0.18em;
+  margin-bottom: -0.18em; white-space: nowrap; text-align: left; transition: width 450ms cubic-bezier(.2, .8, .2, 1); }
+.word-rotator__word { position: relative; display: inline-block; animation: word-in 550ms cubic-bezier(.2, .8, .2, 1) both; }
+.word-rotator__word::after { content: ''; position: absolute; left: 0.04em; right: 0.04em; bottom: 0.02em; height: 0.06em;
+  border-radius: 0.04em; background: currentColor; transform-origin: left; animation: word-underline 600ms 350ms cubic-bezier(.6, 0, .2, 1) both; }
+@keyframes word-underline { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes word-in { from { transform: translateY(70%); opacity: 0; filter: blur(4px); } to { transform: none; opacity: 1; filter: none; } }
+.word-rotator__measure { position: absolute; top: 0; left: 0; visibility: hidden; pointer-events: none; }
+.word-rotator__measure > span { position: absolute; white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .word-rotator, .word-rotator__word, .word-rotator__word::after { transition: none; animation: none; } }
 
 /* ---- Buttons: black and white only ---- */
 .button, .segmented label, .view-switch button, .calendar__nav button {
