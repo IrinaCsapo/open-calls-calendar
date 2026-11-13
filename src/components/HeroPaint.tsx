@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 /**
  * Interactive hero background: click (or touch) and drag to leave soft, grainy blobs of colour.
- * On its own, a soft brush loops in a figure-of-eight through the headline (not with reduced motion).
+ * On its own, a soft brush loops along both lines of the headline (not with reduced motion).
  * The hue drifts through the spectrum as you paint, blobs linger, then slowly fade.
  *
  * How it works (plain canvas, no libraries):
@@ -108,7 +108,7 @@ export function HeroPaint() {
       hue = (hue + 1.6) % 360;
     };
 
-    // ---- The self-painting brush: a slow figure-of-eight through the two headline lines ----
+    // ---- The self-painting brush: a long slow loop along both headline lines ----
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const headline = host.querySelector<HTMLElement>('.hero__title');
     let autoOn = !reduced;          // never moves by itself for people who prefer reduced motion
@@ -116,17 +116,19 @@ export function HeroPaint() {
     let autoResumeAt = 0;           // after the visitor paints, wait before carrying on
     let autoT = 0, autoPrev = 0;
     let autoLast: { x: number; y: number } | null = null;
-    const AUTO_LOOP = 11;           // seconds per figure-of-eight
+    const AUTO_LOOP = 12;           // seconds per loop
     const AUTO_STRENGTH = 0.42;     // softer than a hand-made stroke
 
     const autoPoint = (t: number) => {
       if (!headline) return null;
       const c = canvas.getBoundingClientRect(), b = headline.getBoundingClientRect();
       const cx = (b.left + b.width / 2 - c.left) * SCALE, cy = (b.top + b.height / 2 - c.top) * SCALE;
-      const ax = b.width * 0.46 * SCALE, ay = b.height * 0.42 * SCALE;
+      // A long loop: left to right along the first line, round the end, back along the second line.
+      // It reaches a little past both ends of the text, with a slow wobble so no two loops are the same.
+      const ax = b.width * 0.54 * SCALE, ay = b.height * 0.25 * SCALE;
       const a = (t / AUTO_LOOP) * Math.PI * 2;
-      // Lissajous figure-of-eight, with a slow wobble so no two loops are quite the same
-      return { x: cx + ax * Math.sin(a), y: cy + ay * Math.sin(2 * a + 0.6) * (0.85 + 0.15 * Math.sin(a * 0.37)) };
+      const wobble = 1 + 0.12 * Math.sin(a * 0.37) + 0.06 * Math.sin(a * 3.1);
+      return { x: cx - ax * Math.cos(a), y: cy - ay * Math.sin(a) * wobble };
     };
     const autoStep = (now: number) => {
       const dt = Math.min(0.05, (now - autoPrev) / 1000);

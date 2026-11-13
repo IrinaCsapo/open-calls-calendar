@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { LISTINGS } from '../lib/listings';
 import { isLive, urgencyGroup, useNow } from '../lib/dates';
-import { SORT_LABELS, applyFilters, defaultFilters, filtersFromQuery, filtersToQuery, loadPicks, sortListings, type Filters } from '../lib/filters';
+import { SORT_LABELS, applyFilters, defaultFilters, filtersFromQuery, filtersToQuery, sortListings, type Filters } from '../lib/filters';
 import { guessCurrency } from '../lib/money';
 import { replaceHashQuery, useHashRoute } from '../lib/useHashRoute';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
@@ -26,11 +26,9 @@ export function HomePage() {
   const { query } = useHashRoute();
   const now = useNow();
   const fallbackCurrency = useMemo(guessCurrency, []);
-  // A plain visit (no filters in the link) starts from the disciplines picked on the start screen.
-  const fromUrl = (q: URLSearchParams): Filters => {
-    const f = filtersFromQuery(q, fallbackCurrency);
-    return q.toString() ? f : { ...f, disciplines: loadPicks() ?? [] };
-  };
+  // Filters come only from the link: a plain visit always opens unfiltered. (Picks made on "What do you
+  // make?" are applied by the link that page sends you to, and remembered there for next time.)
+  const fromUrl = (q: URLSearchParams): Filters => filtersFromQuery(q, fallbackCurrency);
   const [filters, setFiltersState] = useState<Filters>(() => fromUrl(query));
 
   const [view, setViewState] = useState<View>(query.get('view') === 'calendar' ? 'calendar' : 'list');
