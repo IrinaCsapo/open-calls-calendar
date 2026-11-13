@@ -60,6 +60,9 @@ These publish open calls constantly. Open each, list what's currently open, chec
 | https://soundandmusic.org/opportunities/ | music and sound |
 | https://www.musicboard-berlin.de/en/ | music funding (Berlin) |
 | https://on-the-move.org/news | global mobility calls, residencies, all disciplines (has RSS; follow each "More info & apply" to the official page) |
+| https://kolajmagazine.com/content/wp-json/wp/v2/posts?per_page=40&search=call%20to%20artists | collage calls (clean JSON; includes calls from other organisers, but confirm each on the organiser's own page when it has one) |
+| https://kolajinstitute.org/artist-development/ | collage residencies, workshops, meet-ups (New Orleans and online); Eventbrite pages have prices in JSON-LD |
+| https://www.cut-x-paste.com/ | analog collage calls and nights (Sydney) |
 | https://www.muvac.com/en/browse/competitions | music competitions |
 | https://bachtrack.com/competitions | classical music competitions |
 | https://www.artsinfopoint.uk/ | UK artist mobility; free online coffee mornings |

@@ -535,7 +535,8 @@
       "Sculpture",
       "Illustration",
       "Digital art",
-      "Photography"
+      "Photography",
+      "Collage"
     ],
     "format": "Online",
     "timezone": "UTC",
@@ -644,7 +645,8 @@
     "organiser": "Guild of St George / Parker Harris",
     "type": "Prize",
     "disciplines": [
-      "Any medium"
+      "Any medium",
+      "Collage"
     ],
     "format": "In person",
     "timezone": "Europe/London",
@@ -691,7 +693,8 @@
       "Drawing",
       "Painting",
       "Printmaking",
-      "Illustration"
+      "Illustration",
+      "Collage"
     ],
     "format": "In person",
     "timezone": "Europe/London",
@@ -1042,7 +1045,8 @@
     "organiser": "Gallerium",
     "type": "Open call",
     "disciplines": [
-      "Any medium"
+      "Any medium",
+      "Collage"
     ],
     "format": "Online",
     "timezone": "America/Vancouver",
@@ -1248,5 +1252,492 @@
     "image_url": "https://www.mallgalleries.org.uk/sites/default/files/styles/meta_facebook/public/banner-images/RBA26%20015%202.jpg?itok=rA2ShJ6I",
     "source": "https://www.mallgalleries.org.uk/open-calls/royal-society-british-artists",
     "added": "2026-11-12"
+  },
+  {
+    "id": "carnival-as-folklore-residency-new-orleans-2027",
+    "title": "Carnival as Folklore: In-Person Collage Artist Residency",
+    "organiser": "Kolaj Institute",
+    "type": "Residency",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "In person",
+    "timezone": "America/Chicago",
+    "city": "New Orleans",
+    "country": "United States",
+    "region": "North America",
+    "lat": 29.9511,
+    "lng": -90.0715,
+    "venue": "Kolaj Institute, 2374 St Claude Ave",
+    "deadline": "2026-12-06",
+    "start_date": "2027-01-04",
+    "end_date": "2027-01-08",
+    "eligibility": "Artists over 21 from anywhere in the world, any career stage, with a developed practice",
+    "entry_fee": "Free",
+    "fee_details": "No application fee",
+    "selected_fee": "Yes",
+    "selected_fee_details": "Residency costs $750 USD (limited grants up to $250 for demonstrated need); travel, accommodation and meals are the artist's responsibility",
+    "prizes": [
+      "Work considered for exhibition at Kolaj Institute Gallery, 9 Jan-13 Feb 2027"
+    ],
+    "prize_kinds": [
+      "Exhibition"
+    ],
+    "apply_url": "https://kolajmagazine.com/content/content/calls-for-artists/call-to-artists-carnival-as-folklore-in-person-residency-in-new-orleans-january-2027/",
+    "image_url": "https://kolajmagazine.com/content/wp-content/uploads/Carnival-as-Folklore-2027-5x4-1.jpg",
+    "source": "https://kolajmagazine.com/content/content/calls-for-artists/call-to-artists-carnival-as-folklore-in-person-residency-in-new-orleans-january-2027/",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "collage-retreat-at-kolaj-institute-2026",
+    "title": "Collage Retreat at Kolaj Institute",
+    "organiser": "Kolaj Institute",
+    "type": "Residency",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "In person",
+    "timezone": "America/Chicago",
+    "city": "New Orleans",
+    "country": "United States",
+    "region": "North America",
+    "lat": 29.9511,
+    "lng": -90.0715,
+    "venue": "Kolaj Institute Gallery",
+    "deadline": "2026-11-15",
+    "start_date": "2026-12-07",
+    "end_date": "2026-12-11",
+    "eligibility": "Self-motivated artists over 21, any career stage, from anywhere in the world",
+    "entry_fee": "Free",
+    "fee_details": "No application fee",
+    "selected_fee": "Yes",
+    "selected_fee_details": "Retreat fee $550 USD per artist; accommodation, travel, meals, extra materials and large-format printing at your own cost",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://kolajmagazine.com/content/content/calls-for-artists/call-to-artists-collage-retreat-at-kolaj-institute/",
+    "image_url": "https://kolajmagazine.com/content/wp-content/uploads/Collage-Retreat-2026-eventbrite-web.jpg",
+    "source": "https://kolajmagazine.com/content/content/calls-for-artists/call-to-artists-collage-retreat-at-kolaj-institute/",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "collage-publishing-workshop-2026",
+    "title": "Collage Publishing Workshop (online)",
+    "organiser": "Kolaj Institute",
+    "type": "Workshop",
+    "disciplines": [
+      "Collage",
+      "Writing"
+    ],
+    "format": "Online",
+    "timezone": "America/New_York",
+    "city": "",
+    "country": "United States",
+    "region": "Global",
+    "deadline": "2026-11-23",
+    "start_date": "2026-12-27",
+    "end_date": "2027-01-17",
+    "eligibility": "Artists over 21 from anywhere in the world who have made a body of work",
+    "entry_fee": "Free",
+    "fee_details": "No application fee",
+    "selected_fee": "Yes",
+    "selected_fee_details": "Workshop costs $600 USD (all four Artist Development workshops $2,000, payable $500/month)",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://kasini.submittable.com/submit/304330/artist-development-at-kolaj-institute",
+    "source": "https://kolajinstitute.org/artist-development/",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "kolaj-fest-new-orleans-call-for-presenters-2027",
+    "title": "Kolaj Fest New Orleans 2027: Call for Artists, Projects, Workshops & Papers",
+    "organiser": "Kolaj Institute",
+    "type": "Open call",
+    "disciplines": [
+      "Collage",
+      "Mixed media"
+    ],
+    "format": "In person",
+    "timezone": "America/Chicago",
+    "city": "New Orleans",
+    "country": "United States",
+    "region": "North America",
+    "lat": 29.9511,
+    "lng": -90.0715,
+    "deadline": "2027-01-31",
+    "start_date": "2027-06-23",
+    "end_date": "2027-06-27",
+    "eligibility": "Artists, curators, writers and academics who will attend the festival in person (early deadline 31 Dec 2026 for panel/project leads)",
+    "entry_fee": "Free",
+    "fee_details": "No submission fee",
+    "selected_fee": "Yes",
+    "selected_fee_details": "Accepted presenters must register and pay the Kolaj Fest registration fee (tickets about $119-$207 on Eventbrite) plus own travel and accommodation",
+    "prizes": [
+      "Present at the symposium, lead a workshop or a project"
+    ],
+    "prize_kinds": [
+      "Other"
+    ],
+    "apply_url": "https://kolajmagazine.com/content/content/calls-for-artists/kolaj-fest-new-orleans-2027-call-for-artists-projects-workshops-papers/",
+    "image_url": "https://kolajmagazine.com/content/wp-content/uploads/KFNOLA-2027-Call-4x6-1.jpg",
+    "source": "https://kolajmagazine.com/content/content/calls-for-artists/kolaj-fest-new-orleans-2027-call-for-artists-projects-workshops-papers/",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "kolaj-magazine-cut-out-page-world-collage-day-2027",
+    "title": "Kolaj Magazine Cut Out Page: World Collage Day 2027 Special Edition",
+    "organiser": "Kolaj Magazine",
+    "type": "Open call",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "Online",
+    "timezone": "America/Chicago",
+    "city": "",
+    "country": "United States",
+    "region": "Global",
+    "deadline": "2027-01-03",
+    "eligibility": "Current members of the Kolaj Magazine Artist Directory only",
+    "entry_fee": "Paid",
+    "fee_amount": 30,
+    "currency": "USD",
+    "fee_details": "No submission fee, but only Artist Directory members may submit: membership $30 for 12 months (print listing $60/issue)",
+    "selected_fee": "None",
+    "prizes": [
+      "Publication as a cut-out page in Kolaj Magazine"
+    ],
+    "prize_kinds": [
+      "Publication"
+    ],
+    "apply_url": "https://kolajmagazine.com/content/news/call-to-artists-cut-out-page/",
+    "image_url": "https://kolajmagazine.com/content/wp-content/uploads/cut-out-page-example.jpg",
+    "source": "https://kolajmagazine.com/content/news/call-to-artists-cut-out-page/",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "torn-boundaries-bristol-art-museum-2027",
+    "title": "Torn Boundaries: National Juried Collage Exhibition",
+    "organiser": "Bristol Art Museum",
+    "type": "Open call",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "In person",
+    "timezone": "America/New_York",
+    "city": "Bristol",
+    "country": "United States",
+    "region": "North America",
+    "venue": "Bristol Art Museum, 10 Wardwell Street",
+    "lat": 41.6771,
+    "lng": -71.2662,
+    "deadline": "2026-11-29",
+    "start_date": "2027-01-31",
+    "end_date": "2027-04-01",
+    "eligibility": "Artists aged 18+ living in the USA",
+    "entry_fee": "Paid",
+    "fee_amount": 25,
+    "currency": "USD",
+    "fee_details": "$25 for one work, $35 for two, $45 for three",
+    "selected_fee": "None",
+    "selected_fee_details": "Deliver work by 15 Jan 2027 at your own cost (ship with prepaid return label or hand-deliver)",
+    "commission": "No commission; sales direct between artist and buyer",
+    "prizes": [
+      "Cash awards (amounts TBA)",
+      "Exhibition at Bristol Art Museum"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition"
+    ],
+    "apply_url": "https://www.onlinejuriedshows.com/Default.aspx?OJSID=60032",
+    "source": "https://www.onlinejuriedshows.com/Default.aspx?OJSID=60032",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "cold-cuts-collages-from-winter-2027",
+    "title": "Cold Cuts: Collages from Winter",
+    "organiser": "International Gallery of Contemporary Art",
+    "type": "Open call",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "In person",
+    "timezone": "America/Anchorage",
+    "city": "Anchorage",
+    "country": "United States",
+    "region": "North America",
+    "venue": "International Gallery of Contemporary Art, 427 D Street",
+    "lat": 61.2181,
+    "lng": -149.9003,
+    "deadline": "2026-12-11",
+    "start_date": "2027-02-06",
+    "end_date": "2027-02-26",
+    "eligibility": "Open to anyone, anywhere, working in analog collage; up to 3 collages",
+    "entry_fee": "Free",
+    "fee_details": "No entry fee stated; submit via the gallery's web form",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "Accepted work must be delivered to the gallery by 29 Jan 2027 at your own cost",
+    "prizes": [
+      "Group exhibition in Anchorage"
+    ],
+    "prize_kinds": [
+      "Exhibition"
+    ],
+    "apply_url": "https://www.igcaalaska.org/cold-cuts",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/54ad6c18e4b07985e3863972/59cec3b5-7162-4719-a48a-876f68e12ae4/cold+cuts+3.jpg?format=1000w",
+    "source": "https://www.igcaalaska.org/cold-cuts",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "todo-loco-6-wish-you-were-here-2027",
+    "title": "TODO LOCO 6: Wish You Were Here (analog collage postcards)",
+    "organiser": "Cut X Paste",
+    "type": "Open call",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "In person",
+    "timezone": "Australia/Sydney",
+    "city": "Sydney",
+    "country": "Australia",
+    "region": "Oceania",
+    "lat": -33.8688,
+    "lng": 151.2093,
+    "deadline": "2026-12-15",
+    "start_date": "2027-03-11",
+    "end_date": "2027-03-21",
+    "eligibility": "All artists internationally; analog collage in A6 postcard proportions",
+    "entry_fee": "Paid",
+    "fee_amount": 6,
+    "currency": "AUD",
+    "fee_details": "AUD $6 per entry of 1-6 images",
+    "selected_fee": "None",
+    "selected_fee_details": "Selected artists supply hi-res files and sign a reproduction contract; no originals needed",
+    "prizes": [
+      "Work reproduced as postcards distributed across Sydney",
+      "Second showing at La Casa Verde, Barranquilla, April 2027",
+      "Digital catalogue and full postcard set"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Publication"
+    ],
+    "apply_url": "https://tally.so/r/ob8JW1",
+    "source": "https://kolajmagazine.com/content/content/calls-for-artists/call-to-artists-todo-loco-6/",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "peirson-and-peirson-contemporary-art-prize-2027",
+    "title": "Peirson & Peirson Contemporary Art Prize 2027",
+    "organiser": "Peirson & Peirson Contemporary Art Gallery",
+    "type": "Prize",
+    "disciplines": [
+      "Collage",
+      "Drawing",
+      "Painting",
+      "Printmaking"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "Plymouth",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "Peirson & Peirson Contemporary Art Gallery, 83 Hyde Park Road",
+    "lat": 50.3755,
+    "lng": -4.1427,
+    "deadline": "2027-03-31",
+    "start_date": "2027-06-12",
+    "end_date": "2027-07-24",
+    "eligibility": "UK-based artists aged 18+; work made in the last two years, max 80 x 60 cm framed",
+    "entry_fee": "Paid",
+    "fee_amount": 20,
+    "currency": "GBP",
+    "fee_details": "£20 per work, up to 3 works",
+    "selected_fee": "None",
+    "selected_fee_details": "Deliver ready-to-hang work to Plymouth by 10 May 2027 and collect 7 Aug at your own cost",
+    "commission": "40% on sales",
+    "prizes": [
+      "Peirson & Peirson Art Prize awards (not specified)",
+      "Group exhibition in Plymouth",
+      "Invitation to a Winners Exhibition every three years"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Sales",
+      "Other"
+    ],
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/peirson--peiron-contemporary-art-prize/11201",
+    "source": "https://www.curatorspace.com/opportunities/detail/peirson--peiron-contemporary-art-prize/11201",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "haus-a-rest-zine-issue-77-all-about-me-2026",
+    "title": "Haus-a-rest Zine Issue 77: All About Me (Using Metaphors to Explore Identity)",
+    "organiser": "Haus-a-rest Zine",
+    "type": "Open call",
+    "disciplines": [
+      "Collage",
+      "Mixed media",
+      "Painting",
+      "Drawing",
+      "Photography",
+      "Writing"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "deadline": "2026-11-27",
+    "eligibility": "Artists and writers of all backgrounds and levels; no AI work; public Instagram handle required",
+    "entry_fee": "Free",
+    "fee_details": "No submission fee",
+    "selected_fee": "None",
+    "prizes": [
+      "Online group exhibition and zine feature, December 2026"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Publication"
+    ],
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/open-call-for-artists-and-writers--all-about-me-using-metaphors-to-explore-identity/11332",
+    "source": "https://www.curatorspace.com/opportunities/detail/open-call-for-artists-and-writers--all-about-me-using-metaphors-to-explore-identity/11332",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "photosynthesis-magazine-forgotten-collage-artists-2026",
+    "title": "Photosynthesis Magazine: Forgotten (collage artists only)",
+    "organiser": "Photosynthesis Magazine",
+    "type": "Open call",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "Online",
+    "timezone": "America/Los_Angeles",
+    "city": "",
+    "country": "United States",
+    "region": "Global",
+    "deadline": "2026-11-30",
+    "eligibility": "Collage artists only (physical or digital collage); a description linking the work to the theme is required",
+    "entry_fee": "Free",
+    "fee_details": "No submission fee",
+    "selected_fee": "None",
+    "prizes": [
+      "Publication in Photosynthesis Magazine",
+      "Digital copy of the issue"
+    ],
+    "prize_kinds": [
+      "Publication"
+    ],
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/off-my-chest/11246",
+    "source": "https://www.curatorspace.com/opportunities/detail/off-my-chest/11246",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "kolaj-artist-development-virtual-meetup-december-2026",
+    "title": "Artist Development Virtual Meet-up: Collage After the End of Social Media",
+    "organiser": "Kolaj Institute",
+    "type": "Meetup",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "Online",
+    "timezone": "America/New_York",
+    "city": "",
+    "country": "United States",
+    "region": "Global",
+    "start_date": "2026-12-19",
+    "eligibility": "Free and open to any collage artist",
+    "entry_fee": "Free",
+    "fee_details": "Free RSVP on Eventbrite",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.eventbrite.com/e/2004501838960",
+    "image_url": "https://www.eventbrite.com/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F1194757220%252F3001029210238%252F1%252Foriginal.20260930-194330%3Fcrop%3Dfocalpoint%26fit%3Dcrop%26w%3D940%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26fp-x%3D0.5%26fp-y%3D0.5%26s%3D46fbc1dd6af17bfd00faade728f315bd&w=940&q=75",
+    "source": "https://kolajinstitute.org/artist-development/",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "kolaj-live-online-orlando-book-launch-2026",
+    "title": "Kolaj LIVE Online: Orlando: A Biography (collage edition) Book Launch",
+    "organiser": "Kolaj Institute",
+    "type": "Event",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "Online",
+    "timezone": "America/New_York",
+    "city": "",
+    "country": "United States",
+    "region": "Global",
+    "start_date": "2026-12-06",
+    "eligibility": "Open to all",
+    "entry_fee": "Free",
+    "fee_details": "Free tickets on Eventbrite",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.eventbrite.com/e/kolaj-live-online-orlando-a-biography-book-launch-tickets-2004496875113",
+    "image_url": "https://www.eventbrite.com/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F1197463249%252F249061307986%252F1%252Foriginal.20261106-221021%3Fcrop%3Dfocalpoint%26fit%3Dcrop%26w%3D940%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26fp-x%3D0.5%26fp-y%3D0.5%26s%3D5dbafc871921f15579066640c7d79fa5&w=940&q=75",
+    "source": "https://kolajinstitute.org/",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "new-orleans-collage-artist-meetup-december-2026",
+    "title": "New Orleans Collage Artist Meet-up: December 2026",
+    "organiser": "Kolaj Institute",
+    "type": "Meetup",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "In person",
+    "timezone": "America/Chicago",
+    "city": "New Orleans",
+    "country": "United States",
+    "region": "North America",
+    "lat": 29.9511,
+    "lng": -90.0715,
+    "venue": "Kolaj Institute, 2374 St Claude Ave #230",
+    "start_date": "2026-12-02",
+    "eligibility": "Ages 18+; artists and anyone curious about collage",
+    "entry_fee": "Free",
+    "fee_details": "Free RSVP; collage materials provided",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.eventbrite.com/e/new-orleans-collage-artist-meet-up-december-2026-tickets-2004432934866",
+    "image_url": "https://www.eventbrite.com/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F1183338868%252F249061307986%252F1%252Foriginal.20260429-150439%3Fw%3D940%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26s%3De50813f06885ee1191aa19c00c533b43&w=940&q=75",
+    "source": "https://www.eventbrite.com/e/new-orleans-collage-artist-meet-up-december-2026-tickets-2004432934866",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "cut-x-paste-collage-night-trinity-hotel-2026",
+    "title": "Cut X Paste Collage Night @ The Trinity Hotel, Surry Hills",
+    "organiser": "Cut X Paste",
+    "type": "Workshop",
+    "disciplines": [
+      "Collage"
+    ],
+    "format": "In person",
+    "timezone": "Australia/Sydney",
+    "city": "Sydney",
+    "country": "Australia",
+    "region": "Oceania",
+    "venue": "Tilly Mays @ The Trinity, 505 Crown Street, Surry Hills",
+    "lat": -33.8688,
+    "lng": 151.2093,
+    "start_date": "2026-11-16",
+    "eligibility": "Collage artists and beginners; bring your own scissors",
+    "entry_fee": "Paid",
+    "fee_amount": 25,
+    "currency": "AUD",
+    "fee_details": "AUD $25 ticket; all materials provided",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.trybooking.com/DOCES",
+    "image_url": "https://www.trybooking.com/UserData/Homepage/Z/EHI1618466-77c96cfaaac842778ab68069a04c5e3a.jpeg",
+    "source": "https://www.trybooking.com/DOCES",
+    "added": "2026-11-13"
   }
 ]
