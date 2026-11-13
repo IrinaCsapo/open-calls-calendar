@@ -253,6 +253,7 @@ main:focus { outline: none; }
   text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
 .row__toggle::before { content: '·'; margin-right: 0.6rem; font-weight: 400; text-decoration: none; display: inline-block; }
 .row__toggle:hover { text-decoration-thickness: 2px; }
+@media (max-width: 40rem) { .row__toggle::before { display: none; } }
 .row__aside { margin-left: auto; align-self: center; }
 .row__items { display: grid; min-width: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.25rem; margin: 0; padding: 0; list-style: none; }
 @media (max-width: 64rem) { .row__items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -276,6 +277,26 @@ main:focus { outline: none; }
   text-align: center; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 .card__pills, .card__chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
 .card__title { margin: 0; font-family: var(--font); font-size: 1.12rem; font-weight: 400; line-height: 1.3; letter-spacing: 0; }
+/* Card details as quiet lines of text with icons (no boxes). Colour only where it matters:
+   red when closing in under 3 days, burnt orange for "pays if selected". */
+.card { gap: 0.55rem; }
+.card__media { margin-bottom: 0.3rem; }
+.card__kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.9rem; margin: 0; font-size: 0.82rem; color: var(--muted); }
+.card__kicker > span:first-child { font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.75rem; color: var(--ink); }
+.card__left { display: inline-flex; align-items: center; gap: 0.3rem; }
+.card__left--urgent { color: var(--urgent); font-weight: 700; }
+.card__left--soon { color: var(--ink); font-weight: 600; }
+.card__new { padding: 0.05rem 0.5rem; border-radius: 999px; background: var(--ink); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em; }
+.card__fee { display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; margin: 0; font-size: 0.92rem; font-weight: 600; color: var(--ink); }
+.card__fee-part { display: inline-flex; align-items: center; gap: 0.3rem; }
+.card__fee-part--warn { color: #a3470b; }      /* burnt orange, 5.9:1 */
+.card__fee-part--muted { color: var(--muted); font-weight: 400; }
+.card__meta { display: grid; gap: 0.25rem; margin: 0; padding: 0; list-style: none; font-size: 0.88rem; color: var(--muted); }
+.card__meta li { display: flex; align-items: center; gap: 0.4rem; min-width: 0; }
+.card__prize-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.card__more { flex: none; color: var(--muted); }
+.card__prize .icon { color: #b07a12; }
+.card__disciplines { margin: 0.1rem 0 0; font-size: 0.8rem; color: var(--muted); }
 .card__title a { color: var(--ink); text-decoration: none; }
 .card__title a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 .card__title a::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius); }

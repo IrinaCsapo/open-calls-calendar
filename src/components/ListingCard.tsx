@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import type { Listing } from '../types/listing';
 import { formatFull, formatShort, isOpportunity, timeLeft } from '../lib/dates';
 import { formatMoney } from '../lib/money';
-import { FormatIcon, IconCalendar, IconCheck, IconClock, IconTrophy, IconUnknown, IconWarn } from './Icons';
+import { FormatIcon, IconCalendar, IconCheck, IconClock, IconMoney, IconTrophy, IconUnknown, IconWarn } from './Icons';
 
 const NEW_DAYS = 3;
 const TINTS = ['#9cc6f0', '#f7bd86', '#93e2cf', '#c9b6d4', '#f1d391', '#b3d6f6'];
@@ -71,29 +71,29 @@ function Media({ l }: { l: Listing }) {
   );
 }
 
-/** "£20 to enter" / "Free to enter" pill, plus a separate warning pill when selected artists pay. */
-function FeePills({ l }: { l: Listing }) {
+/**
+ * The money, as one line: "✓ Free to enter · ⚠ Pays if selected". Only the warning is coloured;
+ * the full amounts are on the listing page.
+ */
+function FeeLine({ l }: { l: Listing }) {
   const apply = isOpportunity(l);
-  let entry: string;
-  if (l.entry_fee === 'Free') entry = apply ? 'Free to enter' : 'Free';
+  let entry: ReactNode;
+  if (l.entry_fee === 'Free') entry = <><IconCheck />{apply ? 'Free to enter' : 'Free'}</>;
   else if (l.entry_fee === 'Paid' && l.fee_amount !== undefined && l.currency) {
-    entry = `${formatMoney(l.fee_amount, l.currency)}${apply ? ' to enter' : ''}`;
-  } else entry = apply ? 'Entry fee not stated' : 'Price not stated';
+    entry = <><IconMoney />{formatMoney(l.fee_amount, l.currency)}{apply ? ' to enter' : ''}</>;
+  } else entry = <><IconUnknown />{apply ? 'Entry fee not stated' : 'Price not stated'}</>;
 
   return (
-    <>
-      <li className={`pill pill--${l.entry_fee === 'Free' ? 'free' : l.entry_fee === 'Paid' ? 'paid' : 'unknown'}`}>
-        {l.entry_fee === 'Free' && <IconCheck />}{entry}
-      </li>
+    <p className="card__fee">
+      <span className="card__fee-part">{entry}</span>
       {apply && l.selected_fee === 'Yes' && (
-        <li className="pill pill--caution" title={l.selected_fee_details}>
-          <IconWarn />Pays if selected
-          <span className="sr-only">: {l.selected_fee_details}</span>
-        </li>
+        <span className="card__fee-part card__fee-part--warn" title={l.selected_fee_details}>
+          <IconWarn />Pays if selected<span className="sr-only">: {l.selected_fee_details}</span>
+        </span>
       )}
-      {apply && l.selected_fee === 'None' && <li className="pill pill--free"><IconCheck />No fees if selected</li>}
-      {apply && l.selected_fee === 'Unknown' && <li className="pill pill--unknown"><IconUnknown />Fees if selected not stated</li>}
-    </>
+      {apply && l.selected_fee === 'None' && <span className="card__fee-part">No fees if selected</span>}
+      {apply && l.selected_fee === 'Unknown' && <span className="card__fee-part card__fee-part--muted">Fees if selected not stated</span>}
+    </p>
   );
 }
 
@@ -112,28 +112,30 @@ export function ListingCard({ listing: l, now }: { listing: Listing; now: number
     <article className="card">
       <Media l={l} />
 
-      <ul className="card__pills" aria-label="Status and fees">
-        <li className={`pill pill--time pill--${left.urgency}`}><IconClock />{left.label}</li>
-        {isNew(l, now) && <li className="pill pill--new">New</li>}
-        <FeePills l={l} />
-      </ul>
+      <p className="card__kicker">
+        <span>{l.type}</span>
+        <span className={`card__left card__left--${left.urgency}`}><IconClock />{left.label}</span>
+        {isNew(l, now) && <span className="card__new">New</span>}
+      </p>
 
       <h3 className="card__title">
         <a href={`#/listing/${l.id}`}>{l.title}</a>
       </h3>
 
-      <ul className="card__chips" aria-label="Details">
-        <li className="info-chip"><IconCalendar /><span aria-hidden="true">{when.short}</span><span className="sr-only">{when.full}</span></li>
-        <li className="info-chip"><FormatIcon format={l.format} />{place(l)}</li>
-        <li className="info-chip">{l.type}</li>
+      <FeeLine l={l} />
+
+      <ul className="card__meta" aria-label="Details">
+        <li><IconCalendar /><span aria-hidden="true">{when.short}</span><span className="sr-only">{when.full}</span></li>
+        <li><FormatIcon format={l.format} />{place(l)}</li>
         {topPrize && (
-          <li className="info-chip">
-            <IconTrophy /><span className="sr-only">Prize:</span> {topPrize}
-            {l.prizes.length > 1 && <span className="muted"> +{l.prizes.length - 1}</span>}
+          <li className="card__prize">
+            <IconTrophy /><span className="sr-only">Prize:</span><span className="card__prize-text">{topPrize}</span>
+            {l.prizes.length > 1 && <span className="card__more">+{l.prizes.length - 1}</span>}
           </li>
         )}
-        <li className="info-chip">{l.disciplines.slice(0, 3).join(' · ')}</li>
       </ul>
+
+      <p className="card__disciplines">{l.disciplines.slice(0, 3).join(' · ')}</p>
     </article>
   );
 }
