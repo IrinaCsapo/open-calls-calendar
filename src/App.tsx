@@ -6,7 +6,7 @@ import { AboutPage } from './pages/AboutPage';
 import { StartPage } from './pages/StartPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { useHashRoute } from './lib/useHashRoute';
-import { FEED_PATH, SITE_NAME } from './lib/site';
+import { SITE_NAME } from './lib/site';
 import { TodayBar } from './components/TodayBar';
 
 import logo from './assets/magpie-logo-header.png';
@@ -54,7 +54,6 @@ export function App() {
       <main id="main" tabIndex={-1}>{page}</main>
       <footer className="site-footer">
         <nav className="site-footer__links" aria-label="More">
-          <a href={`webcal://${location.host}${import.meta.env.BASE_URL}${FEED_PATH}`}>Subscribe to all deadlines</a>
           <a href="#/about">How we label fees</a>
           <a href="#/start">Tell us what you make</a>
         </nav>

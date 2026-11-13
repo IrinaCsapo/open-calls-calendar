@@ -1,5 +1,5 @@
 import { useDocumentTitle } from '../lib/useDocumentTitle';
-import { FEED_PATH, SITE_NAME } from '../lib/site';
+import { SITE_NAME } from '../lib/site';
 import { IconCheck, IconMoney, IconUnknown, IconWarn } from '../components/Icons';
 
 export function AboutPage() {
@@ -28,10 +28,6 @@ export function AboutPage() {
       <h2>Where the listings come from</h2>
       <p>A research assistant checks artist opportunity sites, organisers and social posts every morning at 7:00 (London),
         confirms each deadline and fee on the organiser's own page, and adds what's new. You can also <a href="#/submit">submit one</a>.</p>
-
-      <h2>Never miss a deadline</h2>
-      <p>Subscribe to <a href={`webcal://${location.host}${import.meta.env.BASE_URL}${FEED_PATH}`}>the deadlines calendar</a> in
-        Apple Calendar, Google Calendar or Outlook, and new deadlines appear by themselves.</p>
     </div>
   );
 }
