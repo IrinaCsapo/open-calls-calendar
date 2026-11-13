@@ -19,7 +19,7 @@ export const MAX_FEES = [0, 5, 10, 25, 50, 100] as const;
  */
 export const PLACES = ['UK', 'US', 'Canada', 'Australia', 'Europe', 'North America', 'Latin America', 'Asia', 'Africa', 'Middle East', 'Oceania'] as const;
 export type Place = (typeof PLACES)[number];
-const PLACE_MATCH: Record<Place, (l: Listing) => boolean> = {
+export const PLACE_MATCH: Record<Place, (l: Listing) => boolean> = {
   UK: (l) => l.region === 'UK' || l.country === 'United Kingdom',
   US: (l) => l.country === 'United States',
   Canada: (l) => l.country === 'Canada',

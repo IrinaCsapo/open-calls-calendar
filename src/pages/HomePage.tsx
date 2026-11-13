@@ -9,6 +9,7 @@ import { SITE_TAGLINE } from '../lib/site';
 import { FilterPanel } from '../components/FilterPanel';
 import { ListingRow } from '../components/ListingRow';
 import { HeroPaint } from '../components/HeroPaint';
+import { guessPlace, loadPlaceSetting, nearYou, savePlaceSetting, type Coords, type PlaceSetting } from '../lib/location';
 import { CalendarView } from '../components/CalendarView';
 
 
@@ -51,9 +52,31 @@ export function HomePage() {
   const setFilters = (f: Filters) => { setFiltersState(f); sync(f, view); };
   const setView = (v: View) => { setViewState(v); sync(filters, v); };
 
+  // ---- Near you ----
+  const guess = useMemo(guessPlace, []);
+  const [placeSetting, setPlaceSettingState] = useState<PlaceSetting>(loadPlaceSetting);
+  const [coords, setCoords] = useState<Coords | null>(null);
+  const [locating, setLocating] = useState<'idle' | 'asking' | 'denied'>('idle');
+  const setPlaceSetting = (v: PlaceSetting) => { setPlaceSettingState(v); savePlaceSetting(v); };
+  const place = placeSetting === 'off' ? null : placeSetting === 'auto' ? guess : placeSetting;
+  const locate = () => {
+    if (!navigator.geolocation) { setLocating('denied'); return; }
+    setLocating('asking');
+    navigator.geolocation.getCurrentPosition(
+      (pos) => { setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude }); setLocating('idle'); if (placeSetting === 'off') setPlaceSetting('auto'); },
+      () => setLocating('denied'),
+      { maximumAge: 600_000, timeout: 15_000 },
+    );
+  };
+
   const live = useMemo(() => LISTINGS.filter((l) => isLive(l, now)), [now]);
   const shown = useMemo(() => sortListings(applyFilters(live, filters, now), filters), [live, filters, now]);
   const grouped = filters.sort === 'closing';
+  const near = useMemo(
+    () => (placeSetting === 'off' || filters.places.length ? [] : nearYou(shown, place, coords)),
+    [shown, place, coords, placeSetting, filters.places.length],
+  );
+  const nearTitle = coords ? 'Near you' : place ? `Near you · ${place}` : 'Near you';
 
   return (
     <>
@@ -71,7 +94,8 @@ export function HomePage() {
       </section>
 
       <div id="browse" className="browse-anchor" />
-      <FilterPanel filters={filters} onChange={setFilters} onReset={() => setFilters(defaultFilters(filters.currency))} count={shown.length} />
+      <FilterPanel filters={filters} onChange={setFilters} onReset={() => setFilters(defaultFilters(filters.currency))} count={shown.length}
+        location={{ setting: placeSetting, guess, onSetting: setPlaceSetting, onLocate: locate, locating, hasCoords: !!coords, onForget: () => setCoords(null) }} />
 
       <div className="toolbar" id="results">
         <p className="result-count">
@@ -92,6 +116,10 @@ export function HomePage() {
         <CalendarView listings={shown} />
       ) : grouped ? (
         <div className="rows">
+          {near.length > 0 && (
+            <ListingRow key={`near-${place}-${!!coords}`} id="near" title={nearTitle} listings={near} now={now}
+              note={<>{coords ? 'Closest to your location first.' : 'Based on your time zone.'} Change it under <em>More filters</em>.</>} />
+          )}
           {GROUPS.map((g) => {
             const items = shown.filter((l) => urgencyGroup(l, now) === g.key);
             return items.length ? <ListingRow key={g.key} id={g.key} title={g.label} listings={items} now={now} /> : null;

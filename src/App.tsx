@@ -7,6 +7,7 @@ import { StartPage } from './pages/StartPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { useHashRoute } from './lib/useHashRoute';
 import { FEED_PATH, SITE_NAME } from './lib/site';
+import { TodayBar } from './components/TodayBar';
 
 import logo from './assets/magpie-logo-header.png';
 
@@ -37,6 +38,7 @@ export function App() {
       <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>
         Skip to content
       </a>
+      <TodayBar />
       <header className="site-header">
         <a href="#/" className="site-name">
           <img className="site-name__logo" src={logo} alt={SITE_NAME} width="640" height="203" />

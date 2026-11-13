@@ -46,6 +46,10 @@ h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 40
 .skip-link { position: absolute; left: -9999px; }
 .skip-link:focus { left: 1rem; top: 1rem; background: var(--bg); padding: 0.5rem 1rem; z-index: 10; }
 
+.today-bar { position: relative; z-index: 2; border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.55); }
+.today-bar p { max-width: 1200px; margin: 0 auto; padding: 0.4rem 16px; font-size: 0.82rem; color: var(--ink); }
+.today-bar__label { font-weight: 700; }
+.today-bar__tz { color: var(--muted); }
 .site-header, main, .site-footer { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 .site-header { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; padding-block: 1.1rem; }
 .site-name { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-wordmark); font-weight: 600; font-size: 2rem; line-height: 1; color: var(--brand); text-decoration: none; }
@@ -351,6 +355,8 @@ main:focus { outline: none; }
 .listing-panel__note { margin: -0.35rem 0 0.25rem; text-align: center; font-size: 0.85rem; color: var(--muted); }
 .listing-panel__status { margin: -0.4rem 0 0; min-height: 1.2em; text-align: center; font-size: 0.85rem; }
 .listing-page__related { margin-top: 4rem; }
+.row__note { margin: -0.6rem 0 1.1rem; font-size: 0.9rem; color: var(--muted); }
+.filters__hint { margin: -0.3rem 0 0.6rem; }
 /* Phones: deadline, fees and Apply come straight after the title, not after all the details */
 @media (max-width: 55.99rem) { .listing-panel { order: -1; } }
 

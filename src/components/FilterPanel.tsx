@@ -6,12 +6,22 @@ import {
 } from '../lib/filters';
 import { formatMoney } from '../lib/money';
 import { Chip } from './Chip';
+import type { PlaceSetting } from '../lib/location';
 
 interface Props {
   filters: Filters;
   onChange: (next: Filters) => void;
   onReset: () => void;
   count: number;
+  location: {
+    setting: PlaceSetting;
+    guess: Place | null;
+    onSetting: (v: PlaceSetting) => void;
+    onLocate: () => void;
+    onForget: () => void;
+    locating: 'idle' | 'asking' | 'denied';
+    hasCoords: boolean;
+  };
 }
 
 const KIND_LABELS: Record<Kind, string> = { all: 'Everything', apply: 'Things to apply for', attend: 'Events to go to' };
@@ -20,7 +30,7 @@ const KIND_LABELS: Record<Kind, string> = { all: 'Everything', apply: 'Things to
  * BuilderBee-style filter bar: a big search box, then one bar of quick chips (format, price, where)
  * with "More filters" for everything else and the live count on the right.
  */
-export function FilterPanel({ filters: f, onChange, onReset, count }: Props) {
+export function FilterPanel({ filters: f, onChange, onReset, count, location: loc }: Props) {
   const id = useId();
   const set = <K extends keyof Filters>(key: K, value: Filters[K]) => onChange({ ...f, [key]: value });
   const togglePrice = (p: PriceFilter) => set('price', f.price === p ? 'any' : p);
@@ -86,6 +96,33 @@ export function FilterPanel({ filters: f, onChange, onReset, count }: Props) {
               </label>
             ))}
           </fieldset>
+
+          <div className="filters__section" role="group" aria-labelledby={`${id}-loc`}>
+            <p className="filters__heading" id={`${id}-loc`}>Your location</p>
+            <p className="hint filters__hint">Used for the "Near you" row at the top. It doesn't hide anything.</p>
+            <div className="chips">
+              <label className="where">
+                <span className="sr-only">Where you are</span>
+                <select className="where__select" value={loc.setting} onChange={(e) => loc.onSetting(e.target.value as PlaceSetting)}>
+                  <option value="auto">{loc.guess ? `${loc.guess} (from your time zone)` : 'Guess from my time zone'}</option>
+                  {PLACES.map((p) => <option key={p} value={p}>{p}</option>)}
+                  <option value="off">Don't show "Near you"</option>
+                </select>
+              </label>
+              {loc.hasCoords ? (
+                <button type="button" className="chip is-on" onClick={loc.onForget}>✓ Using your exact location · Stop</button>
+              ) : (
+                <button type="button" className="chip" onClick={loc.onLocate} disabled={loc.locating === 'asking'}>
+                  <span aria-hidden="true">📍</span> {loc.locating === 'asking' ? 'Finding you…' : 'Use my exact location'}
+                </button>
+              )}
+            </div>
+            <p className="hint" role="status">
+              {loc.locating === 'denied'
+                ? "We couldn't get your location (it may be switched off in your browser). Choose a place from the list instead."
+                : loc.hasCoords ? 'Your location stays in this browser: it is never sent or stored.' : ''}
+            </p>
+          </div>
 
           <div className="filters__section" role="group" aria-labelledby={`${id}-format`}>
             <p className="filters__heading" id={`${id}-format`}>Format</p>

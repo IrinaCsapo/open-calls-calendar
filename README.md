@@ -28,6 +28,12 @@ Then open http://localhost:5173/open-calls-calendar/
 
 ## What's on it
 
+- **Today's date and time** in a bar at the top, in the visitor's time zone (for working out deadlines).
+- **Near you**: a row at the top with calls in the visitor's country, then the rest of their continent, guessed from
+  their time zone (no permission prompt). It highlights, it doesn't filter. Under *More filters → Your location* they
+  can pick a place, turn it off, or "Use my exact location" (asks the browser; sorts in-person events by distance;
+  the coordinates never leave their browser). See [`src/lib/location.ts`](src/lib/location.ts).
+
 - **"What do you make?"** (`#/start`, linked in the footer): pick disciplines as chips; Continue shows the list filtered
   to them. The picks are remembered on that page (in the visitor's browser only); a plain visit always opens unfiltered. Skipping shows everything.
 

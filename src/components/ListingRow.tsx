@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import type { Listing } from '../types/listing';
 import { ListingCard } from './ListingCard';
 
 const ROW = 4; // one row of four until "Show all" is pressed
 
 /** A section like "Closing this week": serif title, count, "Show all N →", then a row of cards. */
-export function ListingRow({ id, title, listings, now, startOpen = false }: {
-  id: string; title: string; listings: Listing[]; now: number; startOpen?: boolean;
+export function ListingRow({ id, title, listings, now, startOpen = false, note }: {
+  id: string; title: string; listings: Listing[]; now: number; startOpen?: boolean; note?: ReactNode;
 }) {
   const [open, setOpen] = useState(startOpen);
   const shown = open ? listings : listings.slice(0, ROW);
@@ -25,6 +25,7 @@ export function ListingRow({ id, title, listings, now, startOpen = false }: {
           </button>
         )}
       </div>
+      {note && <p className="row__note">{note}</p>}
       <ul id={`row-list-${id}`} className={`row__items${open ? ' is-expanded' : ''}`}>
         {shown.map((l) => <li key={l.id}><ListingCard listing={l} now={now} /></li>)}
       </ul>
