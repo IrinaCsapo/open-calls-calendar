@@ -91,6 +91,8 @@ domain: set `base: '/'` in `vite.config.ts`, add `public/CNAME`, and update `SIT
 
 ## Design
 
+Icons are [Heroicons](https://heroicons.com) (outline, MIT), all in [`src/components/Icons.tsx`](src/components/Icons.tsx).
+
 Soft warm-white background (`#FAF9F6`), a BuilderBee-style centred hero with an interactive paint layer
 ([`src/components/HeroPaint.tsx`](src/components/HeroPaint.tsx): click and drag to leave grainy blobs of colour that slowly fade; on its own a soft brush loops along both headline lines,
 pausing while you paint, off screen, or with reduced motion), accent colours blue, sky, orange,

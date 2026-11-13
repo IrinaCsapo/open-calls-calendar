@@ -1,5 +1,6 @@
 import { useDocumentTitle } from '../lib/useDocumentTitle';
 import { FEED_PATH, SITE_NAME } from '../lib/site';
+import { IconCheck, IconMoney, IconUnknown, IconWarn } from '../components/Icons';
 
 export function AboutPage() {
   useDocumentTitle('About');
@@ -12,14 +13,14 @@ export function AboutPage() {
 
       <h2 id="fees">How we label fees</h2>
       <dl className="details">
-        <dt>✓ Free, no fees if selected</dt>
+        <dt className="with-icon"><IconCheck />Free, no fees if selected</dt>
         <dd>Nothing to pay to enter and nothing to pay if you're chosen.</dd>
-        <dt>! Free to enter, pay if selected</dt>
+        <dt className="with-icon"><IconWarn />Free to enter, pay if selected</dt>
         <dd>Free to apply, but selected artists are asked to pay something: a hanging fee, an exhibition fee, a fee to
           "secure your space". The amount is on the card.</dd>
-        <dt>£15 to enter</dt>
+        <dt className="with-icon"><IconMoney />£15 to enter</dt>
         <dd>The cheapest way in (usually one work). The full fee structure is on the listing's page.</dd>
-        <dt>? Not stated</dt>
+        <dt className="with-icon"><IconUnknown />Not stated</dt>
         <dd>The organiser's page doesn't say. Check their terms before you apply. You can hide these with "Hide calls that
           don't state all their fees".</dd>
       </dl>

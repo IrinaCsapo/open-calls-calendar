@@ -11,8 +11,8 @@ import { Placeholder, isNew, place, wash } from '../components/ListingCard';
 import { ListingRow } from '../components/ListingRow';
 import { ShareLink } from '../components/ShareLink';
 import { NotFoundPage } from './NotFoundPage';
+import { FormatIcon, IconCalendar, IconCheck, IconClock, IconMoney, IconTrophy, IconUnknown, IconWarn } from '../components/Icons';
 
-const FORMAT_ICON = { Online: '🌐', 'In person': '📍', Hybrid: '🔀' } as const;
 
 /** Up to 4 other open listings that share a discipline (closing soonest), topped up with the same type. */
 function moreLikeThis(l: Listing, now: number): Listing[] {
@@ -25,10 +25,10 @@ function moreLikeThis(l: Listing, now: number): Listing[] {
 
 /** One row of the "What it costs" breakdown, with a symbol so it never relies on colour. */
 function CostRow({ tone, label, children }: { tone: 'good' | 'warn' | 'paid' | 'unknown'; label: string; children: ReactNode }) {
-  const icon = { good: '✓', warn: '!', paid: '•', unknown: '?' }[tone];
+  const Icon = { good: IconCheck, warn: IconWarn, paid: IconMoney, unknown: IconUnknown }[tone];
   return (
     <div className={`cost-row cost-row--${tone}`}>
-      <span className="cost-row__icon" aria-hidden="true">{icon}</span>
+      <span className="cost-row__icon"><Icon /></span>
       <div>
         <dt>{label}</dt>
         <dd>{children}</dd>
@@ -63,10 +63,10 @@ export function ListingPage({ id }: { id: string }) {
 
         <header className="listing-page__header">
           <ul className="card__pills" aria-label="Status">
-            <li className={`pill pill--time pill--${left.urgency}`}><span aria-hidden="true">⏳</span> {left.label}</li>
+            <li className={`pill pill--time pill--${left.urgency}`}><IconClock />{left.label}</li>
             <li className="pill">{l.type}</li>
             {isNew(l, now) && <li className="pill pill--new">New</li>}
-            {isTotallyFree(l) && <li className="pill pill--free">✓ Totally free</li>}
+            {isTotallyFree(l) && <li className="pill pill--free"><IconCheck />Totally free</li>}
           </ul>
           <h1 className="listing-page__title">{l.title}</h1>
           <p className="listing-page__org"><span className="sr-only">Organised by </span>{l.organiser}</p>
@@ -100,7 +100,7 @@ export function ListingPage({ id }: { id: string }) {
             <section className="listing-section" aria-labelledby="prize-h">
               <h2 id="prize-h">{opp ? 'Prizes and what you get' : 'Prizes'}</h2>
               {l.prizes.length
-                ? <ul className="prizes">{l.prizes.map((p) => <li key={p}><span aria-hidden="true">🏆</span> {p}</li>)}</ul>
+                ? <ul className="prizes">{l.prizes.map((p) => <li key={p}><IconTrophy />{p}</li>)}</ul>
                 : <p className="muted">None stated.</p>}
             </section>
 
@@ -109,7 +109,7 @@ export function ListingPage({ id }: { id: string }) {
               <dl className="facts">
                 {l.deadline && <div><dt>{opp ? 'Deadline' : 'Register by'}</dt><dd>{formatFull(l.deadline)} <span className="muted">(end of day, {l.timezone.replace(/_/g, ' ')} time)</span></dd></div>}
                 {l.start_date && <div><dt>{opp ? 'Exhibition / programme dates' : 'When'}</dt><dd>{formatRange(l.start_date, l.end_date)}</dd></div>}
-                <div><dt>Where</dt><dd><span aria-hidden="true">{FORMAT_ICON[l.format]} </span>{where}</dd></div>
+                <div><dt>Where</dt><dd className="with-icon"><FormatIcon format={l.format} />{where}</dd></div>
                 <div><dt>Who can apply</dt><dd><q>{l.eligibility}</q></dd></div>
                 <div><dt>Disciplines</dt><dd><ul className="card__chips">{l.disciplines.map((d) => <li key={d} className="info-chip">{d}</li>)}</ul></dd></div>
                 <div><dt>Organiser</dt><dd>{l.organiser}</dd></div>
@@ -139,7 +139,7 @@ export function ListingPage({ id }: { id: string }) {
             <p className="listing-panel__note">{opp ? 'You apply' : 'You register'} on the organiser's site.</p>
             {live && (
               <button type="button" className="button button--secondary" onClick={() => downloadIcs(l, window.location.href)}>
-                <span aria-hidden="true">📅</span> {opp && l.deadline ? 'Add deadline to calendar' : 'Add to calendar'}
+                <IconCalendar />{opp && l.deadline ? 'Add deadline to calendar' : 'Add to calendar'}
               </button>
             )}
             <ShareLink title={l.title} />

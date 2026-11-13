@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { IconLink } from './Icons';
 
 /** Shares the page: the phone's share sheet when there is one, otherwise copies the link. */
 export function ShareLink({ title }: { title: string }) {
@@ -18,7 +19,7 @@ export function ShareLink({ title }: { title: string }) {
   return (
     <>
       <button type="button" className="button button--secondary" onClick={share}>
-        <span aria-hidden="true">🔗</span> Share this listing
+        <IconLink />Share this listing
       </button>
       <p className="listing-panel__status" role="status">{message}</p>
     </>

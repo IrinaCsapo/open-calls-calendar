@@ -7,6 +7,7 @@ import {
 import { formatMoney } from '../lib/money';
 import { Chip } from './Chip';
 import type { PlaceSetting } from '../lib/location';
+import { IconCheck, IconPin, IconSearch } from './Icons';
 
 interface Props {
   filters: Filters;
@@ -45,7 +46,7 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
     <form className="filterbar" role="search" aria-label="Find open calls"
       onSubmit={(e) => { e.preventDefault(); document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' }); }}>
       <div className="searchbar">
-        <span className="searchbar__icon" aria-hidden="true">🔍</span>
+        <IconSearch className="searchbar__icon" />
         <label className="sr-only" htmlFor={`${id}-q`}>Search open calls</label>
         <input id={`${id}-q`} type="search" value={f.query} placeholder="Open call, city, medium or prize"
           onChange={(e) => set('query', e.target.value)} />
@@ -110,10 +111,10 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
                 </select>
               </label>
               {loc.hasCoords ? (
-                <button type="button" className="chip is-on" onClick={loc.onForget}>✓ Using your exact location · Stop</button>
+                <button type="button" className="chip is-on" onClick={loc.onForget}><IconCheck />Using your exact location · Stop</button>
               ) : (
                 <button type="button" className="chip" onClick={loc.onLocate} disabled={loc.locating === 'asking'}>
-                  <span aria-hidden="true">📍</span> {loc.locating === 'asking' ? 'Finding you…' : 'Use my exact location'}
+                  <IconPin />{loc.locating === 'asking' ? 'Finding you…' : 'Use my exact location'}
                 </button>
               )}
             </div>

@@ -2,9 +2,9 @@ import { useState } from 'react';
 import type { Listing } from '../types/listing';
 import { formatFull, formatShort, isOpportunity, timeLeft } from '../lib/dates';
 import { formatMoney } from '../lib/money';
+import { FormatIcon, IconCalendar, IconCheck, IconClock, IconTrophy, IconUnknown, IconWarn } from './Icons';
 
 const NEW_DAYS = 3;
-const FORMAT_ICON = { Online: '🌐', 'In person': '📍', Hybrid: '🔀' } as const;
 const TINTS = ['#9cc6f0', '#f7bd86', '#93e2cf', '#c9b6d4', '#f1d391', '#b3d6f6'];
 
 export function place(l: Listing): string {
@@ -83,16 +83,16 @@ function FeePills({ l }: { l: Listing }) {
   return (
     <>
       <li className={`pill pill--${l.entry_fee === 'Free' ? 'free' : l.entry_fee === 'Paid' ? 'paid' : 'unknown'}`}>
-        {l.entry_fee === 'Free' && <span aria-hidden="true">✓ </span>}{entry}
+        {l.entry_fee === 'Free' && <IconCheck />}{entry}
       </li>
       {apply && l.selected_fee === 'Yes' && (
         <li className="pill pill--caution" title={l.selected_fee_details}>
-          <span aria-hidden="true">! </span>Pays if selected
+          <IconWarn />Pays if selected
           <span className="sr-only">: {l.selected_fee_details}</span>
         </li>
       )}
-      {apply && l.selected_fee === 'None' && <li className="pill pill--free"><span aria-hidden="true">✓ </span>No fees if selected</li>}
-      {apply && l.selected_fee === 'Unknown' && <li className="pill pill--unknown">? Fees if selected not stated</li>}
+      {apply && l.selected_fee === 'None' && <li className="pill pill--free"><IconCheck />No fees if selected</li>}
+      {apply && l.selected_fee === 'Unknown' && <li className="pill pill--unknown"><IconUnknown />Fees if selected not stated</li>}
     </>
   );
 }
@@ -113,7 +113,7 @@ export function ListingCard({ listing: l, now }: { listing: Listing; now: number
       <Media l={l} />
 
       <ul className="card__pills" aria-label="Status and fees">
-        <li className={`pill pill--time pill--${left.urgency}`}><span aria-hidden="true">⏳</span> {left.label}</li>
+        <li className={`pill pill--time pill--${left.urgency}`}><IconClock />{left.label}</li>
         {isNew(l, now) && <li className="pill pill--new">New</li>}
         <FeePills l={l} />
       </ul>
@@ -123,12 +123,12 @@ export function ListingCard({ listing: l, now }: { listing: Listing; now: number
       </h3>
 
       <ul className="card__chips" aria-label="Details">
-        <li className="info-chip"><span aria-hidden="true">📅 {when.short}</span><span className="sr-only">{when.full}</span></li>
-        <li className="info-chip"><span aria-hidden="true">{FORMAT_ICON[l.format]}</span> {place(l)}</li>
+        <li className="info-chip"><IconCalendar /><span aria-hidden="true">{when.short}</span><span className="sr-only">{when.full}</span></li>
+        <li className="info-chip"><FormatIcon format={l.format} />{place(l)}</li>
         <li className="info-chip">{l.type}</li>
         {topPrize && (
           <li className="info-chip">
-            <span aria-hidden="true">🏆</span><span className="sr-only">Prize:</span> {topPrize}
+            <IconTrophy /><span className="sr-only">Prize:</span> {topPrize}
             {l.prizes.length > 1 && <span className="muted"> +{l.prizes.length - 1}</span>}
           </li>
         )}
