@@ -80,7 +80,7 @@ domain: set `base: '/'` in `vite.config.ts`, add `public/CNAME`, and update `SIT
 ## Design
 
 Warm cream background (`#FFFCEF`) with soft "orb" accents (blue, sky, orange, lavender, teal, green), black and
-white rounded-rectangle buttons, headlines in **Young Serif** and body text in **Inter** (both Google Fonts).
-Young Serif is a free stand-in for **Exposure** by 205TF: to switch, buy a web licence, add the font files and
+white rounded-rectangle buttons, headlines in **Crimson Text** and body text in **Inter** (both Google Fonts).
+Crimson Text is free (Google Fonts); for a heavier look, **Exposure** by 205TF is the paid option: buy a web licence, add the font files and
 change `--font-display` in [`src/styles.css`](src/styles.css). All colours are tokens at the top of that file,
 with contrast ratios noted. The site name is `SITE_NAME` in [`src/lib/site.ts`](src/lib/site.ts) (plus `index.html`).
