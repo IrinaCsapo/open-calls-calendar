@@ -1739,5 +1739,147 @@
     "image_url": "https://www.trybooking.com/UserData/Homepage/Z/EHI1618466-77c96cfaaac842778ab68069a04c5e3a.jpeg",
     "source": "https://www.trybooking.com/DOCES",
     "added": "2026-11-13"
+  },
+  {
+    "id": "international-mute-photo-festival-2027",
+    "title": "International Mute Photo Festival (IMPhF 2027) Open Call",
+    "organiser": "Photonisos Arts & Culture",
+    "type": "Open call",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Athens",
+    "city": "Samos",
+    "country": "Greece",
+    "region": "Europe",
+    "lat": 37.7548,
+    "lng": 26.977,
+    "deadline": "2027-04-30",
+    "start_date": "2027-07-01",
+    "end_date": "2027-07-31",
+    "eligibility": "Adults 18+ (series of 6-9 photos) and under 18s (series of 5); photographs must be made with low-resolution children's thermal print cameras",
+    "entry_fee": "Free",
+    "fee_details": "Free entry (EUR 0)",
+    "selected_fee": "None",
+    "selected_fee_details": "Printing and production of all selected exhibition works covered by the organiser",
+    "prizes": [
+      "Full travel and accommodation covered for the top awarded artist",
+      "Official printed catalogue publication"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Publication",
+      "Other"
+    ],
+    "apply_url": "https://app.entrythingy.com/calls/public/14276/",
+    "image_url": "https://app.entrythingy.com/og-image/call/14276.png",
+    "source": "https://app.entrythingy.com/calls/public/14276/",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "sony-future-filmmaker-awards-2027",
+    "title": "Sony Future Filmmaker Awards 2027",
+    "organiser": "Sony",
+    "type": "Prize",
+    "disciplines": [
+      "Film & video"
+    ],
+    "format": "Online",
+    "timezone": "America/Chicago",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "deadline": "2026-12-15",
+    "eligibility": "Filmmakers worldwide, open to the public (under 18s need guardian consent); Student category for film students; films released 1 Jan 2025 to 15 Dec 2026",
+    "entry_fee": "Free",
+    "currency": "USD",
+    "fee_details": "Free to enter. Deadline 07:00 AM CST on 15 December 2026",
+    "selected_fee": "Yes",
+    "selected_fee_details": "Shortlisted filmmakers get flights and accommodation for the Los Angeles programme, but must get and pay for their own US visa; guests pay their own travel",
+    "prizes": [
+      "USD 5,000 each for Fiction, Non-Fiction, Animation and Immersive winners",
+      "USD 2,500 Future Format winner",
+      "Sony camera equipment and Meta VR device for winners"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Other"
+    ],
+    "prize_value": 5000,
+    "apply_url": "https://www.sonyfuturefilmmakerawards.com/competition/enter",
+    "image_url": "https://www.sonyfuturefilmmakerawards.com/sites/default/files/2026-10/sffa-logo.png",
+    "source": "https://www.sonyfuturefilmmakerawards.com/rules",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "premio-marca-corona-2027",
+    "title": "Premio Marca Corona 2026-2027 (Segni Comuni)",
+    "organiser": "Galleria Marca Corona",
+    "type": "Prize",
+    "disciplines": [
+      "Ceramics",
+      "Design"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Rome",
+    "city": "Sassuolo",
+    "country": "Italy",
+    "region": "Europe",
+    "lat": 44.5438,
+    "lng": 10.7857,
+    "deadline": "2027-01-11",
+    "eligibility": "Italian and international artists and designers aged 18-34; one application with one project each",
+    "entry_fee": "Free",
+    "fee_details": "Participation is free (official page)",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "Marca Corona covers production costs of the ceramic work; other costs not stated",
+    "prizes": [
+      "Cash prize (amount not stated on the official page)",
+      "Mentorship and production of the project in ceramic at Marca Corona"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Mentoring"
+    ],
+    "apply_url": "https://www.galleriamarcacorona.com/premio-marca-corona-2026-2027-iscrizione/",
+    "source": "https://galleriamarcacorona.com/premio-marca-corona-2026-2027/",
+    "added": "2026-11-13"
+  },
+  {
+    "id": "nief-norf-international-call-for-scores-2027",
+    "title": "Nief-Norf International Call for Scores (NNSF27)",
+    "organiser": "Nief-Norf",
+    "type": "Open call",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "In person",
+    "timezone": "America/New_York",
+    "city": "Knoxville",
+    "country": "United States",
+    "region": "North America",
+    "lat": 35.9606,
+    "lng": -83.9207,
+    "deadline": "2026-12-31",
+    "eligibility": "Composers 18+ by 1 June 2027; works composed within the past 12 years; Faculty Instrumentation and Graphic Scores categories; up to 5 submissions",
+    "entry_fee": "Paid",
+    "fee_amount": 5,
+    "currency": "USD",
+    "fee_details": "Pay what you can per submission: USD 5 minimum, USD 15 suggested",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "Page doesn't say whether selected composers pay festival or travel costs beyond the award they choose",
+    "prizes": [
+      "USD 1,000 tuition scholarship to Nief-Norf Summer Festival 2027, or",
+      "USD 750 travel stipend with invitation to SYNNERGY 2027, or",
+      "USD 500 award if unable to attend"
+    ],
+    "prize_kinds": [
+      "Cash"
+    ],
+    "prize_value": 1000,
+    "apply_url": "https://www.niefnorf.org/callforscores",
+    "source": "https://www.niefnorf.org/callforscores",
+    "added": "2026-11-13"
   }
 ]
