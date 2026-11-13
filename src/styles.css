@@ -56,7 +56,7 @@ main:focus { outline: none; }
 
 /* ---- Hero (BuilderBee layout): centred headline with a rotating last word, lede, two buttons ---- */
 .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(3rem, 9vw, 7rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
-.hero__title { margin: 0; font-size: clamp(2.6rem, 7vw + 0.4rem, 6rem); line-height: 1; letter-spacing: -0.02em; }
+.hero__title { margin: 0; max-width: 22ch; font-size: clamp(2.6rem, 7vw + 0.4rem, 6rem); line-height: 1; letter-spacing: -0.02em; text-wrap: balance; }
 .hero__lede { margin: 1.5rem 0 0; font-size: 1.2rem; max-width: 60ch; }
 .hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2.25rem; }
 .hero__button { min-width: 14rem; min-height: 3rem; font-size: 1.05rem; }
@@ -67,18 +67,6 @@ main:focus { outline: none; }
   .hero__actions { flex-wrap: nowrap; width: 100%; }
   .hero__button { flex: 1; min-width: 0; padding: 0 0.75rem; font-size: 1rem; }
 }
-
-/* Rotating last word of the headline (WordRotator.tsx), from BuilderBee */
-.word-rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; padding-bottom: 0.18em;
-  margin-bottom: -0.18em; white-space: nowrap; text-align: left; transition: width 450ms cubic-bezier(.2, .8, .2, 1); }
-.word-rotator__word { position: relative; display: inline-block; animation: word-in 550ms cubic-bezier(.2, .8, .2, 1) both; }
-.word-rotator__word::after { content: ''; position: absolute; left: 0.04em; right: 0.04em; bottom: 0.02em; height: 0.06em;
-  border-radius: 0.04em; background: currentColor; transform-origin: left; animation: word-underline 600ms 350ms cubic-bezier(.6, 0, .2, 1) both; }
-@keyframes word-underline { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes word-in { from { transform: translateY(70%); opacity: 0; filter: blur(4px); } to { transform: none; opacity: 1; filter: none; } }
-.word-rotator__measure { position: absolute; top: 0; left: 0; visibility: hidden; pointer-events: none; }
-.word-rotator__measure > span { position: absolute; white-space: nowrap; }
-@media (prefers-reduced-motion: reduce) { .word-rotator, .word-rotator__word, .word-rotator__word::after { transition: none; animation: none; } }
 
 /* ---- Buttons: black and white only ---- */
 .button, .segmented label, .view-switch button, .calendar__nav button {

@@ -9,10 +9,7 @@ import { FEED_PATH, SITE_TAGLINE } from '../lib/site';
 import { FilterPanel } from '../components/FilterPanel';
 import { ListingRow } from '../components/ListingRow';
 import { CalendarView } from '../components/CalendarView';
-import { WordRotator } from '../components/WordRotator';
 
-// The headline's last word changes; it starts and ends on "open call"
-const WORDS = ['open call', 'residency', 'art prize', 'grant', 'commission', 'exhibition'];
 
 const GROUPS = [
   { key: 'week', label: 'Closing this week' },
@@ -62,11 +59,8 @@ export function HomePage() {
   return (
     <>
       <section className="hero" aria-labelledby="hero-title">
-        <h1 id="hero-title" className="hero__title">
-          <span className="sr-only">Find your next open call, residency, art prize, grant or commission</span>
-          <span aria-hidden="true">Find your next <WordRotator words={WORDS} /></span>
-        </h1>
-        <p className="hero__lede">{SITE_TAGLINE} For painters, collage artists, photographers, musicians and everyone in between. Updated every morning.</p>
+        <h1 id="hero-title" className="hero__title">Open calls, prizes and events for artists</h1>
+        <p className="hero__lede">{SITE_TAGLINE} Updated every morning.</p>
         <div className="hero__actions">
           <button type="button" className="button hero__button" onClick={() => document.getElementById('browse')?.scrollIntoView({ behavior: 'smooth' })}>
             Browse calls

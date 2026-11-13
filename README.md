@@ -84,7 +84,7 @@ domain: set `base: '/'` in `vite.config.ts`, add `public/CNAME`, and update `SIT
 
 ## Design
 
-Soft warm-white background (`#FAF9F6`), a BuilderBee-style centred hero ("Find your next open call / residency / art prize…"), accent colours blue, sky, orange,
+Soft warm-white background (`#FAF9F6`), a BuilderBee-style centred hero, accent colours blue, sky, orange,
 lavender, teal and butter, BuilderBee-style rows of square cards, Medium-style chips, black and white rounded-rectangle buttons, headlines in **Crimson Text** and body text in **Inter** (both Google Fonts).
 Crimson Text is free (Google Fonts); for a heavier look, **Exposure** by 205TF is the paid option: buy a web licence, add the font files and
 change `--font-display` in [`src/styles.css`](src/styles.css). All colours are tokens at the top of that file,
