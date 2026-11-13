@@ -1,6 +1,6 @@
 // Site-wide names and links. Change them here and they update everywhere.
-// The name is a placeholder until we pick one (see README "Naming").
-export const SITE_NAME = 'Open Calls Calendar';
+// Magpie: collects the open calls scattered around the internet.
+export const SITE_NAME = 'Magpie';
 export const SITE_TAGLINE = 'Open calls, prizes, residencies and events for artists, with every fee shown up front.';
 export const SITE_URL = 'https://irinacsapo.github.io/open-calls-calendar/';
 export const REPO_URL = 'https://github.com/IrinaCsapo/open-calls-calendar';

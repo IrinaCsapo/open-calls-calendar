@@ -69,7 +69,7 @@ export function buildIcs(listings: { listing: Listing; pageUrl: string }[], calN
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Open Calls Calendar//EN',
+    'PRODID:-//Magpie//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     ...(calName ? [`X-WR-CALNAME:${escapeText(calName)}`, 'REFRESH-INTERVAL;VALUE=DURATION:PT12H'] : []),

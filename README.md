@@ -1,4 +1,4 @@
-# Open Calls Calendar (working name)
+# Magpie
 
 A global calendar for artists: open calls, prizes, residencies, grants, events and meetups across visual art,
 photography, music, film, writing and performance. Closing soonest first, and **every fee shown up front**:

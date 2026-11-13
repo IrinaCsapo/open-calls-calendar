@@ -9,6 +9,7 @@
   --border: #8a8577;         /* 3.5:1, for form controls */
   --line: #e8e1c9;
   --accent: #1d5cb4;         /* links, 6.4:1 */
+  --brand: #233456;          /* magpie navy, from the logo: 11.9:1 */
 
   /* Orb colours: decoration and tints only. Text on them is always black (all pass 4.5:1). */
   --orb-blue: #5ca3f8;  --orb-sky: #88c6ee;  --orb-orange: #f7932e;
@@ -45,7 +46,8 @@ h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 40
 
 .site-header, main, .site-footer { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 .site-header { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; padding-block: 1rem; border-bottom: 1px solid var(--line); }
-.site-name { font-family: var(--font-display); font-size: 1.3rem; color: var(--text); text-decoration: none; }
+.site-name { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-size: 1.75rem; line-height: 1; color: var(--brand); text-decoration: none; }
+.site-name__mark { height: 2.2rem; width: auto; }
 .site-header nav { display: flex; gap: 1rem; }
 .site-header nav a[aria-current='page'] { font-weight: 700; color: var(--text); }
 main { padding-block: 1.5rem 3rem; }
