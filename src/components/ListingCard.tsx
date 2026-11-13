@@ -62,7 +62,8 @@ export function Placeholder({ l }: { l: Listing }) {
 function Media({ l }: { l: Listing }) {
   const [failed, setFailed] = useState(false);
   return (
-    <div className="card__media">
+    <div className={`card__media${l.image_url && !failed ? ' card__media--image' : ''}`}
+      style={l.image_url && !failed ? { background: wash(l.id, true) } : undefined}>
       {l.image_url && !failed
         ? <img className="card__img" src={l.image_url} alt="" loading="lazy" referrerPolicy="no-referrer" onError={() => setFailed(true)} />
         : <Placeholder l={l} />}
