@@ -86,7 +86,8 @@ domain: set `base: '/'` in `vite.config.ts`, add `public/CNAME`, and update `SIT
 ## Design
 
 Soft warm-white background (`#FAF9F6`), a BuilderBee-style centred hero with an interactive paint layer
-([`src/components/HeroPaint.tsx`](src/components/HeroPaint.tsx): click and drag to leave grainy blobs of colour that slowly fade), accent colours blue, sky, orange,
+([`src/components/HeroPaint.tsx`](src/components/HeroPaint.tsx): click and drag to leave grainy blobs of colour that slowly fade; on its own a soft brush loops through the headline,
+pausing while you paint, off screen, or with reduced motion), accent colours blue, sky, orange,
 lavender, teal and butter, BuilderBee-style rows of square cards, Medium-style chips, navy (`#1F3456`) and white fully rounded buttons, navy text throughout, big headlines in **Sorts Mill Goudy**, body text in **Inter** (all Google Fonts).
 For a different headline face (e.g. **Exposure** by 205TF, paid): add the font files and
 change `--font-display` in [`src/styles.css`](src/styles.css). All colours are tokens at the top of that file,

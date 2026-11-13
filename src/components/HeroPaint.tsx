@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 
 /**
  * Interactive hero background: click (or touch) and drag to leave soft, grainy blobs of colour.
+ * On its own, a soft brush loops in a figure-of-eight through the headline (not with reduced motion).
  * The hue drifts through the spectrum as you paint, blobs linger, then slowly fade.
  *
  * How it works (plain canvas, no libraries):
@@ -94,11 +95,11 @@ export function HeroPaint() {
     let lastFade = 0;
 
     const radius = () => Math.max(46, Math.min(w, h * 1.6) * 0.085);
-    const stamp = (x: number, y: number, r: number) => {
+    const stamp = (x: number, y: number, r: number, strength = 1) => {
       const g = ctx.createRadialGradient(x, y, 0, x, y, r);
       const c = `hsla(${hue.toFixed(0)}, 88%, 62%,`;
-      g.addColorStop(0, `${c} 0.5)`);
-      g.addColorStop(0.45, `${c} 0.26)`);
+      g.addColorStop(0, `${c} ${0.5 * strength})`);
+      g.addColorStop(0.45, `${c} ${0.26 * strength})`);
       g.addColorStop(1, `${c} 0)`);
       ctx.fillStyle = g;
       ctx.beginPath();
@@ -107,7 +108,40 @@ export function HeroPaint() {
       hue = (hue + 1.6) % 360;
     };
 
+    // ---- The self-painting brush: a slow figure-of-eight through the two headline lines ----
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const headline = host.querySelector<HTMLElement>('.hero__title');
+    let autoOn = !reduced;          // never moves by itself for people who prefer reduced motion
+    let inView = true;
+    let autoResumeAt = 0;           // after the visitor paints, wait before carrying on
+    let autoT = 0, autoPrev = 0;
+    let autoLast: { x: number; y: number } | null = null;
+    const AUTO_LOOP = 11;           // seconds per figure-of-eight
+    const AUTO_STRENGTH = 0.42;     // softer than a hand-made stroke
+
+    const autoPoint = (t: number) => {
+      if (!headline) return null;
+      const c = canvas.getBoundingClientRect(), b = headline.getBoundingClientRect();
+      const cx = (b.left + b.width / 2 - c.left) * SCALE, cy = (b.top + b.height / 2 - c.top) * SCALE;
+      const ax = b.width * 0.46 * SCALE, ay = b.height * 0.42 * SCALE;
+      const a = (t / AUTO_LOOP) * Math.PI * 2;
+      // Lissajous figure-of-eight, with a slow wobble so no two loops are quite the same
+      return { x: cx + ax * Math.sin(a), y: cy + ay * Math.sin(2 * a + 0.6) * (0.85 + 0.15 * Math.sin(a * 0.37)) };
+    };
+    const autoStep = (now: number) => {
+      const dt = Math.min(0.05, (now - autoPrev) / 1000);
+      autoPrev = now;
+      if (!autoOn || !inView || painting || now < autoResumeAt) { autoLast = null; return false; }
+      autoT += dt;
+      const p = autoPoint(autoT);
+      if (!p) return false;
+      paintSegment(autoLast, p, radius() * 0.95, AUTO_STRENGTH);
+      autoLast = p;
+      return true;
+    };
+
     const tick = (t: number) => {
+      if (autoStep(t)) lastStroke = performance.now();
       if (t - lastFade >= FADE_EVERY) {
         lastFade = t;
         ctx.globalCompositeOperation = 'destination-out';
@@ -119,23 +153,27 @@ export function HeroPaint() {
       else { ctx.clearRect(0, 0, w, h); raf = 0; }   // the last faint traces go at once
       render();
     };
-    const wake = () => { lastStroke = performance.now(); if (!raf) { lastFade = lastStroke; raf = requestAnimationFrame(tick); } };
+    const wake = () => {
+      lastStroke = performance.now();
+      if (!raf) { lastFade = autoPrev = lastStroke; raf = requestAnimationFrame(tick); }
+    };
 
     const toCanvas = (e: PointerEvent) => {
       const r = canvas.getBoundingClientRect();   // same box as the paint canvas, at SCALE
       return { x: (e.clientX - r.left) * SCALE, y: (e.clientY - r.top) * SCALE };
     };
-    const paintTo = (p: { x: number; y: number }, pressure = 1) => {
-      const r = radius() * (0.75 + 0.5 * pressure);
-      if (!last) stamp(p.x, p.y, r);
-      else {
-        const d = Math.hypot(p.x - last.x, p.y - last.y);
-        const steps = Math.max(1, Math.ceil(d / (r * 0.3)));
-        for (let i = 1; i <= steps; i++) {
-          const t = i / steps;
-          stamp(last.x + (p.x - last.x) * t, last.y + (p.y - last.y) * t, r);
-        }
+    /** Stamps along a line, close enough together to read as one soft stroke. */
+    function paintSegment(from: { x: number; y: number } | null, to: { x: number; y: number }, r: number, strength = 1) {
+      if (!from) { stamp(to.x, to.y, r, strength); return; }
+      const d = Math.hypot(to.x - from.x, to.y - from.y);
+      const steps = Math.max(1, Math.ceil(d / (r * 0.3)));
+      for (let i = 1; i <= steps; i++) {
+        const t = i / steps;
+        stamp(from.x + (to.x - from.x) * t, from.y + (to.y - from.y) * t, r, strength);
       }
+    }
+    const paintTo = (p: { x: number; y: number }, pressure = 1) => {
+      paintSegment(last, p, radius() * (0.75 + 0.5 * pressure));
       last = p;
       render();
       wake();
@@ -143,11 +181,16 @@ export function HeroPaint() {
 
     const onDown = (e: PointerEvent) => {
       if (e.button !== 0) return;
-      painting = true; last = null;
+      painting = true; last = null; autoResumeAt = Infinity;
       paintTo(toCanvas(e), e.pressure || 1);
     };
     const onMove = (e: PointerEvent) => { if (painting) paintTo(toCanvas(e), e.pressure || 1); };
-    const onUp = () => { painting = false; last = null; };
+    const onUp = () => {
+      if (!painting) return;
+      painting = false; last = null;
+      autoResumeAt = performance.now() + 4000;   // let their strokes breathe, then carry on
+      wake();
+    };
 
     host.addEventListener('pointerdown', onDown);
     header?.addEventListener('pointerdown', onDown);
@@ -155,24 +198,22 @@ export function HeroPaint() {
     window.addEventListener('pointerup', onUp);
     window.addEventListener('pointercancel', onUp);
 
-    // A first brushstroke so the effect is discoverable: a soft arc behind the headline.
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const intro = [0.18, 0.26, 0.34, 0.42, 0.5, 0.58, 0.66, 0.74, 0.82].map((t) => ({ x: w * t, y: h * (0.62 - 0.22 * Math.sin(Math.PI * t)) }));
+    // Pause the self-painting brush while the hero is off screen (the browser pauses it in background tabs).
+    // (a hidden tab reports nothing as visible, but the browser already pauses animation there)
+    const io = new IntersectionObserver(([entry]) => { inView = entry.isIntersecting || document.hidden; if (inView && autoOn) wake(); });
+    io.observe(host);
+
     if (reduced) {
-      intro.forEach((p) => stamp(p.x, p.y, radius()));
+      // A still brushstroke behind the headline instead of the moving brush
+      for (let i = 0; i <= 24; i++) { const p = autoPoint((i / 24) * AUTO_LOOP * 0.5); if (p) stamp(p.x, p.y, radius(), 0.7); }
       render();
     } else {
-      let i = 0;
-      const step = () => {
-        if (i >= intro.length) { last = null; return; }
-        paintTo(intro[i++], 0.8);
-        window.setTimeout(step, 70);
-      };
-      last = null;
-      window.setTimeout(step, 350);
+      window.setTimeout(wake, 300);
     }
 
     return () => {
+      autoOn = false;
+      io.disconnect();
       cancelAnimationFrame(raf);
       ro.disconnect();
       host.removeEventListener('pointerdown', onDown);
