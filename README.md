@@ -50,7 +50,7 @@ Then open http://localhost:5173/open-calls-calendar/
   closing within N days, and search. Every filtered view is a shareable link.
 - **Prizes** listed on every card and page. Sort by biggest cash prize or cheapest to enter.
 - **Calendar view** (deadlines and event dates on a month grid), **add one deadline to your calendar**, and a
-  feed of every deadline (`deadlines.ics`), with a **Subscribe** page (`#/subscribe`, linked in the footer) that has one
+  feed of every deadline (`deadlines.ics`), with a **Subscribe** page (`#/subscribe`, not linked anywhere for now) that has one
   button per calendar: Google, Apple, Outlook, plus copy-the-link. (A single `webcal://` link does nothing for most Google Calendar users.)
 
 ## The daily scout (7:00 London)

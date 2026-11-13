@@ -56,7 +56,6 @@ export function App() {
       <main id="main" tabIndex={-1}>{page}</main>
       <footer className="site-footer">
         <nav className="site-footer__links" aria-label="More">
-          <a href="#/subscribe">Subscribe to deadlines</a>
           <a href="#/about">How we label fees</a>
           <a href="#/start">Tell us what you make</a>
         </nav>

@@ -104,7 +104,7 @@ export function AboutPage() {
             <span className="about-card__icon"><IconCalendar /></span>
             <span className="about-step__n">3</span>
             <h3>It lands in the calendar</h3>
-            <p>New listings appear on the site, closing soonest first, and in the <a href="#/subscribe">deadlines calendar</a> you can subscribe to.</p>
+            <p>New listings appear on the site straight away, closing soonest first, with every fee on the card.</p>
           </li>
         </ol>
       </section>
