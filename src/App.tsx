@@ -44,10 +44,12 @@ export function App() {
           {MARK && <img className="site-name__mark" src={MARK} alt="" />}
           {SITE_NAME}
         </a>
-        <nav aria-label="Main">
-          <a href="#/" aria-current={path === '/' ? 'page' : undefined}>Listings</a>
-          <a href="#/submit" aria-current={path === '/submit' ? 'page' : undefined}>Submit</a>
+        <nav aria-label="Main" className="site-nav">
+          <a href="#/" aria-current={path === '/' || path.startsWith('/listing/') ? 'page' : undefined}>Events</a>
           <a href="#/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
+          <a href="#/submit" className="site-nav__submit" aria-current={path === '/submit' ? 'page' : undefined}>
+            Submit <span className="site-nav__long">an open call</span>
+          </a>
         </nav>
       </header>
       <main id="main" tabIndex={-1}>{page}</main>

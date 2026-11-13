@@ -59,7 +59,7 @@ export function HomePage() {
   return (
     <>
       <section className="hero" aria-labelledby="hero-title">
-        <h1 id="hero-title" className="hero__title">Open calls, prizes and events <em>for artists</em></h1>
+        <h1 id="hero-title" className="hero__title"><span>Open calls, prizes and</span> <span>events <em>for artists</em></span></h1>
         <p className="hero__lede">{SITE_TAGLINE} Updated every morning.</p>
         <div className="hero__actions">
           <button type="button" className="button hero__button" onClick={() => document.getElementById('browse')?.scrollIntoView({ behavior: 'smooth' })}>
