@@ -5,7 +5,7 @@ import { SORT_LABELS, applyFilters, defaultFilters, filtersFromQuery, filtersToQ
 import { guessCurrency } from '../lib/money';
 import { replaceHashQuery, useHashRoute } from '../lib/useHashRoute';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
-import { FEED_PATH, SITE_TAGLINE } from '../lib/site';
+import { SITE_TAGLINE } from '../lib/site';
 import { FilterPanel } from '../components/FilterPanel';
 import { ListingRow } from '../components/ListingRow';
 import { HeroPaint } from '../components/HeroPaint';
@@ -69,11 +69,6 @@ export function HomePage() {
           </button>
           <a className="button button--secondary hero__button" href="#/submit">Submit a call</a>
         </div>
-        <p className="hero__links small">
-          <a href={`webcal://${location.host}${import.meta.env.BASE_URL}${FEED_PATH}`}>Subscribe to all deadlines</a>
-          {' · '}
-          <a href="#/about">How we label fees</a>
-        </p>
         <p className="hero__hint" aria-hidden="true"><span className="hero__hint--mouse">Click and drag to paint</span><span className="hero__hint--touch">Drag sideways to paint</span></p>
       </section>
 
@@ -83,7 +78,6 @@ export function HomePage() {
       <div className="toolbar" id="results">
         <p className="result-count">
           {filters.disciplines.length > 0 && <>Showing calls for <strong>{filters.disciplines.join(', ')}</strong>.</>}
-          {' '}<a href="#/start" className="small">{filters.disciplines.length ? 'Edit what you make' : 'Tell us what you make'}</a>
         </p>
         <div className="view-switch" role="group" aria-label="View">
           <button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')}>List</button>

@@ -65,7 +65,10 @@ h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 40
 }
 main { padding-block: 1.5rem 3rem; }
 main:focus { outline: none; }
-.site-footer { border-top: 1px solid var(--line); padding-block: 1.5rem; color: var(--muted); font-size: 0.875rem; }
+.site-footer { border-top: 1px solid var(--line); padding-block: 2rem; color: var(--muted); font-size: 0.875rem; }
+.site-footer__links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; margin-bottom: 1rem; }
+.site-footer__links a { color: var(--ink); font-size: 1rem; text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+.site-footer__links a:hover { text-decoration-thickness: 2px; }
 
 /* ---- Hero (BuilderBee layout): centred headline with a rotating last word, lede, two buttons ---- */
 .hero { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -74,7 +77,7 @@ main:focus { outline: none; }
 .hero a, .hero button { cursor: pointer; }
 .hero__hint--touch { display: none; }
 @media (hover: none) { .hero__hint--mouse { display: none; } .hero__hint--touch { display: inline; } }
-.hero__hint { margin: 1.5rem 0 0; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.hero__hint { margin: 1.5rem 0 0; font-size: 0.9rem; color: var(--muted); }
 
 /* Paint layer: full window width behind the hero text */
 .hero-paint { position: absolute; z-index: 0; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); pointer-events: none; overflow: hidden;
