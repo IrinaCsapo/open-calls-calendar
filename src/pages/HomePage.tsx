@@ -76,6 +76,13 @@ export function HomePage() {
     () => (placeSetting === 'off' || filters.places.length ? [] : nearYou(shown, place, coords)),
     [shown, place, coords, placeSetting, filters.places.length],
   );
+  const firstGroup = GROUPS.find((g) => shown.some((l) => urgencyGroup(l, now) === g.key))?.key;
+  const viewSwitch = (
+    <div className="view-switch" role="group" aria-label="View">
+      <button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')}>List</button>
+      <button type="button" aria-pressed={view === 'calendar'} onClick={() => setView('calendar')}>Calendar</button>
+    </div>
+  );
   const nearTitle = coords ? 'Near you' : place ? `Near you · ${place}` : 'Near you';
 
   return (
@@ -97,14 +104,12 @@ export function HomePage() {
       <FilterPanel filters={filters} onChange={setFilters} onReset={() => setFilters(defaultFilters(filters.currency))} count={shown.length}
         location={{ setting: placeSetting, guess, onSetting: setPlaceSetting, onLocate: locate, locating, hasCoords: !!coords, onForget: () => setCoords(null) }} />
 
+      {/* In list view the List / Calendar switch sits on the first row's heading line; otherwise up here */}
       <div className="toolbar" id="results">
         <p className="result-count">
           {filters.disciplines.length > 0 && <>Showing calls for <strong>{filters.disciplines.join(', ')}</strong>.</>}
         </p>
-        <div className="view-switch" role="group" aria-label="View">
-          <button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')}>List</button>
-          <button type="button" aria-pressed={view === 'calendar'} onClick={() => setView('calendar')}>Calendar</button>
-        </div>
+        {(view === 'calendar' || shown.length === 0) && viewSwitch}
       </div>
 
       {shown.length === 0 ? (
@@ -117,17 +122,18 @@ export function HomePage() {
       ) : grouped ? (
         <div className="rows">
           {near.length > 0 && (
-            <ListingRow key={`near-${place}-${!!coords}`} id="near" title={nearTitle} listings={near} now={now}
+            <ListingRow key={`near-${place}-${!!coords}`} id="near" title={nearTitle} listings={near} now={now} aside={viewSwitch}
               note={<>{coords ? 'Closest to your location first.' : 'Based on your time zone.'} Change it under <em>More filters</em>.</>} />
           )}
           {GROUPS.map((g) => {
             const items = shown.filter((l) => urgencyGroup(l, now) === g.key);
-            return items.length ? <ListingRow key={g.key} id={g.key} title={g.label} listings={items} now={now} /> : null;
+            return items.length ? <ListingRow key={g.key} id={g.key} title={g.label} listings={items} now={now}
+              aside={near.length === 0 && g.key === firstGroup ? viewSwitch : undefined} /> : null;
           })}
         </div>
       ) : (
         <div className="rows">
-          <ListingRow key={filters.sort} id="sorted" title={SORT_LABELS[filters.sort]} listings={shown} now={now} startOpen />
+          <ListingRow key={filters.sort} id="sorted" title={SORT_LABELS[filters.sort]} listings={shown} now={now} startOpen aside={viewSwitch} />
         </div>
       )}
     </>
