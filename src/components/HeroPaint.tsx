@@ -38,9 +38,11 @@ export function HeroPaint() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const host = canvas?.parentElement?.parentElement;   // the hero section
+    const layer = canvas?.parentElement;                 // .hero-paint
+    const host = layer?.parentElement;                   // the hero section
+    const header = document.querySelector<HTMLElement>('.site-header');
     const view = canvas?.getContext('2d');
-    if (!canvas || !host || !view) return;
+    if (!canvas || !layer || !host || !view) return;
     const paint = document.createElement('canvas');      // where the blobs live (offscreen)
     const ctx = paint.getContext('2d')!;
     const grain = view.createPattern(makeGrain(), 'repeat')!;
@@ -50,6 +52,8 @@ export function HeroPaint() {
     let w = 1, h = 1;           // paint canvas size
     let vw = 1, vh = 1;         // visible canvas size (CSS pixels)
     const resize = () => {
+      // the paint reaches up behind the navbar: start the layer at the top of the header
+      if (header) layer.style.top = `${header.getBoundingClientRect().top - host.getBoundingClientRect().top}px`;
       const r = canvas.getBoundingClientRect();
       const nvw = Math.max(1, Math.round(r.width)), nvh = Math.max(1, Math.round(r.height));
       if (nvw === vw && nvh === vh) return;
@@ -80,6 +84,7 @@ export function HeroPaint() {
     resize();
     const ro = new ResizeObserver(() => resize());
     ro.observe(canvas);
+    if (header) ro.observe(header);
 
     let hue = 250;
     let last: { x: number; y: number } | null = null;
@@ -132,6 +137,7 @@ export function HeroPaint() {
         }
       }
       last = p;
+      render();
       wake();
     };
 
@@ -144,6 +150,7 @@ export function HeroPaint() {
     const onUp = () => { painting = false; last = null; };
 
     host.addEventListener('pointerdown', onDown);
+    header?.addEventListener('pointerdown', onDown);
     window.addEventListener('pointermove', onMove);
     window.addEventListener('pointerup', onUp);
     window.addEventListener('pointercancel', onUp);
@@ -169,6 +176,7 @@ export function HeroPaint() {
       cancelAnimationFrame(raf);
       ro.disconnect();
       host.removeEventListener('pointerdown', onDown);
+      header?.removeEventListener('pointerdown', onDown);
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
       window.removeEventListener('pointercancel', onUp);
