@@ -1,10 +1,11 @@
-import { useId } from 'react';
-import { DISCIPLINES, FORMATS, LISTING_TYPES, OPPORTUNITY_TYPES, REGIONS } from '../types/listing';
+import { useId, useState } from 'react';
+import { FORMATS, LISTING_TYPES, OPPORTUNITY_TYPES, REGIONS } from '../types/listing';
 import {
-  CLOSING_FILTERS, MAX_FEES, SORTS, SORT_LABELS, countActive, toggleInList,
-  type Filters, type Kind, type PriceFilter,
+  CLOSING_FILTERS, DISCIPLINE_GROUPS, MAX_FEES, SORTS, SORT_LABELS, countActive, toggleInList,
+  type Filters, type Kind,
 } from '../lib/filters';
 import { DISPLAY_CURRENCIES, formatMoney } from '../lib/money';
+import { Chip } from './Chip';
 
 interface Props {
   filters: Filters;
@@ -13,24 +14,21 @@ interface Props {
 }
 
 const KIND_LABELS: Record<Kind, string> = { all: 'Everything', apply: 'Things to apply for', attend: 'Events to go to' };
-const PRICE_LABELS: Record<PriceFilter, string> = {
-  any: 'Any price',
-  'free-entry': 'Free to enter',
-  'totally-free': 'Totally free (no fees if selected either)',
-};
 
 export function FilterPanel({ filters: f, onChange, onReset }: Props) {
   const id = useId();
   const set = <K extends keyof Filters>(key: K, value: Filters[K]) => onChange({ ...f, [key]: value });
   const types = f.kind === 'apply' ? OPPORTUNITY_TYPES : f.kind === 'attend' ? LISTING_TYPES.filter((t) => !(OPPORTUNITY_TYPES as readonly string[]).includes(t)) : LISTING_TYPES;
   const active = countActive(f);
+  // Discipline chips start open when some are picked, otherwise folded to keep the page short.
+  const [showDisciplines, setShowDisciplines] = useState(f.disciplines.length > 0);
 
   return (
     <form className="filters" role="search" aria-label="Filter listings" onSubmit={(e) => e.preventDefault()}>
       <div className="filters__row">
         <label className="field field--grow">
           <span>Search</span>
-          <input type="search" value={f.query} placeholder="photography, London, residency…" onChange={(e) => set('query', e.target.value)} />
+          <input type="search" value={f.query} placeholder="collage, photography, London, residency…" onChange={(e) => set('query', e.target.value)} />
         </label>
         <label className="field">
           <span>Sort</span>
@@ -50,12 +48,51 @@ export function FilterPanel({ filters: f, onChange, onReset }: Props) {
         <legend className="sr-only">What to show</legend>
         {(Object.keys(KIND_LABELS) as Kind[]).map((k) => (
           <label key={k} className={f.kind === k ? 'is-on' : ''}>
-            <input type="radio" name={`${id}-kind`} checked={f.kind === k}
-              onChange={() => onChange({ ...f, kind: k, type: '' })} />
+            <input type="radio" name={`${id}-kind`} checked={f.kind === k} onChange={() => onChange({ ...f, kind: k, type: '' })} />
             {KIND_LABELS[k]}
           </label>
         ))}
       </fieldset>
+
+      {/* Money first: it's the reason the site exists */}
+      <div className="filters__section" role="group" aria-labelledby={`${id}-money`}>
+        <p className="filters__heading" id={`${id}-money`}>Money</p>
+        <div className="chips">
+          <Chip on={f.price === 'free-entry'} onToggle={() => set('price', f.price === 'free-entry' ? 'any' : 'free-entry')}>Free to enter</Chip>
+          <Chip on={f.price === 'totally-free'} onToggle={() => set('price', f.price === 'totally-free' ? 'any' : 'totally-free')}>Totally free (no fees if selected)</Chip>
+          <Chip on={f.noSelectedFee} onToggle={() => set('noSelectedFee', !f.noSelectedFee)}>Hide pay-if-selected</Chip>
+          <Chip on={f.hideUnknownFees} onToggle={() => set('hideUnknownFees', !f.hideUnknownFees)}>Fees stated</Chip>
+          <Chip on={f.cashPrize} onToggle={() => set('cashPrize', !f.cashPrize)}>Cash prize</Chip>
+          <label className="field field--inline">
+            <span>Entry fee up to</span>
+            <select value={f.maxFee} onChange={(e) => set('maxFee', Number(e.target.value))}>
+              {MAX_FEES.map((m) => <option key={m} value={m}>{m ? formatMoney(m, f.currency) : 'Any amount'}</option>)}
+            </select>
+          </label>
+        </div>
+        {f.maxFee > 0 && <p className="hint">Fees in other currencies are converted roughly. Calls that don't say their fee are hidden.</p>}
+      </div>
+
+      <div className="filters__section" role="group" aria-labelledby={`${id}-disc`}>
+        <div className="filters__heading-row">
+          <p className="filters__heading" id={`${id}-disc`}>
+            Disciplines{f.disciplines.length > 0 && <span className="muted"> · {f.disciplines.join(', ')}</span>}
+          </p>
+          <button type="button" className="link-button" aria-expanded={showDisciplines} onClick={() => setShowDisciplines(!showDisciplines)}>
+            {showDisciplines ? 'Hide' : f.disciplines.length ? 'Change' : 'Choose'}
+          </button>
+        </div>
+        {showDisciplines && DISCIPLINE_GROUPS.map((g) => (
+          <div key={g.label} className="chip-group">
+            <p className="chip-group__label">{g.label}</p>
+            <div className="chips">
+              {g.items.map((d) => (
+                <Chip key={d} on={f.disciplines.includes(d)} onToggle={() => set('disciplines', toggleInList(f.disciplines, d))}>{d}</Chip>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
 
       <div className="filters__row">
         <label className="field">
@@ -63,13 +100,6 @@ export function FilterPanel({ filters: f, onChange, onReset }: Props) {
           <select value={f.type} onChange={(e) => set('type', e.target.value as Filters['type'])}>
             <option value="">All types</option>
             {types.map((t) => <option key={t}>{t}</option>)}
-          </select>
-        </label>
-        <label className="field">
-          <span>Discipline</span>
-          <select value={f.discipline} onChange={(e) => set('discipline', e.target.value as Filters['discipline'])}>
-            <option value="">All disciplines</option>
-            {DISCIPLINES.filter((d) => d !== 'Any medium').map((d) => <option key={d}>{d}</option>)}
           </select>
         </label>
         <label className="field">
@@ -85,47 +115,14 @@ export function FilterPanel({ filters: f, onChange, onReset }: Props) {
             {CLOSING_FILTERS.map((d) => <option key={d} value={d}>{d ? `${d} days` : 'Any time'}</option>)}
           </select>
         </label>
-        <fieldset className="field checks">
-          <legend>Format</legend>
-          {FORMATS.map((fm) => (
-            <label key={fm}>
-              <input type="checkbox" checked={f.formats.includes(fm)} onChange={() => set('formats', toggleInList(f.formats, fm))} /> {fm}
-            </label>
-          ))}
-        </fieldset>
-      </div>
-
-      <div className="filters__money" role="group" aria-labelledby={`${id}-money`}>
-        <p className="filters__heading" id={`${id}-money`}>Money</p>
-        <div className="filters__row">
-          <label className="field">
-            <span>Price</span>
-            <select value={f.price} onChange={(e) => set('price', e.target.value as PriceFilter)}>
-              {(Object.keys(PRICE_LABELS) as PriceFilter[]).map((p) => <option key={p} value={p}>{PRICE_LABELS[p]}</option>)}
-            </select>
-          </label>
-          <label className="field">
-            <span>Entry fee up to</span>
-            <select value={f.maxFee} onChange={(e) => set('maxFee', Number(e.target.value))}>
-              {MAX_FEES.map((m) => <option key={m} value={m}>{m ? formatMoney(m, f.currency) : 'Any amount'}</option>)}
-            </select>
-          </label>
-          <div className="checks">
-            <label>
-              <input type="checkbox" checked={f.noSelectedFee} onChange={(e) => set('noSelectedFee', e.target.checked)} />
-              {' '}Hide calls that charge you if you're selected
-            </label>
-            <label>
-              <input type="checkbox" checked={f.hideUnknownFees} onChange={(e) => set('hideUnknownFees', e.target.checked)} />
-              {' '}Hide calls that don't state all their fees
-            </label>
-            <label>
-              <input type="checkbox" checked={f.cashPrize} onChange={(e) => set('cashPrize', e.target.checked)} />
-              {' '}Has a cash prize
-            </label>
+        <div className="field" role="group" aria-label="Format">
+          <span>Format</span>
+          <div className="chips">
+            {FORMATS.map((fm) => (
+              <Chip key={fm} on={f.formats.includes(fm)} onToggle={() => set('formats', toggleInList(f.formats, fm))}>{fm}</Chip>
+            ))}
           </div>
         </div>
-        {f.maxFee > 0 && <p className="hint">Fees in other currencies are converted roughly. Calls that don't say their fee are hidden.</p>}
       </div>
 
       {active > 0 && (

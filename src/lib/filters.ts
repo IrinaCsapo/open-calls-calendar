@@ -28,7 +28,7 @@ export interface Filters {
   query: string;
   kind: Kind;
   type: ListingType | '';
-  discipline: Discipline | '';
+  disciplines: Discipline[];  // empty = all; a listing matches if it fits any of them
   formats: Format[];          // empty = all
   region: Region | '';
   price: PriceFilter;
@@ -42,7 +42,7 @@ export interface Filters {
 }
 
 export const defaultFilters = (currency: DisplayCurrency): Filters => ({
-  query: '', kind: 'all', type: '', discipline: '', formats: [], region: '',
+  query: '', kind: 'all', type: '', disciplines: [], formats: [], region: '',
   price: 'any', maxFee: 0, noSelectedFee: false, hideUnknownFees: false, cashPrize: false,
   closingWithin: 0, sort: 'closing', currency,
 });
@@ -50,7 +50,7 @@ export const defaultFilters = (currency: DisplayCurrency): Filters => ({
 /** Filters that narrow the list (sort and currency don't count). */
 export function countActive(f: Filters): number {
   return [
-    f.query.trim(), f.kind !== 'all', f.type, f.discipline, f.formats.length, f.region, f.price !== 'any',
+    f.query.trim(), f.kind !== 'all', f.type, f.disciplines.length, f.formats.length, f.region, f.price !== 'any',
     f.maxFee, f.noSelectedFee, f.hideUnknownFees, f.cashPrize, f.closingWithin,
   ].filter(Boolean).length;
 }
@@ -88,7 +88,7 @@ export function applyFilters(list: Listing[], f: Filters, now = Date.now()): Lis
     if (f.kind === 'apply' && !isOpportunity(l)) return false;
     if (f.kind === 'attend' && isOpportunity(l)) return false;
     if (f.type && l.type !== f.type) return false;
-    if (f.discipline && !matchesDiscipline(l, f.discipline)) return false;
+    if (f.disciplines.length && !f.disciplines.some((d) => matchesDiscipline(l, d))) return false;
     if (f.formats.length && !f.formats.includes(l.format)) return false;
     if (f.region && l.region !== f.region && l.region !== 'Global') return false;
     if (f.price === 'free-entry' && l.entry_fee !== 'Free') return false;
@@ -142,7 +142,7 @@ export function filtersFromQuery(q: URLSearchParams, fallbackCurrency: DisplayCu
     query: (q.get('q') ?? '').slice(0, 100),
     kind: pick(KINDS, q.get('kind')) || 'all',
     type: pick(LISTING_TYPES, q.get('type')),
-    discipline: pick(DISCIPLINES, q.get('discipline')),
+    disciplines: [...new Set((q.get('discipline') ?? '').split(',').map((x) => pick(DISCIPLINES, x)).filter((x): x is Discipline => !!x))],
     formats: [...new Set(formats)],
     region: pick(REGIONS, q.get('region')),
     price: pick(PRICE_FILTERS, q.get('price')) || 'any',
@@ -161,7 +161,7 @@ export function filtersToQuery(f: Filters, fallbackCurrency: DisplayCurrency): s
   if (f.query.trim()) q.set('q', f.query.trim());
   if (f.kind !== 'all') q.set('kind', f.kind);
   if (f.type) q.set('type', f.type);
-  if (f.discipline) q.set('discipline', f.discipline);
+  if (f.disciplines.length) q.set('discipline', DISCIPLINES.filter((x) => f.disciplines.includes(x)).join(','));
   if (f.formats.length) q.set('format', FORMATS.filter((x) => f.formats.includes(x)).join(','));
   if (f.region) q.set('region', f.region);
   if (f.price !== 'any') q.set('price', f.price);
@@ -173,4 +173,35 @@ export function filtersToQuery(f: Filters, fallbackCurrency: DisplayCurrency): s
   if (f.sort !== 'closing') q.set('sort', f.sort);
   if (f.currency !== fallbackCurrency) q.set('cur', f.currency);
   return q.toString();
+}
+
+// ---- Discipline groups (the "What do you make?" picker and the filter chips) ----
+
+export const DISCIPLINE_GROUPS: { label: string; items: Discipline[] }[] = [
+  { label: 'Visual art', items: ['Painting', 'Drawing', 'Printmaking', 'Collage', 'Mixed media', 'Illustration', 'Sculpture', 'Ceramics', 'Textiles', 'Craft'] },
+  { label: 'Photo, film & digital', items: ['Photography', 'Film & video', 'Digital art', 'Design'] },
+  { label: 'Music & sound', items: ['Music', 'Sound'] },
+  { label: 'Words & performance', items: ['Writing', 'Performance'] },
+];
+
+/** "discipline=Collage,Photography" */
+export const DISCIPLINES_QUERY = (d: Discipline[]) => `discipline=${DISCIPLINES.filter((x) => d.includes(x)).map(encodeURIComponent).join(',')}`;
+
+// The visitor's picks from the start screen, kept in their browser only.
+// null = never answered (show the start screen); [] = skipped (show everything).
+const PICKS_KEY = 'magpie:disciplines';
+
+export function loadPicks(): Discipline[] | null {
+  try {
+    const raw = localStorage.getItem(PICKS_KEY);
+    if (raw === null) return null;
+    const list: unknown = JSON.parse(raw);
+    return Array.isArray(list) ? list.filter((d): d is Discipline => (DISCIPLINES as readonly string[]).includes(d)) : [];
+  } catch {
+    return [];   // storage blocked: behave as if skipped, never trap people on the start screen
+  }
+}
+
+export function savePicks(picks: Discipline[]) {
+  try { localStorage.setItem(PICKS_KEY, JSON.stringify(picks)); } catch { /* storage blocked: fine */ }
 }

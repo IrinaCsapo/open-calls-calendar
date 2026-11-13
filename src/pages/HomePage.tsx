@@ -1,14 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
 import { LISTINGS } from '../lib/listings';
 import { isLive, urgencyGroup, useNow } from '../lib/dates';
-import { applyFilters, defaultFilters, filtersFromQuery, filtersToQuery, sortListings, type Filters } from '../lib/filters';
+import { SORT_LABELS, applyFilters, defaultFilters, filtersFromQuery, filtersToQuery, loadPicks, sortListings, type Filters } from '../lib/filters';
 import { guessCurrency } from '../lib/money';
 import { replaceHashQuery, useHashRoute } from '../lib/useHashRoute';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
 import { FEED_PATH, SITE_TAGLINE } from '../lib/site';
 import { FilterPanel } from '../components/FilterPanel';
-import { ListingCard } from '../components/ListingCard';
+import { ListingRow } from '../components/ListingRow';
 import { CalendarView } from '../components/CalendarView';
+import { Ribbon } from '../components/Ribbon';
 
 const GROUPS = [
   { key: 'week', label: 'Closing this week' },
@@ -24,7 +25,18 @@ export function HomePage() {
   const { query } = useHashRoute();
   const now = useNow();
   const fallbackCurrency = useMemo(guessCurrency, []);
-  const [filters, setFiltersState] = useState<Filters>(() => filtersFromQuery(query, fallbackCurrency));
+  // A plain visit (no filters in the link) starts from the disciplines picked on the start screen.
+  const fromUrl = (q: URLSearchParams): Filters => {
+    const f = filtersFromQuery(q, fallbackCurrency);
+    return q.toString() ? f : { ...f, disciplines: loadPicks() ?? [] };
+  };
+  const [filters, setFiltersState] = useState<Filters>(() => fromUrl(query));
+
+  // First visit ever: ask "What do you make?" (only on the plain home page, never on a shared filtered link).
+  useEffect(() => {
+    if (!query.toString() && loadPicks() === null) window.location.replace('#/start');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [view, setViewState] = useState<View>(query.get('view') === 'calendar' ? 'calendar' : 'list');
 
   // A hashchange means a link was followed (our own filter changes use replaceState, which doesn't fire one),
@@ -32,8 +44,9 @@ export function HomePage() {
   const queryString = query.toString();
   useEffect(() => {
     const q = new URLSearchParams(queryString);
-    setFiltersState(filtersFromQuery(q, fallbackCurrency));
+    setFiltersState(fromUrl(q));
     setViewState(q.get('view') === 'calendar' ? 'calendar' : 'list');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queryString, fallbackCurrency]);
 
   const sync = (f: Filters, v: View) => {
@@ -51,11 +64,8 @@ export function HomePage() {
   return (
     <>
       <section className="intro">
-        <div className="orbs" aria-hidden="true">
-          <span className="orb orb--warm" />
-          <span className="orb orb--blue" />
-          <span className="orb orb--cool" />
-        </div>
+        <Ribbon />
+        <div className="intro__text">
         <h1>Open calls, prizes and events for artists</h1>
         <p>{SITE_TAGLINE} Updated every morning.</p>
         <p className="intro__links">
@@ -63,6 +73,7 @@ export function HomePage() {
           {' · '}
           <a href="#/about">How we label fees</a>
         </p>
+        </div>
       </section>
 
       <FilterPanel filters={filters} onChange={setFilters} onReset={() => setFilters(defaultFilters(filters.currency))} />
@@ -70,6 +81,8 @@ export function HomePage() {
       <div className="toolbar">
         <p className="result-count" role="status" aria-live="polite">
           {shown.length} of {live.length} {live.length === 1 ? 'listing' : 'listings'}
+          {filters.disciplines.length > 0 && <span className="muted"> for {filters.disciplines.join(', ')}</span>}
+          {' '}<a href="#/start" className="small">{filters.disciplines.length ? 'Edit what you make' : 'Tell us what you make'}</a>
         </p>
         <div className="view-switch" role="group" aria-label="View">
           <button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')}>List</button>
@@ -85,21 +98,15 @@ export function HomePage() {
       ) : view === 'calendar' ? (
         <CalendarView listings={shown} />
       ) : grouped ? (
-        GROUPS.map((g) => {
-          const items = shown.filter((l) => urgencyGroup(l, now) === g.key);
-          if (!items.length) return null;
-          return (
-            <section key={g.key} className={`group group--${g.key}`} aria-labelledby={`group-${g.key}`}>
-              <h2 id={`group-${g.key}`}>{g.label} <span className="muted">({items.length})</span></h2>
-              <div className="grid">
-                {items.map((l) => <ListingCard key={l.id} listing={l} currency={filters.currency} now={now} />)}
-              </div>
-            </section>
-          );
-        })
+        <div className="rows">
+          {GROUPS.map((g) => {
+            const items = shown.filter((l) => urgencyGroup(l, now) === g.key);
+            return items.length ? <ListingRow key={g.key} id={g.key} title={g.label} listings={items} currency={filters.currency} now={now} /> : null;
+          })}
+        </div>
       ) : (
-        <div className="grid">
-          {shown.map((l) => <ListingCard key={l.id} listing={l} currency={filters.currency} now={now} />)}
+        <div className="rows">
+          <ListingRow key={filters.sort} id="sorted" title={SORT_LABELS[filters.sort]} listings={shown} currency={filters.currency} now={now} startOpen />
         </div>
       )}
     </>

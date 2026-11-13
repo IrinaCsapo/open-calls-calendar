@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage';
 import { ListingPage } from './pages/ListingPage';
 import { SubmitPage } from './pages/SubmitPage';
 import { AboutPage } from './pages/AboutPage';
+import { StartPage } from './pages/StartPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { useHashRoute } from './lib/useHashRoute';
 import { SITE_NAME } from './lib/site';
@@ -20,6 +21,7 @@ export function App() {
   else if (listingMatch) page = <ListingPage id={listingMatch[1]} />;
   else if (path === '/submit') page = <SubmitPage />;
   else if (path === '/about') page = <AboutPage />;
+  else if (path === '/start') page = <StartPage />;
   else page = <NotFoundPage />;
 
   // On page change (not filter changes): scroll to top and focus the new h1 for screen readers.
