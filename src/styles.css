@@ -25,8 +25,9 @@
   --radius: 14px;
   --btn-radius: 10px;        /* rounded rectangles, never pills */
   --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  /* Headlines. Crimson Text (Google Fonts); earlier tried Young Serif. Exposure (205TF) is the paid option */
-  --font-display: 'Crimson Text', Georgia, 'Times New Roman', serif;
+  /* Big headlines: Sorts Mill Goudy (one weight, plus a lovely italic). The wordmark stays Crimson Text semibold. */
+  --font-display: 'Sorts Mill Goudy', 'Crimson Text', Georgia, 'Times New Roman', serif;
+  --font-wordmark: 'Crimson Text', Georgia, serif;
   color-scheme: light;
 }
 
@@ -34,7 +35,7 @@
 body { margin: 0; font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.5; }
 a { color: var(--accent); }
 img { max-width: 100%; }
-h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 600; letter-spacing: -0.01em; }
+h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 400; letter-spacing: -0.005em; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .muted { color: var(--muted); }
@@ -46,7 +47,7 @@ h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 60
 
 .site-header, main, .site-footer { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 .site-header { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; padding-block: 1rem; border-bottom: 1px solid var(--line); }
-.site-name { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-weight: 600; font-size: 2rem; line-height: 1; color: var(--brand); text-decoration: none; }
+.site-name { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-wordmark); font-weight: 600; font-size: 2rem; line-height: 1; color: var(--brand); text-decoration: none; }
 .site-name__mark { height: 2.2rem; width: auto; }
 .site-header nav { display: flex; gap: 1rem; }
 .site-header nav a[aria-current='page'] { font-weight: 700; color: var(--text); }
@@ -55,9 +56,11 @@ main:focus { outline: none; }
 .site-footer { border-top: 1px solid var(--line); padding-block: 1.5rem; color: var(--muted); font-size: 0.875rem; }
 
 /* ---- Hero (BuilderBee layout): centred headline with a rotating last word, lede, two buttons ---- */
-.hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(3rem, 9vw, 7rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
-.hero__title { margin: 0; max-width: 22ch; font-size: clamp(2.6rem, 7vw + 0.4rem, 6rem); line-height: 1; letter-spacing: -0.02em; text-wrap: balance; }
-.hero__lede { margin: 1.5rem 0 0; font-size: 1.2rem; max-width: 60ch; }
+.hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(3.5rem, 10vw, 8rem) 0 clamp(3rem, 7vw, 5.5rem); }
+.hero__title { margin: 0; max-width: 15ch; font-size: clamp(3.2rem, 8.5vw + 0.5rem, 8.25rem); line-height: 0.98; letter-spacing: -0.025em;
+  text-wrap: balance; font-feature-settings: 'liga', 'dlig', 'kern'; }
+.hero__title em { font-style: italic; letter-spacing: -0.01em; }
+.hero__lede { margin: 1.75rem 0 0; font-size: 1.2rem; max-width: 52ch; color: #3d3b35; }
 .hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2.25rem; }
 .hero__button { min-width: 14rem; min-height: 3rem; font-size: 1.05rem; }
 .hero__links { margin: 1.25rem 0 0; }
@@ -126,6 +129,12 @@ main:focus { outline: none; }
 .quickbar .chip { border-width: 1.5px; border-color: #9a978e; font-weight: 600; }
 .quickbar .chip.is-on { border-color: #000; background: #cfe5f9; }
 .chip--more { border-color: #000 !important; }
+/* "Where" dropdown, styled like a chip */
+.where__select { appearance: none; -webkit-appearance: none; min-height: 40px; padding: 0 2.2rem 0 0.95rem; border: 1.5px solid #9a978e;
+  border-radius: 999px; font: inherit; font-size: 0.9rem; font-weight: 600; color: #000; cursor: pointer;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23000' stroke-width='1.6' fill='none'/%3E%3C/svg%3E") no-repeat right 0.9rem center; }
+.where__select:hover { border-color: #000; }
+.where__select.is-on { border-color: #000; background-color: #cfe5f9; }
 .chip--more.is-open { background: #000 !important; color: #fff; }
 .filterbar__hint { margin: -0.25rem 0 0 1rem; }
 .filterbar .filters { margin: 0; }
@@ -134,7 +143,8 @@ main:focus { outline: none; }
   .searchbar__button { padding: 0 1rem; }
   .quickbar { flex-direction: column-reverse; align-items: stretch; padding: 0.75rem; }
   /* one sideways-scrolling row of chips on phones */
-  .quickbar__chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; }
+  .quickbar__chips { flex-wrap: wrap; }
+  .quickbar__divider { display: none; }
   .quickbar__chips .chips { flex-wrap: nowrap; }
   .quickbar__chips .chip { white-space: nowrap; flex: none; }
 }
@@ -189,7 +199,7 @@ main:focus { outline: none; }
 .card:hover .card__media { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.45); }
 .card__img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .card__placeholder { width: 100%; height: 100%; display: grid; place-items: center; padding: 1.25rem; }
-.card__placeholder span { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 1vw + 1rem, 1.8rem); line-height: 1.05;
+.card__placeholder span { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.3rem, 1vw + 1rem, 1.8rem); line-height: 1.05;
   text-align: center; color: #1b1b1b; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 .card__pills, .card__chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
 .card__title { margin: 0; font-family: var(--font); font-size: 1.12rem; font-weight: 400; line-height: 1.3; letter-spacing: 0; }

@@ -2,7 +2,7 @@ import { useId, useState } from 'react';
 import { FORMATS, LISTING_TYPES, OPPORTUNITY_TYPES } from '../types/listing';
 import {
   CLOSING_FILTERS, DISCIPLINE_GROUPS, MAX_FEES, PLACES, SORTS, SORT_LABELS, countActive, toggleInList,
-  type Filters, type Kind, type PriceFilter,
+  type Filters, type Kind, type Place, type PriceFilter,
 } from '../lib/filters';
 import { DISPLAY_CURRENCIES, formatMoney } from '../lib/money';
 import { Chip } from './Chip';
@@ -26,10 +26,10 @@ export function FilterPanel({ filters: f, onChange, onReset, count }: Props) {
   const togglePrice = (p: PriceFilter) => set('price', f.price === p ? 'any' : p);
   const types = f.kind === 'apply' ? OPPORTUNITY_TYPES : f.kind === 'attend' ? LISTING_TYPES.filter((t) => !(OPPORTUNITY_TYPES as readonly string[]).includes(t)) : LISTING_TYPES;
   const active = countActive(f);
-  // "More filters" starts open when one of its filters is already in use (e.g. from a shared link).
-  const moreInUse = f.kind !== 'all' || !!f.type || f.maxFee > 0 || f.noSelectedFee || f.hideUnknownFees
-    || f.cashPrize || f.closingWithin > 0 || f.price === 'totally-free';
-  const [more, setMore] = useState(moreInUse);
+  // "More filters" always starts closed; the count next to it says how many of its filters are on.
+  const [more, setMore] = useState(false);
+  const moreCount = [f.kind !== 'all', f.type, f.formats.length, f.disciplines.length, f.maxFee, f.noSelectedFee, f.hideUnknownFees,
+    f.cashPrize, f.closingWithin, f.price === 'totally-free'].filter(Boolean).length;
 
   return (
     <form className="filterbar" role="search" aria-label="Find open calls"
@@ -44,24 +44,26 @@ export function FilterPanel({ filters: f, onChange, onReset, count }: Props) {
 
       <div className="quickbar">
         <div className="quickbar__chips">
-          <div className="chips" role="group" aria-label="Format">
-            {FORMATS.map((fm) => (
-              <Chip key={fm} on={f.formats.includes(fm)} onToggle={() => set('formats', toggleInList(f.formats, fm))}>{fm}</Chip>
-            ))}
-          </div>
-          <span className="quickbar__divider" aria-hidden="true" />
           <div className="chips" role="group" aria-label="Price">
             <Chip on={f.price === 'free-entry'} onToggle={() => togglePrice('free-entry')}>Free</Chip>
             <Chip on={f.price === 'paid'} onToggle={() => togglePrice('paid')}>Paid</Chip>
           </div>
           <span className="quickbar__divider" aria-hidden="true" />
-          <div className="chips" role="group" aria-label="Where">
-            {PLACES.map((p) => (
-              <Chip key={p} on={f.places.includes(p)} onToggle={() => set('places', toggleInList(f.places, p))}>{p}</Chip>
-            ))}
-          </div>
+          <label className="where">
+            <span className="sr-only">Where</span>
+            <select className={`where__select${f.places.length ? ' is-on' : ''}`} value={f.places[0] ?? ''}
+              onChange={(e) => set('places', e.target.value ? [e.target.value as Place] : [])}>
+              <option value="">Anywhere</option>
+              <optgroup label="Countries">
+                {PLACES.slice(0, 4).map((p) => <option key={p} value={p}>{p}</option>)}
+              </optgroup>
+              <optgroup label="Continents">
+                {PLACES.slice(4).map((p) => <option key={p} value={p}>{p}</option>)}
+              </optgroup>
+            </select>
+          </label>
           <button type="button" className={`chip chip--more${more ? ' is-open' : ''}`} aria-expanded={more} aria-controls={`${id}-more`} onClick={() => setMore(!more)}>
-            More filters <span aria-hidden="true">{more ? '▴' : '▾'}</span>
+            More filters{moreCount > 0 && ` (${moreCount})`} <span aria-hidden="true">{more ? '▴' : '▾'}</span>
           </button>
         </div>
         <p className="quickbar__count" role="status" aria-live="polite"><strong>{count}</strong> {count === 1 ? 'listing' : 'listings'}</p>
@@ -79,6 +81,15 @@ export function FilterPanel({ filters: f, onChange, onReset, count }: Props) {
               </label>
             ))}
           </fieldset>
+
+          <div className="filters__section" role="group" aria-labelledby={`${id}-format`}>
+            <p className="filters__heading" id={`${id}-format`}>Format</p>
+            <div className="chips">
+              {FORMATS.map((fm) => (
+                <Chip key={fm} on={f.formats.includes(fm)} onToggle={() => set('formats', toggleInList(f.formats, fm))}>{fm}</Chip>
+              ))}
+            </div>
+          </div>
 
           <div className="filters__section" role="group" aria-labelledby={`${id}-money`}>
             <p className="filters__heading" id={`${id}-money`}>Money</p>

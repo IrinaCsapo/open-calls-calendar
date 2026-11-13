@@ -36,8 +36,8 @@ Then open http://localhost:5173/open-calls-calendar/
   deadline passes (events: once they end). Their pages stay up so shared links work.
 - **Fee label on every card**: ✓ *Free, no fees if selected* · ! *Free to enter, pay if selected: £250 hanging fee* ·
   *£15 to enter (≈ $19)* · ? *Entry fee not stated*. Fees in other currencies get a rough conversion.
-- **Filter bar** like BuilderBee's: a search box, then quick chips for format, Free / Paid, and where (UK, US, Canada,
-  Australia and every continent; online calls open worldwide always show), with "More filters" for the rest.
+- **Filter bar** like BuilderBee's: a search box, then Free / Paid chips and a "Where" dropdown (UK, US, Canada,
+  Australia and every continent; online calls open worldwide always show), with "More filters" (closed by default) for the rest.
 - **Money filters**: free to enter, paid, totally free, entry fee up to £5/10/25/50/100, hide calls that charge selected
   artists, hide calls that don't state their fees, has a cash prize. Plus type, discipline, region, format,
   closing within N days, and search. Every filtered view is a shareable link.
@@ -85,7 +85,7 @@ domain: set `base: '/'` in `vite.config.ts`, add `public/CNAME`, and update `SIT
 ## Design
 
 Soft warm-white background (`#FAF9F6`), a BuilderBee-style centred hero, accent colours blue, sky, orange,
-lavender, teal and butter, BuilderBee-style rows of square cards, Medium-style chips, black and white rounded-rectangle buttons, headlines in **Crimson Text** and body text in **Inter** (both Google Fonts).
-Crimson Text is free (Google Fonts); for a heavier look, **Exposure** by 205TF is the paid option: buy a web licence, add the font files and
+lavender, teal and butter, BuilderBee-style rows of square cards, Medium-style chips, black and white rounded-rectangle buttons, big headlines in **Sorts Mill Goudy**, the wordmark in **Crimson Text** semibold and body text in **Inter** (all Google Fonts).
+For a different headline face (e.g. **Exposure** by 205TF, paid): add the font files and
 change `--font-display` in [`src/styles.css`](src/styles.css). All colours are tokens at the top of that file,
 with contrast ratios noted. The site name is `SITE_NAME` in [`src/lib/site.ts`](src/lib/site.ts) (plus `index.html`).
