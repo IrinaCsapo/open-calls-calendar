@@ -236,11 +236,16 @@ main:focus { outline: none; }
 /* ---- Rows and cards (BuilderBee layout) ---- */
 .rows { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem; margin-top: 2rem; }
 .row { min-width: 0; }
-.row__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 0.5rem 1rem;
+.row__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: flex-start; gap: 0.25rem 0.75rem;
   padding-bottom: 0.75rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--ink); }
 .row__title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.25rem 0.75rem; margin: 0; font-size: clamp(1.8rem, 1.6vw + 1.1rem, 2.6rem); }
 .row--week .row__title { color: var(--urgent); }
 .row__count { font-family: var(--font); font-size: 0.9rem; font-weight: 400; letter-spacing: 0; color: var(--text); }
+/* "View all": a plain underlined link after the count, not a button */
+.row__toggle { padding: 0.5rem 0; min-height: 0; border: 0; background: none; font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--ink);
+  text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
+.row__toggle::before { content: '·'; margin-right: 0.6rem; font-weight: 400; text-decoration: none; display: inline-block; }
+.row__toggle:hover { text-decoration-thickness: 2px; }
 .row__items { display: grid; min-width: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.25rem; margin: 0; padding: 0; list-style: none; }
 @media (max-width: 64rem) { .row__items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 40rem) {

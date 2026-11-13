@@ -4,7 +4,7 @@ import { ListingCard } from './ListingCard';
 
 const ROW = 4; // one row of four until "Show all" is pressed
 
-/** A section like "Closing this week": serif title, count, "Show all N →", then a row of cards. */
+/** A section like "Closing this week": serif title, "18 listings · View all", then a row of cards. */
 export function ListingRow({ id, title, listings, now, startOpen = false, note }: {
   id: string; title: string; listings: Listing[]; now: number; startOpen?: boolean; note?: ReactNode;
 }) {
@@ -19,9 +19,8 @@ export function ListingRow({ id, title, listings, now, startOpen = false, note }
           <span className="row__count"><span className="sr-only">, </span>{listings.length} {listings.length === 1 ? 'listing' : 'listings'}</span>
         </h2>
         {more && (
-          <button type="button" className="button button--secondary" aria-expanded={open} aria-controls={`row-list-${id}`} onClick={() => setOpen(!open)}>
-            {open ? 'Show fewer' : `Show all ${listings.length}`}<span className="sr-only"> {title.toLowerCase()}</span>
-            <span aria-hidden="true">{open ? ' ↑' : ' →'}</span>
+          <button type="button" className="row__toggle" aria-expanded={open} aria-controls={`row-list-${id}`} onClick={() => setOpen(!open)}>
+            {open ? 'View fewer' : 'View all'}<span className="sr-only"> {title.toLowerCase()}</span>
           </button>
         )}
       </div>
