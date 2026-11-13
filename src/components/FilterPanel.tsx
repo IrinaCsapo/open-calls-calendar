@@ -65,6 +65,11 @@ export function FilterPanel({ filters: f, onChange, onReset, count }: Props) {
           <button type="button" className={`chip chip--more${more ? ' is-open' : ''}`} aria-expanded={more} aria-controls={`${id}-more`} onClick={() => setMore(!more)}>
             More filters{moreCount > 0 && ` (${moreCount})`} <span aria-hidden="true">{more ? '▴' : '▾'}</span>
           </button>
+          {active > 0 && (
+            <button type="button" className="quickbar__clear" onClick={onReset}>
+              <span aria-hidden="true">✕</span> Clear {active} {active === 1 ? 'filter' : 'filters'}
+            </button>
+          )}
         </div>
         <p className="quickbar__count" role="status" aria-live="polite"><strong>{count}</strong> {count === 1 ? 'listing' : 'listings'}</p>
       </div>
@@ -154,9 +159,6 @@ export function FilterPanel({ filters: f, onChange, onReset, count }: Props) {
         </div>
       )}
 
-      {active > 0 && (
-        <button type="button" className="link-button" onClick={onReset}>Clear {active} {active === 1 ? 'filter' : 'filters'}</button>
-      )}
     </form>
   );
 }

@@ -142,6 +142,9 @@ main:focus { outline: none; }
 .quickbar .chip { border-width: 1.5px; border-color: #9a978e; font-weight: 600; }
 .quickbar .chip.is-on { border-color: var(--ink); background: #cfe5f9; }
 .chip--more { border-color: var(--ink) !important; }
+.quickbar__clear { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 40px; padding: 0 0.6rem; border: 0; background: none;
+  color: var(--ink); font: inherit; font-size: 0.9rem; font-weight: 600; text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
+.quickbar__clear:hover { text-decoration-thickness: 2px; }
 /* "Where" dropdown, styled like a chip */
 .where__select { appearance: none; -webkit-appearance: none; min-height: 40px; padding: 0 2.2rem 0 0.95rem; border: 1.5px solid #9a978e;
   border-radius: 999px; font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--ink); cursor: pointer;
