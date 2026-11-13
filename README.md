@@ -4,7 +4,7 @@ A global calendar for artists: open calls, prizes, residencies, grants, events a
 photography, music, film, writing and performance. Closing soonest first, and **every fee shown up front**:
 the entry fee, anything you pay if you're selected (hanging fees, "secure your space" fees), and commission.
 
-**Live site:** https://irinacsapo.github.io/open-calls-calendar/
+**Live site:** https://magpie.cool/
 
 Sister project of [BuilderBee](https://builderbee.club/), built the same way.
 
@@ -86,8 +86,9 @@ Approximate exchange rates for comparing fees are in [`src/lib/money.ts`](src/li
 
 Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml): `npm ci`,
 `npm run build`, publish `dist/` to GitHub Pages. One-time setup: **Settings → Pages → Source: GitHub Actions**.
-Hash URLs (`#/listing/<id>`, `#/?price=free-entry`) mean no server config is needed. When it gets its own
-domain: set `base: '/'` in `vite.config.ts`, add `public/CNAME`, and update `SITE_URL` in `src/lib/site.ts`.
+Hash URLs (`#/listing/<id>`, `#/?price=free-entry`) mean no server config is needed. The site lives at its own domain,
+**magpie.cool** (bought on Squarespace; DNS points at GitHub Pages): `public/CNAME`, `base: '/'` in `vite.config.ts` and
+`SITE_URL` in `src/lib/site.ts`.
 
 ## Design
 

@@ -2,7 +2,7 @@
 // Magpie: collects the open calls scattered around the internet.
 export const SITE_NAME = 'Magpie';
 export const SITE_TAGLINE = 'Open calls, prizes, residencies and events for artists, with every fee shown up front.';
-export const SITE_URL = 'https://irinacsapo.github.io/open-calls-calendar/';
+export const SITE_URL = 'https://magpie.cool/';
 export const REPO_URL = 'https://github.com/IrinaCsapo/open-calls-calendar';
 export const SUBMIT_FORM_URL = `${REPO_URL}/issues/new?template=submit-listing.yml`;
 export const REPORT_URL = (id: string) =>
