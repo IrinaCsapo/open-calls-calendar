@@ -39,7 +39,7 @@ export function App() {
       </a>
       <header className="site-header">
         <a href="#/" className="site-name">
-          <img className="site-name__logo" src={logo} alt={SITE_NAME} width="640" height="169" />
+          <img className="site-name__logo" src={logo} alt={SITE_NAME} width="640" height="203" />
         </a>
         <nav aria-label="Main" className="site-nav">
           <a href="#/" aria-current={path === '/' || path.startsWith('/listing/') ? 'page' : undefined}>Events</a>
