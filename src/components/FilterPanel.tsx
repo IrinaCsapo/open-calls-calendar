@@ -140,10 +140,10 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
               <Chip on={f.noSelectedFee} onToggle={() => set('noSelectedFee', !f.noSelectedFee)}>Hide pay-if-selected</Chip>
               <Chip on={f.hideUnknownFees} onToggle={() => set('hideUnknownFees', !f.hideUnknownFees)}>Fees stated</Chip>
               <Chip on={f.cashPrize} onToggle={() => set('cashPrize', !f.cashPrize)}>Cash prize</Chip>
-              <label className="field field--inline">
-                <span>Entry fee up to</span>
-                <select value={f.maxFee} onChange={(e) => set('maxFee', Number(e.target.value))}>
-                  {MAX_FEES.map((m) => <option key={m} value={m}>{m ? formatMoney(m, f.currency) : 'Any amount'}</option>)}
+              <label>
+                <span className="sr-only">Maximum entry fee</span>
+                <select className={`chip-select${f.maxFee ? ' is-on' : ''}`} value={f.maxFee} onChange={(e) => set('maxFee', Number(e.target.value))}>
+                  {MAX_FEES.map((m) => <option key={m} value={m}>{m ? `Entry fee up to ${formatMoney(m, f.currency)}` : 'Any entry fee'}</option>)}
                 </select>
               </label>
             </div>

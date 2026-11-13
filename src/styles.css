@@ -215,6 +215,12 @@ main:focus { outline: none; }
   background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%231F3456' stroke-width='1.6' fill='none'/%3E%3C/svg%3E") no-repeat right 1rem center;
 }
 .field select:hover { border-color: var(--ink); }
+/* A dropdown that looks exactly like the chips beside it */
+.chip-select { appearance: none; -webkit-appearance: none; min-height: 40px; padding: 0 2.1rem 0 0.95rem; border: 1px solid #c9c6bd; border-radius: 999px;
+  font: inherit; font-size: 0.9rem; color: var(--ink); cursor: pointer;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%231F3456' stroke-width='1.6' fill='none'/%3E%3C/svg%3E") no-repeat right 0.9rem center; }
+.chip-select:hover { border-color: var(--ink); }
+.chip-select.is-on { background-color: #cfe5f9; border-color: #8fc0ea; font-weight: 600; }
 .checks { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: 0.9rem; font-weight: 400; }
 .checks label { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 44px; }
 .checks input { width: 18px; height: 18px; }
