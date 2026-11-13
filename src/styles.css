@@ -176,6 +176,7 @@ main:focus { outline: none; }
 .quickbar .chip { border-width: 1.5px; border-color: #9a978e; font-weight: 600; }
 .quickbar .chip.is-on { border-color: var(--ink); background: #cfe5f9; }
 .chip--more { border-color: var(--ink) !important; }
+.chip--more__short { display: none; }
 .quickbar__clear { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 40px; padding: 0 0.6rem; border: 0; background: none;
   color: var(--ink); font: inherit; font-size: 0.9rem; font-weight: 600; text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
 .quickbar__clear:hover { text-decoration-thickness: 2px; }
@@ -189,7 +190,24 @@ main:focus { outline: none; }
 .filterbar__hint { margin: -0.25rem 0 0 1rem; }
 .filterbar .filters { margin: 0; }
 @media (max-width: 40rem) {
-  .searchbar { padding-left: 0.9rem; }
+  /* Phones: a slimmer search box and smaller pills that sit in one row */
+  .searchbar { padding: 0.25rem 0.25rem 0.25rem 0.8rem; }
+  .searchbar input { min-height: 40px; font-size: 1rem; }   /* 16px: smaller makes iPhones zoom in */
+  .searchbar__icon { width: 1.1rem; height: 1.1rem; }
+  .searchbar__button { min-height: 38px; padding: 0 1rem !important; font-size: 0.9rem; }
+  .quickbar { gap: 0.5rem; padding: 0.7rem 0.75rem; border-radius: 18px; }
+  .quickbar__count { font-size: 0.82rem; }
+  .quickbar__count strong { font-size: 1rem; }
+  .quickbar__chips { gap: 0.4rem; }
+  .quickbar .chip, .chip--more, .where__select { min-height: 34px; font-size: 0.8rem; }
+  .quickbar .chip, .chip--more { padding: 0 0.7rem; }
+  .where__select { padding: 0 1.8rem 0 0.7rem; background-position: right 0.65rem center; }
+  .quickbar__clear { min-height: 34px; font-size: 0.8rem; padding: 0 0.3rem; }
+  .view-switch button { min-height: 34px; padding: 0 0.85rem; font-size: 0.85rem; }
+  .chip--more__more { display: none; }
+  .chip--more__short { display: inline !important; }
+  .where__select { max-width: 7rem; }
+  .quickbar .chip, .chip--more { padding: 0 0.6rem; }
   .searchbar__button { padding: 0 1rem; }
   .quickbar { flex-direction: column-reverse; align-items: stretch; padding: 0.75rem; }
   /* one sideways-scrolling row of chips on phones */

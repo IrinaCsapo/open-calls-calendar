@@ -39,6 +39,8 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
   const active = countActive(f);
   // "More filters" always starts closed; the count next to it says how many of its filters are on.
   const [more, setMore] = useState(false);
+  // Phones get a shorter placeholder so it isn't cut off
+  const [narrow] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 40rem)').matches);
   const moreCount = [f.kind !== 'all', f.type, f.formats.length, f.disciplines.length, f.maxFee, f.noSelectedFee, f.hideUnknownFees,
     f.cashPrize, f.closingWithin, f.price === 'totally-free'].filter(Boolean).length;
 
@@ -48,7 +50,7 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
       <div className="searchbar">
         <IconSearch className="searchbar__icon" />
         <label className="sr-only" htmlFor={`${id}-q`}>Search open calls</label>
-        <input id={`${id}-q`} type="search" value={f.query} placeholder="Open call, city, medium or prize"
+        <input id={`${id}-q`} type="search" value={f.query} placeholder={narrow ? 'Search open calls' : 'Open call, city, medium or prize'}
           onChange={(e) => set('query', e.target.value)} />
         <button type="submit" className="searchbar__button">Search</button>
       </div>
@@ -74,7 +76,7 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
             </select>
           </label>
           <button type="button" className={`chip chip--more${more ? ' is-open' : ''}`} aria-expanded={more} aria-controls={`${id}-more`} onClick={() => setMore(!more)}>
-            More filters{moreCount > 0 && ` (${moreCount})`} <span aria-hidden="true">{more ? '▴' : '▾'}</span>
+            <span className="chip--more__more">More filters</span><span className="chip--more__short">Filters</span>{moreCount > 0 && ` (${moreCount})`} <span aria-hidden="true">{more ? '▴' : '▾'}</span>
           </button>
           {active > 0 && (
             <button type="button" className="quickbar__clear" onClick={onReset}>
