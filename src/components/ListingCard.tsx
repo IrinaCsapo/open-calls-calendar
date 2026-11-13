@@ -20,7 +20,7 @@ export function isNew(l: Listing, now: number): boolean {
 const hash = (s: string) => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
 
 /** Listings without an image get a soft watercolour wash in two palette tints, with the title on it. */
-function Placeholder({ l }: { l: Listing }) {
+export function Placeholder({ l }: { l: Listing }) {
   const h = hash(l.id);
   const a = TINTS[h % TINTS.length], b = TINTS[(h >>> 3) % TINTS.length];
   const style = {
