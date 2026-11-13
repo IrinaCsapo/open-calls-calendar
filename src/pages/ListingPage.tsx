@@ -7,7 +7,7 @@ import { downloadIcs } from '../lib/ics';
 import { getListHash } from '../lib/useHashRoute';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
 import { REPORT_URL } from '../lib/site';
-import { Placeholder, isNew, place } from '../components/ListingCard';
+import { Placeholder, isNew, place, wash } from '../components/ListingCard';
 import { ListingRow } from '../components/ListingRow';
 import { ShareLink } from '../components/ShareLink';
 import { NotFoundPage } from './NotFoundPage';
@@ -77,7 +77,7 @@ export function ListingPage({ id }: { id: string }) {
 
         <div className="listing-page__layout">
           <div className="listing-page__main">
-            <div className={`listing-page__media${l.image_url ? '' : ' listing-page__media--wash'}`}>
+            <div className={`listing-page__media${l.image_url ? '' : ' listing-page__media--wash'}`} style={l.image_url ? { background: wash(l.id, true) } : undefined}>
               {l.image_url
                 ? <img src={l.image_url} alt="" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                 : <Placeholder l={l} />}
