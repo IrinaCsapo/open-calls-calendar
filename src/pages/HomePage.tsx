@@ -86,12 +86,11 @@ export function HomePage() {
       </section>
 
       <div id="browse" className="browse-anchor" />
-      <FilterPanel filters={filters} onChange={setFilters} onReset={() => setFilters(defaultFilters(filters.currency))} />
+      <FilterPanel filters={filters} onChange={setFilters} onReset={() => setFilters(defaultFilters(filters.currency))} count={shown.length} />
 
-      <div className="toolbar">
-        <p className="result-count" role="status" aria-live="polite">
-          {shown.length} of {live.length} {live.length === 1 ? 'listing' : 'listings'}
-          {filters.disciplines.length > 0 && <span className="muted"> for {filters.disciplines.join(', ')}</span>}
+      <div className="toolbar" id="results">
+        <p className="result-count">
+          {filters.disciplines.length > 0 && <>Showing calls for <strong>{filters.disciplines.join(', ')}</strong>.</>}
           {' '}<a href="#/start" className="small">{filters.disciplines.length ? 'Edit what you make' : 'Tell us what you make'}</a>
         </p>
         <div className="view-switch" role="group" aria-label="View">

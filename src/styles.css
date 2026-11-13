@@ -117,6 +117,39 @@ main:focus { outline: none; }
   padding: 1rem 0 1.2rem; background: linear-gradient(to bottom, rgba(250, 249, 246, 0), var(--bg) 30%); }
 .start__hint { margin: 0; font-size: 0.85rem; color: var(--muted); }
 
+/* ---- Filter bar (BuilderBee layout): search box, then quick chips with the count ---- */
+.filterbar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem; margin: 0 0 1rem; }
+.searchbar { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.4rem 0.4rem 1.2rem; border: 1.5px solid #8a877e;
+  border-radius: 999px; background: #fff; box-shadow: 0 6px 18px -10px rgba(0, 0, 0, 0.25); }
+.searchbar:focus-within { border-color: #000; outline: 3px solid var(--accent); outline-offset: 2px; }
+.searchbar__icon { font-size: 1.1rem; }
+.searchbar input { flex: 1; min-width: 0; min-height: 48px; border: 0; background: transparent; font: inherit; font-size: 1.1rem; color: #000; outline: none; }
+.searchbar input::placeholder { color: #6b6860; }
+.searchbar__button { min-height: 48px; padding: 0 1.6rem; border: 0; border-radius: 999px; background: #000; color: #fff; font: inherit;
+  font-weight: 600; font-size: 1.05rem; cursor: pointer; }
+.searchbar__button:hover { background: #2b2b2b; }
+.quickbar { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem 1.25rem; padding: 0.85rem 1.1rem;
+  border: 1px solid var(--line); border-radius: 22px; background: #fff; }
+.quickbar__chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.6rem; min-width: 0; }
+.quickbar__divider { width: 1px; align-self: stretch; min-height: 28px; background: var(--line); }
+.quickbar__count { margin: 0; white-space: nowrap; font-size: 0.95rem; }
+.quickbar__count strong { font-size: 1.35rem; }
+.quickbar .chip { border-width: 1.5px; border-color: #9a978e; font-weight: 600; }
+.quickbar .chip.is-on { border-color: #000; background: #cfe5f9; }
+.chip--more { border-color: #000 !important; }
+.chip--more.is-open { background: #000 !important; color: #fff; }
+.filterbar__hint { margin: -0.25rem 0 0 1rem; }
+.filterbar .filters { margin: 0; }
+@media (max-width: 40rem) {
+  .searchbar { padding-left: 0.9rem; }
+  .searchbar__button { padding: 0 1rem; }
+  .quickbar { flex-direction: column-reverse; align-items: stretch; padding: 0.75rem; }
+  /* one sideways-scrolling row of chips on phones */
+  .quickbar__chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; }
+  .quickbar__chips .chips { flex-wrap: nowrap; }
+  .quickbar__chips .chip { white-space: nowrap; flex: none; }
+}
+
 /* ---- Filters ---- */
 .filters { background: var(--surface); border-radius: var(--radius); padding: 1rem; margin: 1.5rem 0 1rem; display: grid; gap: 1rem; }
 .filters__row { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: flex-end; }

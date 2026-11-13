@@ -1,5 +1,5 @@
-import { DISCIPLINES, FORMATS, LISTING_TYPES, REGIONS } from '../types/listing';
-import type { Discipline, Format, Listing, ListingType, Region } from '../types/listing';
+import { DISCIPLINES, FORMATS, LISTING_TYPES } from '../types/listing';
+import type { Discipline, Format, Listing, ListingType } from '../types/listing';
 import { closesAt, isOpportunity } from './dates';
 import { DISPLAY_CURRENCIES, entryFeeIn, isTotallyFree, prizeIn, type DisplayCurrency } from './money';
 
@@ -7,11 +7,33 @@ export const KINDS = ['all', 'apply', 'attend'] as const;
 export type Kind = (typeof KINDS)[number];
 
 /** "Free to enter" = no entry fee; "Totally free" = no entry fee and nothing to pay if selected. */
-export const PRICE_FILTERS = ['any', 'free-entry', 'totally-free'] as const;
+export const PRICE_FILTERS = ['any', 'free-entry', 'totally-free', 'paid'] as const;
 export type PriceFilter = (typeof PRICE_FILTERS)[number];
 
 /** Maximum entry fee, in the visitor's currency. 0 = any. */
 export const MAX_FEES = [0, 5, 10, 25, 50, 100] as const;
+
+/**
+ * Where: a few countries people ask for by name, then every continent. A listing matches by its country or
+ * region. Online calls open to anyone anywhere (region "Global") always match, since anyone can enter them.
+ */
+export const PLACES = ['UK', 'US', 'Canada', 'Australia', 'Europe', 'North America', 'Latin America', 'Asia', 'Africa', 'Middle East', 'Oceania'] as const;
+export type Place = (typeof PLACES)[number];
+const PLACE_MATCH: Record<Place, (l: Listing) => boolean> = {
+  UK: (l) => l.region === 'UK' || l.country === 'United Kingdom',
+  US: (l) => l.country === 'United States',
+  Canada: (l) => l.country === 'Canada',
+  Australia: (l) => l.country === 'Australia',
+  Europe: (l) => l.region === 'Europe' || l.region === 'UK',
+  'North America': (l) => l.region === 'North America' || l.country === 'United States' || l.country === 'Canada',
+  'Latin America': (l) => l.region === 'LatAm',
+  Asia: (l) => l.region === 'Asia',
+  Africa: (l) => l.region === 'Africa',
+  'Middle East': (l) => l.region === 'Middle East',
+  Oceania: (l) => l.region === 'Oceania',
+};
+export const matchesPlaces = (l: Listing, places: Place[]) =>
+  !places.length || l.region === 'Global' || places.some((p) => PLACE_MATCH[p](l));
 
 export const CLOSING_FILTERS = [0, 7, 30, 90] as const;   // days; 0 = any
 
@@ -30,7 +52,7 @@ export interface Filters {
   type: ListingType | '';
   disciplines: Discipline[];  // empty = all; a listing matches if it fits any of them
   formats: Format[];          // empty = all
-  region: Region | '';
+  places: Place[];            // empty = anywhere
   price: PriceFilter;
   maxFee: number;             // 0 = any
   noSelectedFee: boolean;     // hide anything that charges selected artists
@@ -42,7 +64,7 @@ export interface Filters {
 }
 
 export const defaultFilters = (currency: DisplayCurrency): Filters => ({
-  query: '', kind: 'all', type: '', disciplines: [], formats: [], region: '',
+  query: '', kind: 'all', type: '', disciplines: [], formats: [], places: [],
   price: 'any', maxFee: 0, noSelectedFee: false, hideUnknownFees: false, cashPrize: false,
   closingWithin: 0, sort: 'closing', currency,
 });
@@ -50,7 +72,7 @@ export const defaultFilters = (currency: DisplayCurrency): Filters => ({
 /** Filters that narrow the list (sort and currency don't count). */
 export function countActive(f: Filters): number {
   return [
-    f.query.trim(), f.kind !== 'all', f.type, f.disciplines.length, f.formats.length, f.region, f.price !== 'any',
+    f.query.trim(), f.kind !== 'all', f.type, f.disciplines.length, f.formats.length, f.places.length, f.price !== 'any',
     f.maxFee, f.noSelectedFee, f.hideUnknownFees, f.cashPrize, f.closingWithin,
   ].filter(Boolean).length;
 }
@@ -90,8 +112,9 @@ export function applyFilters(list: Listing[], f: Filters, now = Date.now()): Lis
     if (f.type && l.type !== f.type) return false;
     if (f.disciplines.length && !f.disciplines.some((d) => matchesDiscipline(l, d))) return false;
     if (f.formats.length && !f.formats.includes(l.format)) return false;
-    if (f.region && l.region !== f.region && l.region !== 'Global') return false;
+    if (!matchesPlaces(l, f.places)) return false;
     if (f.price === 'free-entry' && l.entry_fee !== 'Free') return false;
+    if (f.price === 'paid' && l.entry_fee !== 'Paid') return false;
     if (f.price === 'totally-free' && !isTotallyFree(l)) return false;
     if (f.maxFee) {
       const fee = entryFeeIn(l, f.currency);
@@ -144,7 +167,7 @@ export function filtersFromQuery(q: URLSearchParams, fallbackCurrency: DisplayCu
     type: pick(LISTING_TYPES, q.get('type')),
     disciplines: [...new Set((q.get('discipline') ?? '').split(',').map((x) => pick(DISCIPLINES, x)).filter((x): x is Discipline => !!x))],
     formats: [...new Set(formats)],
-    region: pick(REGIONS, q.get('region')),
+    places: [...new Set((q.get('where') ?? '').split(',').map((x) => pick(PLACES, x)).filter((x): x is Place => !!x))],
     price: pick(PRICE_FILTERS, q.get('price')) || 'any',
     maxFee: pickNum(MAX_FEES, q.get('maxfee')),
     noSelectedFee: q.get('noselfee') === '1',
@@ -163,7 +186,7 @@ export function filtersToQuery(f: Filters, fallbackCurrency: DisplayCurrency): s
   if (f.type) q.set('type', f.type);
   if (f.disciplines.length) q.set('discipline', DISCIPLINES.filter((x) => f.disciplines.includes(x)).join(','));
   if (f.formats.length) q.set('format', FORMATS.filter((x) => f.formats.includes(x)).join(','));
-  if (f.region) q.set('region', f.region);
+  if (f.places.length) q.set('where', PLACES.filter((x) => f.places.includes(x)).join(','));
   if (f.price !== 'any') q.set('price', f.price);
   if (f.maxFee) q.set('maxfee', String(f.maxFee));
   if (f.noSelectedFee) q.set('noselfee', '1');

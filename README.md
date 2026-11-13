@@ -36,7 +36,9 @@ Then open http://localhost:5173/open-calls-calendar/
   deadline passes (events: once they end). Their pages stay up so shared links work.
 - **Fee label on every card**: ✓ *Free, no fees if selected* · ! *Free to enter, pay if selected: £250 hanging fee* ·
   *£15 to enter (≈ $19)* · ? *Entry fee not stated*. Fees in other currencies get a rough conversion.
-- **Money filters**: free to enter, totally free, entry fee up to £5/10/25/50/100, hide calls that charge selected
+- **Filter bar** like BuilderBee's: a search box, then quick chips for format, Free / Paid, and where (UK, US, Canada,
+  Australia and every continent; online calls open worldwide always show), with "More filters" for the rest.
+- **Money filters**: free to enter, paid, totally free, entry fee up to £5/10/25/50/100, hide calls that charge selected
   artists, hide calls that don't state their fees, has a cash prize. Plus type, discipline, region, format,
   closing within N days, and search. Every filtered view is a shareable link.
 - **Prizes** listed on every card and page. Sort by biggest cash prize or cheapest to enter.
