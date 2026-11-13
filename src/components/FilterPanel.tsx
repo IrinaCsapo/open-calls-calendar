@@ -4,7 +4,7 @@ import {
   CLOSING_FILTERS, DISCIPLINE_GROUPS, MAX_FEES, PLACES, SORTS, SORT_LABELS, countActive, toggleInList,
   type Filters, type Kind, type Place, type PriceFilter,
 } from '../lib/filters';
-import { DISPLAY_CURRENCIES, formatMoney } from '../lib/money';
+import { formatMoney } from '../lib/money';
 import { Chip } from './Chip';
 
 interface Props {
@@ -147,12 +147,6 @@ export function FilterPanel({ filters: f, onChange, onReset, count }: Props) {
               <span>Sort</span>
               <select value={f.sort} onChange={(e) => set('sort', e.target.value as Filters['sort'])}>
                 {SORTS.map((s) => <option key={s} value={s}>{SORT_LABELS[s]}</option>)}
-              </select>
-            </label>
-            <label className="field">
-              <span>Show money in</span>
-              <select value={f.currency} onChange={(e) => set('currency', e.target.value as Filters['currency'])}>
-                {DISPLAY_CURRENCIES.map((c) => <option key={c}>{c}</option>)}
               </select>
             </label>
           </div>

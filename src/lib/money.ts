@@ -52,17 +52,15 @@ export type FeeTone = 'free' | 'caution' | 'paid' | 'unknown';
 export interface FeeSummary {
   tone: FeeTone;
   headline: string;        // "Free to enter, no fees if selected" / "£15 to enter"
-  approx?: string;         // "≈ $19" when the visitor's currency differs
   selected?: string;       // "Pay if selected: £250 hanging fee" / "Fees if selected: not stated"
 }
 
-export function feeSummary(l: Listing, display: Currency): FeeSummary {
+export function feeSummary(l: Listing): FeeSummary {
   const apply = isOpportunity(l);
   const verb = apply ? 'to enter' : '';
 
   let tone: FeeTone;
   let headline: string;
-  let approx: string | undefined;
 
   if (l.entry_fee === 'Free') {
     tone = 'free';
@@ -70,7 +68,6 @@ export function feeSummary(l: Listing, display: Currency): FeeSummary {
   } else if (l.entry_fee === 'Paid' && l.fee_amount !== undefined && l.currency) {
     tone = 'paid';
     headline = `${formatMoney(l.fee_amount, l.currency)} ${verb}`.trim();
-    if (l.currency !== display) approx = formatMoney(convert(l.fee_amount, l.currency, display), display, true);
   } else if (l.entry_fee === 'Paid') {
     tone = 'paid';
     headline = apply ? 'Paid entry' : 'Paid';
@@ -93,7 +90,7 @@ export function feeSummary(l: Listing, display: Currency): FeeSummary {
     }
   }
 
-  return { tone, headline, approx, selected };
+  return { tone, headline, selected };
 }
 
 /** Totally free: nothing to pay to enter, and nothing to pay if selected. */

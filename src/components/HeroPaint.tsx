@@ -6,14 +6,18 @@ import { useEffect, useRef } from 'react';
  *
  * How it works (plain canvas, no libraries):
  * - an offscreen half-resolution "paint" canvas gets radial-gradient stamps along the pointer's path
- * - each frame a tiny bit of every blob is erased there, so they fade over ~10 seconds
+ * - every ~0.4 s a little of every blob is erased there, so they fade over ~45 seconds
  * - the visible canvas draws the paint blurred (soft blobs), then noise on top of the colour only (grain)
  * Decorative only (aria-hidden); the hero text and buttons sit above it and keep working.
  */
 
 const SCALE = 0.5;           // canvas pixels per CSS pixel (it's blurred, so half is plenty)
-const FADE = 0.0075;         // how much fades per frame
-const IDLE_STOP = 14_000;    // stop the animation loop this long after the last stroke
+// Fading: every FADE_EVERY ms, FADE of the colour is erased (half gone after ~10 s, near nothing after ~45 s).
+// Not per frame: the canvas stores transparency in whole steps of 1/255, so a tiny per-frame fade
+// would round to "no change" and leave ghosts.
+const FADE = 0.03;
+const FADE_EVERY = 450;
+const IDLE_STOP = 45_000;    // after this long without a stroke, clear the last faint traces and stop
 
 function makeGrain(): HTMLCanvasElement {
   const c = document.createElement('canvas');
@@ -82,6 +86,7 @@ export function HeroPaint() {
     let painting = false;
     let raf = 0;
     let lastStroke = 0;
+    let lastFade = 0;
 
     const radius = () => Math.max(46, Math.min(w, h * 1.6) * 0.085);
     const stamp = (x: number, y: number, r: number) => {
@@ -97,16 +102,19 @@ export function HeroPaint() {
       hue = (hue + 1.6) % 360;
     };
 
-    const tick = () => {
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.fillStyle = `rgba(0,0,0,${FADE})`;
-      ctx.fillRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'source-over';
+    const tick = (t: number) => {
+      if (t - lastFade >= FADE_EVERY) {
+        lastFade = t;
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = `rgba(0,0,0,${FADE})`;
+        ctx.fillRect(0, 0, w, h);
+        ctx.globalCompositeOperation = 'source-over';
+      }
       if (performance.now() - lastStroke < IDLE_STOP) raf = requestAnimationFrame(tick);
       else { ctx.clearRect(0, 0, w, h); raf = 0; }   // the last faint traces go at once
       render();
     };
-    const wake = () => { lastStroke = performance.now(); if (!raf) raf = requestAnimationFrame(tick); };
+    const wake = () => { lastStroke = performance.now(); if (!raf) { lastFade = lastStroke; raf = requestAnimationFrame(tick); } };
 
     const toCanvas = (e: PointerEvent) => {
       const r = canvas.getBoundingClientRect();   // same box as the paint canvas, at SCALE

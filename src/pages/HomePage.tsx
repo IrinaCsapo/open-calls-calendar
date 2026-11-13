@@ -102,12 +102,12 @@ export function HomePage() {
         <div className="rows">
           {GROUPS.map((g) => {
             const items = shown.filter((l) => urgencyGroup(l, now) === g.key);
-            return items.length ? <ListingRow key={g.key} id={g.key} title={g.label} listings={items} currency={filters.currency} now={now} /> : null;
+            return items.length ? <ListingRow key={g.key} id={g.key} title={g.label} listings={items} now={now} /> : null;
           })}
         </div>
       ) : (
         <div className="rows">
-          <ListingRow key={filters.sort} id="sorted" title={SORT_LABELS[filters.sort]} listings={shown} currency={filters.currency} now={now} startOpen />
+          <ListingRow key={filters.sort} id="sorted" title={SORT_LABELS[filters.sort]} listings={shown} now={now} startOpen />
         </div>
       )}
     </>

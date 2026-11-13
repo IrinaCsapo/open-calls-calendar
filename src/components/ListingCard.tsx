@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import type { Currency, Listing } from '../types/listing';
+import type { Listing } from '../types/listing';
 import { formatFull, formatShort, isOpportunity, timeLeft } from '../lib/dates';
-import { convert, formatMoney } from '../lib/money';
+import { formatMoney } from '../lib/money';
 
 const NEW_DAYS = 3;
 const FORMAT_ICON = { Online: '🌐', 'In person': '📍', Hybrid: '🔀' } as const;
@@ -71,13 +71,12 @@ function Media({ l }: { l: Listing }) {
 }
 
 /** "£20 to enter" / "Free to enter" pill, plus a separate warning pill when selected artists pay. */
-function FeePills({ l, currency }: { l: Listing; currency: Currency }) {
+function FeePills({ l }: { l: Listing }) {
   const apply = isOpportunity(l);
   let entry: string;
   if (l.entry_fee === 'Free') entry = apply ? 'Free to enter' : 'Free';
   else if (l.entry_fee === 'Paid' && l.fee_amount !== undefined && l.currency) {
     entry = `${formatMoney(l.fee_amount, l.currency)}${apply ? ' to enter' : ''}`;
-    if (l.currency !== currency) entry += ` (${formatMoney(convert(l.fee_amount, l.currency, currency), currency, true)})`;
   } else entry = apply ? 'Entry fee not stated' : 'Price not stated';
 
   return (
@@ -97,7 +96,7 @@ function FeePills({ l, currency }: { l: Listing; currency: Currency }) {
   );
 }
 
-export function ListingCard({ listing: l, currency, now }: { listing: Listing; currency: Currency; now: number }) {
+export function ListingCard({ listing: l, now }: { listing: Listing; now: number }) {
   const left = timeLeft(l, now);
   const opp = isOpportunity(l);
   const when = opp
@@ -115,7 +114,7 @@ export function ListingCard({ listing: l, currency, now }: { listing: Listing; c
       <ul className="card__pills" aria-label="Status and fees">
         <li className={`pill pill--time pill--${left.urgency}`}><span aria-hidden="true">⏳</span> {left.label}</li>
         {isNew(l, now) && <li className="pill pill--new">New</li>}
-        <FeePills l={l} currency={currency} />
+        <FeePills l={l} />
       </ul>
 
       <h3 className="card__title">

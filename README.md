@@ -35,7 +35,8 @@ Then open http://localhost:5173/open-calls-calendar/
   use the organiser's timezone (a deadline closes at the end of that day there). Listings hide themselves once the
   deadline passes (events: once they end). Their pages stay up so shared links work.
 - **Fee label on every card**: ✓ *Free, no fees if selected* · ! *Free to enter, pay if selected: £250 hanging fee* ·
-  *£15 to enter (≈ $19)* · ? *Entry fee not stated*. Fees in other currencies get a rough conversion.
+  *£15 to enter* · ? *Entry fee not stated*. Fees are shown in the organiser's currency, as they state them
+  (the "entry fee up to" filter and the price/prize sorting compare currencies roughly in the background).
 - **Filter bar** like BuilderBee's: a search box, then Free / Paid chips and a "Where" dropdown (UK, US, Canada,
   Australia and every continent; online calls open worldwide always show), with "More filters" (closed by default) for the rest.
 - **Money filters**: free to enter, paid, totally free, entry fee up to £5/10/25/50/100, hide calls that charge selected

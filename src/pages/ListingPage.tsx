@@ -1,8 +1,8 @@
-import { useMemo, useState, type ReactNode } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import type { Listing } from '../types/listing';
 import { LISTINGS, findListing } from '../lib/listings';
 import { closesAt, formatFull, formatRange, isLive, isOpportunity, timeLeft, useNow } from '../lib/dates';
-import { convert, feeSummary, formatMoney, guessCurrency, isTotallyFree } from '../lib/money';
+import { feeSummary, isTotallyFree } from '../lib/money';
 import { downloadIcs } from '../lib/ics';
 import { getListHash } from '../lib/useHashRoute';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
@@ -41,17 +41,14 @@ export function ListingPage({ id }: { id: string }) {
   const l = findListing(id);
   useDocumentTitle(l?.title ?? 'Not found');
   const now = useNow();
-  const [currency] = useState(guessCurrency);
   const related = useMemo(() => (l ? moreLikeThis(l, now) : []), [l, now]);
   if (!l) return <NotFoundPage />;
 
   const left = timeLeft(l, now);
   const opp = isOpportunity(l);
   const live = isLive(l, now);
-  const fee = feeSummary(l, currency);
+  const fee = feeSummary(l);
   const where = l.format === 'Online' ? place(l) : [l.venue, l.city, l.country].filter(Boolean).join(', ');
-  const approx = l.entry_fee === 'Paid' && l.fee_amount !== undefined && l.currency && l.currency !== currency
-    ? ` (${formatMoney(convert(l.fee_amount, l.currency, currency), currency, true)})` : '';
 
   return (
     <>
@@ -87,7 +84,7 @@ export function ListingPage({ id }: { id: string }) {
               <h2 id="cost-h">What it costs</h2>
               <dl className="costs">
                 <CostRow tone={l.entry_fee === 'Free' ? 'good' : l.entry_fee === 'Paid' ? 'paid' : 'unknown'} label={opp ? 'To enter' : 'To attend'}>
-                  {l.entry_fee === 'Free' ? 'Free' : l.entry_fee === 'Paid' ? <>{l.fee_details ?? fee.headline}{approx}</> : <>Not stated by the organiser.{l.fee_details && ` ${l.fee_details}`}</>}
+                  {l.entry_fee === 'Free' ? 'Free' : l.entry_fee === 'Paid' ? <>{l.fee_details ?? fee.headline}</> : <>Not stated by the organiser.{l.fee_details && ` ${l.fee_details}`}</>}
                 </CostRow>
                 {opp && (
                   <CostRow tone={l.selected_fee === 'Yes' ? 'warn' : l.selected_fee === 'None' ? 'good' : 'unknown'} label="If you're selected">
@@ -131,7 +128,7 @@ export function ListingPage({ id }: { id: string }) {
             <p className="listing-panel__date">{formatFull(opp ? l.deadline! : l.start_date!)}</p>
             <p className={`listing-panel__left listing-panel__left--${left.urgency}`}>{left.label}</p>
             <div className={`fee fee--${fee.tone} listing-panel__fee`}>
-              <p className="fee__headline"><strong>{fee.headline}</strong>{fee.approx && <span className="fee__approx"> ({fee.approx})</span>}</p>
+              <p className="fee__headline"><strong>{fee.headline}</strong></p>
               {fee.selected && <p className="fee__selected">{fee.selected}</p>}
             </div>
             {live && (
@@ -152,7 +149,7 @@ export function ListingPage({ id }: { id: string }) {
 
       {related.length > 0 && (
         <div className="rows listing-page__related">
-          <ListingRow id="related" title="More like this" listings={related} currency={currency} now={now} />
+          <ListingRow id="related" title="More like this" listings={related} now={now} />
         </div>
       )}
     </>

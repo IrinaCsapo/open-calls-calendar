@@ -18,8 +18,7 @@ export function AboutPage() {
         <dd>Free to apply, but selected artists are asked to pay something: a hanging fee, an exhibition fee, a fee to
           "secure your space". The amount is on the card.</dd>
         <dt>£15 to enter</dt>
-        <dd>The cheapest way in (usually one work). The full fee structure is on the listing's page. If you've chosen a
-          different currency we show a rough conversion next to it.</dd>
+        <dd>The cheapest way in (usually one work). The full fee structure is on the listing's page.</dd>
         <dt>? Not stated</dt>
         <dd>The organiser's page doesn't say. Check their terms before you apply. You can hide these with "Hide calls that
           don't state all their fees".</dd>
