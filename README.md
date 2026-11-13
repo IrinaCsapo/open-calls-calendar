@@ -28,7 +28,7 @@ Then open http://localhost:5173/open-calls-calendar/
 
 ## What's on it
 
-- **"What do you make?"** on a first visit (`#/start`): pick disciplines as chips; the list then opens filtered to
+- **"What do you make?"** (`#/start`, linked above the results): pick disciplines as chips; the list then opens filtered to
   them (kept in the visitor's browser only). Skipping shows everything.
 
 - **Closing soonest first**, grouped into "Closing this week", "Closing in the next month" and "Later". Countdowns

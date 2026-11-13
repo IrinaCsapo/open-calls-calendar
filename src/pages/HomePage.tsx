@@ -35,11 +35,6 @@ export function HomePage() {
   };
   const [filters, setFiltersState] = useState<Filters>(() => fromUrl(query));
 
-  // First visit ever: ask "What do you make?" (only on the plain home page, never on a shared filtered link).
-  useEffect(() => {
-    if (!query.toString() && loadPicks() === null) window.location.replace('#/start');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   const [view, setViewState] = useState<View>(query.get('view') === 'calendar' ? 'calendar' : 'list');
 
   // A hashchange means a link was followed (our own filter changes use replaceState, which doesn't fire one),
