@@ -56,7 +56,7 @@ The model and allowed values live in [`src/types/listing.ts`](src/types/listing.
 | Field | Notes |
 |---|---|
 | `type` | Open call, Prize, Residency, Grant, Fellowship, Commission (you apply: need `deadline`) · Event, Meetup, Workshop (you go: need `start_date`) |
-| `disciplines` | Any medium, Painting, Drawing, Printmaking, Sculpture, Ceramics, Textiles, Craft, Photography, Film & video, Digital art, Illustration, Music, Sound, Performance, Writing, Design |
+| `disciplines` | Any medium, Painting, Drawing, Printmaking, Collage, Mixed media, Sculpture, Ceramics, Textiles, Craft, Photography, Film & video, Digital art, Illustration, Music, Sound, Performance, Writing, Design |
 | `entry_fee` | `Free`, `Paid` (then `fee_amount` = cheapest way in, + `currency`), `Unknown` |
 | `fee_details` | Full structure: `"£15 per work, 3 for £35"` |
 | `selected_fee` | `None`, `Yes` (then `selected_fee_details`: `"£250 hanging fee"`), `Unknown` |

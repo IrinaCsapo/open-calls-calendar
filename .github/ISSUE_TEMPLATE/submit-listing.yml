@@ -38,7 +38,7 @@ body:
     validations: { required: true }
   - type: input
     id: disciplines
-    attributes: { label: Disciplines, placeholder: "Painting, photography, any medium…" }
+    attributes: { label: Disciplines, placeholder: "Painting, collage, photography, any medium…" }
   - type: input
     id: eligibility
     attributes: { label: Who can apply, placeholder: "UK-based artists over 18" }

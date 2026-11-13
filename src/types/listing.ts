@@ -23,6 +23,8 @@ export const DISCIPLINES = [
   'Painting',
   'Drawing',
   'Printmaking',
+  'Collage',
+  'Mixed media',
   'Sculpture',
   'Ceramics',
   'Textiles',

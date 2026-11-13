@@ -70,6 +70,15 @@ function matchesQuery(l: Listing, query: string): boolean {
   return words.every((w) => text.includes(w));
 }
 
+// Choosing one of these also shows listings tagged with its neighbours: collage calls are often
+// advertised as "mixed media" and the other way round. "Any medium" always matches.
+const RELATED: Partial<Record<Discipline, Discipline[]>> = {
+  Collage: ['Mixed media'],
+  'Mixed media': ['Collage'],
+};
+const matchesDiscipline = (l: Listing, d: Discipline) =>
+  [d, 'Any medium', ...(RELATED[d] ?? [])].some((x) => l.disciplines.includes(x as Discipline));
+
 const hasUnknownFees = (l: Listing) =>
   l.entry_fee === 'Unknown' || (l.entry_fee === 'Paid' && l.fee_amount === undefined) || (isOpportunity(l) && l.selected_fee === 'Unknown');
 
@@ -79,7 +88,7 @@ export function applyFilters(list: Listing[], f: Filters, now = Date.now()): Lis
     if (f.kind === 'apply' && !isOpportunity(l)) return false;
     if (f.kind === 'attend' && isOpportunity(l)) return false;
     if (f.type && l.type !== f.type) return false;
-    if (f.discipline && !l.disciplines.includes(f.discipline) && !l.disciplines.includes('Any medium')) return false;
+    if (f.discipline && !matchesDiscipline(l, f.discipline)) return false;
     if (f.formats.length && !f.formats.includes(l.format)) return false;
     if (f.region && l.region !== f.region && l.region !== 'Global') return false;
     if (f.price === 'free-entry' && l.entry_fee !== 'Free') return false;

@@ -75,6 +75,12 @@ Vary discipline, type and region every search; never repeat one that found nothi
 - **Visual art:** `open call artists deadline December 2026`, `art prize 2027 open call`, `"call for artists" 2027`,
   `free to enter art competition 2027`, `open call painting 2027 no entry fee`, plus cities/countries
   (Berlin, Paris, Amsterdam, Lisbon, Mexico City, São Paulo, Lagos, Nairobi, Cape Town, Seoul, Tokyo, Sydney, Toronto…).
+- **Collage and mixed media (every run, at least 3 of your searches):** `collage open call 2027`, `collage art prize`,
+  `call for collage artists`, `mixed media open call 2027`, `paper art / works on paper open call`, `collage zine submissions`,
+  `analog collage exhibition open call`, plus a city or country. Groups and sources: Kolaj Institute / Kolaj Magazine (kolajmagazine.com,
+  kolajinstitute.org), Collage Arts, the UK Society of Collage Artists, Collage Artists of America, the National Collage Society,
+  CollageCollective, Cut & Paste, collage festivals. Tag them `Collage` (and `Mixed media` if the call says so). When a general open call
+  explicitly accepts collage, include `Collage` in its disciplines too.
 - **Photography:** `photography open call 2027`, `photo award 2027 deadline`, `photobook prize`, `portfolio review 2027`.
 - **Music & sound:** `musicians open call 2027`, `composer competition 2027`, `songwriting competition 2027`,
   `music grant application deadline`, `sound art open call`, `festival artist applications 2027`.
