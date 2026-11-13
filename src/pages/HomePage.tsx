@@ -8,6 +8,7 @@ import { useDocumentTitle } from '../lib/useDocumentTitle';
 import { FEED_PATH, SITE_TAGLINE } from '../lib/site';
 import { FilterPanel } from '../components/FilterPanel';
 import { ListingRow } from '../components/ListingRow';
+import { HeroPaint } from '../components/HeroPaint';
 import { CalendarView } from '../components/CalendarView';
 
 
@@ -59,6 +60,7 @@ export function HomePage() {
   return (
     <>
       <section className="hero" aria-labelledby="hero-title">
+        <HeroPaint />
         <h1 id="hero-title" className="hero__title"><span>Open calls, prizes and</span> <span>events <em>for artists</em></span></h1>
         <p className="hero__lede">{SITE_TAGLINE} Updated every morning.</p>
         <div className="hero__actions">
@@ -72,6 +74,7 @@ export function HomePage() {
           {' · '}
           <a href="#/about">How we label fees</a>
         </p>
+        <p className="hero__hint" aria-hidden="true"><span className="hero__hint--mouse">Click and drag to paint</span><span className="hero__hint--touch">Drag sideways to paint</span></p>
       </section>
 
       <div id="browse" className="browse-anchor" />

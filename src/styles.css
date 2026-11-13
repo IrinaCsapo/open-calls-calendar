@@ -33,7 +33,7 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.5; }
+body { margin: 0; overflow-x: clip; font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.5; }
 a { color: var(--accent); }
 img { max-width: 100%; }
 h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 400; letter-spacing: -0.005em; }
@@ -68,7 +68,20 @@ main:focus { outline: none; }
 .site-footer { border-top: 1px solid var(--line); padding-block: 1.5rem; color: var(--muted); font-size: 0.875rem; }
 
 /* ---- Hero (BuilderBee layout): centred headline with a rotating last word, lede, two buttons ---- */
-.hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(3.5rem, 10vw, 8rem) 0 clamp(3rem, 7vw, 5.5rem); }
+.hero { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: clamp(3.5rem, 10vw, 8rem) 0 clamp(3rem, 7vw, 5.5rem); cursor: crosshair; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.hero > :not(.hero-paint) { position: relative; z-index: 1; }
+.hero a, .hero button { cursor: pointer; }
+.hero__hint--touch { display: none; }
+@media (hover: none) { .hero__hint--mouse { display: none; } .hero__hint--touch { display: inline; } }
+.hero__hint { margin: 1.5rem 0 0; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* Paint layer: full window width behind the hero text */
+.hero-paint { position: absolute; z-index: 0; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); pointer-events: none; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 85%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 85%, transparent); }
+.hero-paint__canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-paint__canvas--css-blur { filter: blur(20px); }
 .hero__title { margin: 0; font-size: clamp(1.9rem, 10.2vw, 7.4rem); line-height: 0.98; letter-spacing: -0.025em;
   text-wrap: balance; font-feature-settings: 'liga', 'dlig', 'kern'; }
 .hero__title em { font-style: italic; letter-spacing: -0.01em; }
