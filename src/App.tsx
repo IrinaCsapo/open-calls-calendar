@@ -38,11 +38,11 @@ export function App() {
       <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>
         Skip to content
       </a>
-      <TodayBar />
       <header className="site-header">
         <a href="#/" className="site-name">
           <img className="site-name__logo" src={logo} alt={SITE_NAME} width="640" height="203" />
         </a>
+        <TodayBar />
         <nav aria-label="Main" className="site-nav">
           <a href="#/" aria-current={path === '/' || path.startsWith('/listing/') ? 'page' : undefined}>Events</a>
           <a href="#/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
