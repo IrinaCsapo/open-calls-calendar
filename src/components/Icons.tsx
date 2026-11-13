@@ -2,7 +2,7 @@
 // Decorative: always aria-hidden, the words beside them carry the meaning.
 import type { ComponentType, SVGProps } from 'react';
 import {
-  ArrowsRightLeftIcon, BanknotesIcon, CalendarDaysIcon, CheckIcon, ClockIcon, ExclamationTriangleIcon,
+  ArrowPathIcon, ArrowsRightLeftIcon, BanknotesIcon, CheckBadgeIcon, SparklesIcon, CalendarDaysIcon, CheckIcon, ClockIcon, ExclamationTriangleIcon,
   GlobeAltIcon, LinkIcon, MagnifyingGlassIcon, MapPinIcon, QuestionMarkCircleIcon, TrophyIcon,
 } from '@heroicons/react/24/outline';
 import type { Format } from '../types/listing';
@@ -25,6 +25,9 @@ export const IconCheck = make(CheckIcon);
 export const IconWarn = make(ExclamationTriangleIcon);
 export const IconUnknown = make(QuestionMarkCircleIcon);
 export const IconMoney = make(BanknotesIcon);
+export const IconRefresh = make(ArrowPathIcon);
+export const IconBadge = make(CheckBadgeIcon);
+export const IconSparkles = make(SparklesIcon);
 
 export const FormatIcon = ({ format }: { format: Format }) =>
   format === 'Online' ? <IconGlobe /> : format === 'Hybrid' ? <IconHybrid /> : <IconPin />;
