@@ -57,6 +57,9 @@ export function App() {
           <a href="#/start">Tell us what you make</a>
         </nav>
         <p>Fees and dates come from organisers' pages and can change. Always check before you pay.</p>
+        <p className="site-footer__credit">
+          Project created by designer and artist <a href="https://irinacsapo.co.uk" target="_blank" rel="noopener noreferrer">Irina Csapo</a>
+        </p>
       </footer>
     </>
   );
