@@ -437,6 +437,21 @@ main:focus { outline: none; }
 .listing-panel__status { margin: -0.4rem 0 0; min-height: 1.2em; text-align: center; font-size: 0.85rem; }
 .listing-page__related { margin-top: 4rem; }
 
+/* ---- Submit page ---- */
+.submit { max-width: 820px; padding-top: clamp(1rem, 3vw, 2.5rem); }
+.submit__head h1 { margin: 0 0 1rem; font-size: clamp(2.6rem, 5vw + 0.6rem, 4.6rem); line-height: 1; letter-spacing: -0.02em; }
+.submit__rules { list-style: none; margin: 2rem 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.submit__rules h2 { margin: 0 0 0.4rem; font-family: var(--font); font-size: 1.05rem; font-weight: 700; letter-spacing: 0; }
+@media (max-width: 40rem) { .submit__rules { grid-template-columns: minmax(0, 1fr); } }
+.submit__form { padding: clamp(1rem, 3vw, 2rem); border-radius: 20px; background: #fff; border: 1px solid var(--line); }
+.submit__form iframe { display: block; width: 100%; border: 0; }
+.submit__alt { margin-top: 1rem; }
+.submit-thanks { padding: clamp(2rem, 5vw, 3.5rem); border-radius: 24px; text-align: center; }
+.submit-thanks:focus { outline: none; }
+.submit-thanks img { width: 140px; height: auto; }
+.submit-thanks h2 { margin: 0.5rem 0 0.75rem; font-size: clamp(1.9rem, 2.5vw + 1rem, 2.8rem); }
+.submit-thanks p { margin: 0 auto; max-width: 48ch; }
+
 /* ---- About page ---- */
 .about { padding-bottom: 1rem; }
 .about-hero { position: relative; isolation: isolate; cursor: crosshair; touch-action: pan-y; user-select: none; -webkit-user-select: none; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; padding: clamp(1.5rem, 4vw, 3.5rem) 0 2rem; }

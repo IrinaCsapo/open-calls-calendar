@@ -4,6 +4,8 @@ export const SITE_NAME = 'Magpie';
 export const SITE_TAGLINE = 'Open calls, prizes, residencies and events for artists, with every fee shown up front.';
 export const SITE_URL = 'https://magpie.cool/';
 export const REPO_URL = 'https://github.com/IrinaCsapo/open-calls-calendar';
+// The Tally form on the Submit page (no account needed). The ID is the end of its link: https://tally.so/r/rDaMEo
+export const TALLY_FORM_ID = 'rDaMEo';
 export const SUBMIT_FORM_URL = `${REPO_URL}/issues/new?template=submit-listing.yml`;
 export const REPORT_URL = (id: string) =>
   `${REPO_URL}/issues/new?title=${encodeURIComponent(`[Correction] ${id}`)}&labels=correction`;

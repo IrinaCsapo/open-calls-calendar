@@ -51,3 +51,6 @@ account. Entries arrive in Tally (and by email, if notifications are on). Add th
 4. **Settings:** under Notifications, turn on **Self email notifications** so you hear about each entry.
 5. **Publish**, then copy the form's link, e.g. `https://tally.so/r/wA1bC2`, and send it to Claude to put it on the
    Submit page.
+
+The live form is https://tally.so/r/rDaMEo (ID `rDaMEo`, in `TALLY_FORM_ID` in `src/lib/site.ts`). It's embedded on
+magpie.cool/submit and resized by Tally's script; after sending, the page shows Magpie's own thank-you.
