@@ -1881,5 +1881,123 @@
     "apply_url": "https://www.niefnorf.org/callforscores",
     "source": "https://www.niefnorf.org/callforscores",
     "added": "2026-11-13"
+  },
+  {
+    "id": "sony-world-photography-awards-series-competition-2027",
+    "title": "Sony World Photography Awards 2027: Series Competition",
+    "organiser": "World Photography Organisation / Sony",
+    "type": "Prize",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "United Kingdom",
+    "region": "Global",
+    "deadline": "2027-01-12",
+    "eligibility": "Anyone over 18 submitting a series of 5-10 images per category; entrants must use their real names",
+    "entry_fee": "Free",
+    "fee_details": "Free to enter (rules say one series per category; check categories on the entry page)",
+    "selected_fee": "None",
+    "selected_fee_details": "Winner and category winners' flights and accommodation to the London ceremony are provided; entrants arrange their own UK ETA/visa",
+    "prizes": [
+      "$25,000 Photographer of the Year (Overall Winner)",
+      "Sony Digital Imaging equipment for category winners",
+      "Flights and accommodation to the London ceremony",
+      "Solo display at the London exhibition the following year (Overall Winner)",
+      "Shortlisted entrants (up to 7 per category) included in the exhibition"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Other"
+    ],
+    "prize_value": 25000,
+    "currency": "USD",
+    "apply_url": "https://users.worldphoto.org/competition/173/categories",
+    "image_url": "https://www.worldphoto.org/sites/default/files/styles/social_card/public/image_media-files-05/Series_0.jpg?h=4bfe631c&itok=Fk7Ec8EB",
+    "source": "https://www.worldphoto.org/pro",
+    "added": "2026-11-14"
+  },
+  {
+    "id": "nikon-film-festival-17-surprise-2027",
+    "title": "Nikon Film Festival 17th edition: theme \"Surprise\"",
+    "organiser": "Nikon France",
+    "type": "Prize",
+    "disciplines": [
+      "Film & video"
+    ],
+    "format": "Online",
+    "timezone": "Europe/Paris",
+    "city": "",
+    "country": "France",
+    "region": "Europe",
+    "start_date": "2027-04-18",
+    "end_date": "2027-04-22",
+    "deadline": "2027-01-15",
+    "eligibility": "Open to individuals in France or any other country; minors need parental authorisation. Films or 6-episode mini-series of 2 min 20 s each on the theme \"Surprise\"; films finished on or after 1 Jan 2026",
+    "entry_fee": "Free",
+    "fee_details": "Free, no purchase necessary; registration closes 15 Jan 2027 at 15:00 (Paris)",
+    "selected_fee": "None",
+    "selected_fee_details": "No participation fees stated in the rules; entrants cover their own production costs",
+    "prizes": [
+      "Jury Grand Prix: Nikon ZR cinema camera with 24-70mm lens (EUR 2,949 value)",
+      "EUR 1,000 SACD award for Mini-Series Jury Grand Prix",
+      "Free 15-day loan of Nikon video kits for all winners",
+      "EUR 29,000 total in Nikon equipment vouchers for finalists",
+      "Screenings in CGR cinemas and Le Grand Rex, Paris (50 shorts, 8 mini-series)",
+      "Cinematography prize equipment benefit worth EUR 2,500 (Transpa)"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Other"
+    ],
+    "prize_value": 1000,
+    "currency": "EUR",
+    "apply_url": "https://www.festivalnikon.fr/en/inscription",
+    "image_url": "https://www.festivalnikon.fr/img/design/ogimage-nff17.jpg",
+    "source": "https://www.festivalnikon.fr/pdf/Reglement_NFF17_EN.pdf",
+    "added": "2026-11-14"
+  },
+  {
+    "id": "west-cork-young-composers-string-quartet-competition-2027",
+    "title": "West Cork Chamber Music Festival Composition Competition 2027 (string quartet)",
+    "organiser": "West Cork Music",
+    "type": "Prize",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Dublin",
+    "city": "Bantry",
+    "country": "Ireland",
+    "region": "Europe",
+    "lat": 51.68,
+    "lng": -9.4528,
+    "start_date": "2027-06-25",
+    "end_date": "2027-07-04",
+    "deadline": "2027-03-24",
+    "eligibility": "Composers under 35 on 1 Jan 2027 who are Irish nationals, born in or domiciled on the island of Ireland, or resident in Ireland for at least a year; one string quartet work per entrant, not previously performed",
+    "entry_fee": "Free",
+    "fee_details": "Conditions of entry list no fee; submission by email with score and MIDI/MP3",
+    "selected_fee": "None",
+    "selected_fee_details": "3 nights' accommodation provided; winners pay all other expenses (e.g. travel) to attend the Bantry workshop, which is compulsory for prizes",
+    "prizes": [
+      "EUR 1,000 prize money",
+      "3 nights at the 2027 Festival (25 Jun-4 Jul)",
+      "Public workshop with the adjudicator",
+      "Two public performances"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Other"
+    ],
+    "prize_value": 1000,
+    "currency": "EUR",
+    "apply_url": "https://www.westcorkmusic.ie/chamber-music-festival/composition-competition/call-for-scores",
+    "source": "https://www.westcorkmusic.ie/wp-content/uploads/2026/10/Composition-Competition-Conditions-of-Entry_for-website-2027.pdf",
+    "added": "2026-11-14"
   }
 ]
