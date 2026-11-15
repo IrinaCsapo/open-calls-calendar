@@ -78,7 +78,7 @@ async function card(l: Listing) {
   const FRAME_W = 450, FRAME_H = 518, TEXT_W = W - 112 - 48 - FRAME_W;
   let pic: Awaited<ReturnType<typeof picture>> | undefined;
   if (l.image_url) {
-    try { pic = await picture(l.image_url, FRAME_W - 60, FRAME_H - 60); }
+    try { pic = await picture(l.image_url, FRAME_W - 60, FRAME_H - 60).catch(() => picture(l.image_url!, FRAME_W - 60, FRAME_H - 60)); }   // one retry
     catch (e) { console.warn(`  ! ${l.id}: image not loaded (${(e as Error).message}), drawing the card without it`); }
   }
 
