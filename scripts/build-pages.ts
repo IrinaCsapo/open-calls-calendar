@@ -64,9 +64,11 @@ function page(path: string, meta?: { title: string; description: string; image?:
         .replace(/<meta property="og:image:alt" content="[^"]*"/, `<meta property="og:image:alt" content="${esc(meta.title)}"`);
     }
   }
-  const dir = new URL(`${path}/`, dist);
-  mkdirSync(dir, { recursive: true });
-  writeFileSync(new URL('index.html', dir), html);
+  // listing/<id>.html, not listing/<id>/index.html: GitHub Pages serves /listing/<id> straight from the .html file
+  // (status 200), where a folder would first redirect to /listing/<id>/
+  const file = new URL(`${path}.html`, dist);
+  mkdirSync(new URL('.', file), { recursive: true });
+  writeFileSync(file, html);
 }
 
 page('about', { title: `About · ${SITE_NAME}`, description: 'Every open call, every fee, in one place. How Magpie finds open calls and labels their fees.' });
