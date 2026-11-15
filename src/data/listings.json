@@ -1999,5 +1999,164 @@
     "apply_url": "https://www.westcorkmusic.ie/chamber-music-festival/composition-competition/call-for-scores",
     "source": "https://www.westcorkmusic.ie/wp-content/uploads/2026/10/Composition-Competition-Conditions-of-Entry_for-website-2027.pdf",
     "added": "2026-11-14"
+  },
+  {
+    "added": "2026-11-15",
+    "prize_kinds": [
+      "Other"
+    ],
+    "prizes": [
+      "Rehearsals and public performance by the Memphis Symphony",
+      "Private archival recording",
+      "Panels, outreach and networking"
+    ],
+    "id": "memphis-composers-institute-2027",
+    "title": "Memphis Composers Institute 2027",
+    "organiser": "Memphis Symphony Orchestra / Walden School",
+    "type": "Fellowship",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "In person",
+    "timezone": "America/Chicago",
+    "city": "Memphis",
+    "country": "United States",
+    "region": "North America",
+    "lat": 35.1495,
+    "lng": -90.049,
+    "deadline": "2026-12-07",
+    "eligibility": "Composers of all ages and nationalities at the early stages of their orchestral composing career; one orchestral work per applicant; previous winners excluded; selected composers attend in person",
+    "entry_fee": "Free",
+    "fee_details": "No application fee",
+    "selected_fee": "None",
+    "selected_fee_details": "Local accommodation provided; travel reimbursed up to $650",
+    "apply_url": "https://www.surveymonkey.com/r/MCI2027",
+    "source": "https://waldenschool.org/memphis-composers-institute"
+  },
+  {
+    "added": "2026-11-15",
+    "prize_kinds": [
+      "Cash",
+      "Other"
+    ],
+    "prizes": [
+      "US$2,500 monetary award (two grand prize composers)",
+      "World premiere by the Dartmouth or Yale wind ensemble",
+      "Airfare, hotel and meals to attend"
+    ],
+    "id": "arturo-marquez-composition-competition-2027",
+    "title": "Arturo Márquez Composition Competition 2027 (Mexican composers)",
+    "organiser": "Hopkins Center for the Arts, Dartmouth",
+    "type": "Prize",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "In person",
+    "timezone": "America/New_York",
+    "city": "Hanover",
+    "country": "United States",
+    "region": "North America",
+    "lat": 43.7022,
+    "lng": -72.2896,
+    "deadline": "2027-02-01",
+    "eligibility": "Mexican citizens (proof of citizenship required); unpremiered works up to six minutes",
+    "entry_fee": "Unknown",
+    "fee_details": "Page lists no entry fee but doesn't state that entry is free; submission by online form (score, MIDI rendering, proof of residency)",
+    "selected_fee": "None",
+    "selected_fee_details": "Round-trip airfare, hotel and meals provided for the premiere; prize money is taxable and winners handle any tax",
+    "prize_value": 2500,
+    "currency": "USD",
+    "apply_url": "https://hop.dartmouth.edu/node/34461",
+    "source": "https://hop.dartmouth.edu/node/34461"
+  },
+  {
+    "added": "2026-11-15",
+    "prize_kinds": [
+      "Exhibition",
+      "Publication",
+      "Other"
+    ],
+    "prizes": [
+      "Overall winner: Sony Digital Imaging equipment, flights and accommodation to London ceremony for student and one tutor, trophy",
+      "Shortlisted: inclusion in book and exhibition, press exposure",
+      "Winning university: Sony equipment worth approx. EUR 30,000"
+    ],
+    "id": "sony-world-photography-awards-student-2027",
+    "title": "Sony World Photography Awards 2027: Student Competition",
+    "organiser": "World Photography Organisation",
+    "type": "Prize",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "deadline": "2026-11-27",
+    "eligibility": "Aged 18-30 at the deadline and on a formal higher-education photography programme at a registered institution; series of 5-10 images on the 2027 'Journeys' brief",
+    "entry_fee": "Free",
+    "fee_details": "Free to enter",
+    "selected_fee": "None",
+    "selected_fee_details": "Winners must cover their own visa/ETA costs and any income tax on prizes",
+    "image_url": "https://www.worldphoto.org/sites/default/files/styles/social_card/public/image_media-files-05/Student_0.jpg?h=4bfe631c&itok=4Gkpj2c-",
+    "apply_url": "https://users.worldphoto.org/competition/171/categories",
+    "source": "https://worldphoto.org/STUDENT"
+  },
+  {
+    "added": "2026-11-15",
+    "prize_kinds": [
+      "Other"
+    ],
+    "prizes": [
+      "Prizes as stated on the awards website (not listed on the pages checked)"
+    ],
+    "id": "world-sports-photography-awards-2027",
+    "title": "World Sports Photography Awards 2027",
+    "organiser": "World Sports Photography Awards",
+    "type": "Prize",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "deadline": "2026-11-23",
+    "eligibility": "Open to anyone not involved in organising the awards; up to 10 images taken Dec 2025-Nov 2026 (Canon Emerging Talent award for under-25s)",
+    "entry_fee": "Free",
+    "fee_details": "Rules s1.9: no fee to enter",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "Rules don't mention winner costs",
+    "apply_url": "https://site.picter.com/worldsportsphotographyawards-2027",
+    "source": "https://worldsportsphotographyawards.com/footer/rules"
+  },
+  {
+    "added": "2026-11-15",
+    "prize_kinds": [],
+    "prizes": [],
+    "id": "zku-berlin-residency-open-call-2027",
+    "title": "ZK/U Berlin Residency Programme Open Call",
+    "organiser": "ZK/U Center for Art and Urbanistics",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Berlin",
+    "city": "Berlin",
+    "country": "Germany",
+    "region": "Europe",
+    "lat": 52.52,
+    "lng": 13.405,
+    "deadline": "2026-12-18",
+    "eligibility": "Artists, researchers, activists and professionals from other fields; proposals framed as artistic position or research in urbanism, geography, anthropology, architecture or humanities; duos and families may apply for the collective studio",
+    "entry_fee": "Unknown",
+    "fee_details": "Page mentions no application fee, but doesn't state entry is free",
+    "selected_fee": "Yes",
+    "selected_fee_details": "Residents pay EUR 750-1,200 per month (stays of 2-6 months, depending on studio type); covers utilities, space and programme",
+    "apply_url": "https://www.zku-berlin.org/open-call/",
+    "source": "https://www.zku-berlin.org/open-call/"
   }
 ]
