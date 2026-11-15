@@ -58,7 +58,11 @@ function page(path: string, meta?: { title: string; description: string; image?:
       .replace(/<meta property="og:description" content="[^"]*"/, `<meta property="og:description" content="${esc(meta.description)}"`)
       .replace(/<meta property="og:url" content="[^"]*"/, `<meta property="og:url" content="${esc(url)}"`);
     if (meta.data) html = jsonLd(html, meta.data);
-    if (meta.image) html = html.replace(/<meta property="og:image" content="[^"]*"/, `<meta property="og:image" content="${esc(meta.image)}"`);
+    if (meta.image) {
+      html = html
+        .replace(/<meta property="og:image" content="[^"]*"/, `<meta property="og:image" content="${esc(meta.image)}"`)
+        .replace(/<meta property="og:image:alt" content="[^"]*"/, `<meta property="og:image:alt" content="${esc(meta.title)}"`);
+    }
   }
   const dir = new URL(`${path}/`, dist);
   mkdirSync(dir, { recursive: true });
@@ -77,7 +81,8 @@ for (const l of LISTINGS) {
   page(`listing/${l.id}`, {
     title: `${l.title} · ${SITE_NAME}`,
     description: `${bits.join(' · ')}. ${l.organiser}.`,
-    image: l.image_url,
+    // the 1200×630 card drawn by scripts/build-og.ts (title, deadline, fees and the organiser's image)
+    image: `${SITE_URL}og/${l.id}.jpg`,
     data: isOpportunity(l) || l.entry_fee === 'Unknown' ? undefined : eventData(l),
   });
 }

@@ -64,6 +64,14 @@ with no fees if selected, each with its fees. It saves the email as a **draft** 
 secret `BUTTONDOWN_API_KEY`), so nothing goes out until you press send. Preview it any time with
 `npx tsx scripts/weekly-email.ts`, or run the workflow by hand from the Actions tab.
 
+## Link previews
+
+Sharing a listing (WhatsApp, iMessage, LinkedIn, Slack…) shows a 1200×630 card drawn at build time by
+[`scripts/build-og.ts`](scripts/build-og.ts): the organiser's image on the listing's colour wash, the title in Sorts Mill
+Goudy, the deadline, fee pills, the top prize and the logo, with a little grain (`dist/og/<id>.jpg`, about 70 KB each).
+Fonts are in `scripts/fonts/` (OFL). If an image can't be fetched the card is drawn without it. Check a design change
+with `npx tsx scripts/build-og.ts <id>` and open `dist/og/<id>.jpg`. The home and About pages use `public/og-image.jpg`.
+
 ## Google
 
 The build writes `sitemap.xml` (every open listing plus the main pages), and `public/robots.txt` points to it. Every page
