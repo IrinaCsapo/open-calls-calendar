@@ -11,3 +11,5 @@ export const REPORT_URL = (id: string) =>
   `${REPO_URL}/issues/new?title=${encodeURIComponent(`[Correction] ${id}`)}&labels=correction`;
 /** Subscribe-able calendar of every deadline, generated at build time by scripts/build-feed.ts */
 export const FEED_PATH = 'deadlines.ics';
+/** Buttondown newsletter username (buttondown.com/<username>). The sign-up box stays hidden while this is empty. */
+export const BUTTONDOWN_USERNAME = '';

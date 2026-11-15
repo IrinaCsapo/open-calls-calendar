@@ -1,0 +1,33 @@
+# Every Monday at 9:00 UTC (after the 7:00 scout): write the weekly roundup and save it as a DRAFT in
+# Buttondown. Nothing is sent to subscribers until you open the draft in Buttondown and press send.
+# Needs the repository secret BUTTONDOWN_API_KEY (Settings → Secrets and variables → Actions).
+name: Weekly email draft
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Save this week's roundup as a Buttondown draft
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          if [ -z "$BUTTONDOWN_API_KEY" ]; then
+            echo "BUTTONDOWN_API_KEY isn't set yet, so this only prints the email."
+            npx tsx scripts/weekly-email.ts
+          else
+            npx tsx scripts/weekly-email.ts --draft
+          fi

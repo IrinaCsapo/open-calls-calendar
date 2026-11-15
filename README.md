@@ -53,6 +53,22 @@ Then open http://localhost:5173/open-calls-calendar/
   feed of every deadline (`deadlines.ics`), with a **Subscribe** page (`/subscribe`, not linked anywhere for now) that has one
   button per calendar: Google, Apple, Outlook, plus copy-the-link. (A single `webcal://` link does nothing for most Google Calendar users.)
 
+## The weekly email (Buttondown)
+
+A **"The weekly roundup"** sign-up box sits above the footer on most pages ([`src/components/SubscribeBox.tsx`](src/components/SubscribeBox.tsx)).
+It posts to Buttondown and stays hidden until `BUTTONDOWN_USERNAME` in [`src/lib/site.ts`](src/lib/site.ts) is set.
+
+Every Monday at 9:00 UTC, [`.github/workflows/weekly-email.yml`](.github/workflows/weekly-email.yml) runs
+[`scripts/weekly-email.ts`](scripts/weekly-email.ts): closing this week, new on Magpie, events coming up, and free calls
+with no fees if selected, each with its fees. It saves the email as a **draft** in Buttondown (needs the repository
+secret `BUTTONDOWN_API_KEY`), so nothing goes out until you press send. Preview it any time with
+`npx tsx scripts/weekly-email.ts`, or run the workflow by hand from the Actions tab.
+
+## Google
+
+The build writes `sitemap.xml` (every open listing plus the main pages), and `public/robots.txt` points to it. Every page
+has a canonical address, and events carry schema.org `Event` data for Google's event results.
+
 ## The daily scout (7:00 London)
 
 A scheduled Claude routine follows [`docs/scout.md`](docs/scout.md) every morning: it checks a watchlist of

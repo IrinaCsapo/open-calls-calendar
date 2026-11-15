@@ -4,6 +4,7 @@ import { ListingPage } from './pages/ListingPage';
 import { SubmitPage } from './pages/SubmitPage';
 import { AboutPage } from './pages/AboutPage';
 import { StartPage } from './pages/StartPage';
+import { SubscribeBox } from './components/SubscribeBox';
 import { SubscribePage } from './pages/SubscribePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { useHashRoute, useLinkInterceptor } from './lib/useHashRoute';
@@ -55,6 +56,7 @@ export function App() {
         </nav>
       </header>
       <main id="main" tabIndex={-1}>{page}</main>
+      {path !== '/submit' && path !== '/start' && <div className="subscribe-wrap"><SubscribeBox /></div>}
       <footer className="site-footer">
         <nav className="site-footer__links" aria-label="More">
           <a href="/about">How we label fees</a>
