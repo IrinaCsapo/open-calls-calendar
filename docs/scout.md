@@ -137,7 +137,14 @@ Follow `src/types/listing.ts` exactly (allowed values are listed there).
 - `deadline`: required for opportunities; for events only if registration closes before the start
 - `start_date`/`end_date`: exhibition / residency / event dates if stated; required for events
 - `eligibility`: the organiser's words, briefly (`"Women artists worldwide, 18+"`, `"UK-based, 18+, any stage"`)
-- `image_url`: the page's `og:image`, only if it loads; leave out otherwise
+- `image_url`: **every listing should have one.** Use an image from the organiser's own site or the call's
+  official page: the call's poster or banner, a past winner or exhibition photo, or the page's `og:image` /
+  `twitter:image` when it is a real picture. If the apply page is on an aggregator (CuratorSpace, artopps, CaFÉ,
+  Submittable, SurveyMonkey, Google Forms), look on the organiser's own website instead. Never use an aggregator's
+  generic logo (e.g. `curatorspace.com/images/logos/logo_fb.png`, `apply.artstoheartsproject.com/images/og-image.jpg`,
+  the SurveyMonkey default image) or a tiny favicon. Check it loads with
+  `curl -sIL -A "Mozilla/5.0" URL` (final status 200, `content-type: image/...`). Only if nothing suitable exists,
+  leave it out and the card shows a colour wash
 - `source`: URL where you confirmed the details; `added`: today's date
 
 ## 6. Publish
