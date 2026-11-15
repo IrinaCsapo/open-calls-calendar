@@ -111,11 +111,11 @@ export function ListingCard({ listing: l, now }: { listing: Listing; now: number
   return (
     <article className="card">
       <Media l={l} />
+      {isNew(l, now) && <span className="card__new">New</span>}
 
       <p className="card__kicker">
         <span>{l.type}</span>
-        <span className={`card__left card__left--${left.urgency}`}><IconClock />{left.label}</span>
-        {isNew(l, now) && <span className="card__new">New</span>}
+        <span className={`card__left card__left--${left.urgency}`} title={left.label}><IconClock /><span className="card__left-text">{left.label}</span></span>
       </p>
 
       <h3 className="card__title">

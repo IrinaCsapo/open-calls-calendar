@@ -306,12 +306,18 @@ main:focus { outline: none; }
    red when closing in under 3 days, burnt orange for "pays if selected". */
 .card { gap: 0.55rem; }
 .card__media { margin-bottom: 0.3rem; }
-.card__kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.9rem; margin: 0; font-size: 0.82rem; color: var(--muted); }
+.card__kicker { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.9rem; min-width: 0; white-space: nowrap; margin: 0; font-size: 0.82rem; color: var(--muted); }
 .card__kicker > span:first-child { font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.75rem; color: var(--ink); }
 .card__left { display: inline-flex; align-items: center; gap: 0.3rem; }
 .card__left--urgent { color: var(--urgent); font-weight: 700; }
 .card__left--soon { color: var(--ink); font-weight: 600; }
-.card__new { padding: 0.05rem 0.5rem; border-radius: 999px; background: var(--ink); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em; }
+.card__new { position: absolute; top: 10px; left: 10px; z-index: 1; padding: 0.15rem 0.6rem; border-radius: 999px; background: var(--ink); color: #fff;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em; pointer-events: none; }
+/* The header stays on one line so titles line up across a row; a long countdown ends in "…" */
+.card__kicker > span:first-child { flex-shrink: 0; }
+.card__left { min-width: 0; overflow: hidden; }
+.card__left-text { overflow: hidden; text-overflow: ellipsis; }
+.card__left svg { flex-shrink: 0; }
 .card__fee { display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; margin: 0; font-size: 0.92rem; font-weight: 600; color: var(--ink); }
 .card__fee-part { display: inline-flex; align-items: center; gap: 0.3rem; }
 .card__fee-part--warn { color: #a3470b; }      /* burnt orange, 5.9:1 */
