@@ -2189,5 +2189,84 @@
     "apply_url": "https://www.zku-berlin.org/open-call/",
     "image_url": "https://www.zku-berlin.org/fileadmin/_processed_/7/a/csm_OPEN_CALL_Main_Visual_Web__c__Kristin_Krause_d9b435fa46.jpg",
     "source": "https://www.zku-berlin.org/open-call/"
+  },
+  {
+    "added": "2026-11-16",
+    "prize_kinds": [
+      "Exhibition"
+    ],
+    "prizes": [
+      "Selected works shown at the CURRENTS 2027 festival; travel, lodging, shipping or equipment support possible for some categories, depending on need and funding"
+    ],
+    "id": "currents-2027-art-technology-festival",
+    "title": "CURRENTS 2027 Art & Technology Festival",
+    "organiser": "CURRENTS New Media / Parallel Studios",
+    "type": "Open call",
+    "disciplines": [
+      "Digital art",
+      "Sound",
+      "Film & video",
+      "Performance",
+      "Mixed media"
+    ],
+    "format": "In person",
+    "timezone": "America/Denver",
+    "city": "Santa Fe",
+    "country": "United States",
+    "region": "North America",
+    "lat": 35.687,
+    "lng": -105.9378,
+    "deadline": "2026-12-08",
+    "start_date": "2027-06-11",
+    "end_date": "2027-06-20",
+    "eligibility": "Artists working in installation, audio, VR/AR/MR, robotics/kinetic, multimedia performance, fabrication/wearables and experimental video, documentary or animation (single-channel max 12 min); AI use accepted if described",
+    "entry_fee": "Paid",
+    "fee_amount": 30,
+    "currency": "USD",
+    "fee_details": "$30 for a single submission, $25 each for multiple submissions (separate form and fee per entry); limited first-come fee waivers on request",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "Guidelines state no exhibition fee either way; travel/lodging/shipping/equipment support is possible for some categories but international support is limited",
+    "apply_url": "https://currentsnewmedia.org/artist-submission-form-2027/",
+    "image_url": "https://currentsnewmedia.org/wp-content/uploads/2026/08/Screenshot-2026-08-18-at-4.46.45-PM-copy.png",
+    "source": "https://currentsnewmedia.org/submission-guidelines-2027/"
+  },
+  {
+    "added": "2026-11-16",
+    "prize_kinds": [
+      "Cash"
+    ],
+    "prizes": [
+      "$10,000 unrestricted fellowship (Core Fellowships, per Luminarts FAQ)"
+    ],
+    "prize_value": 10000,
+    "id": "luminarts-visual-arts-fellowship-2027",
+    "title": "Luminarts Visual Arts Fellowship 2027",
+    "organiser": "Luminarts Cultural Foundation",
+    "type": "Fellowship",
+    "disciplines": [
+      "Painting",
+      "Drawing",
+      "Printmaking",
+      "Photography",
+      "Mixed media",
+      "Sculpture",
+      "Film & video"
+    ],
+    "format": "In person",
+    "timezone": "America/Chicago",
+    "city": "Chicago",
+    "country": "United States",
+    "region": "North America",
+    "lat": 41.8781,
+    "lng": -87.6298,
+    "deadline": "2027-01-15",
+    "eligibility": "Aged 18-30 on the day of submission; living within 150 miles of the Chicago Loop (or 4-6 formative years there)",
+    "entry_fee": "Unknown",
+    "fee_details": "Official pages and FAQ do not state whether there is an application fee; check the Submittable form",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "Not stated on the official pages",
+    "apply_url": "https://luminarts.submittable.com/submit",
+    "source": "https://luminarts.org/faqs/",
+    "currency": "USD"
   }
 ]
