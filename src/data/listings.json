@@ -2268,5 +2268,102 @@
     "apply_url": "https://luminarts.submittable.com/submit",
     "source": "https://luminarts.org/faqs/",
     "currency": "USD"
+  },
+  {
+    "id": "cewe-photo-award-2027",
+    "title": "CEWE Photo Award 2027",
+    "organiser": "CEWE",
+    "type": "Prize",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "Online",
+    "timezone": "Europe/Berlin",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "deadline": "2027-05-31",
+    "eligibility": "Amateur and professional photographers worldwide; up to 100 images",
+    "entry_fee": "Free",
+    "currency": "EUR",
+    "fee_details": "Free to enter, up to 100 images",
+    "selected_fee": "None",
+    "selected_fee_details": "No further fees stated",
+    "prizes": [
+      "Main prize: trip worth €10,000, €5,000 photo equipment voucher and €2,500 CEWE voucher",
+      "1,000 prizes worth about €250,000 in total"
+    ],
+    "prize_kinds": [
+      "Other"
+    ],
+    "apply_url": "https://contest.cewe.co.uk/cewephotoaward2027",
+    "source": "https://www.cewe.co.uk/cewe-photo-award.html",
+    "added": "2026-11-17"
+  },
+  {
+    "id": "charles-causley-international-poetry-competition-2027",
+    "title": "Charles Causley International Poetry Competition 2027",
+    "organiser": "Charles Causley Trust",
+    "type": "Prize",
+    "disciplines": [
+      "Writing"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "United Kingdom",
+    "region": "Global",
+    "deadline": "2026-12-31",
+    "eligibility": "Open to poets; poems unpublished, max 40 lines, entered anonymously",
+    "entry_fee": "Paid",
+    "fee_amount": 8,
+    "currency": "GBP",
+    "fee_details": "£8 first poem, £5 each additional poem (per the official entry form); enter online or by post",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "Not stated; winners are invited to the Launceston Poetry Festival in May 2027",
+    "prizes": [
+      "£1,000 first prize plus a week-long residency at Cyprus Well",
+      "£200 second prize",
+      "£100 third prize",
+      "Festival passes for podium winners"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency"
+    ],
+    "prize_value": 1000,
+    "apply_url": "https://tally.so/r/yPBLqX",
+    "image_url": "https://causleytrust.org/wp-content/uploads/2026/09/Heritage-shining-a-light-on-Cornish-roots-2-e1789990587497.png",
+    "source": "https://causleytrust.org/?p=1198",
+    "added": "2026-11-17"
+  },
+  {
+    "id": "acnmp-contemporary-showcase-call-for-scores-piano-2027",
+    "title": "ACNMP Call for Scores: Works for Piano (Contemporary Showcase)",
+    "organiser": "Alliance for Canadian New Music Projects",
+    "type": "Open call",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "Online",
+    "timezone": "America/Toronto",
+    "city": "",
+    "country": "Canada",
+    "region": "North America",
+    "deadline": "2027-03-01",
+    "eligibility": "Composers who are Canadian citizens or permanent residents",
+    "entry_fee": "Free",
+    "fee_details": "No submission fee listed; ACNMP membership not required to submit. Submission is by emailing a PDF form",
+    "selected_fee": "Yes",
+    "selected_fee_details": "Selected composers are asked to pay a one-time $40 ACNMP membership fee",
+    "prizes": [
+      "Selected works join the non-competitive Contemporary Showcase syllabus and are performed by students in master classes"
+    ],
+    "prize_kinds": [
+      "Other"
+    ],
+    "apply_url": "https://acnmp.ca/?p=1753",
+    "source": "https://acnmp.ca/?p=1753",
+    "added": "2026-11-17"
   }
 ]
