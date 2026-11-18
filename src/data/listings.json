@@ -2266,6 +2266,7 @@
     "selected_fee": "Unknown",
     "selected_fee_details": "Not stated on the official pages",
     "apply_url": "https://luminarts.submittable.com/submit",
+    "image_url": "https://luminarts.org/wp-content/uploads/2015/08/visual-arts-home.jpg",
     "source": "https://luminarts.org/faqs/",
     "currency": "USD"
   },
@@ -2297,6 +2298,7 @@
       "Other"
     ],
     "apply_url": "https://contest.cewe.co.uk/cewephotoaward2027",
+    "image_url": "https://contest.cewe.de/media/cache/resolve/x960/ae/ec/ca7cede3948dc96bd2a430de4427.png",
     "source": "https://www.cewe.co.uk/cewe-photo-award.html",
     "added": "2026-11-17"
   },

@@ -38,9 +38,21 @@ Include a listing only if **all** of these are true:
 
 ## 2. Where to look (aim for 5–15 new listings)
 
-### Watchlist: check every one, every run
+### Watchlist: do this FIRST, before any web search
 
-These publish open calls constantly. Open each, list what's currently open, check each against `/tmp/known.txt`.
+These sites publish open calls constantly and are the best source of new listings. Searching the web is not a
+substitute for opening them. Recent runs skipped this step ("watchlist not re-crawled") and found only 1–3 listings a day.
+
+**Every run, open at least 8 watchlist sites:**
+- **Always these 4:** CuratorSpace (pages 1–3), CaFÉ free calls, Kolaj Magazine JSON, On the Move.
+- **Plus at least 4 more, rotating:** take the rows below in order, starting at row `(day of month × 4) mod 24`
+  (for example, on the 18th start at row 0; on the 19th, row 4), skipping the 4 above.
+
+For each one, fetch the page (`curl -sL -A "Mozilla/5.0" URL`, or WebFetch), list the calls that are currently open, and check
+each against `/tmp/known.txt`. Sites marked "needs a browser" may return little to curl: try WebFetch, and if it
+still shows nothing, note it in the log and move on.
+
+Write down which sites you opened and how many candidates each gave. That goes in the log line (step 6).
 
 | Source | What |
 |---|---|
@@ -73,8 +85,10 @@ Add new good sources you find to this table in the same commit (keep it short, o
 
 ### Then search more widely (always)
 
-Keep searching until you have **5 new listings** or you've run **at least 15 different web searches**.
-Vary discipline, type and region every search; never repeat one that found nothing. Mix:
+**Always run at least 15 different web searches**, even if the watchlist already gave you plenty. Stop searching
+only when you have done 15 searches **and** have at least 5 new listings, or after 30 searches. A run with fewer than 15
+searches is incomplete: don't stop early. If you are running short of time, cut the number of listings you verify, not
+the searches. Vary discipline, type and region every search; never repeat one that found nothing. Mix:
 - **Visual art:** `open call artists deadline December 2026`, `art prize 2027 open call`, `"call for artists" 2027`,
   `free to enter art competition 2027`, `open call painting 2027 no entry fee`, plus cities/countries
   (Berlin, Paris, Amsterdam, Lisbon, Mexico City, São Paulo, Lagos, Nairobi, Cape Town, Seoul, Tokyo, Sydney, Toronto…).
@@ -122,7 +136,9 @@ Never guess an amount. Never copy a fee from a previous edition.
 
 1. Skip anything already listed (same `id`, same `apply_url`, or same title and deadline).
 2. Copy deadline, dates and the apply link from the official page.
-3. `apply_url` and `image_url` must load:
+3. **Find the image now, as part of verifying the listing** (see `image_url` below). A listing is not ready to add
+   until it has an image, or you have looked on both the call page and the organiser's own website and found none.
+4. `apply_url` and `image_url` must load:
    `curl -sL -o /dev/null -w '%{http_code}' -A "Mozilla/5.0" URL` prints `200`.
 
 ## 5. How to fill the fields
@@ -152,14 +168,20 @@ Follow `src/types/listing.ts` exactly (allowed values are listed there).
 1. At most **15** new listings per run. Prefer free-to-enter, soonest deadline, most clearly legitimate.
 2. Never delete existing listings (closed ones hide themselves). You may **correct** an existing listing if
    its official page now says something different (fee, deadline extended); say so in the commit body.
-3. `npm ci`, then `npm run build`. It must pass (validates every listing and type-checks). Fix or remove a
+3. **Image check.** Run this and fix every listing it prints, by finding an image on the organiser's site (look at
+   their homepage, About page and past editions too):
+   ```bash
+   node -e 'const L=require("./src/data/listings.json"),t=new Date().toISOString().slice(0,10);L.filter(l=>l.added===t&&!l.image_url).forEach(l=>console.log("NO IMAGE:",l.id,l.source))'
+   ```
+   Only a listing whose organiser has truly no usable picture may stay without one. Name it in the log line with the reason.
+4. `npm ci`, then `npm run build`. It must pass (validates every listing and type-checks). Fix or remove a
    failing listing and build again. **Never push a failing build.**
-4. Every few days (when the day of the month is divisible by 3) also run `npm run check-links` and, for links that
+5. Every few days (when the day of the month is divisible by 3) also run `npm run check-links` and, for links that
    are truly gone (not 403), fix the URL from the organiser's site or leave the listing as it is and mention it.
-5. Commit to `main`: `Scout: add N listings (YYYY-MM-DD)` with a body listing each (title, deadline,
+6. Commit to `main`: `Scout: add N listings (YYYY-MM-DD)` with a body listing each (title, deadline,
    fee label, source URL). Then `git push origin main`. If rejected, `git pull --rebase origin main`, build, push.
-6. **Every run leaves a commit.** Add one line to the top of the list in `docs/scout-log.md`:
-   `- YYYY-MM-DD: added N (searches: S). Skipped: <short reasons>`. If nothing new, commit only the log as
+7. **Every run leaves a commit.** Add one line to the top of the list in `docs/scout-log.md`:
+   `- YYYY-MM-DD: added N (searches: S; watchlist: <sites opened, e.g. CuratorSpace 3, CaFÉ 1, Kolaj 0, On the Move 2, LensCulture 0…>; no image: <ids and why, or none>). Skipped: <short reasons>`. If nothing new, commit only the log as
    `Scout: no new listings (YYYY-MM-DD)` and push.
-7. Finish with a short summary: what you added (with links), what you skipped and why, and any suspected
+8. Finish with a short summary: what you added (with links), what you skipped and why, and any suspected
    pay-to-exhibit operations you saw (so they can be noted).
