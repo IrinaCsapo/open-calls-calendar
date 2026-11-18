@@ -2365,5 +2365,42 @@
     "apply_url": "https://acnmp.ca/?p=1753",
     "source": "https://acnmp.ca/?p=1753",
     "added": "2026-11-17"
+  },
+  {
+    "id": "emaf-european-media-art-festival-open-call-2027",
+    "title": "EMAF 2027 International Open Call (Film, Installation, Expanded)",
+    "organiser": "European Media Art Festival (EMAF)",
+    "type": "Open call",
+    "disciplines": [
+      "Film & video",
+      "Digital art",
+      "Performance",
+      "Sound"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Berlin",
+    "city": "Osnabrück",
+    "country": "Germany",
+    "region": "Europe",
+    "lat": 52.2799,
+    "lng": 8.0472,
+    "deadline": "2026-12-15",
+    "start_date": "2027-04-21",
+    "end_date": "2027-04-25",
+    "eligibility": "Artists working in experimental film, media installation, performance and live events; works completed 2026 or later",
+    "entry_fee": "Free",
+    "fee_details": "No submission fee, now or in future per EMAF. Call closes early if 2,200 submissions are received",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "2027 call page does not state artist fees or any costs for selected works; see the festival regulations",
+    "prizes": [
+      "Selection for EMAF 2027 programme (festival 21-25 April 2027; exhibition to 23 May)"
+    ],
+    "prize_kinds": [
+      "Exhibition"
+    ],
+    "apply_url": "https://emaf.filmchief.com/entry-forms",
+    "image_url": "https://www.emaf.de/files/news/emaf-no40_call-for-entries_news-website_1440x1080px.png",
+    "source": "https://www.emaf.de",
+    "added": "2026-11-18"
   }
 ]
