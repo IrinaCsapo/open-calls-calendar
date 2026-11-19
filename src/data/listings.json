@@ -2404,5 +2404,260 @@
     "image_url": "https://www.emaf.de/files/news/emaf-no40_call-for-entries_news-website_1440x1080px.png",
     "source": "https://www.emaf.de",
     "added": "2026-11-18"
+  },
+  {
+    "id": "international-ceramics-exhibition-mino-2027",
+    "title": "14th International Ceramics Exhibition Mino, Japan (2027)",
+    "organiser": "International Ceramics Festival Mino, Japan",
+    "type": "Prize",
+    "disciplines": [
+      "Ceramics",
+      "Craft"
+    ],
+    "format": "In person",
+    "timezone": "Asia/Tokyo",
+    "city": "Tajimi",
+    "country": "Japan",
+    "region": "Asia",
+    "venue": "Ceramics Park MINO",
+    "lat": 35.3333,
+    "lng": 137.1333,
+    "deadline": "2027-01-29",
+    "start_date": "2027-10-08",
+    "end_date": "2027-11-07",
+    "eligibility": "Individuals and groups of any nationality and age; original ceramic works made on or after 1 Feb 2024, not selected in other public competitions",
+    "entry_fee": "Free",
+    "fee_details": "No registration fee. Image-based online screening, then selected works are shipped for final judging. Applications close 5pm JST",
+    "selected_fee": "None",
+    "selected_fee_details": "No fee to be selected, but applicants pay transport, insurance and all delivery costs of works that pass second screening (carry-in July 2027)",
+    "prizes": [
+      "¥5,000,000 Grand Prix",
+      "¥2,000,000 Gold Award",
+      "¥1,000,000 Silver Award",
+      "¥500,000 Bronze Award",
+      "¥500,000 Sakazaki Shigeo Ceramics Award for artists 40 or under",
+      "Exhibition at Ceramics Park MINO (c.200 selected works) and catalogue"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition",
+      "Publication"
+    ],
+    "prize_value": 5000000,
+    "currency": "JPY",
+    "apply_url": "https://icfmino.com/?p=957",
+    "image_url": "https://www.icfmino.com/icfmino/wp-content/themes/ceramic/img/img_ogp.jpg",
+    "source": "https://www.icfmino.com/icfmino/wp-content/uploads/2026/01/2027youkou_EN20260119.pdf",
+    "added": "2026-11-19"
+  },
+  {
+    "id": "ligeti-center-artists-scientists-residency-2027",
+    "title": "Artists and Scientists in Residence 2027: Where Sound Shapes Space",
+    "organiser": "ligeti center, Hamburg",
+    "type": "Residency",
+    "disciplines": [
+      "Music",
+      "Sound"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Berlin",
+    "city": "Hamburg",
+    "country": "Germany",
+    "region": "Europe",
+    "venue": "ligeti center, Harburg",
+    "lat": 53.5511,
+    "lng": 9.9937,
+    "deadline": "2027-01-10",
+    "start_date": "2027-04-01",
+    "end_date": "2027-06-30",
+    "eligibility": "Individual artists and scientists (composers and sound artists for most of the four projects); applications in German or English",
+    "entry_fee": "Free",
+    "fee_details": "Call page and English PDF state no application fee (single online form, deadline midnight CET)",
+    "selected_fee": "None",
+    "selected_fee_details": "Funded: €1,200 net per month scholarship, accommodation in Hamburg and a workspace provided",
+    "prizes": [
+      "€1,200 net per month scholarship",
+      "Accommodation in Hamburg",
+      "Workspace and Production Lab access"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency"
+    ],
+    "currency": "EUR",
+    "apply_url": "https://ligeti-zentrum.de/residency-2027/",
+    "image_url": "https://ligeti-zentrum.de/wp-content/uploads/2024/04/LigetiZentrum_Konzert_20240417_08-1300x650.jpg",
+    "source": "https://ligeti-zentrum.de/residency-2027/",
+    "added": "2026-11-19"
+  },
+  {
+    "id": "thrive-residencies-a-good-enough-net-2027",
+    "title": "Thrive Residencies: A Good Enough Net",
+    "organiser": "Thrive (Glastonbury, Somerset Levels)",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "Glastonbury",
+    "country": "United Kingdom",
+    "region": "UK",
+    "lat": 51.1484,
+    "lng": -2.714,
+    "deadline": "2026-11-27",
+    "start_date": "2027-01-11",
+    "end_date": "2027-08-27",
+    "eligibility": "Artists invited to work on kin-making and relationship practices; six 5–7 day residencies; interviews w/c 7 Dec 2026",
+    "entry_fee": "Free",
+    "fee_details": "CuratorSpace FAQ: no cost to apply",
+    "selected_fee": "None",
+    "selected_fee_details": "Paid residency: £750 flat fee per artist, plus either free on-site accommodation and meals, or £400 accommodation + £100 food, plus £100 travel support",
+    "prizes": [
+      "£750 artist fee",
+      "Accommodation or £500 stipend towards it, and £100 travel",
+      "Small materials budget"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency"
+    ],
+    "prize_value": 750,
+    "currency": "GBP",
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/thrive-residencies-a-good-enough-net/11331",
+    "source": "https://www.curatorspace.com/opportunities/detail/thrive-residencies-a-good-enough-net/11331",
+    "added": "2026-11-19"
+  },
+  {
+    "id": "deep-focus-temperature-check-screening-2027",
+    "title": "Temperature Check: moving image screening open call",
+    "organiser": "Deep Focus",
+    "type": "Open call",
+    "disciplines": [
+      "Film & video"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "RHB Cinema, Goldsmiths",
+    "lat": 51.5072,
+    "lng": -0.1276,
+    "deadline": "2026-11-22",
+    "start_date": "2027-01-20",
+    "end_date": "2027-03-19",
+    "eligibility": "No restrictions; moving image works / artist films under 10 minutes, one film per artist, on energy and its uses",
+    "entry_fee": "Free",
+    "fee_details": "CuratorSpace FAQ: \"It is free\"",
+    "selected_fee": "None",
+    "selected_fee_details": "No fees stated; screenings 20 Jan, 19 Feb, 19 Mar 2027. Volunteer-run and unfunded: no artist payment, artists cover own travel (letters of support offered)",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/screening-opportunity-for-moving-image-works--temperature-check/11327",
+    "source": "https://www.curatorspace.com/opportunities/detail/screening-opportunity-for-moving-image-works--temperature-check/11327",
+    "added": "2026-11-19"
+  },
+  {
+    "id": "btb10-harris-interactive-commission-2027",
+    "title": "BTB10: The Harris Interactive Commission",
+    "organiser": "British Textile Biennial / The Harris",
+    "type": "Commission",
+    "disciplines": [
+      "Textiles",
+      "Sculpture",
+      "Mixed media",
+      "Digital art"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "Preston",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "The Harris",
+    "lat": 53.7632,
+    "lng": -2.7031,
+    "deadline": "2026-11-20",
+    "start_date": "2027-05-29",
+    "end_date": "2027-08-31",
+    "eligibility": "Individual artists, designers, makers and collectives; work must incorporate textiles (not necessarily textile artists). Closes noon Fri 20 Nov",
+    "entry_fee": "Unknown",
+    "fee_details": "CuratorSpace page states no application fee amount; submissions are a PDF via a free CuratorSpace account",
+    "selected_fee": "None",
+    "selected_fee_details": "Paid commission: £10,000 budget covers artist fee, materials, fabrication and travel",
+    "prizes": [
+      "£10,000 commissioning budget",
+      "Inclusion in BTB 10-year survey exhibition at The Harris"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Commission",
+      "Exhibition"
+    ],
+    "prize_value": 10000,
+    "currency": "GBP",
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/btb-the-harris-interactive-commission/11335",
+    "source": "https://www.curatorspace.com/opportunities/detail/btb-the-harris-interactive-commission/11335",
+    "added": "2026-11-19"
+  },
+  {
+    "id": "dortmund-atelierstipendium-junge-kunst-2027",
+    "title": "Dortmund Studio Fellowships for Young Artists 2027–2029",
+    "organiser": "Kulturbüro Dortmund / Kreishandwerkerschaft",
+    "type": "Fellowship",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Berlin",
+    "city": "Dortmund",
+    "country": "Germany",
+    "region": "Europe",
+    "lat": 51.5136,
+    "lng": 7.4653,
+    "deadline": "2026-12-20",
+    "eligibility": "Visual artists who graduated in the last two years and will be based in Dortmund; purely digital disciplines excluded; solo or collectives of up to 4",
+    "entry_fee": "Unknown",
+    "fee_details": "City press release does not mention an application fee; application is a PDF",
+    "selected_fee": "None",
+    "selected_fee_details": "Studios are described as free (kostenfrei): three studios of c.20, 25 and 60 sqm for two years; fellows take part in two group shows",
+    "prizes": [
+      "Free two-year studio (20–60 sqm) in Dortmund",
+      "Two group exhibitions"
+    ],
+    "prize_kinds": [
+      "Other",
+      "Exhibition"
+    ],
+    "apply_url": "https://www.dortmund.de/newsroom/presse-mitteilungen/neue-stipendien-fuer-junge-kunstschaffende-drei-ateliers-sollen-beim-start-in-die-kunstwelt-helfen.html",
+    "source": "https://www.dortmund.de/newsroom/presse-mitteilungen/neue-stipendien-fuer-junge-kunstschaffende-drei-ateliers-sollen-beim-start-in-die-kunstwelt-helfen.html",
+    "added": "2026-11-19"
+  },
+  {
+    "id": "virtual-artist-talk-layer-by-layer-2026",
+    "title": "Virtual Artist Talk: Layer by Layer (Craft of Paper)",
+    "organiser": "Robert C. Williams Museum of Papermaking, Georgia Tech",
+    "type": "Event",
+    "disciplines": [
+      "Craft",
+      "Mixed media"
+    ],
+    "format": "Online",
+    "timezone": "America/New_York",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "start_date": "2026-12-16",
+    "end_date": "2026-12-16",
+    "eligibility": "Open to all; talks by paper artists Sara Rayo, lucha rodríguez and Claude-Gerard Jean (8–9pm EST)",
+    "entry_fee": "Free",
+    "fee_details": "Non-member price: FREE; registration closes 16 Dec 2026",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://paper.gatech.edu/node/1767",
+    "image_url": "https://paper.gatech.edu/sites/default/files/Exhibit-2_0.jpg",
+    "source": "https://paper.gatech.edu/node/1767",
+    "added": "2026-11-19"
   }
 ]
