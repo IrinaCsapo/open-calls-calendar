@@ -36,8 +36,10 @@ export function SubscribeBox() {
   return (
     <section className="subscribe-box" aria-labelledby="subscribe-title" style={{ background: wash('weekly-roundup', true) }}>
       <div className="subscribe-box__text">
-        <h2 id="subscribe-title">The weekly roundup</h2>
-        <p>Every Monday: new open calls, what closes this week, and calls near you. Every fee up front.</p>
+        <p className="subscribe-box__eyebrow">The Magpie weekly email</p>
+        <h2 id="subscribe-title">Open calls in your inbox, every Monday</h2>
+        <p>One short email with new open calls, prizes, residencies and events for artists, the ones closing that week,
+          and calls near you. Every fee shown up front.</p>
       </div>
       {state === 'done' ? (
         <p className="subscribe-box__done" role="status">
@@ -53,7 +55,7 @@ export function SubscribeBox() {
         </form>
       )}
       <p className="subscribe-box__small">
-        {state === 'error' ? 'Something went wrong. Please try again in a moment.' : <>Free. One email a week. Unsubscribe any time. <a href="/privacy">Privacy</a></>}
+        {state === 'error' ? 'Something went wrong. Please try again in a moment.' : <>Free, from hello@magpie.cool every Monday morning. Unsubscribe in one click, and we never share your email. <a href="/privacy">Privacy</a></>}
       </p>
     </section>
   );

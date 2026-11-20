@@ -631,3 +631,4 @@ main:focus { outline: none; }
 .subscribed__next .about-card { display: flex; flex-direction: column; gap: 0.5rem; }
 @media (max-width: 48rem) { .subscribed__what { grid-template-columns: minmax(0, 1fr); } }
 .subscribe-box__small a { color: var(--muted); text-underline-offset: 0.2em; }
+.subscribe-box__eyebrow { margin: 0 0 0.4rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
