@@ -32,9 +32,25 @@ Include a listing only if **all** of these are true:
   Eventbrite etc.) that states the deadline **for this edition**. An Instagram post alone isn't enough: find the
   page it links to.
 - **Anywhere in the world.** Actively look beyond the UK and US.
-- **Not a scam / vanity mill.** Leave out "galleries" whose main business is charging artists (pay-to-exhibit
-  with no curation, "online exhibitions" that cost more than £50 to enter with no audience, award "certificates"
-  you pay for). Legitimate paid-entry prizes are fine: label them honestly.
+- **Not a scam.** Leave out anything that looks fake or predatory (no named people or venue, no past shows, award
+  "certificates" you pay for, fees over about £100 to show).
+
+### Free and genuine first, commercial apart
+
+Magpie is for **free calls and genuine galleries, museums, societies, festivals and funders that support artists**.
+Look for those first and prefer them every time. Paid entry at a genuine institution (RWS Open, Royal Society of
+Sculptors, Wildlife Photographer of the Year…) is fine in the main list, labelled honestly.
+
+**Commercial opportunities** go in a separate row at the bottom of the site. Add `"commercial": true` when the
+organiser's business is selling opportunities to artists, or when artists pay to show once selected:
+- pay-to-exhibit: a selection, participation, hanging, wall or "secure your space" fee if you're selected
+- businesses running paid virtual exhibitions, paid art books or magazines, or paid awards as their main activity
+  (e.g. Arts to Hearts Project, Open Call for Artists, Gallerium, most CuratorSpace "international online exhibition" calls)
+
+For these, also set `selected_fee_amount` (a number, in `currency`) when the fee if selected is a single amount, so
+the price tag reads e.g. "£170 if selected". At most **3 commercial listings per run**, and only after looking for free
+and genuine ones. Not commercial: a nonprofit's membership fee, a paid residency or workshop run by an arts
+organisation (label it `selected_fee: "Yes"` and leave `commercial` out), artists' own costs like shipping or a visa.
 
 ## 2. Where to look (aim for 5–15 new listings)
 

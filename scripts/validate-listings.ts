@@ -14,7 +14,7 @@ const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const KNOWN_FIELDS = new Set([
   'id', 'title', 'organiser', 'type', 'disciplines', 'format', 'timezone', 'city', 'country', 'region', 'venue',
   'lat', 'lng', 'deadline', 'start_date', 'end_date', 'eligibility', 'entry_fee', 'fee_amount', 'currency',
-  'fee_details', 'selected_fee', 'selected_fee_details', 'commission', 'prizes', 'prize_kinds', 'prize_value',
+  'fee_details', 'selected_fee', 'selected_fee_details', 'selected_fee_amount', 'commercial', 'commission', 'prizes', 'prize_kinds', 'prize_value',
   'apply_url', 'image_url', 'source', 'added',
 ]);
 
@@ -78,6 +78,10 @@ if (!Array.isArray(data)) {
     if (l.entry_fee === 'Paid' && l.fee_amount === 0) fail('entry_fee is "Paid" but fee_amount is 0 (use entry_fee "Free")');
     if (l.entry_fee !== 'Paid' && l.fee_amount !== undefined) fail('fee_amount is only for entry_fee "Paid"');
     if ((l.fee_amount !== undefined || l.prize_value !== undefined) && l.currency === undefined) fail('currency is required when fee_amount or prize_value is set');
+    if (l.selected_fee_amount !== undefined && (typeof l.selected_fee_amount !== 'number' || !(l.selected_fee_amount > 0))) fail('selected_fee_amount must be a number above 0');
+    if (l.selected_fee_amount !== undefined && l.selected_fee !== 'Yes') fail('selected_fee_amount is only for selected_fee "Yes"');
+    if (l.selected_fee_amount !== undefined && l.currency === undefined) fail('currency is required when selected_fee_amount is set');
+    if (l.commercial !== undefined && l.commercial !== true) fail('commercial is either true or left out');
     if (l.selected_fee === 'Yes' && !l.selected_fee_details) fail('selected_fee is "Yes" so selected_fee_details must say what selected artists pay');
     if (l.prize_value !== undefined && Array.isArray(l.prize_kinds) && !l.prize_kinds.includes('Cash')) fail('prize_value is set so prize_kinds must include "Cash"');
     if (Array.isArray(l.prize_kinds) && l.prize_kinds.length && Array.isArray(l.prizes) && !l.prizes.length) fail('prize_kinds is set but prizes is empty: list the prizes');

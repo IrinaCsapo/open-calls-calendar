@@ -91,6 +91,10 @@ export interface Listing {
   fee_details?: string;       // "£15 per work, 3 for £35"
   selected_fee: SelectedFee;  // charged if you're selected (hanging / exhibition / participation fee)
   selected_fee_details?: string; // "£250 to secure wall space" (required when selected_fee is "Yes")
+  selected_fee_amount?: number; // that fee as a number, in `currency`, when there is one amount (for the price tag)
+  /** Run as a business selling opportunities to artists (pay-to-exhibit, paid virtual shows, paid art books or
+   *  awards from commercial operators). Listed in their own "Commercial opportunities" row with a price tag. */
+  commercial?: boolean;
   commission?: string;        // "30% on sales"
 
   prizes: string[];           // each prize as the organiser states it: ["£10,000 first prize", "Solo show in London"]

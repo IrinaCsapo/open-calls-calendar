@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import type { Listing } from '../types/listing';
 import { formatFull, formatShort, isOpportunity, timeLeft } from '../lib/dates';
-import { formatMoney } from '../lib/money';
+import { formatMoney, priceTag } from '../lib/money';
 import { FormatIcon, IconCalendar, IconCheck, IconClock, IconMoney, IconTrophy, IconUnknown, IconWarn } from './Icons';
 
 const NEW_DAYS = 3;
@@ -112,6 +112,7 @@ export function ListingCard({ listing: l, now }: { listing: Listing; now: number
     <article className="card">
       <Media l={l} />
       {isNew(l, now) && <span className="card__new">New</span>}
+      {l.commercial && <span className="card__price"><span className="sr-only">Price: </span>{priceTag(l)}</span>}
 
       <p className="card__kicker">
         <span>{l.type}</span>

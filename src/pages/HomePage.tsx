@@ -73,10 +73,17 @@ export function HomePage() {
   const shown = useMemo(() => sortListings(applyFilters(live, filters, now), filters), [live, filters, now]);
   const grouped = filters.sort === 'closing';
   const near = useMemo(
-    () => (placeSetting === 'off' || filters.places.length ? [] : nearYou(shown, place, coords)),
+    () => (placeSetting === 'off' || filters.places.length ? [] : nearYou(shown.filter((l) => !l.commercial), place, coords)),
     [shown, place, coords, placeSetting, filters.places.length],
   );
-  const firstGroup = GROUPS.find((g) => shown.some((l) => urgencyGroup(l, now) === g.key))?.key;
+  // Free calls and genuine institutions fill the main rows; commercial operators get their own row at the bottom.
+  const main = useMemo(() => shown.filter((l) => !l.commercial), [shown]);
+  const commercial = useMemo(() => shown.filter((l) => l.commercial), [shown]);
+  const commercialRow = commercial.length > 0 && (
+    <ListingRow key="commercial" id="commercial" title="Commercial opportunities" listings={commercial} now={now}
+      note={<>Run as businesses: you pay to enter, or to show if you're selected. The price tag is everything you pay.</>} />
+  );
+  const firstGroup = GROUPS.find((g) => main.some((l) => urgencyGroup(l, now) === g.key))?.key;
   const viewSwitch = (
     <div className="view-switch" role="group" aria-label="View">
       <button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')}>List</button>
@@ -126,14 +133,16 @@ export function HomePage() {
               note={<>{coords ? 'Closest to your location first.' : 'Based on your time zone.'} Change it under <em>More filters</em>.</>} />
           )}
           {GROUPS.map((g) => {
-            const items = shown.filter((l) => urgencyGroup(l, now) === g.key);
+            const items = main.filter((l) => urgencyGroup(l, now) === g.key);
             return items.length ? <ListingRow key={g.key} id={g.key} title={g.label} listings={items} now={now}
               aside={near.length === 0 && g.key === firstGroup ? viewSwitch : undefined} /> : null;
           })}
+          {commercialRow}
         </div>
       ) : (
         <div className="rows">
-          <ListingRow key={filters.sort} id="sorted" title={SORT_LABELS[filters.sort]} listings={shown} now={now} startOpen aside={viewSwitch} />
+          {main.length > 0 && <ListingRow key={filters.sort} id="sorted" title={SORT_LABELS[filters.sort]} listings={main} now={now} startOpen aside={viewSwitch} />}
+          {commercialRow}
         </div>
       )}
     </>

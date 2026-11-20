@@ -2,7 +2,7 @@ import { useMemo, type ReactNode } from 'react';
 import type { Listing } from '../types/listing';
 import { LISTINGS, findListing } from '../lib/listings';
 import { closesAt, formatFull, formatRange, isLive, isOpportunity, timeLeft, useNow } from '../lib/dates';
-import { feeSummary, isTotallyFree } from '../lib/money';
+import { feeSummary, isTotallyFree, priceTag } from '../lib/money';
 import { downloadIcs } from '../lib/ics';
 import { getListHash } from '../lib/useHashRoute';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
@@ -67,6 +67,7 @@ export function ListingPage({ id }: { id: string }) {
             <li className="pill">{l.type}</li>
             {isNew(l, now) && <li className="pill pill--new">New</li>}
             {isTotallyFree(l) && <li className="pill pill--free"><IconCheck />Totally free</li>}
+            {l.commercial && <li className="pill pill--commercial">Commercial</li>}
           </ul>
           <h1 className="listing-page__title">{l.title}</h1>
           <p className="listing-page__org"><span className="sr-only">Organised by </span>{l.organiser}</p>
@@ -82,6 +83,12 @@ export function ListingPage({ id }: { id: string }) {
 
             <section className="listing-section" aria-labelledby="cost-h">
               <h2 id="cost-h">What it costs</h2>
+              {l.commercial && (
+                <p className="commercial-note">
+                  <strong>Commercial opportunity: {priceTag(l)}.</strong> This organiser runs paid exhibitions, publications
+                  or awards as a business. That's why it's listed apart from free calls and established galleries.
+                </p>
+              )}
               <dl className="costs">
                 <CostRow tone={l.entry_fee === 'Free' ? 'good' : l.entry_fee === 'Paid' ? 'paid' : 'unknown'} label={opp ? 'To enter' : 'To attend'}>
                   {l.entry_fee === 'Free' ? 'Free' : l.entry_fee === 'Paid' ? <>{l.fee_details ?? fee.headline}</> : <>Not stated by the organiser.{l.fee_details && ` ${l.fee_details}`}</>}

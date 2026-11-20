@@ -566,7 +566,8 @@
     "apply_url": "https://submit.opencallforartists.com/virtual-exhibition-birds-and-the-art-of-nature/",
     "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP138948.jpg",
     "source": "https://submit.opencallforartists.com/virtual-exhibition-birds-and-the-art-of-nature/",
-    "added": "2026-11-12"
+    "added": "2026-11-12",
+    "commercial": true
   },
   {
     "id": "the-woman-artist-award-7th-edition-2026",
@@ -607,7 +608,8 @@
     "apply_url": "https://apply.artstoheartsproject.com/open-call/the-woman-artist-award-7th-edition",
     "image_url": "https://media.artstoheartsproject.com/uploads/event/1793255752075-trc5zo.png",
     "source": "https://apply.artstoheartsproject.com/open-call/the-woman-artist-award-7th-edition",
-    "added": "2026-11-12"
+    "added": "2026-11-12",
+    "commercial": true
   },
   {
     "id": "101-art-book-garden-edition-2026",
@@ -644,7 +646,8 @@
     "apply_url": "https://apply.artstoheartsproject.com/open-call/101-art-book-garden-edition",
     "image_url": "https://media.artstoheartsproject.com/uploads/event/1794396056705-lkgw7m.jpg",
     "source": "https://apply.artstoheartsproject.com/open-call/101-art-book-garden-edition",
-    "added": "2026-11-12"
+    "added": "2026-11-12",
+    "commercial": true
   },
   {
     "id": "john-ruskin-prize-2026",
@@ -964,8 +967,10 @@
     "eligibility": "Contemporary artists worldwide; one artwork",
     "entry_fee": "Free",
     "fee_details": "Free to apply",
+    "currency": "EUR",
     "selected_fee": "Yes",
     "selected_fee_details": "€30 participation fee if selected. Printed catalogue is a separate optional purchase",
+    "selected_fee_amount": 30,
     "prizes": [
       "Publication in the official bilingual catalogue",
       "Artwork published on diversamentearte.com",
@@ -980,7 +985,8 @@
     "apply_url": "https://www.curatorspace.com/opportunities/detail/diversamente-art-prize--autumn-edition/11188",
     "image_url": "https://s3.eu-west-1.amazonaws.com/curatorspace.com/89297/opportunity/11188/image/db4dbad74d35d36d77d74d34d348e9.jpg",
     "source": "https://www.curatorspace.com/opportunities/detail/diversamente-art-prize--autumn-edition/11188",
-    "added": "2026-11-12"
+    "added": "2026-11-12",
+    "commercial": true
   },
   {
     "id": "the-inner-city-shanghai-2026",
@@ -1003,8 +1009,10 @@
     "eligibility": "International emerging and mid-career artists who can arrange delivery of their work; small-format painting, drawing and works on paper",
     "entry_fee": "Free",
     "fee_details": "No submission fee listed on the application page",
+    "currency": "GBP",
     "selected_fee": "Yes",
     "selected_fee_details": "£170 / €200 'exhibition participation contribution' if selected, plus shipping to Shanghai and back at your cost",
+    "selected_fee_amount": 170,
     "prizes": [
       "Group exhibition in Shanghai, second half of December 2026",
       "Instagram feature",
@@ -1017,7 +1025,8 @@
     "apply_url": "https://www.curatorspace.com/opportunities/detail/open-call-the-inner-city--exhibition-in-shanghai-china-december---small-formats/11339",
     "image_url": "https://s3.eu-west-1.amazonaws.com/curatorspace.com/78308/opportunity/11339/image/20c1bae78e63a6.jpg",
     "source": "https://www.curatorspace.com/opportunities/detail/open-call-the-inner-city--exhibition-in-shanghai-china-december---small-formats/11339",
-    "added": "2026-11-12"
+    "added": "2026-11-12",
+    "commercial": true
   },
   {
     "id": "san-rafael-temporary-sculpture-exhibition-2027",
@@ -1076,8 +1085,10 @@
     "eligibility": "All visual artists worldwide; 2D and 3D work in any medium",
     "entry_fee": "Free",
     "fee_details": "No submission fee (up to 10 works)",
+    "currency": "USD",
     "selected_fee": "Yes",
     "selected_fee_details": "US$40 selection fee if selected (US$34 early bird); refundable until the exhibition opens",
+    "selected_fee_amount": 40,
     "prizes": [
       "Two-month online group exhibition",
       "Catalogue",
@@ -1094,7 +1105,8 @@
     "apply_url": "https://artist.callforentry.org/agreetoterms.php?ID=18469",
     "image_url": "https://artist.callforentry.org/fair_logos/18469.jpeg",
     "source": "https://opportunities.wearecreativewest.org/opportunity/18469/CAFE",
-    "added": "2026-11-12"
+    "added": "2026-11-12",
+    "commercial": true
   },
   {
     "id": "talents-contemporains-water-16th-edition-2026",
@@ -1819,8 +1831,8 @@
     "entry_fee": "Free",
     "currency": "USD",
     "fee_details": "Free to enter. Deadline 07:00 AM CST on 15 December 2026",
-    "selected_fee": "Yes",
-    "selected_fee_details": "Shortlisted filmmakers get flights and accommodation for the Los Angeles programme, but must get and pay for their own US visa; guests pay their own travel",
+    "selected_fee": "None",
+    "selected_fee_details": "Shortlisted filmmakers get flights and accommodation for the Los Angeles programme, but get and pay for their own US visa",
     "prizes": [
       "USD 5,000 each for Fiction, Non-Fiction, Animation and Immersive winners",
       "USD 2,500 Future Format winner",

@@ -96,3 +96,21 @@ export function feeSummary(l: Listing): FeeSummary {
 /** Totally free: nothing to pay to enter, and nothing to pay if selected. */
 export const isTotallyFree = (l: Listing) =>
   l.entry_fee === 'Free' && (!isOpportunity(l) || l.selected_fee === 'None');
+
+/**
+ * The price tag on a commercial listing: everything you pay, in the organiser's currency.
+ * "US$21 to enter", "£170 if selected", "US$12 to enter + US$40 if selected", "Free to enter + pay if selected".
+ */
+export function priceTag(l: Listing): string {
+  const parts: string[] = [];
+  if (l.entry_fee === 'Paid' && l.fee_amount !== undefined && l.currency) parts.push(`${formatMoney(l.fee_amount, l.currency)} to enter`);
+  else if (l.entry_fee === 'Paid') parts.push('Paid entry');
+  else if (l.entry_fee === 'Unknown') parts.push('Entry fee not stated');
+  if (l.selected_fee === 'Yes') {
+    parts.push(l.selected_fee_amount !== undefined && l.currency ? `${formatMoney(l.selected_fee_amount, l.currency)} if selected` : 'pay if selected');
+  }
+  if (!parts.length) return 'Free';
+  if (l.entry_fee === 'Free' && parts[0] === 'pay if selected') return 'Free to enter + pay if selected';
+  const s = parts.join(' + ');
+  return s[0].toUpperCase() + s.slice(1);
+}

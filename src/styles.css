@@ -545,3 +545,11 @@ main:focus { outline: none; }
   .subscribe-box__small { grid-column: 1; margin-left: 0; }
   .subscribe-box__form { padding-left: 1rem; }
 }
+
+/* Commercial opportunities: their own row at the bottom of the home page, with a price tag on the image */
+.card__price { position: absolute; top: 10px; right: 10px; z-index: 1; max-width: calc(100% - 20px); padding: 0.2rem 0.65rem; border-radius: 999px;
+  background: var(--caution-bg); color: var(--caution-fg); font-size: 0.78rem; font-weight: 700; line-height: 1.35;
+  box-shadow: 0 2px 8px -2px rgba(31, 52, 86, 0.25); pointer-events: none; }
+.card__new + .card__price, .card__price { text-align: right; }
+.pill--commercial { background: var(--caution-bg); color: var(--caution-fg); }
+.commercial-note { margin: 0 0 1rem; padding: 0.85rem 1rem; border-radius: var(--radius); background: var(--caution-bg); color: var(--caution-fg); }

@@ -98,6 +98,8 @@ The model and allowed values live in [`src/types/listing.ts`](src/types/listing.
 | `fee_details` | Full structure: `"£15 per work, 3 for £35"` |
 | `selected_fee` | `None`, `Yes` (then `selected_fee_details`: `"£250 hanging fee"`), `Unknown` |
 | `commission` | `"30% on sales"` |
+| `commercial` | `true` for businesses selling opportunities to artists (pay-to-exhibit, paid virtual shows, art books, awards). They get their own **Commercial opportunities** row at the bottom of the home page, with a price tag on each card; free calls and genuine institutions fill the rows above |
+| `selected_fee_amount` | The fee if selected as a number, in `currency` (for the price tag: "£170 if selected") |
 | `prizes` | Each prize as stated: `["£10,000 first prize", "Solo show"]`; `prize_kinds`, and `prize_value` (largest cash prize) for sorting |
 | `region` | Europe, UK, North America, LatAm, Africa, Asia, Middle East, Oceania, Global |
 
