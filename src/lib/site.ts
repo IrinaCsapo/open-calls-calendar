@@ -15,6 +15,6 @@ export const REPORT_URL = (id: string, title: string) =>
 /** Subscribe-able calendar of every deadline, generated at build time by scripts/build-feed.ts */
 export const FEED_PATH = 'deadlines.ics';
 /** Buttondown newsletter username (buttondown.com/<username>). The sign-up box stays hidden while this is empty. */
-export const BUTTONDOWN_USERNAME = '';
+export const BUTTONDOWN_USERNAME = 'irinacsapo';
 /** Where people can reach us (forwards to Irina's inbox). */
 export const CONTACT_EMAIL = 'hello@magpie.cool';
