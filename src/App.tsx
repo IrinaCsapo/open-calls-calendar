@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { ListingPage } from './pages/ListingPage';
 import { SubmitPage } from './pages/SubmitPage';
@@ -43,6 +43,19 @@ export function App() {
   else page = <NotFoundPage />;
 
   // On page change (not filter changes): scroll to top and focus the new h1 for screen readers.
+  // Phones: the links live in a drop-down menu. It closes on navigation, Escape, or a tap outside it.
+  const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => { setMenuOpen(false); }, [path]);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMenuOpen(false); document.getElementById('menu-toggle')?.focus(); } };
+    const onTap = (e: PointerEvent) => { if (!headerRef.current?.contains(e.target as Node)) setMenuOpen(false); };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onTap);
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onTap); };
+  }, [menuOpen]);
+
   const previousPath = useRef(path);
   useEffect(() => {
     if (previousPath.current === path) return;
@@ -58,14 +71,22 @@ export function App() {
         Skip to content
       </a>
       <div className="today-strip"><TodayBar /></div>
-      <header className="site-header">
+      <header className={`site-header${menuOpen ? ' is-menu-open' : ''}`} ref={headerRef}>
         <a href="/" className="site-name">
           <img className="site-name__logo" src={logo} alt={SITE_NAME} width="640" height="203" />
         </a>
-        <nav aria-label="Main" className="site-nav">
-          <a href="/" aria-current={path === '/' || (listingMatch && !exhibitionPage) || path.startsWith('/open-calls') ? 'page' : undefined}>Open calls</a>
-          <a href="/exhibitions" aria-current={path === '/exhibitions' || exhibitionPage ? 'page' : undefined}>Exhibitions</a>
-          <a href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
+        <button type="button" id="menu-toggle" className="menu-toggle" aria-expanded={menuOpen} aria-controls="site-nav"
+          onClick={() => setMenuOpen(!menuOpen)}>
+          <span className="sr-only">{menuOpen ? 'Close menu' : 'Menu'}</span>
+          <span className="menu-toggle__lines" aria-hidden="true"><span /><span /><span /></span>
+        </button>
+        <nav aria-label="Main" id="site-nav" className="site-nav">
+          <a style={{ '--i': 0 } as React.CSSProperties} href="/" aria-current={path === '/' || (listingMatch && !exhibitionPage) || path.startsWith('/open-calls') ? 'page' : undefined}>Open calls</a>
+          <a style={{ '--i': 1 } as React.CSSProperties} href="/exhibitions" aria-current={path === '/exhibitions' || exhibitionPage ? 'page' : undefined}>Exhibitions</a>
+          <a style={{ '--i': 2 } as React.CSSProperties} href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
+          <a style={{ '--i': 3 } as React.CSSProperties} href="/submit" className="site-nav__menu-submit" aria-current={path === '/submit' ? 'page' : undefined}>
+            Submit an open call <span aria-hidden="true">→</span>
+          </a>
         </nav>
         <a href="/submit" className="site-nav__submit" aria-current={path === '/submit' ? 'page' : undefined}>
           Submit <span className="site-nav__long">an open call</span>
