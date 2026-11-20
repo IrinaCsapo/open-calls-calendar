@@ -26,6 +26,7 @@ export const NEWSLETTER_FORM_URL =
  * its "action" link, like NEWSLETTER_FORM_URL. The "Email me before it closes" box on listings stays hidden while
  * this is empty. scripts/reminders.ts sends the reminders. Setup: docs/brevo-setup.md.
  */
-export const REMINDER_FORM_URL = '';
+export const REMINDER_FORM_URL =
+  'https://e858efc7.sibforms.com/serve/MUIFABspnl_ZEZJ-v8QAeDYl2n336Rup1DPIM2sjcp9PS4bS_EO_tFjWDIefdLTgeHv7dQcVCr00y906yuTqcryQEA-GueJW6Z1shdlmleooHJJkNCKoVTF-Z_mr8MnAwGv8cu5f6IF3GP2Nz8Z--ymIsdsLubhxQhGeuk91ouWRs-JjEk37pEOQ7vs_XuWZp0xWyTUrtgEI8ZIbcw==';
 /** Where people can reach us (forwards to Irina's inbox). */
 export const CONTACT_EMAIL = 'hello@magpie.cool';
