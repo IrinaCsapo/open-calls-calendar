@@ -274,7 +274,7 @@ page('exhibitions', {
     { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Exhibitions to see', url: `${SITE_URL}exhibitions`, dateModified: TODAY, mainEntity: itemList([...SHOWS_NOW, ...SHOWS_SOON]) },
     breadcrumbs([{ name: 'Exhibitions', path: '/exhibitions' }]),
   ],
-  body: `${nav}<h1>Exhibitions to see, on now and coming up</h1>
+  body: `${nav}<h1>Exhibitions to see</h1>
     <p>Open exhibitions, prize shows, galleries and museums worth a visit for artists, with the dates, the price of a ticket,
     and free talks and late openings. Updated ${formatFull(TODAY)}.</p>
     ${SHOWS_NOW.length ? `<h2>On now</h2>${listingItems(SHOWS_NOW)}` : ''}

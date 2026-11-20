@@ -80,10 +80,9 @@ export function ExhibitionsPage() {
   return (
     <div className="exhibitions">
       <header className="submit__head collection__head">
-        <p className="about-eyebrow">Exhibitions</p>
-        <h1>Exhibitions to see, on now and coming up</h1>
-        <p className="about-lede">Open exhibitions, prize shows, galleries and museums worth a visit, with the dates, the price
-          of a ticket, and free talks and late openings. Search by city, gallery or artist.</p>
+        <p className="about-eyebrow">On now and coming up</p>
+        <h1>Exhibitions to see</h1>
+        <p className="about-lede">Open exhibitions, prize shows and galleries worth a visit, with ticket prices and free talks.</p>
       </header>
 
       <form className="filterbar" role="search" aria-label="Find exhibitions" onSubmit={(e) => { e.preventDefault(); document.getElementById('ex-results')?.scrollIntoView({ behavior: 'smooth' }); }}>
@@ -98,7 +97,7 @@ export function ExhibitionsPage() {
             <button type="button" role="switch" aria-checked={free} className={`free-switch${free ? ' is-on' : ''}`}
               onClick={() => { setFree(!free); sync({ free: !free }); }}>
               <span className="free-switch__track" aria-hidden="true"><span className="free-switch__thumb" /></span>
-              <span className="free-switch__label">Free entry</span>
+              <span className="free-switch__label">Free<span className="free-switch__sub"> entry</span></span>
             </button>
             <span className="quickbar__divider" aria-hidden="true" />
             <label className="where">
@@ -132,11 +131,11 @@ export function ExhibitionsPage() {
           </div>
         )}
         {near.length > 0 && (
-          <ListingRow key={`near-${!!coords}`} id="ex-near" title={coords ? 'Near you' : `Near you · ${myPlace}`} listings={near} now={now}
-            note={coords ? 'Closest first.' : 'Based on your time zone.'} />
+          <ListingRow key={`near-${!!coords}`} id="ex-near" title="Near you" listings={near} now={now} noun="exhibition"
+            note={coords ? 'Closest first.' : `In and around ${myPlace === 'UK' || myPlace === 'US' ? `the ${myPlace}` : myPlace}, from your time zone.`} />
         )}
-        {onNow.length > 0 && <ListingRow key={`now-${filtered}`} id="ex-now" title="On now" listings={onNow} now={now} startOpen={filtered} note="Ending soonest first." />}
-        {soon.length > 0 && <ListingRow key={`soon-${filtered}`} id="ex-soon" title="Opening soon" listings={soon} now={now} startOpen={filtered} />}
+        {onNow.length > 0 && <ListingRow key={`now-${filtered}`} id="ex-now" title="On now" listings={onNow} now={now} noun="exhibition" startOpen={filtered} note="Ending soonest first." />}
+        {soon.length > 0 && <ListingRow key={`soon-${filtered}`} id="ex-soon" title="Opening soon" listings={soon} now={now} noun="exhibition" startOpen={filtered} />}
       </div>
 
       <p className="exhibitions__submit">Know an exhibition artists should see? <a href="/submit">Tell us about it</a>.</p>

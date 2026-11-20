@@ -24,8 +24,8 @@ function useColumns() {
 }
 
 /** A section like "Closing this week": serif title, "18 listings · View all", then a row of cards. */
-export function ListingRow({ id, title, listings, now, startOpen = false, note, aside }: {
-  id: string; title: string; listings: Listing[]; now: number; startOpen?: boolean; note?: ReactNode;
+export function ListingRow({ id, title, listings, now, startOpen = false, note, aside, noun = 'listing' }: {
+  id: string; title: string; listings: Listing[]; now: number; startOpen?: boolean; note?: ReactNode; noun?: string;
   aside?: ReactNode;   // shown at the right of the heading line (the List / Calendar switch on the first row)
 }) {
   const [open, setOpen] = useState(startOpen);
@@ -37,7 +37,7 @@ export function ListingRow({ id, title, listings, now, startOpen = false, note, 
       <div className="row__head">
         <h2 id={`row-${id}`} className="row__title">
           {title}
-          <span className="row__count"><span className="sr-only">, </span>{listings.length} {listings.length === 1 ? 'listing' : 'listings'}</span>
+          <span className="row__count"><span className="sr-only">, </span>{listings.length} {listings.length === 1 ? noun : `${noun}s`}</span>
         </h2>
         {more && (
           <button type="button" className="row__toggle" aria-expanded={open} aria-controls={`row-list-${id}`} onClick={() => setOpen(!open)}>
