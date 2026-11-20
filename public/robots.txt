@@ -1,4 +1,23 @@
+# Magpie welcomes search engines and AI assistants: the more places artists can find open calls (and their fees), the better.
 User-agent: *
 Allow: /
 
+# AI search and assistants, named so it's clear they're welcome
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://magpie.cool/sitemap.xml
+# A plain-text guide for AI tools: https://magpie.cool/llms.txt

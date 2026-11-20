@@ -13,6 +13,7 @@ import { ShareLink } from '../components/ShareLink';
 import { NotFoundPage } from './NotFoundPage';
 import { FormatIcon, IconFlag, IconBuilding, IconCalendar, IconCheck, IconClock, IconGlobe, IconMoney, IconSwatch, IconTicket, IconUnknown, IconUsers, IconWarn } from '../components/Icons';
 import { perks } from '../lib/perks';
+import { collectionUrl, collectionsFor } from '../lib/collections';
 
 
 /** Up to 4 other open listings that share a discipline (closing soonest), topped up with the same type. */
@@ -200,6 +201,15 @@ export function ListingPage({ id }: { id: string }) {
           <ListingRow id="related" title="More like this" listings={related} now={now} />
         </div>
       )}
+      <nav className="browse browse--listing" aria-label="More open calls like this">
+        <section className="browse__group">
+          <h2>Browse more</h2>
+          <ul>
+            {collectionsFor(l).map((c) => <li key={c.slug}><a href={collectionUrl(c)}>{c.title}</a></li>)}
+            <li><a href="/open-calls">Everything, by discipline and place</a></li>
+          </ul>
+        </section>
+      </nav>
     </>
   );
 }

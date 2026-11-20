@@ -25,6 +25,9 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Magpie","url":"https://magpie.cool/","description":"Open calls, prizes, residencies and events for artists worldwide, with every fee shown up front."}</script>
     <!-- Umami analytics: cookieless, no personal data; only counts visits on the live domain -->
     <script defer src="https://irina-umami.vercel.app/script.js" data-website-id="989d2fca-96aa-4abf-b740-9fe85ba928e6" data-domains="magpie.cool"></script>
+    <!-- the page's text is written into #root for crawlers without JavaScript; hide it while the app starts -->
+    <script>document.documentElement.classList.add('js')</script>
+    <style>.js .prerender{display:none}</style>
     <title>Magpie: open calls for artists, every fee up front</title>
   </head>
   <body>

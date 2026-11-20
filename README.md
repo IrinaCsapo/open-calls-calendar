@@ -80,10 +80,19 @@ Goudy, the deadline, fee pills, the top prize and the logo, with a little grain 
 Fonts are in `scripts/fonts/` (OFL). If an image can't be fetched the card is drawn without it. Check a design change
 with `npx tsx scripts/build-og.ts <id>` and open `dist/og/<id>.jpg`. The home and About pages use `public/og-image.jpg`.
 
-## Google
+## Search engines and AI answer engines
 
-The build writes `sitemap.xml` (every open listing plus the main pages), and `public/robots.txt` points to it. Every page
-has a canonical address, and events carry schema.org `Event` data for Google's event results.
+`scripts/build-pages.ts` writes a real HTML file for every page, with the page's text inside `<div id="root">` (AI
+crawlers and link-preview bots don't run JavaScript; the app replaces that text as it starts). It also writes:
+
+- **Browse pages**: `/open-calls` and one page per kind, discipline and place (`/open-calls/free`, `/open-calls/photography`,
+  `/open-calls/uk`…), defined in `src/lib/collections.ts`. Listings link to the ones they belong to.
+- **FAQ** (`/faq`, text in `src/lib/faq.ts`) with `FAQPage` data, plus `Organization`, `CollectionPage`, `BreadcrumbList`
+  and `Event` structured data.
+- `sitemap.xml`, `llms.txt` and `llms-full.txt` (plain-text guides for AI tools), and `open-calls.json`.
+
+`public/robots.txt` welcomes search engines and AI assistants by name. The site rebuilds every night, and after each
+deploy new and changed pages are sent to IndexNow (Bing, which ChatGPT search and Copilot use).
 
 ## The daily scout (7:00 London)
 

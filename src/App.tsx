@@ -9,6 +9,9 @@ import { SubscribedPage } from './pages/SubscribedPage';
 import { SubscribeBox } from './components/SubscribeBox';
 import { SubscribePage } from './pages/SubscribePage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { FaqPage } from './pages/FaqPage';
+import { CollectionPage, CollectionsHubPage } from './pages/CollectionPage';
+import { findCollection } from './lib/collections';
 import { useHashRoute, useLinkInterceptor } from './lib/useHashRoute';
 import { SITE_NAME } from './lib/site';
 import { TodayBar } from './components/TodayBar';
@@ -19,6 +22,7 @@ export function App() {
   const { path } = useHashRoute();
   useLinkInterceptor();
   const listingMatch = path.match(/^\/listing\/([a-z0-9-]+)\/?$/);
+  const collection = findCollection(path.match(/^\/open-calls\/([a-z0-9-]+)\/?$/)?.[1] ?? '');
 
   let page;
   if (path === '/') page = <HomePage />;
@@ -29,6 +33,9 @@ export function App() {
   else if (path === '/privacy') page = <PrivacyPage />;
   else if (path === '/subscribed') page = <SubscribedPage />;
   else if (path === '/subscribe') page = <SubscribePage />;
+  else if (path === '/faq') page = <FaqPage />;
+  else if (path === '/open-calls' || path === '/open-calls/') page = <CollectionsHubPage />;
+  else if (collection) page = <CollectionPage key={collection.slug} c={collection} />;
   else page = <NotFoundPage />;
 
   // On page change (not filter changes): scroll to top and focus the new h1 for screen readers.
@@ -52,7 +59,7 @@ export function App() {
           <img className="site-name__logo" src={logo} alt={SITE_NAME} width="640" height="203" />
         </a>
         <nav aria-label="Main" className="site-nav">
-          <a href="/" aria-current={path === '/' || path.startsWith('/listing/') ? 'page' : undefined}>Events</a>
+          <a href="/" aria-current={path === '/' || path.startsWith('/listing/') || path.startsWith('/open-calls') ? 'page' : undefined}>Events</a>
           <a href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
           <a href="/submit" className="site-nav__submit" aria-current={path === '/submit' ? 'page' : undefined}>
             Submit <span className="site-nav__long">an open call</span>
@@ -63,6 +70,9 @@ export function App() {
       {path !== '/submit' && path !== '/start' && path !== '/subscribed' && <div className="subscribe-wrap"><SubscribeBox /></div>}
       <footer className="site-footer">
         <nav className="site-footer__links" aria-label="More">
+          <a href="/open-calls">Browse by discipline and place</a>
+          <a href="/open-calls/free">Free open calls</a>
+          <a href="/faq">FAQ</a>
           <a href="/about">How we label fees</a>
           <a href="/start">Tell us what you make</a>
           <a href="/privacy">Privacy</a>

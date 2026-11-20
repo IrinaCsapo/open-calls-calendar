@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '23 0 * * *'   # every night just after midnight: drops closed calls and refreshes dates, even on days with no new listings
   workflow_dispatch:
 
 permissions:
@@ -38,3 +40,29 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Tell Bing (and through it ChatGPT search, Copilot and DuckDuckGo) and Yandex about new and changed pages straight
+  # away, using IndexNow. The key is public on purpose: it's the file public/0c6b8f66548fbc32ee6996b05940163f.txt.
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send changed pages to IndexNow
+        run: |
+          sleep 30
+          curl -fsS https://magpie.cool/sitemap.xml -o sitemap.xml
+          python3 - <<'PY'
+          import datetime, json, re, urllib.request
+          since = (datetime.date.today() - datetime.timedelta(days=2)).isoformat()
+          xml = open('sitemap.xml').read()
+          urls = [u for u, m in re.findall(r'<loc>([^<]+)</loc>(?:<lastmod>([^<]+)</lastmod>)?', xml) if m and m >= since]
+          print(f'{len(urls)} new or changed pages')
+          if urls:
+              body = json.dumps({'host': 'magpie.cool', 'key': '0c6b8f66548fbc32ee6996b05940163f',
+                                 'keyLocation': 'https://magpie.cool/0c6b8f66548fbc32ee6996b05940163f.txt', 'urlList': urls}).encode()
+              req = urllib.request.Request('https://api.indexnow.org/indexnow', body, {'Content-Type': 'application/json; charset=utf-8'})
+              try:
+                  print('IndexNow answered', urllib.request.urlopen(req).status)
+              except Exception as e:
+                  print('IndexNow failed (not fatal):', e)
+          PY

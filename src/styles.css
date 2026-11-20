@@ -632,3 +632,22 @@ main:focus { outline: none; }
 @media (max-width: 48rem) { .subscribed__what { grid-template-columns: minmax(0, 1fr); } }
 .subscribe-box__small a { color: var(--muted); text-underline-offset: 0.2em; }
 .subscribe-box__eyebrow { margin: 0 0 0.4rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* ---- Browse pages (/open-calls, /open-calls/<slug>) and FAQ ---- */
+.collection__head { max-width: 820px; padding-top: clamp(1rem, 3vw, 2.5rem); }
+.collection__head .about-eyebrow a { color: inherit; }
+.collection__empty { margin: 0; color: var(--muted); }
+.browse { display: grid; gap: 2rem; margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--line, #e4e1d8); }
+.browse__group h2 { margin: 0 0 0.75rem; font-size: clamp(1.4rem, 1.2vw + 1rem, 1.8rem); }
+.browse__group ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.browse__group a { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.45rem 0.85rem; border-radius: 999px;
+  background: #fff; border: 1px solid var(--line, #e4e1d8); color: inherit; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+.browse__group a:hover { border-color: currentColor; }
+.browse__group a[aria-current="page"] { background: #1f3456; border-color: #1f3456; color: #fff; }
+.browse__n { font-weight: 400; color: var(--muted); font-size: 0.85rem; }
+.browse__group a[aria-current="page"] .browse__n { color: #c9d3e6; }
+.faq section h2 { font-size: clamp(1.35rem, 1.2vw + 1rem, 1.75rem); }
+/* The page's text, written into the HTML for crawlers that don't run JavaScript; the app replaces it. */
+.js .prerender { display: none; }
+.prerender { max-width: 820px; margin: 0 auto; padding: 1.5rem 1rem 3rem; font-family: Inter, system-ui, sans-serif; line-height: 1.5; color: #1f3456; }
+.browse--listing { margin-top: 3rem; }
