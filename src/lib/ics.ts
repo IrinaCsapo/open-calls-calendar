@@ -41,12 +41,13 @@ function feeLine(l: Listing): string {
 const alarm = (trigger: string, text: string) =>
   ['BEGIN:VALARM', 'ACTION:DISPLAY', `TRIGGER:${trigger}`, `DESCRIPTION:${escapeText(text)}`, 'END:VALARM'];
 
-/** One all-day VEVENT: the deadline for opportunities, the event dates for events. */
-function vevent(l: Listing, pageUrl: string, alarms = false): string[] {
+/** What goes in a calendar entry for a listing: the deadline for opportunities, the event dates for events. */
+function entry(l: Listing, pageUrl: string) {
   const deadlineEntry = isOpportunity(l) || !l.start_date;
   const start = deadlineEntry ? l.deadline! : l.start_date!;
   const end = deadlineEntry ? l.deadline! : (l.end_date ?? l.start_date!);
   const where = l.format === 'Online' ? 'Online' : [l.venue, l.city, l.country].filter(Boolean).join(', ');
+  const title = deadlineEntry ? `Deadline: ${l.title}` : l.title;
   const description = [
     `${l.type} by ${l.organiser}.`,
     feeLine(l),
@@ -55,13 +56,36 @@ function vevent(l: Listing, pageUrl: string, alarms = false): string[] {
     `Apply / register: ${l.apply_url}`,
     `Details: ${pageUrl}`,
   ].filter(Boolean).join('\n');
+  return { deadlineEntry, start, end, where, title, description };
+}
+
+/** "Add to calendar" links for Google, Outlook.com and Microsoft 365 (all-day; Apple uses the .ics download). */
+export function calendarLinks(l: Listing, pageUrl: string) {
+  const e = entry(l, pageUrl);
+  const q = (o: Record<string, string>) => new URLSearchParams(o).toString();
+  const outlook = (host: string) => `https://${host}/calendar/0/deeplink/compose?${q({
+    path: '/calendar/action/compose', rru: 'addevent', subject: e.title, startdt: e.start, enddt: nextDay(e.end),
+    allday: 'true', body: e.description, location: e.where,
+  })}`;
+  return {
+    google: `https://calendar.google.com/calendar/render?${q({
+      action: 'TEMPLATE', text: e.title, dates: `${compact(e.start)}/${compact(nextDay(e.end))}`, details: e.description, location: e.where,
+    })}`,
+    outlook: outlook('outlook.live.com'),
+    office: outlook('outlook.office.com'),
+  };
+}
+
+/** One all-day VEVENT: the deadline for opportunities, the event dates for events. */
+function vevent(l: Listing, pageUrl: string, alarms = false): string[] {
+  const { deadlineEntry, start, end, where, description } = entry(l, pageUrl);
   return [
     'BEGIN:VEVENT',
     `UID:${l.id}@open-calls-calendar`,
     `DTSTAMP:${stamp()}`,
     `DTSTART;VALUE=DATE:${compact(start)}`,
     `DTEND;VALUE=DATE:${compact(nextDay(end))}`,
-    `SUMMARY:${escapeText(deadlineEntry ? `Deadline: ${l.title}` : l.title)}`,
+    `SUMMARY:${escapeText(entry(l, pageUrl).title)}`,
     `LOCATION:${escapeText(where)}`,
     `DESCRIPTION:${escapeText(description)}`,
     `URL:${l.apply_url}`,

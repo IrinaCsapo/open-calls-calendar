@@ -19,9 +19,9 @@ export function ShareLink({ title }: { title: string }) {
   return (
     <>
       <button type="button" className="button button--secondary" onClick={share}>
-        <IconLink />Share this listing
+        <IconLink />Copy link to this call
       </button>
-      <p className="listing-panel__status" role="status">{message}</p>
+      <p className="save-card__status" role="status">{message}</p>
     </>
   );
 }

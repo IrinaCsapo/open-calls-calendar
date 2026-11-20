@@ -3,16 +3,16 @@ import type { Listing } from '../types/listing';
 import { LISTINGS, findListing } from '../lib/listings';
 import { closesAt, formatFull, formatRange, isLive, isOpportunity, timeLeft, useNow } from '../lib/dates';
 import { feeSummary, isTotallyFree, priceTag } from '../lib/money';
-import { downloadIcs } from '../lib/ics';
+import { calendarLinks, downloadIcs } from '../lib/ics';
 import { getListHash } from '../lib/useHashRoute';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
-import { REPORT_URL } from '../lib/site';
+import { REPORT_URL, SITE_URL } from '../lib/site';
 import { Placeholder, isNew, place, wash } from '../components/ListingCard';
 import { ListingRow } from '../components/ListingRow';
 import { ShareLink } from '../components/ShareLink';
 import { ReminderBox } from '../components/ReminderBox';
 import { NotFoundPage } from './NotFoundPage';
-import { FormatIcon, IconFlag, IconBuilding, IconCalendar, IconCheck, IconClock, IconGlobe, IconMoney, IconSwatch, IconTicket, IconUnknown, IconUsers, IconWarn } from '../components/Icons';
+import { FormatIcon, IconFlag, IconBuilding, IconCalendar, IconCheck, IconClock, IconGlobe, IconMoney, IconPin, IconSwatch, IconTicket, IconUnknown, IconUsers, IconWarn } from '../components/Icons';
 import { perks } from '../lib/perks';
 import { collectionUrl, collectionsFor } from '../lib/collections';
 
@@ -68,10 +68,13 @@ export function ListingPage({ id }: { id: string }) {
   const gets = perks(l);
   const where = l.format === 'Online' ? place(l) : [l.venue, l.city, l.country].filter(Boolean).join(', ');
 
+  const cal = calendarLinks(l, `${SITE_URL}listing/${l.id}`);
+  const feeTone = fee.tone === 'free' ? 'free' : fee.tone === 'caution' ? 'caution' : fee.tone === 'paid' ? 'paid' : 'unknown';
+
   return (
     <>
       <article className="listing-page">
-        <p className="listing-page__back"><a href={getListHash()}><span aria-hidden="true">← </span>Back to all events</a></p>
+        <p className="listing-page__back"><a href={getListHash()}><span aria-hidden="true">← </span>Back to all open calls</a></p>
 
         {!live && (
           <p className="notice" role="note">
@@ -79,26 +82,43 @@ export function ListingPage({ id }: { id: string }) {
           </p>
         )}
 
-        <header className="listing-page__header">
-          <ul className="card__pills" aria-label="Status">
-            <li className={`pill pill--time pill--${left.urgency}`}><IconClock />{left.label}</li>
-            <li className="pill">{l.type}</li>
-            {isNew(l, now) && <li className="pill pill--new">New</li>}
-            {isTotallyFree(l) && <li className="pill pill--free"><IconCheck />Totally free</li>}
-            {l.commercial && <li className="pill pill--commercial">Commercial</li>}
-          </ul>
-          <h1 className="listing-page__title">{l.title}</h1>
-          <p className="listing-page__org"><span className="sr-only">Organised by </span>{l.organiser}</p>
-        </header>
+        {/* The hero: everything you need to decide, and the button */}
+        <section className="lhero" aria-labelledby="listing-title">
+          <div className="lhero__text">
+            <ul className="lhero__pills" aria-label="At a glance">
+              <li className="pill pill--type">{l.type}</li>
+              <li className="pill pill--plain"><FormatIcon format={l.format} />{l.format}</li>
+              {isTotallyFree(l)
+                ? <li className="pill pill--free-fill"><IconCheck />Totally free</li>
+                : <li className={`pill pill--${feeTone}`}>{fee.headline}</li>}
+              {opp && l.selected_fee === 'Yes' && !l.commercial && <li className="pill pill--caution"><IconWarn />Pay if selected</li>}
+              {l.commercial && <li className="pill pill--commercial">Commercial · {priceTag(l)}</li>}
+              {isNew(l, now) && <li className="pill pill--new">New</li>}
+            </ul>
+            <h1 id="listing-title" className="lhero__title">{l.title}</h1>
+            <p className="lhero__org">by {l.organiser}</p>
+            <ul className="lhero__facts" aria-label="Key facts">
+              <li><IconCalendar />{opp && l.deadline ? <>Closes {formatFull(l.deadline)}</> : formatRange(l.start_date!, l.end_date)}</li>
+              <li><IconPin />{place(l)}</li>
+              <li><IconTicket />{fee.headline}</li>
+            </ul>
+            {live && (
+              <a className="button lhero__apply" href={l.apply_url} target="_blank" rel="noopener noreferrer">
+                {opp ? 'Apply' : 'Register'} <span aria-hidden="true">↗</span><span className="sr-only"> on the organiser's site (opens in a new tab)</span>
+              </a>
+            )}
+            <p className={`lhero__left lhero__left--${left.urgency}`}><IconClock />{left.label}</p>
+            <p className="lhero__note">{opp ? 'You apply' : 'You register'} on the organiser’s site. Magpie is free and never asks for your details.</p>
+          </div>
+          <div className={`lhero__media${l.image_url ? '' : ' lhero__media--wash'}`} style={{ background: wash(l.id, true) }}>
+            {l.image_url
+              ? <img src={l.image_url} alt="" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+              : <Placeholder l={l} />}
+          </div>
+        </section>
 
         <div className="listing-page__layout">
           <div className="listing-page__main">
-            <div className={`listing-page__media${l.image_url ? '' : ' listing-page__media--wash'}`} style={l.image_url ? { background: wash(l.id, true) } : undefined}>
-              {l.image_url
-                ? <img src={l.image_url} alt="" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                : <Placeholder l={l} />}
-            </div>
-
             <section className="listing-section" aria-labelledby="gtk-h">
               <h2 id="gtk-h">Good to know</h2>
 
@@ -169,38 +189,38 @@ export function ListingPage({ id }: { id: string }) {
                 {l.commission && <CostRow tone="paid" label="Commission on sales">{l.commission}</CostRow>}
               </dl>
             </section>
-
           </div>
 
-          <aside className="listing-panel" aria-label={opp ? 'Apply' : 'Register'}>
-            <p className="listing-panel__label">{opp ? (l.deadline ? 'Deadline' : 'Starts') : 'When'}</p>
-            <p className="listing-panel__date">{formatFull(opp ? l.deadline! : l.start_date!)}</p>
-            <p className={`listing-panel__left listing-panel__left--${left.urgency}`}>{left.label}</p>
-            <div className={`fee fee--${fee.tone} listing-panel__fee`}>
-              <p className="fee__headline"><strong>{fee.headline}</strong></p>
-              {fee.selected && <p className="fee__selected">{fee.selected}</p>}
-            </div>
+          {/* Save it for later: calendar, an email reminder, the link */}
+          <aside className="save-card" aria-labelledby="save-h">
+            <h2 id="save-h">Save it for later</h2>
             {live && (
-              <a className="button listing-panel__apply" href={l.apply_url} target="_blank" rel="noopener noreferrer">
-                {opp ? 'Apply' : 'Register'} <span aria-hidden="true">↗</span><span className="sr-only"> on the organiser's site (opens in a new tab)</span>
-              </a>
+              <>
+                <p className="save-card__label">{opp && l.deadline ? 'Add the deadline to your calendar' : 'Add to your calendar'}</p>
+                <div className="save-card__cals">
+                  <a className="button button--secondary" href={cal.google} target="_blank" rel="noopener noreferrer">Google</a>
+                  <a className="button button--secondary" href={cal.outlook} target="_blank" rel="noopener noreferrer">Outlook</a>
+                  <button type="button" className="button button--secondary" onClick={() => downloadIcs(l, window.location.href)}>Apple</button>
+                  <a className="button button--secondary" href={cal.office} target="_blank" rel="noopener noreferrer">Microsoft 365</a>
+                </div>
+                <p className="save-card__small">
+                  {opp && l.deadline ? 'Added as an all-day entry on the deadline. ' : 'Added as an all-day event. '}
+                  Other apps: use Apple, it downloads a calendar file{opp && l.deadline ? ' with reminders three days before and on the day' : ''}.
+                  Want every deadline? <a href="/subscribe">Subscribe to the calendar</a>.
+                </p>
+                {opp && <ReminderBox l={l} now={now} />}
+              </>
             )}
-            <p className="listing-panel__note">{opp ? 'You apply' : 'You register'} on the organiser's site.</p>
-            {live && (
-              <button type="button" className="button button--secondary" onClick={() => downloadIcs(l, window.location.href)}>
-                <IconCalendar />{opp && l.deadline ? 'Add deadline to calendar' : 'Add to calendar'}
-              </button>
-            )}
-            {live && opp && <ReminderBox l={l} now={now} />}
             <ShareLink title={l.title} />
-            <a className="listing-panel__report" href={REPORT_URL(l.id, l.title)}><IconFlag />Report a problem</a>
+            <a className="save-card__report" href={REPORT_URL(l.id, l.title)}><IconFlag />Report a problem</a>
           </aside>
         </div>
       </article>
 
       {related.length > 0 && (
         <div className="rows listing-page__related">
-          <ListingRow id="related" title="More like this" listings={related} now={now} />
+          <ListingRow id="related" title="More like this" listings={related} now={now}
+            aside={<a className="row__all" href="/">All open calls <span aria-hidden="true">→</span></a>} />
         </div>
       )}
       <nav className="browse browse--listing" aria-label="More open calls like this">
