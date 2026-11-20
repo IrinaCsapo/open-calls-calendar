@@ -179,6 +179,22 @@ Follow `src/types/listing.ts` exactly (allowed values are listed there).
   leave it out and the card shows a colour wash
 - `source`: URL where you confirmed the details; `added`: today's date
 
+## 5b. Exhibitions to see (`src/data/exhibitions.json`)
+
+Magpie also lists **exhibitions artists would want to visit**, on its Exhibitions page. Every run, add **2–5**
+exhibitions that are on now or open within the next 8 weeks and aren't in the file yet (check ids and `apply_url`).
+- **What:** open exhibitions and prize shows (the Discerning Eye, society annual shows, the shows that come out of
+  the open calls we list), artist-run and public galleries, free-entry shows, and a few major museum shows.
+  Never pay-to-exhibit vanity galleries. Spread them around the world, rotating cities; favour free entry.
+- **Confirm on the venue's or exhibition's own page:** dates, venue and the price of a standard adult ticket.
+- **Fields:** as for listings, with `type: "Exhibition"`, `format: "In person"`, `start_date` and `end_date`
+  (both required, no `deadline`), `venue`, venue `lat`/`lng`, `eligibility` = one or two plain sentences about the
+  show (who and what), `entry_fee` `Free`/`Paid` (+ `fee_amount`, `currency`, `fee_details`), `selected_fee: "None"`,
+  `prizes: []`, `prize_kinds: []`, `apply_url` = the exhibition page, `image_url` = its og:image when it shows the
+  exhibition, and optional `highlights`: dated free talks, late openings or tours stated on the official page
+  (`"Free talk with the artist, Sat 21 Nov, 2–4pm"`). ids are unique across both files.
+- Mention them in the commit body and the log line (`exhibitions: N`).
+
 ## 6. Publish
 
 1. At most **15** new listings per run. Prefer free-to-enter, soonest deadline, most clearly legitimate.

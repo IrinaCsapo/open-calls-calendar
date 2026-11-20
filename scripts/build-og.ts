@@ -11,7 +11,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
-import { LISTINGS } from '../src/lib/listings';
+import { EXHIBITIONS, LISTINGS } from '../src/lib/listings';
 import { formatFull, formatRange, isOpportunity } from '../src/lib/dates';
 import { formatMoney } from '../src/lib/money';
 import { place, wash } from '../src/components/ListingCard';
@@ -63,7 +63,7 @@ async function picture(url: string, boxW: number, boxH: number) {
 function pills(l: Listing): { text: string; tone: keyof typeof PILL }[] {
   const apply = isOpportunity(l);
   const out: { text: string; tone: keyof typeof PILL }[] = [];
-  if (l.entry_fee === 'Free') out.push({ text: apply ? 'Free to enter' : 'Free', tone: 'free' });
+  if (l.entry_fee === 'Free') out.push({ text: apply ? 'Free to enter' : l.type === 'Exhibition' ? 'Free entry' : 'Free', tone: 'free' });
   else if (l.entry_fee === 'Paid') out.push({ text: l.fee_amount !== undefined && l.currency ? `${formatMoney(l.fee_amount, l.currency)}${apply ? ' to enter' : ''}` : 'Paid', tone: 'paid' });
   else out.push({ text: apply ? 'Entry fee not stated' : 'Price not stated', tone: 'unknown' });
   if (apply) {
@@ -130,7 +130,8 @@ const grain = await (() => {
 })();
 
 const only = process.argv.slice(2);
-const list = only.length ? LISTINGS.filter((l) => only.includes(l.id)) : LISTINGS;
+const ALL = [...LISTINGS, ...EXHIBITIONS];
+const list = only.length ? ALL.filter((l) => only.includes(l.id)) : ALL;
 const out = new URL('../dist/og/', import.meta.url);
 mkdirSync(out, { recursive: true });
 // Email thumbnails: the square middle of each card's picture frame (image on its colour wash), 240 px, a few KB each.

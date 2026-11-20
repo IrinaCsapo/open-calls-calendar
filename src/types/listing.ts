@@ -13,6 +13,7 @@ export const LISTING_TYPES = [
   'Event',        // talk, opening, screening, fair, festival
   'Meetup',
   'Workshop',
+  'Exhibition',   // a show to go and see (src/data/exhibitions.json, the Exhibitions page)
 ] as const;
 
 /** Types that are about applying (shown with a deadline). The rest are things you go to. */
@@ -105,4 +106,5 @@ export interface Listing {
   image_url?: string;         // the official page's og:image, loaded from the organiser's host
   source: string;             // URL where the details were confirmed
   added: string;              // YYYY-MM-DD the listing was added (drives the "New" badge)
+  highlights?: string[];      // dated extras worth knowing, e.g. a free artist talk on a Saturday afternoon
 }

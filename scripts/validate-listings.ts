@@ -5,9 +5,13 @@ import {
   CURRENCIES, DISCIPLINES, ENTRY_FEES, FORMATS, LISTING_TYPES, OPPORTUNITY_TYPES, PRIZE_KINDS, REGIONS, SELECTED_FEES,
 } from '../src/types/listing';
 
-const FILE = new URL('../src/data/listings.json', import.meta.url);
-const data: unknown = JSON.parse(readFileSync(FILE, 'utf8'));
+// Two files, one shape: open calls and events (listings.json), and exhibitions to visit (exhibitions.json).
+const FILES = [
+  { name: 'listings.json', exhibitions: false },
+  { name: 'exhibitions.json', exhibitions: true },
+] as const;
 const errors: string[] = [];
+const seen = new Set<string>();   // ids are unique across both files: they share magpie.cool/listing/<id>
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -15,20 +19,23 @@ const KNOWN_FIELDS = new Set([
   'id', 'title', 'organiser', 'type', 'disciplines', 'format', 'timezone', 'city', 'country', 'region', 'venue',
   'lat', 'lng', 'deadline', 'start_date', 'end_date', 'eligibility', 'entry_fee', 'fee_amount', 'currency',
   'fee_details', 'selected_fee', 'selected_fee_details', 'selected_fee_amount', 'commercial', 'commission', 'prizes', 'prize_kinds', 'prize_value',
-  'apply_url', 'image_url', 'source', 'added',
+  'apply_url', 'image_url', 'source', 'added', 'highlights',
 ]);
 
 const isDate = (v: unknown) => typeof v === 'string' && ISO_DATE.test(v) && !Number.isNaN(Date.parse(v));
 const isUrl = (v: unknown) => { try { return /^https?:$/.test(new URL(String(v)).protocol); } catch { return false; } };
 const isTimezone = (v: unknown) => { try { new Intl.DateTimeFormat('en', { timeZone: String(v) }); return true; } catch { return false; } };
 
+const counts: string[] = [];
+for (const file of FILES) {
+const data: unknown = JSON.parse(readFileSync(new URL(`../src/data/${file.name}`, import.meta.url), 'utf8'));
 if (!Array.isArray(data)) {
-  errors.push('listings.json must be an array of listings');
+  errors.push(`${file.name} must be an array`);
 } else {
-  const seen = new Set<string>();
+  counts.push(`${file.name}: ${data.length}`);
   const seenUrls = new Map<string, string>();
   data.forEach((l: Record<string, unknown>, i) => {
-    const where = `listing #${i + 1} (${typeof l.id === 'string' ? l.id : 'no id'})`;
+    const where = `${file.name} #${i + 1} (${typeof l.id === 'string' ? l.id : 'no id'})`;
     const fail = (msg: string) => errors.push(`${where}: ${msg}`);
     const oneOf = (field: string, allowed: readonly string[]) => {
       if (!allowed.includes(l[field] as string)) fail(`${field} is "${l[field]}", must be one of: ${allowed.join(', ')}`);
@@ -56,7 +63,7 @@ if (!Array.isArray(data)) {
     for (const key of Object.keys(l)) if (!KNOWN_FIELDS.has(key)) fail(`unknown field "${key}" (typo?)`);
 
     if (typeof l.id !== 'string' || !SLUG.test(l.id)) fail('id must be a lowercase slug like "woman-artist-award-2026"');
-    else if (seen.has(l.id)) fail('duplicate id');
+    else if (seen.has(l.id)) fail('duplicate id (ids must be unique across listings.json and exhibitions.json)');
     else seen.add(l.id);
 
     str('title'); str('organiser'); str('eligibility'); str('source');
@@ -115,14 +122,22 @@ if (!Array.isArray(data)) {
       if (other && other !== l.id) fail(`apply_url is the same as ${other} (duplicate listing?)`);
       seenUrls.set(u, l.id as string);
     }
+
+    // Exhibitions live in their own file, and run from start_date to end_date
+    if (l.highlights !== undefined && (!Array.isArray(l.highlights) || l.highlights.some((h) => typeof h !== 'string' || !h.trim()))) fail('highlights must be an array of non-empty strings');
+    if (file.exhibitions) {
+      if (l.type !== 'Exhibition') fail('everything in exhibitions.json has type "Exhibition"');
+      if (l.end_date === undefined) fail('an exhibition needs an end_date');
+      if (l.deadline !== undefined) fail('an exhibition has no deadline (use start_date and end_date)');
+    } else if (l.type === 'Exhibition') fail('exhibitions go in exhibitions.json');
   });
+}
 }
 
 if (errors.length) {
-  console.error(`\n✗ listings.json has ${errors.length} problem(s):\n`);
+  console.error(`\n✗ the listings have ${errors.length} problem(s):\n`);
   for (const err of errors) console.error(`  - ${err}`);
   console.error('');
   process.exit(1);
 }
-const n = (data as unknown[]).length;
-console.log(`✓ listings.json is valid (${n} ${n === 1 ? 'listing' : 'listings'})`);
+console.log(`✓ listings are valid (${counts.join(', ')})`);

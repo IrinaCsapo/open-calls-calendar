@@ -11,6 +11,7 @@ import { ListingRow } from '../components/ListingRow';
 import { HeroPaint } from '../components/HeroPaint';
 import { guessPlace, loadPlaceSetting, nearYou, savePlaceSetting, type Coords, type PlaceSetting } from '../lib/location';
 import { CalendarView } from '../components/CalendarView';
+import { SubscribeHero } from '../components/SubscribeBox';
 
 
 const GROUPS = [
@@ -98,12 +99,7 @@ export function HomePage() {
         <HeroPaint />
         <h1 id="hero-title" className="hero__title"><span>Open calls, prizes and</span> <span>events <em>for artists</em></span></h1>
         <p className="hero__lede">{SITE_TAGLINE} Updated every morning.</p>
-        <div className="hero__actions">
-          <button type="button" className="button hero__button" onClick={() => document.getElementById('browse')?.scrollIntoView({ behavior: 'smooth' })}>
-            Browse calls
-          </button>
-          <a className="button button--secondary hero__button" href="/submit">Submit a call</a>
-        </div>
+        <SubscribeHero />
         <p className="hero__hint" aria-hidden="true"><span className="hero__hint--mouse">Click and drag to paint</span><span className="hero__hint--touch">Drag sideways to paint</span></p>
       </section>
 

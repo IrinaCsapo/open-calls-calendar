@@ -4,16 +4,13 @@ import { guessPlace, loadPlaceSetting } from '../lib/location';
 import { wash } from './ListingCard';
 
 /**
- * "The weekly roundup": sends the address straight to Magpie's Brevo sign-up form (double opt-in: Brevo emails a
- * confirm link, then sends them to /subscribed), so Magpie itself never stores it. Also sends their place (UK,
- * Europe, US…, from "Near you" or their time zone) so the welcome and weekly emails can show calls near them.
- * Hidden until NEWSLETTER_FORM_URL is set in src/lib/site.ts.
+ * Signing up for the weekly email: sends the address straight to Magpie's Brevo sign-up form (double opt-in: Brevo
+ * emails a confirm link, then sends them to /subscribed), so Magpie itself never stores it. Also sends their place
+ * (UK, Europe, US…, from "Near you" or their time zone) so the welcome and weekly emails can show calls near them.
  */
-export function SubscribeBox() {
+function useSubscribe() {
   const [email, setEmail] = useState('');
   const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
-  if (!NEWSLETTER_FORM_URL) return null;
-
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setState('sending');
@@ -32,7 +29,48 @@ export function SubscribeBox() {
       setState('error');
     }
   };
+  return { email, setEmail, state, submit };
+}
 
+const DONE = <>Nearly there! Check your inbox for an email from Magpie (hello@magpie.cool) and click “Yes, send me the weekly email”. It can take a minute, so check spam too.</>;
+const SMALL = <>New open calls, every Monday morning, from hello@magpie.cool. Unsubscribe in one click, and we never share your email. <a href="/privacy">Privacy</a></>;
+const ERROR = 'Something went wrong. Please try again in a moment.';
+
+/** The email field and button, with the small print under it. */
+function SubscribeForm({ id, s }: { id: string; s: ReturnType<typeof useSubscribe> }) {
+  return (
+    <div className="subscribe-box__action">
+      {s.state === 'done' ? (
+        <p className="subscribe-box__done" role="status">{DONE}</p>
+      ) : (
+        <form className="subscribe-box__form" onSubmit={s.submit}>
+          <label className="sr-only" htmlFor={id}>Email address</label>
+          <input id={id} type="email" name="EMAIL" required placeholder="Your email" autoComplete="email"
+            value={s.email} onChange={(e) => s.setEmail(e.target.value)} />
+          <button type="submit" className="button" disabled={s.state === 'sending'}>{s.state === 'sending' ? 'Signing up…' : 'Subscribe'}</button>
+        </form>
+      )}
+      <p className="subscribe-box__small">{s.state === 'error' ? ERROR : SMALL}</p>
+    </div>
+  );
+}
+
+/** The sign-up in the homepage hero. Hidden until NEWSLETTER_FORM_URL is set in src/lib/site.ts. */
+export function SubscribeHero() {
+  const s = useSubscribe();
+  if (!NEWSLETTER_FORM_URL) return null;
+  return (
+    <div className="hero__subscribe">
+      <p className="hero__subscribe-label">Get new open calls in your inbox, every Monday</p>
+      <SubscribeForm id="hero-email" s={s} />
+    </div>
+  );
+}
+
+/** "The Magpie weekly email" box above the footer. Hidden until NEWSLETTER_FORM_URL is set in src/lib/site.ts. */
+export function SubscribeBox() {
+  const s = useSubscribe();
+  if (!NEWSLETTER_FORM_URL) return null;
   return (
     <section className="subscribe-box" aria-labelledby="subscribe-title" style={{ background: wash('weekly-roundup', true) }}>
       <div className="subscribe-box__text">
@@ -41,24 +79,7 @@ export function SubscribeBox() {
         <p>One short email with new open calls, prizes, residencies and events for artists, the ones closing that week,
           and calls near you. Every fee shown up front.</p>
       </div>
-      <div className="subscribe-box__action">
-      {state === 'done' ? (
-        <p className="subscribe-box__done" role="status">
-          Nearly there! Check your inbox for an email from Magpie (hello@magpie.cool) and click “Yes, send me the weekly
-          email”. It can take a minute, so check spam too.
-        </p>
-      ) : (
-        <form className="subscribe-box__form" onSubmit={submit}>
-          <label className="sr-only" htmlFor="subscribe-email">Email address</label>
-          <input id="subscribe-email" type="email" name="EMAIL" required placeholder="Your email" autoComplete="email"
-            value={email} onChange={(e) => setEmail(e.target.value)} />
-          <button type="submit" className="button" disabled={state === 'sending'}>{state === 'sending' ? 'Signing up…' : 'Subscribe'}</button>
-        </form>
-      )}
-      <p className="subscribe-box__small">
-        {state === 'error' ? 'Something went wrong. Please try again in a moment.' : <>New open calls, every Monday morning, from hello@magpie.cool. Unsubscribe in one click, and we never share your email. <a href="/privacy">Privacy</a></>}
-      </p>
-      </div>
+      <SubscribeForm id="subscribe-email" s={s} />
     </section>
   );
 }

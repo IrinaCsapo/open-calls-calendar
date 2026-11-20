@@ -10,6 +10,8 @@ import { SubscribeBox } from './components/SubscribeBox';
 import { SubscribePage } from './pages/SubscribePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { FaqPage } from './pages/FaqPage';
+import { ExhibitionsPage } from './pages/ExhibitionsPage';
+import { findListing, isExhibition } from './lib/listings';
 import { CollectionPage, CollectionsHubPage } from './pages/CollectionPage';
 import { findCollection } from './lib/collections';
 import { useHashRoute, useLinkInterceptor } from './lib/useHashRoute';
@@ -22,6 +24,7 @@ export function App() {
   const { path } = useHashRoute();
   useLinkInterceptor();
   const listingMatch = path.match(/^\/listing\/([a-z0-9-]+)\/?$/);
+  const exhibitionPage = !!listingMatch && (() => { const x = findListing(listingMatch[1]); return !!x && isExhibition(x); })();
   const collection = findCollection(path.match(/^\/open-calls\/([a-z0-9-]+)\/?$/)?.[1] ?? '');
 
   let page;
@@ -34,6 +37,7 @@ export function App() {
   else if (path === '/subscribed') page = <SubscribedPage />;
   else if (path === '/subscribe') page = <SubscribePage />;
   else if (path === '/faq') page = <FaqPage />;
+  else if (path === '/exhibitions') page = <ExhibitionsPage />;
   else if (path === '/open-calls' || path === '/open-calls/') page = <CollectionsHubPage />;
   else if (collection) page = <CollectionPage key={collection.slug} c={collection} />;
   else page = <NotFoundPage />;
@@ -59,17 +63,21 @@ export function App() {
           <img className="site-name__logo" src={logo} alt={SITE_NAME} width="640" height="203" />
         </a>
         <nav aria-label="Main" className="site-nav">
-          <a href="/" aria-current={path === '/' || path.startsWith('/listing/') || path.startsWith('/open-calls') ? 'page' : undefined}>Events</a>
-          <a href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
+          <a href="/" aria-current={path === '/' || (listingMatch && !exhibitionPage) || path.startsWith('/open-calls') ? 'page' : undefined}>Open calls</a>
+          <a href="/exhibitions" aria-current={path === '/exhibitions' || exhibitionPage ? 'page' : undefined}>Exhibitions</a>
+          <a href="/about" className="site-nav__about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
           <a href="/submit" className="site-nav__submit" aria-current={path === '/submit' ? 'page' : undefined}>
             Submit <span className="site-nav__long">an open call</span>
           </a>
         </nav>
       </header>
       <main id="main" tabIndex={-1}>{page}</main>
-      {path !== '/submit' && path !== '/start' && path !== '/subscribed' && <div className="subscribe-wrap"><SubscribeBox /></div>}
+      {/* the homepage has the sign-up in its hero instead */}
+      {path !== '/' && path !== '/submit' && path !== '/start' && path !== '/subscribed' && <div className="subscribe-wrap"><SubscribeBox /></div>}
       <footer className="site-footer">
         <nav className="site-footer__links" aria-label="More">
+          <a href="/about" className="site-footer__about">About</a>
+          <a href="/exhibitions">Exhibitions</a>
           <a href="/open-calls">Browse by discipline and place</a>
           <a href="/open-calls/free">Free open calls</a>
           <a href="/faq">FAQ</a>

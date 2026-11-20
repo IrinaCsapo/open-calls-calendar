@@ -42,7 +42,7 @@ function reminderEmail(calls: Listing[]) {
       ${p('Fees and dates come from the organiser’s page and can change, so check before you pay.', `font-size:14px;color:${MUTED};margin-top:16px`)}
     </td></tr>
     <tr><td class="mp-pad" style="padding:8px 32px 28px">
-      ${p(`Want more like this? The <strong>Magpie weekly email</strong> lands every Monday with the calls closing that week, new calls, and calls near you. <a href="${track(`${SITE}/`, C)}#subscribe-title" style="color:#1f3456;font-weight:700">Sign up on magpie.cool</a>.`, 'font-size:15px')}
+      ${p(`Want more like this? The <strong>Magpie weekly email</strong> lands every Monday with the calls closing that week, new calls, and calls near you. <a href="${track(`${SITE}/`, C)}#hero-email" style="color:#1f3456;font-weight:700">Sign up on magpie.cool</a>.`, 'font-size:15px')}
     </td></tr>`,
     FOOTER('You’re getting this because you asked for a reminder on magpie.cool. It’s a one-off: we won’t email you about this call again. Didn’t ask for it? Reply and we’ll remove your address.'),
   );

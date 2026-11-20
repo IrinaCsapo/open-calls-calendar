@@ -89,7 +89,17 @@ export interface TimeLeft {
 
 const DAY = 86_400_000;
 
+/** When an exhibition (or any event) finishes: the end of its last day (UTC ms). */
+export const endsAt = (l: Listing) => zonedTime((l.end_date ?? l.start_date)!, '23:59:59', l.timezone);
+
 export function timeLeft(l: Listing, now = Date.now()): TimeLeft {
+  // Exhibitions: "Opens in 3d 2h", then "Ends in 1d 8h" while they're on (urgent in the last three days)
+  if (l.type === 'Exhibition') {
+    const opens = closesAt(l) - now, ends = endsAt(l) - now;
+    if (opens > 0) return { label: `Opens in ${span(opens)}`, urgency: opens < 3 * DAY ? 'soon' : 'later' };
+    if (ends > 0) return { label: ends < DAY ? 'Last day' : `Ends in ${span(ends)}`, urgency: ends < 3 * DAY ? 'urgent' : ends < 14 * DAY ? 'soon' : 'later' };
+    return { label: 'Ended', urgency: 'closed' };
+  }
   const closes = closesAt(l);
   const left = closes - now;
   const urgency = left < 3 * DAY ? 'urgent' : left < 14 * DAY ? 'soon' : 'later';

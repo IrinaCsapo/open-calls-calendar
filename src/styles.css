@@ -724,3 +724,19 @@ main:focus { outline: none; }
 .save-card__report .icon { width: 1rem; height: 1rem; }
 @media (min-width: 56rem) { .save-card { position: sticky; top: 1rem; } }
 .row__all { display: inline-flex; gap: 0.3rem; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.gtk-get--highlights { background: #fdf0d2; }
+.exhibitions__submit { margin: 3rem 0 0; color: var(--muted); }
+.site-nav a { white-space: nowrap; }
+/* Phones: About moves to the footer, so Open calls, Exhibitions and Submit fit beside the logo */
+@media (max-width: 40rem) { .site-nav__about { display: none !important; } .site-nav { gap: 0.7rem; } }
+.site-footer__links a.site-footer__about { display: none; }
+@media (max-width: 40rem) { .site-footer__links a.site-footer__about { display: inline; } }
+.exhibitions .collection__head { margin-bottom: 1.75rem; }
+
+/* The weekly email sign-up in the homepage hero, in place of buttons */
+.hero__subscribe { position: relative; width: 100%; max-width: 34rem; margin: 2.25rem auto 0; text-align: center; }
+.hero__subscribe-label { margin: 0 0 0.7rem; font-weight: 700; font-size: 1rem; }
+.hero__subscribe .subscribe-box__form { box-shadow: 0 8px 24px rgba(31, 52, 86, 0.10); }
+.hero__subscribe .subscribe-box__form input { text-align: left; }
+.hero__subscribe .subscribe-box__small { margin: 0 auto; max-width: 30rem; text-align: center; }
+.hero__subscribe .subscribe-box__done { padding: 1rem 1.2rem; border-radius: 18px; background: #fff; text-align: left; }

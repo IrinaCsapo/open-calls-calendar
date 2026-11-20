@@ -9,8 +9,8 @@
 // It also writes sitemap.xml, llms.txt and llms-full.txt (plain-text guides for AI tools), and open-calls.json.
 // dist/404.html stays as the fallback for anything else.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { LISTINGS } from '../src/lib/listings';
-import { closesAt, formatFull, formatRange, isLive, isOpportunity } from '../src/lib/dates';
+import { EXHIBITIONS, LISTINGS } from '../src/lib/listings';
+import { closesAt, endsAt, formatFull, formatRange, isLive, isOpportunity } from '../src/lib/dates';
 import type { Listing } from '../src/types/listing';
 import { feeSummary } from '../src/lib/money';
 import { CONTACT_EMAIL, FEED_PATH, SITE_NAME, SITE_URL } from '../src/lib/site';
@@ -29,6 +29,10 @@ const abs = (path: string) => (path.startsWith('http') ? path : `${ORIGIN}${path
 const now = Date.now();
 const LIVE = LISTINGS.filter((l) => isLive(l, now)).sort((a, b) => closesAt(a) - closesAt(b));
 const listingUrl = (l: Listing) => `${SITE_URL}listing/${l.id}`;
+// Exhibitions on now first (ending soonest), then the ones opening soon
+const SHOWS = EXHIBITIONS.filter((l) => isLive(l, now));
+const SHOWS_NOW = SHOWS.filter((l) => closesAt(l) <= now).sort((a, b) => endsAt(a) - endsAt(b));
+const SHOWS_SOON = SHOWS.filter((l) => closesAt(l) > now).sort((a, b) => closesAt(a) - closesAt(b));
 const collectionPath = (c: Collection) => `open-calls/${c.slug}`;
 
 // ---- Small facts about a listing, in words -------------------------------------------------------
@@ -51,7 +55,7 @@ function eventData(l: Listing) {
   const place = { '@type': 'Place', name: l.venue || l.city, address: { '@type': 'PostalAddress', addressLocality: l.city, addressCountry: l.country } };
   return {
     '@context': 'https://schema.org',
-    '@type': 'Event',
+    '@type': l.type === 'Exhibition' ? 'ExhibitionEvent' : 'Event',
     name: l.title,
     startDate: l.start_date,
     ...(l.end_date ? { endDate: l.end_date } : {}),
@@ -103,7 +107,7 @@ const listingItems = (list: Listing[]) =>
 const browseLinks = () => (['Kinds', 'Disciplines', 'Places'] as const).map((g) =>
   `<h2>${g === 'Kinds' ? 'Browse by kind' : g === 'Disciplines' ? 'Browse by what you make' : 'Browse by place'}</h2>
   <ul>${COLLECTIONS.filter((c) => c.group === g).map((c) => `<li>${a(`/${collectionPath(c)}`, c.title)} (${LIVE.filter(c.match).length} open)</li>`).join('')}</ul>`).join('');
-const nav = `<p>${a('/', 'All open calls')} · ${a('/open-calls', 'Browse')} · ${a('/faq', 'FAQ')} · ${a('/about', 'About')} · ${a('/submit', 'Submit an open call')}</p>`;
+const nav = `<p>${a('/', 'All open calls')} · ${a('/exhibitions', 'Exhibitions')} · ${a('/open-calls', 'Browse')} · ${a('/faq', 'FAQ')} · ${a('/about', 'About')} · ${a('/submit', 'Submit an open call')}</p>`;
 const footer = `<p>Magpie is a free, independent project by ${a('https://irinacsapo.co.uk', 'designer')} and ${a('https://www.instagram.com/irina_csapo_art', 'artist')} ${a(LINKEDIN, 'Irina Csapo')}. Contact: ${esc(CONTACT_EMAIL)}. Updated ${formatFull(TODAY)}.</p>`;
 
 function listingBody(l: Listing) {
@@ -116,7 +120,8 @@ function listingBody(l: Listing) {
     ...(l.start_date ? [['Dates', formatRange(l.start_date, l.end_date)] as [string, string]] : []),
     ['Where', where(l)],
     ['Disciplines', l.disciplines.join(', ')],
-    ['Who can apply', l.eligibility],
+    [l.type === 'Exhibition' ? 'About' : 'Who can apply', l.eligibility],
+    ...(l.highlights?.length ? [['Also on', l.highlights.join('; ')] as [string, string]] : []),
     [opp ? 'Cost to enter' : 'Cost', l.fee_details ?? f.headline],
     ...(opp ? [['If you’re selected', l.selected_fee === 'Yes' ? `Fee: ${l.selected_fee_details ?? 'yes'}` : l.selected_fee === 'None' ? 'Nothing more to pay the organiser' : 'Not stated by the organiser'] as [string, string]] : []),
     ...(l.commission ? [['Commission on sales', l.commission] as [string, string]] : []),
@@ -128,7 +133,7 @@ function listingBody(l: Listing) {
     <p>${esc(`${l.type} by ${l.organiser}. ${when(l)}. ${f.headline}${f.selected ? `; ${f.selected}` : ''}.`)}</p>
     ${l.commercial ? '<p><strong>Commercial opportunity:</strong> this organiser runs paid exhibitions, publications or awards as a business.</p>' : ''}
     <dl>${rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
-    <p>${a(l.apply_url, opp ? 'Apply on the organiser’s site' : 'Register on the organiser’s site')} · Details checked on ${a(l.source, 'the organiser’s page')}, added ${formatFull(l.added)}.</p>
+    <p>${a(l.apply_url, opp ? 'Apply on the organiser’s site' : l.type === 'Exhibition' ? 'Plan your visit on the venue’s site' : 'Register on the organiser’s site')} · Details checked on ${a(l.source, 'the organiser’s page')}, added ${formatFull(l.added)}.</p>
   </article>
   <h2>Browse more</h2>
   <ul>${collectionsFor(l).map((c) => `<li>${a(`/${collectionPath(c)}`, c.title)}</li>`).join('')}</ul>
@@ -261,8 +266,24 @@ for (const c of COLLECTIONS) {
   });
 }
 
-// One page per listing
-for (const l of LISTINGS) {
+// Exhibitions to see
+page('exhibitions', {
+  title: T(`Art exhibitions to see, ${MONTH}`),
+  description: `${SHOWS.length} art exhibitions on now and opening soon: open exhibitions, prize shows, galleries and museums, with dates, ticket prices and free talks. Search by city.`,
+  data: [
+    { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Exhibitions to see', url: `${SITE_URL}exhibitions`, dateModified: TODAY, mainEntity: itemList([...SHOWS_NOW, ...SHOWS_SOON]) },
+    breadcrumbs([{ name: 'Exhibitions', path: '/exhibitions' }]),
+  ],
+  body: `${nav}<h1>Exhibitions to see, on now and coming up</h1>
+    <p>Open exhibitions, prize shows, galleries and museums worth a visit for artists, with the dates, the price of a ticket,
+    and free talks and late openings. Updated ${formatFull(TODAY)}.</p>
+    ${SHOWS_NOW.length ? `<h2>On now</h2>${listingItems(SHOWS_NOW)}` : ''}
+    ${SHOWS_SOON.length ? `<h2>Opening soon</h2>${listingItems(SHOWS_SOON)}` : ''}
+    ${footer}`,
+});
+
+// One page per listing (open calls, events and exhibitions)
+for (const l of [...LISTINGS, ...EXHIBITIONS]) {
   const fee = feeSummary(l);
   const bits = [when(l), [fee.headline, fee.selected].filter(Boolean).join(', '), l.prizes[0]].filter(Boolean);
   const top = collectionsFor(l)[0];
@@ -273,7 +294,7 @@ for (const l of LISTINGS) {
     image: `${SITE_URL}og/${l.id}.jpg`,
     data: [
       ...(isOpportunity(l) || l.entry_fee === 'Unknown' ? [] : [eventData(l)]),
-      breadcrumbs([...(top ? [{ name: top.title, path: `/${collectionPath(top)}` }] : []), { name: l.title, path: `/listing/${l.id}` }]),
+      breadcrumbs([...(l.type === 'Exhibition' ? [{ name: 'Exhibitions', path: '/exhibitions' }] : top ? [{ name: top.title, path: `/${collectionPath(top)}` }] : []), { name: l.title, path: `/listing/${l.id}` }]),
     ],
     body: listingBody(l),
   });
@@ -284,10 +305,12 @@ console.log(`✓ wrote ${LISTINGS.length + COLLECTIONS.length + 10} page files`)
 const urls = [
   { loc: SITE_URL, priority: '1.0', freq: 'daily', lastmod: TODAY },
   { loc: `${SITE_URL}open-calls`, priority: '0.9', freq: 'daily', lastmod: TODAY },
+  { loc: `${SITE_URL}exhibitions`, priority: '0.9', freq: 'daily', lastmod: TODAY },
   ...COLLECTIONS.filter((c) => LIVE.filter(c.match).length >= 2).map((c) => ({ loc: abs(`/${collectionPath(c)}`), priority: '0.8', freq: 'daily', lastmod: TODAY })),
   { loc: `${SITE_URL}faq`, priority: '0.7', freq: 'monthly' },
   ...['about', 'submit', 'subscribe', 'privacy'].map((p) => ({ loc: `${SITE_URL}${p}`, priority: '0.5', freq: 'monthly' })),
   ...LIVE.map((l) => ({ loc: listingUrl(l), priority: '0.8', freq: 'weekly', lastmod: l.added })),
+  ...SHOWS.map((l) => ({ loc: listingUrl(l), priority: '0.6', freq: 'weekly', lastmod: l.added })),
 ];
 writeFileSync(new URL('sitemap.xml', dist), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -312,6 +335,10 @@ ${COLLECTIONS.map((c) => `- [${c.h1}](${abs(`/${collectionPath(c)}`)}): ${LIVE.f
 ## Open now, closing soonest first
 
 ${main.map((l) => `- [${md(l.title)}](${listingUrl(l)}): ${oneLine(l)}`).join('\n')}
+
+## Exhibitions to see (on now and opening soon)
+
+${[...SHOWS_NOW, ...SHOWS_SOON].map((l) => `- [${md(l.title)}](${listingUrl(l)}): ${l.organiser} · ${where(l)} · ${formatRange(l.start_date!, l.end_date)} · ${feeSummary(l).headline}`).join('\n') || '- None listed right now'}
 
 ## Questions
 

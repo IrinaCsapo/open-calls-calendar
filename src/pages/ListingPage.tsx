@@ -1,7 +1,7 @@
 import { useMemo, type ReactNode } from 'react';
 import type { Listing } from '../types/listing';
-import { LISTINGS, findListing } from '../lib/listings';
-import { closesAt, formatFull, formatRange, isLive, isOpportunity, timeLeft, useNow } from '../lib/dates';
+import { EXHIBITIONS, LISTINGS, findListing, isExhibition } from '../lib/listings';
+import { closesAt, endsAt, formatFull, formatRange, isLive, isOpportunity, timeLeft, useNow } from '../lib/dates';
 import { feeSummary, isTotallyFree, priceTag } from '../lib/money';
 import { calendarLinks, downloadIcs } from '../lib/ics';
 import { getListHash } from '../lib/useHashRoute';
@@ -19,6 +19,11 @@ import { collectionUrl, collectionsFor } from '../lib/collections';
 
 /** Up to 4 other open listings that share a discipline (closing soonest), topped up with the same type. */
 function moreLikeThis(l: Listing, now: number): Listing[] {
+  // Exhibitions: others on now or soon, in the same country first, ending soonest
+  if (isExhibition(l)) {
+    const others = EXHIBITIONS.filter((x) => x.id !== l.id && isLive(x, now)).sort((a, b) => endsAt(a) - endsAt(b));
+    return [...others.filter((x) => x.country === l.country), ...others.filter((x) => x.country !== l.country)].slice(0, 4);
+  }
   const own = l.disciplines.filter((d) => d !== 'Any medium');
   const others = LISTINGS.filter((x) => x.id !== l.id && isLive(x, now)).sort((a, b) => closesAt(a) - closesAt(b));
   const similar = others.filter((x) => own.some((d) => x.disciplines.includes(d)));
@@ -67,6 +72,7 @@ export function ListingPage({ id }: { id: string }) {
   const fee = feeSummary(l);
   const gets = perks(l);
   const where = l.format === 'Online' ? place(l) : [l.venue, l.city, l.country].filter(Boolean).join(', ');
+  const show = isExhibition(l);
 
   const cal = calendarLinks(l, `${SITE_URL}listing/${l.id}`);
   const feeTone = fee.tone === 'free' ? 'free' : fee.tone === 'caution' ? 'caution' : fee.tone === 'paid' ? 'paid' : 'unknown';
@@ -74,11 +80,15 @@ export function ListingPage({ id }: { id: string }) {
   return (
     <>
       <article className="listing-page">
-        <p className="listing-page__back"><a href={getListHash()}><span aria-hidden="true">← </span>Back to all open calls</a></p>
+        <p className="listing-page__back">
+          {show
+            ? <a href="/exhibitions"><span aria-hidden="true">← </span>Back to exhibitions</a>
+            : <a href={getListHash()}><span aria-hidden="true">← </span>Back to all open calls</a>}
+        </p>
 
         {!live && (
           <p className="notice" role="note">
-            <strong>{opp ? 'This call has closed.' : 'This event has ended.'}</strong> It stays here so shared links keep working.
+            <strong>{opp ? 'This call has closed.' : show ? 'This exhibition has ended.' : 'This event has ended.'}</strong> It stays here so shared links keep working.
           </p>
         )}
 
@@ -89,7 +99,7 @@ export function ListingPage({ id }: { id: string }) {
               <li className="pill pill--type">{l.type}</li>
               <li className="pill pill--plain"><FormatIcon format={l.format} />{l.format}</li>
               {isTotallyFree(l)
-                ? <li className="pill pill--free-fill"><IconCheck />Totally free</li>
+                ? <li className="pill pill--free-fill"><IconCheck />{show ? 'Free entry' : 'Totally free'}</li>
                 : <li className={`pill pill--${feeTone}`}>{fee.headline}</li>}
               {opp && l.selected_fee === 'Yes' && !l.commercial && <li className="pill pill--caution"><IconWarn />Pay if selected</li>}
               {l.commercial && <li className="pill pill--commercial">Commercial · {priceTag(l)}</li>}
@@ -104,11 +114,13 @@ export function ListingPage({ id }: { id: string }) {
             </ul>
             {live && (
               <a className="button lhero__apply" href={l.apply_url} target="_blank" rel="noopener noreferrer">
-                {opp ? 'Apply' : 'Register'} <span aria-hidden="true">↗</span><span className="sr-only"> on the organiser's site (opens in a new tab)</span>
+                {opp ? 'Apply' : show ? 'Plan your visit' : 'Register'} <span aria-hidden="true">↗</span><span className="sr-only"> on the organiser's site (opens in a new tab)</span>
               </a>
             )}
             <p className={`lhero__left lhero__left--${left.urgency}`}><IconClock />{left.label}</p>
-            <p className="lhero__note">{opp ? 'You apply' : 'You register'} on the organiser’s site. Magpie is free and never asks for your details.</p>
+            <p className="lhero__note">
+              {show ? 'Opening times and tickets are on the venue’s site.' : <>{opp ? 'You apply' : 'You register'} on the organiser’s site.</>} Magpie is free and never asks for your details.
+            </p>
           </div>
           <div className={`lhero__media${l.image_url ? '' : ' lhero__media--wash'}`} style={{ background: wash(l.id, true) }}>
             {l.image_url
@@ -125,10 +137,17 @@ export function ListingPage({ id }: { id: string }) {
               <div className="gtk-who">
                 <span className="gtk-who__icon"><IconUsers /></span>
                 <div>
-                  <p className="gtk-eyebrow">Who it's for</p>
+                  <p className="gtk-eyebrow">{show ? 'About the exhibition' : 'Who it\'s for'}</p>
                   <p className="gtk-who__quote">“{l.eligibility.replace(/\.$/, '')}”</p>
                 </div>
               </div>
+
+              {l.highlights && l.highlights.length > 0 && (
+                <div className="gtk-get gtk-get--highlights">
+                  <p className="gtk-eyebrow">Also on</p>
+                  <ul className="gtk-get__details">{l.highlights.map((h) => <li key={h}>{h}</li>)}</ul>
+                </div>
+              )}
 
               {(gets.length > 0 || l.prizes.length > 0) && (
                 <div className="gtk-get">
@@ -167,7 +186,7 @@ export function ListingPage({ id }: { id: string }) {
               </p>
             </section>
 
-            <section className="listing-section" aria-labelledby="cost-h">
+            {!show && <section className="listing-section" aria-labelledby="cost-h">
               <h2 id="cost-h">What it costs</h2>
               {l.commercial && (
                 <p className="commercial-note">
@@ -188,7 +207,7 @@ export function ListingPage({ id }: { id: string }) {
                 )}
                 {l.commission && <CostRow tone="paid" label="Commission on sales">{l.commission}</CostRow>}
               </dl>
-            </section>
+            </section>}
           </div>
 
           {/* Save it for later: calendar, an email reminder, the link */}
@@ -219,11 +238,13 @@ export function ListingPage({ id }: { id: string }) {
 
       {related.length > 0 && (
         <div className="rows listing-page__related">
-          <ListingRow id="related" title="More like this" listings={related} now={now}
-            aside={<a className="row__all" href="/">All open calls <span aria-hidden="true">→</span></a>} />
+          <ListingRow id="related" title={show ? 'More exhibitions' : 'More like this'} listings={related} now={now}
+            aside={show
+              ? <a className="row__all" href="/exhibitions">All exhibitions <span aria-hidden="true">→</span></a>
+              : <a className="row__all" href="/">All open calls <span aria-hidden="true">→</span></a>} />
         </div>
       )}
-      <nav className="browse browse--listing" aria-label="More open calls like this">
+      {!show && <nav className="browse browse--listing" aria-label="More open calls like this">
         <section className="browse__group">
           <h2>Browse more</h2>
           <ul>
@@ -231,7 +252,7 @@ export function ListingPage({ id }: { id: string }) {
             <li><a href="/open-calls">Everything, by discipline and place</a></li>
           </ul>
         </section>
-      </nav>
+      </nav>}
     </>
   );
 }
