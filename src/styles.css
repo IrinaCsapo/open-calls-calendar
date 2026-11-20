@@ -740,3 +740,12 @@ main:focus { outline: none; }
 .hero__subscribe .subscribe-box__form input { text-align: left; }
 .hero__subscribe .subscribe-box__small { margin: 0 auto; max-width: 30rem; text-align: center; }
 .hero__subscribe .subscribe-box__done { padding: 1rem 1.2rem; border-radius: 18px; background: #fff; text-align: left; }
+/* Phones: the hero sign-up is one button until tapped; no paint hint */
+.hero__subscribe-toggle { display: none; }
+@media (max-width: 40rem) {
+  .hero__subscribe:not(.is-open) .hero__subscribe-body { display: none; }
+  .hero__subscribe:not(.is-open) .hero__subscribe-toggle { display: inline-flex; gap: 0.5rem; min-height: 3rem; padding: 0 1.5rem; font-size: 1rem; }
+  .hero__subscribe { margin-top: 1.75rem; }
+  .hero__subscribe-label { font-size: 0.95rem; }
+  .hero__hint { display: none; }
+}

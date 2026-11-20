@@ -5,7 +5,6 @@ import { SORT_LABELS, applyFilters, defaultFilters, filtersFromQuery, filtersToQ
 import { guessCurrency } from '../lib/money';
 import { replaceHashQuery, useHashRoute } from '../lib/useHashRoute';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
-import { SITE_TAGLINE } from '../lib/site';
 import { FilterPanel } from '../components/FilterPanel';
 import { ListingRow } from '../components/ListingRow';
 import { HeroPaint } from '../components/HeroPaint';
@@ -98,7 +97,7 @@ export function HomePage() {
       <section className="hero" aria-labelledby="hero-title">
         <HeroPaint />
         <h1 id="hero-title" className="hero__title"><span>Open calls, prizes and</span> <span>events <em>for artists</em></span></h1>
-        <p className="hero__lede">{SITE_TAGLINE} Updated every morning.</p>
+        <p className="hero__lede">Every fee shown up front. Updated every morning.</p>
         <SubscribeHero />
         <p className="hero__hint" aria-hidden="true"><span className="hero__hint--mouse">Click and drag to paint</span><span className="hero__hint--touch">Drag sideways to paint</span></p>
       </section>
