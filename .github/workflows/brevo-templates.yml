@@ -32,7 +32,7 @@ jobs:
       - name: Upload the templates to Brevo
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
-          BREVO_TEST_EMAILS: ${{ vars.BREVO_TEST_EMAILS }}
+          BREVO_TEST_EMAILS: ${{ secrets.BREVO_TEST_EMAILS || vars.BREVO_TEST_EMAILS }}
           SEND_TEST: ${{ inputs.send_test }}
         run: |
           if [ -z "$BREVO_API_KEY" ]; then echo "BREVO_API_KEY isn't set yet: skipping."; exit 0; fi
