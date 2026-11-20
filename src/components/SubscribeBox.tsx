@@ -56,7 +56,7 @@ export function SubscribeBox() {
         </form>
       )}
       <p className="subscribe-box__small">
-        {state === 'error' ? 'Something went wrong. Please try again in a moment.' : <>Free, from hello@magpie.cool every Monday morning. Unsubscribe in one click, and we never share your email. <a href="/privacy">Privacy</a></>}
+        {state === 'error' ? 'Something went wrong. Please try again in a moment.' : <>New open calls, every Monday morning, from hello@magpie.cool. Unsubscribe in one click, and we never share your email. <a href="/privacy">Privacy</a></>}
       </p>
       </div>
     </section>
