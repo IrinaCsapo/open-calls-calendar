@@ -65,18 +65,17 @@ export function App() {
         <nav aria-label="Main" className="site-nav">
           <a href="/" aria-current={path === '/' || (listingMatch && !exhibitionPage) || path.startsWith('/open-calls') ? 'page' : undefined}>Open calls</a>
           <a href="/exhibitions" aria-current={path === '/exhibitions' || exhibitionPage ? 'page' : undefined}>Exhibitions</a>
-          <a href="/about" className="site-nav__about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
-          <a href="/submit" className="site-nav__submit" aria-current={path === '/submit' ? 'page' : undefined}>
-            Submit <span className="site-nav__long">an open call</span>
-          </a>
+          <a href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
         </nav>
+        <a href="/submit" className="site-nav__submit" aria-current={path === '/submit' ? 'page' : undefined}>
+          Submit <span className="site-nav__long">an open call</span>
+        </a>
       </header>
       <main id="main" tabIndex={-1}>{page}</main>
       {/* the homepage has the sign-up in its hero instead */}
       {path !== '/' && path !== '/submit' && path !== '/start' && path !== '/subscribed' && <div className="subscribe-wrap"><SubscribeBox /></div>}
       <footer className="site-footer">
         <nav className="site-footer__links" aria-label="More">
-          <a href="/about" className="site-footer__about">About</a>
           <a href="/exhibitions">Exhibitions</a>
           <a href="/open-calls">Browse by discipline and place</a>
           <a href="/open-calls/free">Free open calls</a>

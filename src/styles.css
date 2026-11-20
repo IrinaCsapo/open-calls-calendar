@@ -58,17 +58,22 @@ h1, h2, h3 { line-height: 1.1; font-family: var(--font-display); font-weight: 40
 .site-name { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-wordmark); font-weight: 600; font-size: 2rem; line-height: 1; color: var(--brand); text-decoration: none; }
 .site-name__logo { display: block; height: 58px; width: auto; }
 @media (max-width: 40rem) { .site-name__logo { height: 34px; } .site-header { flex-wrap: nowrap; gap: 0.5rem; } }
-.site-nav { display: flex; align-items: center; gap: clamp(0.75rem, 3vw, 2.5rem); }
-.site-nav a { color: var(--ink); text-decoration: none; font-size: 1.1rem; padding: 0.4rem 0; min-height: 44px; display: inline-flex; align-items: center;
+.site-nav { display: flex; align-items: center; gap: clamp(0.75rem, 3vw, 2.5rem); margin-left: auto; }
+.site-nav a, .site-nav__submit { color: var(--ink); text-decoration: none; font-size: 1.1rem; padding: 0.4rem 0; min-height: 44px; display: inline-flex; align-items: center;
   text-underline-offset: 0.3em; text-decoration-thickness: 1.5px; }
 .site-nav a:hover, .site-nav a[aria-current='page'] { text-decoration: underline; }
-.site-nav__submit { gap: 0.28em; padding: 0 1.4rem !important; border: 1.5px solid var(--ink); border-radius: 999px; min-height: 48px !important; }
+.site-nav__submit { display: inline-flex; align-items: center; color: var(--ink); text-decoration: none; font-size: 1.1rem; white-space: nowrap; gap: 0.28em; padding: 0 1.4rem !important; border: 1.5px solid var(--ink); border-radius: 999px; min-height: 48px !important; }
 .site-nav__submit:hover, .site-nav__submit[aria-current='page'] { text-decoration: none !important; background: var(--ink); color: #fff !important; }
+/* Phones: logo and Submit on top, then the links as a row of tabs */
 @media (max-width: 40rem) {
-  .site-nav { gap: 0.8rem; }
-  .site-nav a { font-size: 0.95rem; }
+  .site-header { display: grid; grid-template-columns: 1fr auto; gap: 0.6rem 0.75rem; padding-block: 0.8rem 0; }
+  .site-name { grid-row: 1; grid-column: 1; }
+  .site-nav__submit { grid-row: 1; grid-column: 2; font-size: 0.95rem; padding: 0 1rem !important; min-height: 42px !important; }
+  .site-nav { grid-row: 2; grid-column: 1 / -1; margin: 0; gap: 1.6rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    overflow-x: auto; scrollbar-width: none; }
+  .site-nav a { font-size: 1rem; min-height: 46px; padding: 0; text-decoration: none !important; border-bottom: 2.5px solid transparent; margin-bottom: -1px; }
+  .site-nav a[aria-current='page'] { border-bottom-color: var(--ink); font-weight: 600; }
   .site-nav__long { display: none; }   /* "Submit" on phones */
-  .site-nav__submit { padding: 0 0.85rem !important; min-height: 44px !important; }
 }
 main { padding-block: 1.5rem 3rem; }
 main:focus { outline: none; }
@@ -728,9 +733,6 @@ main:focus { outline: none; }
 .exhibitions__submit { margin: 3rem 0 0; color: var(--muted); }
 .site-nav a { white-space: nowrap; }
 /* Phones: About moves to the footer, so Open calls, Exhibitions and Submit fit beside the logo */
-@media (max-width: 40rem) { .site-nav__about { display: none !important; } .site-nav { gap: 0.7rem; } }
-.site-footer__links a.site-footer__about { display: none; }
-@media (max-width: 40rem) { .site-footer__links a.site-footer__about { display: inline; } }
 .exhibitions .collection__head { margin-bottom: 1.75rem; }
 
 /* The weekly email sign-up in the homepage hero, in place of buttons */
