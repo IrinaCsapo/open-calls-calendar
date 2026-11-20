@@ -19,6 +19,7 @@ export const FEED_PATH = 'deadlines.ics';
  * HTML code (looks like https://xxxx.sibforms.com/serve/MUIF...). The sign-up box stays hidden while this is empty.
  * Setup: docs/brevo-setup.md.
  */
-export const NEWSLETTER_FORM_URL = '';
+export const NEWSLETTER_FORM_URL =
+  'https://e858efc7.sibforms.com/serve/MUIFAGKglxJyf9h-XbV9i-l3CbqynKbY0jeAbVz9IxXDEj6Tz8eHaJ26eLad9W6zfy6yo5UAChDB-0EjtoGVzRbjg-0rTFVx24b1t43puen_GCLNfMAuR9JzgCSIvBWVZ1h-XaR2aU9K0AVj9UH74FN0LBmjgDM2Axa0z8cs9QSQNKFoTaS2YOhedaFYoanzcuQM9pXJp0kU3_7I7g==';
 /** Where people can reach us (forwards to Irina's inbox). */
 export const CONTACT_EMAIL = 'hello@magpie.cool';
