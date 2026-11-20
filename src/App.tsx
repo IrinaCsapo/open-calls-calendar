@@ -80,6 +80,7 @@ export function App() {
           <span className="sr-only">{menuOpen ? 'Close menu' : 'Menu'}</span>
           <span className="menu-toggle__lines" aria-hidden="true"><span /><span /><span /></span>
         </button>
+        <div className="menu-veil" aria-hidden="true" onClick={() => setMenuOpen(false)} />
         <nav aria-label="Main" id="site-nav" className="site-nav">
           <a style={{ '--i': 0 } as React.CSSProperties} href="/" aria-current={path === '/' || (listingMatch && !exhibitionPage) || path.startsWith('/open-calls') ? 'page' : undefined}>Open calls</a>
           <a style={{ '--i': 1 } as React.CSSProperties} href="/exhibitions" aria-current={path === '/exhibitions' || exhibitionPage ? 'page' : undefined}>Exhibitions</a>
