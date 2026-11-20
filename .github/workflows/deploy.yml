@@ -48,9 +48,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send changed pages to IndexNow
+        continue-on-error: true   # a hiccup here never fails a deploy that worked
         run: |
           sleep 30
-          curl -fsS https://magpie.cool/sitemap.xml -o sitemap.xml
+          curl -fsS --retry 5 --retry-delay 15 --retry-all-errors https://magpie.cool/sitemap.xml -o sitemap.xml
           python3 - <<'PY'
           import datetime, json, re, urllib.request
           since = (datetime.date.today() - datetime.timedelta(days=2)).isoformat()
