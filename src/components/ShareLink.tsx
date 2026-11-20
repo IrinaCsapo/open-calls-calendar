@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IconLink } from './Icons';
 
 /** Shares the page: the phone's share sheet when there is one, otherwise copies the link. */
-export function ShareLink({ title }: { title: string }) {
+export function ShareLink({ title, label = 'Copy link' }: { title: string; label?: string }) {
   const [message, setMessage] = useState('');
   const share = async () => {
     const url = window.location.href;
@@ -19,7 +19,7 @@ export function ShareLink({ title }: { title: string }) {
   return (
     <>
       <button type="button" className="button button--secondary" onClick={share}>
-        <IconLink />Copy link to this call
+        <IconLink />{label}
       </button>
       <p className="save-card__status" role="status">{message}</p>
     </>

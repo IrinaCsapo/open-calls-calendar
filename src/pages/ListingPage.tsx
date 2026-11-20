@@ -225,12 +225,12 @@ export function ListingPage({ id }: { id: string }) {
                 <p className="save-card__small">
                   {opp && l.deadline ? 'Added as an all-day entry on the deadline. ' : 'Added as an all-day event. '}
                   Other apps: use Apple, it downloads a calendar file{opp && l.deadline ? ' with reminders three days before and on the day' : ''}.
-                  Want every deadline? <a href="/subscribe">Subscribe to the calendar</a>.
+                  {!show && <>Want every deadline? <a href="/subscribe">Subscribe to the calendar</a>.</>}
                 </p>
                 {opp && <ReminderBox l={l} now={now} />}
               </>
             )}
-            <ShareLink title={l.title} />
+            <ShareLink title={l.title} label={opp ? 'Copy link to this call' : 'Copy event link'} />
             <a className="save-card__report" href={REPORT_URL(l.id, l.title)}><IconFlag />Report a problem</a>
           </aside>
         </div>
