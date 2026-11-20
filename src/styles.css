@@ -604,3 +604,19 @@ main:focus { outline: none; }
    (the listing page shows everything) rather than being cut off mid-word */
 .card__tags { flex-wrap: wrap; height: 1.95rem; overflow: hidden; align-content: flex-start; }
 .card__tags .tag { flex: none; }
+
+/* Privacy page: plain prose sections */
+.privacy section { margin-top: 2rem; }
+.privacy h2 { margin: 0 0 0.6rem; font-size: clamp(1.5rem, 1.5vw + 1rem, 2rem); }
+.privacy ul { padding-left: 1.2rem; display: grid; gap: 0.6rem; }
+.privacy p, .privacy li { max-width: 68ch; }
+
+/* 404: the magpie on a wash, a way back, then what's closing soon */
+.lost { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; padding: clamp(2rem, 6vw, 4.5rem) 0 1rem; }
+.lost__bird { width: clamp(180px, 22vw, 280px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; }
+.lost__bird img { width: 78%; height: auto; }
+.lost h1 { margin: 0 0 1rem; font-size: clamp(2.6rem, 5vw + 0.6rem, 4.6rem); line-height: 1; letter-spacing: -0.02em; }
+.lost__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 0; }
+@media (max-width: 40rem) { .lost { grid-template-columns: minmax(0, 1fr); justify-items: start; } }
+.listing-panel__report { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 0.25rem; font-size: 0.9rem; color: var(--muted); text-underline-offset: 0.2em; }
+.listing-panel__report .icon { width: 1rem; height: 1rem; }

@@ -4,6 +4,7 @@ import { ListingPage } from './pages/ListingPage';
 import { SubmitPage } from './pages/SubmitPage';
 import { AboutPage } from './pages/AboutPage';
 import { StartPage } from './pages/StartPage';
+import { PrivacyPage } from './pages/PrivacyPage';
 import { SubscribeBox } from './components/SubscribeBox';
 import { SubscribePage } from './pages/SubscribePage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -24,6 +25,7 @@ export function App() {
   else if (path === '/submit') page = <SubmitPage />;
   else if (path === '/about') page = <AboutPage />;
   else if (path === '/start') page = <StartPage />;
+  else if (path === '/privacy') page = <PrivacyPage />;
   else if (path === '/subscribe') page = <SubscribePage />;
   else page = <NotFoundPage />;
 
@@ -61,6 +63,7 @@ export function App() {
         <nav className="site-footer__links" aria-label="More">
           <a href="/about">How we label fees</a>
           <a href="/start">Tell us what you make</a>
+          <a href="/privacy">Privacy</a>
         </nav>
         <p>Fees and dates come from organisers' pages and can change. Always check before you pay.</p>
         <p className="site-footer__credit">

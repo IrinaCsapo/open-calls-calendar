@@ -5,7 +5,7 @@ import {
   ArrowPathIcon, ArrowsRightLeftIcon, BanknotesIcon, CheckBadgeIcon, SparklesIcon, CalendarDaysIcon, CheckIcon, ClockIcon, ExclamationTriangleIcon,
   GlobeAltIcon, LinkIcon, MagnifyingGlassIcon, MapPinIcon, QuestionMarkCircleIcon, TrophyIcon,
   UserGroupIcon, GiftIcon, PhotoIcon, HomeModernIcon, BookOpenIcon, ChatBubbleLeftRightIcon, ShoppingBagIcon,
-  BriefcaseIcon, TicketIcon, BuildingLibraryIcon, SwatchIcon,
+  BriefcaseIcon, TicketIcon, BuildingLibraryIcon, SwatchIcon, FlagIcon,
 } from '@heroicons/react/24/outline';
 import type { Format } from '../types/listing';
 
@@ -41,6 +41,7 @@ export const IconBriefcase = make(BriefcaseIcon);
 export const IconTicket = make(TicketIcon);
 export const IconBuilding = make(BuildingLibraryIcon);
 export const IconSwatch = make(SwatchIcon);
+export const IconFlag = make(FlagIcon);
 
 export const FormatIcon = ({ format }: { format: Format }) =>
   format === 'Online' ? <IconGlobe /> : format === 'Hybrid' ? <IconHybrid /> : <IconPin />;

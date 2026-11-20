@@ -11,7 +11,7 @@ import { Placeholder, isNew, place, wash } from '../components/ListingCard';
 import { ListingRow } from '../components/ListingRow';
 import { ShareLink } from '../components/ShareLink';
 import { NotFoundPage } from './NotFoundPage';
-import { FormatIcon, IconBuilding, IconCalendar, IconCheck, IconClock, IconGlobe, IconMoney, IconSwatch, IconTicket, IconUnknown, IconUsers, IconWarn } from '../components/Icons';
+import { FormatIcon, IconFlag, IconBuilding, IconCalendar, IconCheck, IconClock, IconGlobe, IconMoney, IconSwatch, IconTicket, IconUnknown, IconUsers, IconWarn } from '../components/Icons';
 import { perks } from '../lib/perks';
 
 
@@ -140,7 +140,7 @@ export function ListingPage({ id }: { id: string }) {
                 <span>
                   Details checked on <a href={l.source} target="_blank" rel="noopener noreferrer">the organiser's page</a> on {formatFull(l.added)}.
                   Fees and dates can change, so check there before you pay anything.{' '}
-                  <a href={REPORT_URL(l.id)} target="_blank" rel="noopener noreferrer">Something wrong? Tell us</a>.
+                  <a href={REPORT_URL(l.id, l.title)}>Something wrong? Tell us</a>.
                 </span>
               </p>
             </section>
@@ -190,6 +190,7 @@ export function ListingPage({ id }: { id: string }) {
               </button>
             )}
             <ShareLink title={l.title} />
+            <a className="listing-panel__report" href={REPORT_URL(l.id, l.title)}><IconFlag />Report a problem</a>
           </aside>
         </div>
       </article>
