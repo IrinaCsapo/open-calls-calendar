@@ -11,7 +11,8 @@ import { Placeholder, isNew, place, wash } from '../components/ListingCard';
 import { ListingRow } from '../components/ListingRow';
 import { ShareLink } from '../components/ShareLink';
 import { NotFoundPage } from './NotFoundPage';
-import { FormatIcon, IconCalendar, IconCheck, IconClock, IconMoney, IconTrophy, IconUnknown, IconWarn } from '../components/Icons';
+import { FormatIcon, IconBuilding, IconCalendar, IconCheck, IconClock, IconGlobe, IconMoney, IconSwatch, IconTicket, IconUnknown, IconUsers, IconWarn } from '../components/Icons';
+import { perks } from '../lib/perks';
 
 
 /** Up to 4 other open listings that share a discipline (closing soonest), topped up with the same type. */
@@ -21,6 +22,20 @@ function moreLikeThis(l: Listing, now: number): Listing[] {
   const similar = others.filter((x) => own.some((d) => x.disciplines.includes(d)));
   const sameType = others.filter((x) => x.type === l.type && !similar.includes(x));
   return [...similar, ...sameType].slice(0, 4);
+}
+
+/** One cell of the "Good to know" grid: icon, small label, the fact, and an optional line under it. */
+function Fact({ icon, label, children, sub, wide }: { icon: ReactNode; label: string; children: ReactNode; sub?: ReactNode; wide?: boolean }) {
+  return (
+    <div className={`gtk-fact${wide ? ' gtk-fact--wide' : ''}`}>
+      <span className="gtk-fact__icon">{icon}</span>
+      <div>
+        <dt className="gtk-eyebrow">{label}</dt>
+        <dd className="gtk-fact__value">{children}</dd>
+        {sub && <dd className="gtk-fact__sub">{sub}</dd>}
+      </div>
+    </div>
+  );
 }
 
 /** One row of the "What it costs" breakdown, with a symbol so it never relies on colour. */
@@ -48,6 +63,7 @@ export function ListingPage({ id }: { id: string }) {
   const opp = isOpportunity(l);
   const live = isLive(l, now);
   const fee = feeSummary(l);
+  const gets = perks(l);
   const where = l.format === 'Online' ? place(l) : [l.venue, l.city, l.country].filter(Boolean).join(', ');
 
   return (
@@ -81,6 +97,54 @@ export function ListingPage({ id }: { id: string }) {
                 : <Placeholder l={l} />}
             </div>
 
+            <section className="listing-section" aria-labelledby="gtk-h">
+              <h2 id="gtk-h">Good to know</h2>
+
+              <div className="gtk-who">
+                <span className="gtk-who__icon"><IconUsers /></span>
+                <div>
+                  <p className="gtk-eyebrow">Who it's for</p>
+                  <p className="gtk-who__quote">“{l.eligibility.replace(/\.$/, '')}”</p>
+                </div>
+              </div>
+
+              {(gets.length > 0 || l.prizes.length > 0) && (
+                <div className="gtk-get">
+                  <p className="gtk-eyebrow">What you get</p>
+                  {gets.length > 0 && (
+                    <ul className="gtk-perks">
+                      {gets.map((p) => <li key={p.kind}><p.Icon />{p.label}</li>)}
+                    </ul>
+                  )}
+                  {l.prizes.length > 0 && <ul className="gtk-get__details">{l.prizes.map((p) => <li key={p}>{p}</li>)}</ul>}
+                </div>
+              )}
+
+              <dl className="gtk-grid">
+                {l.deadline && (
+                  <Fact icon={<IconCalendar />} label={opp ? 'Deadline' : 'Register by'}
+                    sub={<>End of the day, {l.timezone.replace(/_/g, ' ')} time</>}>{formatFull(l.deadline)}</Fact>
+                )}
+                {l.start_date && (
+                  <Fact icon={<IconCalendar />} label={opp ? (l.type === 'Residency' ? 'Residency dates' : 'Exhibition / programme dates') : 'When'}
+                    sub={!l.deadline ? <>{l.timezone.replace(/_/g, ' ')} time</> : undefined}>{formatRange(l.start_date, l.end_date)}</Fact>
+                )}
+                <Fact icon={<FormatIcon format={l.format} />} label="Where" sub={l.format === 'Online' ? undefined : l.format}>{where}</Fact>
+                <Fact icon={<IconTicket />} label={opp ? 'Cost to enter' : 'Cost'} sub={fee.selected}>{fee.headline}</Fact>
+                <Fact icon={<IconBuilding />} label="Organiser" wide={((l.deadline ? 1 : 0) + (l.start_date ? 1 : 0) + 3) % 2 === 1}>{l.organiser}</Fact>
+                <Fact icon={<IconSwatch />} label="Disciplines" wide>{l.disciplines.join(', ')}</Fact>
+              </dl>
+
+              <p className="gtk-source">
+                <IconGlobe />
+                <span>
+                  Details checked on <a href={l.source} target="_blank" rel="noopener noreferrer">the organiser's page</a> on {formatFull(l.added)}.
+                  Fees and dates can change, so check there before you pay anything.{' '}
+                  <a href={REPORT_URL(l.id)} target="_blank" rel="noopener noreferrer">Something wrong? Tell us</a>.
+                </span>
+              </p>
+            </section>
+
             <section className="listing-section" aria-labelledby="cost-h">
               <h2 id="cost-h">What it costs</h2>
               {l.commercial && (
@@ -104,30 +168,6 @@ export function ListingPage({ id }: { id: string }) {
               </dl>
             </section>
 
-            <section className="listing-section" aria-labelledby="prize-h">
-              <h2 id="prize-h">{opp ? 'Prizes and what you get' : 'Prizes'}</h2>
-              {l.prizes.length
-                ? <ul className="prizes">{l.prizes.map((p) => <li key={p}><IconTrophy />{p}</li>)}</ul>
-                : <p className="muted">None stated.</p>}
-            </section>
-
-            <section className="listing-section" aria-labelledby="details-h">
-              <h2 id="details-h">Details</h2>
-              <dl className="facts">
-                {l.deadline && <div><dt>{opp ? 'Deadline' : 'Register by'}</dt><dd>{formatFull(l.deadline)} <span className="muted">(end of day, {l.timezone.replace(/_/g, ' ')} time)</span></dd></div>}
-                {l.start_date && <div><dt>{opp ? 'Exhibition / programme dates' : 'When'}</dt><dd>{formatRange(l.start_date, l.end_date)}</dd></div>}
-                <div><dt>Where</dt><dd className="with-icon"><FormatIcon format={l.format} />{where}</dd></div>
-                <div><dt>Who can apply</dt><dd><q>{l.eligibility}</q></dd></div>
-                <div><dt>Disciplines</dt><dd><ul className="card__chips">{l.disciplines.map((d) => <li key={d} className="info-chip">{d}</li>)}</ul></dd></div>
-                <div><dt>Organiser</dt><dd>{l.organiser}</dd></div>
-              </dl>
-            </section>
-
-            <p className="small muted listing-page__source">
-              Checked on {formatFull(l.added)} from <a href={l.source} target="_blank" rel="noopener noreferrer">the organiser's page</a>.
-              Fees and dates can change, so check before you pay anything.{' '}
-              <a href={REPORT_URL(l.id)} target="_blank" rel="noopener noreferrer">Something wrong? Tell us</a>.
-            </p>
           </div>
 
           <aside className="listing-panel" aria-label={opp ? 'Apply' : 'Register'}>

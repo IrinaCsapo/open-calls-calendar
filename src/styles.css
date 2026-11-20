@@ -553,3 +553,54 @@ main:focus { outline: none; }
 .card__new + .card__price, .card__price { text-align: right; }
 .pill--commercial { background: var(--caution-bg); color: var(--caution-fg); }
 .commercial-note { margin: 0 0 1rem; padding: 0.85rem 1rem; border-radius: var(--radius); background: var(--caution-bg); color: var(--caution-fg); }
+
+/* ---- Listing page: Good to know (who it's for, what you get, facts grid) ---- */
+.gtk-eyebrow { margin: 0 0 0.3rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.gtk-who { display: flex; gap: 0.9rem; padding: 1.2rem 1.4rem; border-radius: 20px; background: var(--surface); margin-bottom: 1rem; }
+.gtk-who__icon, .gtk-fact__icon { flex: none; color: #c96a1b; }
+.gtk-who__icon .icon, .gtk-fact__icon .icon { width: 1.6rem; height: 1.6rem; }
+.gtk-who__quote { margin: 0; font-family: var(--font-display); font-size: clamp(1.25rem, 0.8vw + 1rem, 1.6rem); line-height: 1.3; color: var(--ink); }
+.gtk-get { padding: 1.2rem 1.4rem; border-radius: 20px; background: #efe8f6; margin-bottom: 1rem; }
+.gtk-perks { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; margin: 0.35rem 0 0.8rem; padding: 0; list-style: none; }
+.gtk-perks li { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.15rem; font-weight: 600; color: var(--ink); }
+.gtk-perks .icon { width: 1.5rem; height: 1.5rem; color: #c96a1b; }
+.gtk-get__details { margin: 0; padding: 0 0 0 1.1rem; display: grid; gap: 0.3rem; color: var(--ink); }
+.gtk-get__details li::marker { color: #8e72ad; }
+.gtk-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 0; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: var(--line); }
+.gtk-fact { display: flex; gap: 0.9rem; padding: 1.15rem 1.3rem; background: #fff; }
+.gtk-fact--wide, .gtk-fact:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.gtk-fact dd { margin: 0; }
+.gtk-fact__value { font-size: 1.12rem; font-weight: 600; color: var(--ink); }
+.gtk-fact__sub { margin-top: 0.15rem !important; color: var(--muted); }
+.gtk-source { display: flex; gap: 0.6rem; align-items: flex-start; margin: 1rem 0 0; font-size: 0.92rem; color: var(--ink); }
+.gtk-source .icon { flex: none; width: 1.25rem; height: 1.25rem; margin-top: 0.1rem; }
+.gtk-source a { color: var(--ink); text-underline-offset: 0.2em; }
+@media (max-width: 40rem) {
+  .gtk-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+
+/* ---- Cards: countdown, fee and perk pills, then the title, then grey fact chips ---- */
+.card__tags, .card__facts { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; min-width: 0; }
+.tag { display: inline-flex; align-items: center; gap: 0.35rem; min-width: 0; max-width: 100%; padding: 0.28rem 0.65rem; border-radius: 10px;
+  font-size: 0.84rem; font-weight: 600; line-height: 1.3; color: var(--ink); background: #fff; border: 1px solid var(--line); }
+.tag .icon, .card__facts .icon { flex: none; width: 1.05rem; height: 1.05rem; }
+.tag__text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.tag__more { flex: none; font-weight: 600; opacity: 0.75; }
+.tag--time { flex-basis: auto; border: 0; background: var(--free-bg); color: var(--free-fg); }
+.tag--time.tag--soon { background: #fdf0d2; color: #5c4300; }
+.tag--time.tag--urgent { background: var(--caution-bg); color: var(--urgent); }
+.tag--time.tag--closed { background: #ececec; color: var(--muted); }
+.card__time { margin: 0; display: flex; min-width: 0; }
+.tag--free { border: 0; background: var(--free-bg); color: var(--free-fg); }
+.tag--paid { border: 0; background: var(--paid-bg); color: var(--paid-fg); }
+.tag--warn { border: 0; background: var(--caution-bg); color: var(--caution-fg); }
+.tag--unknown { border: 1px dashed #b9b4a8; background: transparent; color: var(--muted); font-weight: 500; }
+.tag--perk { border: 0; background: #efe8f6; color: #3f2f57; }
+.card__facts li { display: inline-flex; align-items: center; gap: 0.35rem; min-width: 0; max-width: 100%; padding: 0.28rem 0.6rem; border-radius: 10px;
+  background: #efede7; font-size: 0.84rem; color: var(--ink); }
+.card__title { font-size: 1.15rem; font-weight: 500; }
+/* One line of pills, so titles line up across a row: a pill that doesn't fit drops out of sight
+   (the listing page shows everything) rather than being cut off mid-word */
+.card__tags { flex-wrap: wrap; height: 1.95rem; overflow: hidden; align-content: flex-start; }
+.card__tags .tag { flex: none; }

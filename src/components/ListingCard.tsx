@@ -1,8 +1,9 @@
-import { useState, type ReactNode } from 'react';
+import { useState } from 'react';
 import type { Listing } from '../types/listing';
 import { formatFull, formatShort, isOpportunity, timeLeft } from '../lib/dates';
 import { formatMoney, priceTag } from '../lib/money';
-import { FormatIcon, IconCalendar, IconCheck, IconClock, IconMoney, IconTrophy, IconUnknown, IconWarn } from './Icons';
+import { IconCalendar, IconCheck, IconClock, IconGlobe, IconHybrid, IconMoney, IconPin, IconUnknown, IconUsers, IconWarn } from './Icons';
+import { perks } from '../lib/perks';
 
 const NEW_DAYS = 3;
 const TINTS = ['#9cc6f0', '#f7bd86', '#93e2cf', '#c9b6d4', '#f1d391', '#b3d6f6'];
@@ -75,25 +76,21 @@ function Media({ l }: { l: Listing }) {
  * The money, as one line: "✓ Free to enter · ⚠ Pay if selected". Only the warning is coloured;
  * the full amounts are on the listing page.
  */
-function FeeLine({ l }: { l: Listing }) {
+/** Fee pills: what it costs to enter, and a warning pill when selected artists pay (or it isn't stated). */
+function FeePills({ l }: { l: Listing }) {
   const apply = isOpportunity(l);
-  let entry: ReactNode;
-  if (l.entry_fee === 'Free') entry = <><IconCheck />{apply ? 'Free to enter' : 'Free'}</>;
-  else if (l.entry_fee === 'Paid' && l.fee_amount !== undefined && l.currency) {
-    entry = <><IconMoney />{formatMoney(l.fee_amount, l.currency)}{apply ? ' to enter' : ''}</>;
-  } else entry = <><IconUnknown />{apply ? 'Entry fee not stated' : 'Price not stated'}</>;
-
   return (
-    <p className="card__fee">
-      <span className="card__fee-part">{entry}</span>
-      {apply && l.selected_fee === 'Yes' && (
-        <span className="card__fee-part card__fee-part--warn" title={l.selected_fee_details}>
-          <IconWarn />Pay if selected<span className="sr-only">: {l.selected_fee_details}</span>
-        </span>
+    <>
+      {l.entry_fee === 'Free' && <li className="tag tag--free"><IconCheck />{apply ? 'Free to enter' : 'Free'}</li>}
+      {l.entry_fee === 'Paid' && (
+        <li className="tag tag--paid"><IconMoney />{l.fee_amount !== undefined && l.currency ? `${formatMoney(l.fee_amount, l.currency)}${apply ? ' to enter' : ''}` : 'Paid'}</li>
       )}
-      {apply && l.selected_fee === 'None' && <span className="card__fee-part">No fees if selected</span>}
-      {apply && l.selected_fee === 'Unknown' && <span className="card__fee-part card__fee-part--muted">Fees if selected not stated</span>}
-    </p>
+      {l.entry_fee === 'Unknown' && <li className="tag tag--unknown"><IconUnknown />{apply ? 'Entry fee not stated' : 'Price not stated'}</li>}
+      {apply && l.selected_fee === 'Yes' && (
+        <li className="tag tag--warn" title={l.selected_fee_details}><IconWarn />Pay if selected<span className="sr-only">: {l.selected_fee_details}</span></li>
+      )}
+      {apply && l.selected_fee === 'Unknown' && <li className="tag tag--unknown">Fees if selected not stated</li>}
+    </>
   );
 }
 
@@ -106,7 +103,7 @@ export function ListingCard({ listing: l, now }: { listing: Listing; now: number
         short: `${formatShort(l.start_date!)}${l.end_date && l.end_date !== l.start_date ? `–${formatShort(l.end_date)}` : ''}`,
         full: formatFull(l.start_date!),
       };
-  const topPrize = l.prizes[0];
+  const kinds = perks(l);
 
   return (
     <article className="card">
@@ -114,26 +111,26 @@ export function ListingCard({ listing: l, now }: { listing: Listing; now: number
       {isNew(l, now) && <span className="card__new">New</span>}
       {l.commercial && <span className="card__price"><span className="sr-only">Price: </span>{priceTag(l)}</span>}
 
-      <p className="card__kicker">
-        <span>{l.type}</span>
-        <span className={`card__left card__left--${left.urgency}`} title={left.label}><IconClock /><span className="card__left-text">{left.label}</span></span>
-      </p>
+      <p className="card__time"><span className={`tag tag--time tag--${left.urgency}`} title={left.label}><IconClock /><span className="tag__text">{left.label}</span></span></p>
+      <ul className="card__tags" aria-label="Cost and perks">
+        <FeePills l={l} />
+        {kinds.length > 0 && (
+          <li className="tag tag--perk" title={l.prizes.join(' · ')}>
+            {(() => { const P = kinds[0].Icon; return <P />; })()}
+            <span className="tag__text">{kinds[0].label}</span>{kinds.length > 1 && <span className="tag__more">+{kinds.length - 1}</span>}
+          </li>
+        )}
+      </ul>
 
       <h3 className="card__title">
         <a href={`/listing/${l.id}`}>{l.title}</a>
       </h3>
 
-      <FeeLine l={l} />
-
-      <ul className="card__meta" aria-label="Details">
+      <ul className="card__facts" aria-label="Details">
         <li><IconCalendar /><span aria-hidden="true">{when.short}</span><span className="sr-only">{when.full}</span></li>
-        <li><FormatIcon format={l.format} />{place(l)}</li>
-        {topPrize && (
-          <li className="card__prize">
-            <IconTrophy /><span className="sr-only">Prize:</span><span className="card__prize-text">{topPrize}</span>
-            {l.prizes.length > 1 && <span className="card__more">+{l.prizes.length - 1}</span>}
-          </li>
-        )}
+        <li>{l.format === 'Online' ? <IconGlobe /> : l.format === 'Hybrid' ? <IconHybrid /> : <IconUsers />}{l.format === 'Online' ? place(l) : l.format}</li>
+        {l.format !== 'Online' && <li className="card__fact--place"><IconPin /><span className="tag__text">{[l.city, l.country].filter(Boolean).join(', ')}</span></li>}
+        <li>{l.type}</li>
       </ul>
 
       <p className="card__disciplines">{l.disciplines.slice(0, 3).join(' · ')}</p>

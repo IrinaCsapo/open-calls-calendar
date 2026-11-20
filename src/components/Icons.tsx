@@ -4,6 +4,8 @@ import type { ComponentType, SVGProps } from 'react';
 import {
   ArrowPathIcon, ArrowsRightLeftIcon, BanknotesIcon, CheckBadgeIcon, SparklesIcon, CalendarDaysIcon, CheckIcon, ClockIcon, ExclamationTriangleIcon,
   GlobeAltIcon, LinkIcon, MagnifyingGlassIcon, MapPinIcon, QuestionMarkCircleIcon, TrophyIcon,
+  UserGroupIcon, GiftIcon, PhotoIcon, HomeModernIcon, BookOpenIcon, ChatBubbleLeftRightIcon, ShoppingBagIcon,
+  BriefcaseIcon, TicketIcon, BuildingLibraryIcon, SwatchIcon,
 } from '@heroicons/react/24/outline';
 import type { Format } from '../types/listing';
 
@@ -28,6 +30,17 @@ export const IconMoney = make(BanknotesIcon);
 export const IconRefresh = make(ArrowPathIcon);
 export const IconBadge = make(CheckBadgeIcon);
 export const IconSparkles = make(SparklesIcon);
+export const IconUsers = make(UserGroupIcon);
+export const IconGift = make(GiftIcon);
+export const IconPhoto = make(PhotoIcon);
+export const IconHome = make(HomeModernIcon);
+export const IconBook = make(BookOpenIcon);
+export const IconChat = make(ChatBubbleLeftRightIcon);
+export const IconBag = make(ShoppingBagIcon);
+export const IconBriefcase = make(BriefcaseIcon);
+export const IconTicket = make(TicketIcon);
+export const IconBuilding = make(BuildingLibraryIcon);
+export const IconSwatch = make(SwatchIcon);
 
 export const FormatIcon = ({ format }: { format: Format }) =>
   format === 'Online' ? <IconGlobe /> : format === 'Hybrid' ? <IconHybrid /> : <IconPin />;
