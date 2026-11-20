@@ -106,6 +106,13 @@ async function brevo(method: string, path: string, body?: unknown) {
   return text ? JSON.parse(text) : {};
 }
 
+// The PLACE contact attribute (UK, Europe, US…, sent by the sign-up box): create it if this account doesn't have it yet
+const attributes: { name: string }[] = (await brevo('GET', '/contacts/attributes')).attributes ?? [];
+if (!attributes.some((x) => x.name === 'PLACE')) {
+  await brevo('POST', '/contacts/attributes/normal/PLACE', { type: 'text' });
+  console.log('Created the PLACE contact attribute');
+}
+
 // Update the template with the same name if it exists, otherwise create it
 const existing: { id: number; name: string }[] = (await brevo('GET', '/smtp/templates?limit=1000')).templates ?? [];
 const ids: Record<string, number> = {};

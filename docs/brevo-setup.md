@@ -21,7 +21,7 @@ A separate free Brevo account for Magpie keeps its 300 emails a day apart from B
    magpie.cool already has DKIM records from your other Brevo account (for Gmail replies), and a domain can only have
    one of each, so they may need swapping rather than adding.
 3. **Sender.** Senders → Add a sender: name `Magpie`, email `hello@magpie.cool`.
-4. **The place field.** Contacts → Settings → Contact attributes → Add a new attribute: name `PLACE`, type Text.
+4. **The place field** (`PLACE`, text) is created for you the first time the **Brevo signup emails** workflow runs.
 5. **The list.** Contacts → Lists → Create a list: `Magpie weekly`. Note its number (ID), e.g. `#2`.
 6. **API key.** Settings → SMTP & API → API keys → Generate a new API key → name it `GitHub`. Copy it.
 
