@@ -34,7 +34,7 @@ function useSubscribe() {
 }
 
 const DONE = <>Nearly there! Check your inbox for an email from Magpie (hello@magpie.cool) and click “Yes, send me the weekly email”. It can take a minute, so check spam too.</>;
-const SMALL = <>New open calls, every Monday morning, from hello@magpie.cool. Unsubscribe in one click, and we never share your email. <a href="/privacy">Privacy</a></>;
+const SMALL = <>Free, every Monday. Unsubscribe any time. <a href="/privacy">Privacy</a></>;
 const ERROR = 'Something went wrong. Please try again in a moment.';
 
 /** The email field and button, with the small print under it. */
@@ -69,7 +69,7 @@ export function SubscribeHero() {
       </button>
       <div className="hero__subscribe-body">
         <p className="hero__subscribe-label">Get new open calls in your inbox, every Monday</p>
-        <SubscribeForm id="hero-email" s={s} small={<>Free, every Monday. Unsubscribe any time. <a href="/privacy">Privacy</a></>} />
+        <SubscribeForm id="hero-email" s={s} />
       </div>
     </div>
   );

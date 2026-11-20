@@ -775,3 +775,7 @@ main:focus { outline: none; }
 }
 .exhibitions .free-switch__sub { color: inherit; font-weight: inherit; }
 @media (max-width: 40rem) { .exhibitions .where__select { max-width: 7rem; } }
+/* Filter pills share one outline: Filters no longer darker than Free and Anywhere */
+.chip--more { border-color: #9a978e !important; }
+.chip--more:hover { border-color: var(--ink) !important; }
+.chip--more.is-open { border-color: var(--ink) !important; }
