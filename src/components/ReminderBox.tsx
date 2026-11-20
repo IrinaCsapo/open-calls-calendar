@@ -37,7 +37,7 @@ export function ReminderBox({ l, now }: { l: Listing; now: number }) {
   };
 
   if (state === 'done') {
-    return <p className="reminder__done" role="status"><IconBell />Done! We’ll email you on <strong>{on}</strong>, three days before it closes.</p>;
+    return <p className="reminder__done" role="status"><IconBell /><span><strong>Reminder set.</strong> We’ll email you on {on}, three days before it closes.</span></p>;
   }
   if (!open) {
     return (
