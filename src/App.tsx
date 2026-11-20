@@ -79,7 +79,9 @@ export function App() {
         </nav>
         <p>Fees and dates come from organisers' pages and can change. Always check before you pay.</p>
         <p className="site-footer__credit">
-          Project created by designer and artist <a href="https://irinacsapo.co.uk" target="_blank" rel="noopener noreferrer">Irina Csapo</a>
+          Project created by <a href="https://irinacsapo.co.uk" target="_blank" rel="noopener noreferrer">designer</a> and{' '}
+          <a href="https://www.instagram.com/irina_csapo_art" target="_blank" rel="noopener noreferrer">artist</a>{' '}
+          <a href="https://www.linkedin.com/in/irinacsapo/" target="_blank" rel="noopener noreferrer">Irina Csapo</a>
         </p>
       </footer>
     </>

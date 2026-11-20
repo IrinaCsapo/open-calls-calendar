@@ -41,6 +41,7 @@ export function SubscribeBox() {
         <p>One short email with new open calls, prizes, residencies and events for artists, the ones closing that week,
           and calls near you. Every fee shown up front.</p>
       </div>
+      <div className="subscribe-box__action">
       {state === 'done' ? (
         <p className="subscribe-box__done" role="status">
           Nearly there! Check your inbox for an email from Magpie (hello@magpie.cool) and click “Yes, send me the weekly
@@ -57,6 +58,7 @@ export function SubscribeBox() {
       <p className="subscribe-box__small">
         {state === 'error' ? 'Something went wrong. Please try again in a moment.' : <>Free, from hello@magpie.cool every Monday morning. Unsubscribe in one click, and we never share your email. <a href="/privacy">Privacy</a></>}
       </p>
+      </div>
     </section>
   );
 }

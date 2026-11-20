@@ -531,7 +531,9 @@ main:focus { outline: none; }
 /* Weekly roundup sign-up (Brevo), above the footer */
 .subscribe-box { margin: clamp(3rem, 6vw, 4.5rem) 0 clamp(2.5rem, 5vw, 4rem); padding: clamp(1.75rem, 4vw, 3rem); border-radius: 24px; display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 0.75rem 2.5rem; align-items: center; }
-.subscribe-box h2 { margin: 0 0 0.4rem; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem, 2vw + 1rem, 2.6rem); line-height: 1.1; }
+.subscribe-box h2 { margin: 0 0 0.8rem; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem, 2vw + 1rem, 2.6rem); line-height: 1.1; text-wrap: balance; }
+.subscribe-box .subscribe-box__eyebrow { margin: 0 0 0.9rem; }
+.subscribe-box__action { display: grid; gap: 0.8rem; align-content: center; }
 .subscribe-box__text p { margin: 0; max-width: 42ch; }
 .subscribe-box__form { display: flex; gap: 0.5rem; padding: 0.35rem 0.35rem 0.35rem 1.2rem; border-radius: 999px; background: #fff;
   border: 1.5px solid #8a877e; }
@@ -539,10 +541,10 @@ main:focus { outline: none; }
 .subscribe-box__form input { flex: 1; min-width: 0; min-height: 46px; border: 0; background: transparent; font: inherit; font-size: 1rem; color: var(--ink); outline: none; }
 .subscribe-box__form input::placeholder { color: #6b6860; }
 .subscribe-box__done { margin: 0; font-weight: 600; }
-.subscribe-box__small { grid-column: 2; margin: 0 0 0 1.2rem; font-size: 0.85rem; color: var(--muted); }
+.subscribe-box__small { margin: 0 1.2rem; font-size: 0.85rem; line-height: 1.5; color: var(--muted); }
 @media (max-width: 48rem) {
   .subscribe-box { grid-template-columns: minmax(0, 1fr); }
-  .subscribe-box__small { grid-column: 1; margin-left: 0; }
+  .subscribe-box__small { margin: 0 0.5rem; }
   .subscribe-box__form { padding-left: 1rem; }
 }
 

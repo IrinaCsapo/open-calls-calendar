@@ -80,7 +80,7 @@ const ORGANIZATION = {
   logo: `${SITE_URL}icon-512.png`,
   email: CONTACT_EMAIL,
   description: 'A free, independent calendar of open calls, prizes, residencies, grants and events for artists worldwide, with every fee shown up front. Updated every morning.',
-  founder: { '@type': 'Person', name: 'Irina Csapo', jobTitle: 'Designer and artist', url: LINKEDIN, sameAs: [LINKEDIN, 'https://irinacsapo.co.uk'] },
+  founder: { '@type': 'Person', name: 'Irina Csapo', jobTitle: 'Designer and artist', url: LINKEDIN, sameAs: [LINKEDIN, 'https://irinacsapo.co.uk', 'https://www.instagram.com/irina_csapo_art'] },
 };
 
 const breadcrumbs = (trail: { name: string; path: string }[]) => ({
@@ -104,7 +104,7 @@ const browseLinks = () => (['Kinds', 'Disciplines', 'Places'] as const).map((g) 
   `<h2>${g === 'Kinds' ? 'Browse by kind' : g === 'Disciplines' ? 'Browse by what you make' : 'Browse by place'}</h2>
   <ul>${COLLECTIONS.filter((c) => c.group === g).map((c) => `<li>${a(`/${collectionPath(c)}`, c.title)} (${LIVE.filter(c.match).length} open)</li>`).join('')}</ul>`).join('');
 const nav = `<p>${a('/', 'All open calls')} · ${a('/open-calls', 'Browse')} · ${a('/faq', 'FAQ')} · ${a('/about', 'About')} · ${a('/submit', 'Submit an open call')}</p>`;
-const footer = `<p>Magpie is a free, independent project by designer and artist ${a(LINKEDIN, 'Irina Csapo')}. Contact: ${esc(CONTACT_EMAIL)}. Updated ${formatFull(TODAY)}.</p>`;
+const footer = `<p>Magpie is a free, independent project by ${a('https://irinacsapo.co.uk', 'designer')} and ${a('https://www.instagram.com/irina_csapo_art', 'artist')} ${a(LINKEDIN, 'Irina Csapo')}. Contact: ${esc(CONTACT_EMAIL)}. Updated ${formatFull(TODAY)}.</p>`;
 
 function listingBody(l: Listing) {
   const f = feeSummary(l);
