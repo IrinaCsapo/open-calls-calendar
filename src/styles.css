@@ -779,3 +779,4 @@ main:focus { outline: none; }
 .chip--more { border-color: #9a978e !important; }
 .chip--more:hover { border-color: var(--ink) !important; }
 .chip--more.is-open { border-color: var(--ink) !important; }
+@media (max-width: 40rem) { .site-nav { justify-content: center; } }
