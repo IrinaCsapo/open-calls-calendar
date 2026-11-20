@@ -2674,5 +2674,144 @@
     "image_url": "https://paper.gatech.edu/sites/default/files/Exhibit-2_0.jpg",
     "source": "https://paper.gatech.edu/node/1767",
     "added": "2026-11-19"
+  },
+  {
+    "id": "archaive-residency-ai-cultural-memory-2027",
+    "title": "ARCHAIVE: Residency on AI and Cultural Memory 2027",
+    "organiser": "ARCHAIVE (Creative Europe consortium of five European media art archives)",
+    "type": "Residency",
+    "disciplines": [
+      "Digital art",
+      "Mixed media"
+    ],
+    "format": "Hybrid",
+    "timezone": "Europe/Berlin",
+    "city": "Five host cities (DE, IT, NL, PT, ES)",
+    "country": "Multiple",
+    "region": "Europe",
+    "deadline": "2026-12-07",
+    "start_date": "2027-03-01",
+    "eligibility": "Emerging and mid-career artists aged 18+, nationals or residents of a Creative Europe country; applications in English",
+    "entry_fee": "Free",
+    "fee_details": "No application fee stated on the official call; applications via the CMT platform",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "Travel and accommodation arrangements to be confirmed by the organisers",
+    "prizes": [
+      "€5,000 artist fee per selected artist (18 artists)",
+      "Curatorial support and at least 10 hours of technical mentoring"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Mentoring"
+    ],
+    "prize_value": 5000,
+    "currency": "EUR",
+    "apply_url": "https://archaive.eu/news/international-open-call-for-artists/",
+    "image_url": "https://archaive.eu/wp-content/uploads/gradient-opencall.jpg",
+    "source": "https://archaive.eu/news/international-open-call-for-artists/",
+    "added": "2026-11-20",
+    "lat": 47.0,
+    "lng": 8.0
+  },
+  {
+    "id": "frankfurt-moves-residency-performing-arts-2027",
+    "title": "Frankfurt Moves! Residency for International Performing Artists 2027",
+    "organiser": "KfW Stiftung and Frankfurt LAB",
+    "type": "Residency",
+    "disciplines": [
+      "Performance",
+      "Music"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Berlin",
+    "city": "Frankfurt am Main",
+    "country": "Germany",
+    "region": "Europe",
+    "lat": 50.1109,
+    "lng": 8.6821,
+    "deadline": "2026-12-07",
+    "start_date": "2027-07-26",
+    "end_date": "2027-09-19",
+    "eligibility": "Emerging professional performing artists (performance, dance, theatre, music) trained in Africa, Asia, Latin America or the WANA region; priority to those living there",
+    "entry_fee": "Free",
+    "fee_details": "No application fee mentioned on the official call",
+    "selected_fee": "None",
+    "selected_fee_details": "Scholarship covers stipend, documentation costs, travel and accommodation",
+    "prizes": [
+      "Four-week residency in Frankfurt (26 Jul-22 Aug 2027) plus a month of remote work",
+      "Stipend, travel and accommodation covered",
+      "Dramaturgical and technical support"
+    ],
+    "prize_kinds": [
+      "Residency",
+      "Mentoring"
+    ],
+    "apply_url": "https://frankfurt-lab.de/en/frankfurt-moves-stipend-for-international-performing-artists/",
+    "image_url": "https://frankfurt-lab.de/wp-content/uploads/2026/10/26_Frankfurt_LAB_Open-Cal_Header.jpg",
+    "source": "https://frankfurt-lab.de/en/frankfurt-moves-stipend-for-international-performing-artists/",
+    "added": "2026-11-20"
+  },
+  {
+    "id": "paseo-building-your-art-network-workshop-2026",
+    "title": "Building Your Art Network (free online workshop)",
+    "organiser": "Paseo Arts Association",
+    "type": "Workshop",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "Online",
+    "timezone": "America/Chicago",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "start_date": "2026-12-12",
+    "end_date": "2026-12-12",
+    "eligibility": "Open to artists; free registration for the Zoom session (1-3pm CT), taught by Katelynn Knick",
+    "entry_fee": "Free",
+    "fee_details": "Registration is free (supported by the Oklahoma Arts Council and NEA)",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://thepaaok.org/calendar/building-your-network-w-katelynn-knick",
+    "image_url": "http://static1.squarespace.com/static/63b8936de5e59576f5f2e0ab/63ef88e11819775b96e2dd40/6aecc629625b1f5fb3f38506/1794842424026/Katelynn+Knick+2026.png?format=1500w",
+    "source": "https://thepaaok.org/calendar/building-your-network-w-katelynn-knick",
+    "added": "2026-11-20"
+  },
+  {
+    "id": "ucross-general-residency-fall-2027",
+    "title": "Ucross General Residency, Fall 2027 (all disciplines)",
+    "organiser": "Ucross Foundation",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium",
+      "Writing",
+      "Music",
+      "Performance"
+    ],
+    "format": "In person",
+    "timezone": "America/Denver",
+    "city": "Clearmont, Wyoming",
+    "country": "USA",
+    "region": "North America",
+    "lat": 44.7433,
+    "lng": -106.4128,
+    "deadline": "2027-01-15",
+    "start_date": "2027-08-01",
+    "eligibility": "Professional visual artists, writers, composers, choreographers, interdisciplinary and performance artists, and teams; no students",
+    "entry_fee": "Paid",
+    "fee_amount": 40,
+    "currency": "USD",
+    "fee_details": "$40 application fee, no fee waivers (no fee for the separate Native American fellowships)",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "The application page does not state residency costs",
+    "prizes": [
+      "Residency on a Wyoming ranch, August to early December 2027, with studio space and living accommodation"
+    ],
+    "prize_kinds": [
+      "Residency"
+    ],
+    "apply_url": "https://ucrossfoundation.submittable.com/submit/353554/ucross-fellowship-for-native-american-writers-spring-2027",
+    "source": "https://ucrossfoundation.submittable.com/submit/353554/ucross-fellowship-for-native-american-writers-spring-2027",
+    "added": "2026-11-20"
   }
 ]
