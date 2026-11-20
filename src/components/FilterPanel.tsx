@@ -28,7 +28,7 @@ interface Props {
 const KIND_LABELS: Record<Kind, string> = { all: 'Everything', apply: 'Things to apply for', attend: 'Events to go to' };
 
 /**
- * BuilderBee-style filter bar: a big search box, then one bar of quick chips (format, price, where)
+ * BuilderBee-style filter bar: a big search box, then one bar with the Free only switch, where, and
  * with "More filters" for everything else and the live count on the right.
  */
 export function FilterPanel({ filters: f, onChange, onReset, count, location: loc }: Props) {
@@ -42,7 +42,7 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
   // Phones get a shorter placeholder so it isn't cut off
   const [narrow] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 40rem)').matches);
   const moreCount = [f.kind !== 'all', f.type, f.formats.length, f.disciplines.length, f.maxFee, f.noSelectedFee, f.hideUnknownFees,
-    f.cashPrize, f.closingWithin, f.price === 'totally-free'].filter(Boolean).length;
+    f.cashPrize, f.closingWithin, f.price === 'free-entry' || f.price === 'paid'].filter(Boolean).length;
 
   return (
     <form className="filterbar" role="search" aria-label="Find open calls"
@@ -57,10 +57,12 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
 
       <div className="quickbar">
         <div className="quickbar__chips">
-          <div className="chips" role="group" aria-label="Price">
-            <Chip on={f.price === 'free-entry'} onToggle={() => togglePrice('free-entry')}>Free</Chip>
-            <Chip on={f.price === 'paid'} onToggle={() => togglePrice('paid')}>Paid</Chip>
-          </div>
+          {/* Magpie's main promise, one tap away: nothing to enter, nothing if selected */}
+          <button type="button" role="switch" aria-checked={f.price === 'totally-free'}
+            className={`free-switch${f.price === 'totally-free' ? ' is-on' : ''}`} onClick={() => togglePrice('totally-free')}>
+            <span className="free-switch__track" aria-hidden="true"><span className="free-switch__thumb" /></span>
+            <span className="free-switch__label">Free only<span className="free-switch__sub"> · no fees at all</span></span>
+          </button>
           <span className="quickbar__divider" aria-hidden="true" />
           <label className="where">
             <span className="sr-only">Where</span>
@@ -139,7 +141,8 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
           <div className="filters__section" role="group" aria-labelledby={`${id}-money`}>
             <p className="filters__heading" id={`${id}-money`}>Money</p>
             <div className="chips">
-              <Chip on={f.price === 'totally-free'} onToggle={() => togglePrice('totally-free')}>Totally free (no fees if selected)</Chip>
+              <Chip on={f.price === 'free-entry'} onToggle={() => togglePrice('free-entry')}>Free to enter (may charge if selected)</Chip>
+              <Chip on={f.price === 'paid'} onToggle={() => togglePrice('paid')}>Paid entry</Chip>
               <Chip on={f.noSelectedFee} onToggle={() => set('noSelectedFee', !f.noSelectedFee)}>Hide pay-if-selected</Chip>
               <Chip on={f.hideUnknownFees} onToggle={() => set('hideUnknownFees', !f.hideUnknownFees)}>Fees stated</Chip>
               <Chip on={f.cashPrize} onToggle={() => set('cashPrize', !f.cashPrize)}>Cash prize</Chip>

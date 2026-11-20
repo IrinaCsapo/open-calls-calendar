@@ -198,6 +198,12 @@ page('about', {
   body: `${nav}<h1>Every open call, every fee, in one place</h1>
     <p>Open calls are scattered across websites, newsletters and Instagram posts, and too many only mention the fees once you’ve
     filled in a long form. Magpie collects them, checks the costs, and puts them in one calendar, closing soonest first.</p>
+    <h2>Free first</h2>
+    <p>Calls that cost nothing to enter and nothing if you’re selected come first, from galleries, museums, charities,
+    festivals, publishers and funders who show, pay or support artists. Organisers that sell exhibitions, book pages or awards
+    to artists as a business are listed apart, under “Commercial opportunities”, with a price tag.</p>
+    <h2>Never miss a deadline</h2>
+    <p>A weekly email every Monday, a reminder email three days before any call closes, or every deadline in your calendar.</p>
     <h2>How we label fees</h2><ul>
     <li><strong>Free, no fees if selected:</strong> nothing to pay to enter, and nothing to pay if you’re chosen.</li>
     <li><strong>Free to enter, pay if selected:</strong> free to apply, but selected artists pay something (a hanging fee, an exhibition fee, a fee to “secure your space”). The amount is on the listing.</li>

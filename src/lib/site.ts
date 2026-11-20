@@ -21,5 +21,11 @@ export const FEED_PATH = 'deadlines.ics';
  */
 export const NEWSLETTER_FORM_URL =
   'https://e858efc7.sibforms.com/serve/MUIFAGKglxJyf9h-XbV9i-l3CbqynKbY0jeAbVz9IxXDEj6Tz8eHaJ26eLad9W6zfy6yo5UAChDB-0EjtoGVzRbjg-0rTFVx24b1t43puen_GCLNfMAuR9JzgCSIvBWVZ1h-XaR2aU9K0AVj9UH74FN0LBmjgDM2Axa0z8cs9QSQNKFoTaS2YOhedaFYoanzcuQM9pXJp0kU3_7I7g==';
+/**
+ * The Brevo form for one-off deadline reminders (a separate form and list from the weekly email, no double opt-in):
+ * its "action" link, like NEWSLETTER_FORM_URL. The "Email me before it closes" box on listings stays hidden while
+ * this is empty. scripts/reminders.ts sends the reminders. Setup: docs/brevo-setup.md.
+ */
+export const REMINDER_FORM_URL = '';
 /** Where people can reach us (forwards to Irina's inbox). */
 export const CONTACT_EMAIL = 'hello@magpie.cool';

@@ -1,0 +1,40 @@
+name: Deadline reminders
+
+# Every 20 minutes: saves new "Email me before it closes" requests, and from 8:00 London time emails anyone whose
+# saved calls close within three days (scripts/reminders.ts). Does nothing until BREVO_REMINDERS_LIST_ID is set
+# (docs/brevo-setup.md). Logs show counts only, never addresses.
+on:
+  schedule:
+    - cron: '7,27,47 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reminders
+  cancel-in-progress: false
+
+jobs:
+  reminders:
+    runs-on: ubuntu-latest
+    env:
+      BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+      BREVO_REMINDERS_LIST_ID: ${{ secrets.BREVO_REMINDERS_LIST_ID || vars.BREVO_REMINDERS_LIST_ID }}
+    steps:
+      - name: Is it set up?
+        id: ready
+        run: |
+          if [ -n "$BREVO_API_KEY" ] && [ -n "$BREVO_REMINDERS_LIST_ID" ]; then echo "ok=1" >> "$GITHUB_OUTPUT"; else echo "Reminders aren't set up yet (BREVO_REMINDERS_LIST_ID)."; fi
+      - if: steps.ready.outputs.ok == '1'
+        uses: actions/checkout@v4
+      - if: steps.ready.outputs.ok == '1'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - if: steps.ready.outputs.ok == '1'
+        run: npm ci
+      - if: steps.ready.outputs.ok == '1'
+        name: Save and send reminders
+        run: npx tsx scripts/reminders.ts

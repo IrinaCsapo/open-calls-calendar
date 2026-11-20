@@ -2,6 +2,7 @@
 // Decorative: always aria-hidden, the words beside them carry the meaning.
 import type { ComponentType, SVGProps } from 'react';
 import {
+  BellIcon, EnvelopeIcon,
   ArrowPathIcon, ArrowsRightLeftIcon, BanknotesIcon, CheckBadgeIcon, SparklesIcon, CalendarDaysIcon, CheckIcon, ClockIcon, ExclamationTriangleIcon,
   GlobeAltIcon, LinkIcon, MagnifyingGlassIcon, MapPinIcon, QuestionMarkCircleIcon, TrophyIcon,
   UserGroupIcon, GiftIcon, PhotoIcon, HomeModernIcon, BookOpenIcon, ChatBubbleLeftRightIcon, ShoppingBagIcon,
@@ -40,6 +41,8 @@ export const IconBag = make(ShoppingBagIcon);
 export const IconBriefcase = make(BriefcaseIcon);
 export const IconTicket = make(TicketIcon);
 export const IconBuilding = make(BuildingLibraryIcon);
+export const IconBell = make(BellIcon);
+export const IconMail = make(EnvelopeIcon);
 export const IconSwatch = make(SwatchIcon);
 export const IconFlag = make(FlagIcon);
 

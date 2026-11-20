@@ -4,8 +4,9 @@ import { LISTINGS } from '../lib/listings';
 import { isLive, useNow } from '../lib/dates';
 import { wash } from '../components/ListingCard';
 import {
-  IconBadge, IconCalendar, IconCheck, IconClock, IconMoney, IconPin, IconRefresh, IconSearch, IconUnknown, IconWarn,
+  IconBadge, IconBell, IconBuilding, IconCalendar, IconCheck, IconClock, IconMail, IconMoney, IconPin, IconRefresh, IconSearch, IconTicket, IconUnknown, IconWarn,
 } from '../components/Icons';
+import { isTotallyFree } from '../lib/money';
 import bird from '../assets/magpie-bird.png';
 import { HeroPaint } from '../components/HeroPaint';
 
@@ -36,7 +37,11 @@ export function AboutPage() {
   const stats = useMemo(() => {
     const live = LISTINGS.filter((l) => isLive(l, now));
     const countries = new Set(live.map((l) => l.country).filter(Boolean));
-    return { live: live.length, free: live.filter((l) => l.entry_fee === 'Free').length, countries: countries.size };
+    return {
+      live: live.length, countries: countries.size,
+      totallyFree: live.filter((l) => isTotallyFree(l) && !l.commercial).length,
+      commercial: live.filter((l) => l.commercial).length,
+    };
   }, [now]);
 
   return (
@@ -58,7 +63,7 @@ export function AboutPage() {
 
       <ul className="about-stats" aria-label="Right now">
         <li><strong>{stats.live}</strong><span>open listings right now</span></li>
-        <li><strong>{stats.free}</strong><span>free to enter</span></li>
+        <li><strong>{stats.totallyFree}</strong><span>completely free: nothing to enter, nothing if selected</span></li>
         <li><strong>{stats.countries}</strong><span>countries, plus online calls open worldwide</span></li>
       </ul>
 
@@ -69,6 +74,36 @@ export function AboutPage() {
           <Feature icon={<IconClock />} title="Closing soonest first">Deadlines that are about to pass come first, with a countdown in your time zone.</Feature>
           <Feature icon={<IconRefresh />} title="Updated every morning">New calls appear daily: painting, collage, photography, music, residencies, grants and more.</Feature>
           <Feature icon={<IconPin />} title="Near you">Calls in your country and continent at the top, plus online ones you can enter from anywhere.</Feature>
+        </ul>
+      </section>
+
+      <section className="about-section" aria-labelledby="free-first">
+        <h2 id="free-first">Free first, and no pay-to-exhibit in disguise</h2>
+        <ul className="about-grid">
+          <Feature icon={<IconCheck />} title="Free calls come first">Calls that cost nothing to enter and nothing if you're
+            selected are what Magpie is for. Switch on <a href="/?price=totally-free">Free only</a> to see just those, or
+            browse <a href="/open-calls/free">free open calls</a>.</Feature>
+          <Feature icon={<IconBuilding />} title="Real galleries and institutions">The main calendar is for galleries, museums,
+            charities, festivals, publishers and funders who show, pay or support artists.</Feature>
+          <Feature icon={<IconTicket />} title="Commercial, clearly labelled">Some organisers sell exhibitions, book pages or
+            awards to artists as a business. They sit apart, at the bottom, under “Commercial opportunities”, with a price tag
+            showing everything you'd pay{stats.commercial > 0 && <> ({stats.commercial} right now)</>}.</Feature>
+          <Feature icon={<IconWarn />} title="Fees if selected, always shown">A free call that charges a “hanging fee” once you're
+            chosen is labelled “Pay if selected”, with the amount. <a href="/faq">How to spot pay-to-exhibit</a>.</Feature>
+        </ul>
+      </section>
+
+      <section className="about-section" aria-labelledby="never-miss">
+        <h2 id="never-miss">Never miss a deadline</h2>
+        <ul className="about-grid">
+          <Feature icon={<IconMail />} title="The weekly email">Every Monday: calls closing that week, new calls, and calls near
+            you. Sign up at the bottom of any page.</Feature>
+          <Feature icon={<IconBell />} title="A reminder for one call">On any open call, ask for an email three days before it
+            closes. That one email, and nothing else.</Feature>
+          <Feature icon={<IconCalendar />} title="In your calendar">Add one deadline with a reminder, or <a href="/subscribe">subscribe
+            to every deadline</a> in Google, Apple or Outlook calendar.</Feature>
+          <Feature icon={<IconSearch />} title="Browse your way">By <a href="/open-calls">discipline, place or kind</a>: photography,
+            residencies, the UK, online, and more.</Feature>
         </ul>
       </section>
 

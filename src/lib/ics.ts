@@ -36,8 +36,13 @@ function feeLine(l: Listing): string {
   return `${entry}. ${sel}.`;
 }
 
+// Reminders for a single deadline someone adds: 9:00 three days before, and 9:00 on the day (the deadline is the end
+// of that day). Left out of the subscribed feed of every deadline, which would ring for all of them.
+const alarm = (trigger: string, text: string) =>
+  ['BEGIN:VALARM', 'ACTION:DISPLAY', `TRIGGER:${trigger}`, `DESCRIPTION:${escapeText(text)}`, 'END:VALARM'];
+
 /** One all-day VEVENT: the deadline for opportunities, the event dates for events. */
-function vevent(l: Listing, pageUrl: string): string[] {
+function vevent(l: Listing, pageUrl: string, alarms = false): string[] {
   const deadlineEntry = isOpportunity(l) || !l.start_date;
   const start = deadlineEntry ? l.deadline! : l.start_date!;
   const end = deadlineEntry ? l.deadline! : (l.end_date ?? l.start_date!);
@@ -61,11 +66,15 @@ function vevent(l: Listing, pageUrl: string): string[] {
     `DESCRIPTION:${escapeText(description)}`,
     `URL:${l.apply_url}`,
     'TRANSP:TRANSPARENT',
+    ...(alarms && deadlineEntry ? [
+      ...alarm('-P2DT15H', `3 days left: ${l.title}`),
+      ...alarm('PT9H', `Closes today: ${l.title}`),
+    ] : []),
     'END:VEVENT',
   ];
 }
 
-export function buildIcs(listings: { listing: Listing; pageUrl: string }[], calName?: string): string {
+export function buildIcs(listings: { listing: Listing; pageUrl: string }[], calName?: string, alarms = false): string {
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -73,7 +82,7 @@ export function buildIcs(listings: { listing: Listing; pageUrl: string }[], calN
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     ...(calName ? [`X-WR-CALNAME:${escapeText(calName)}`, 'REFRESH-INTERVAL;VALUE=DURATION:PT12H'] : []),
-    ...listings.flatMap(({ listing, pageUrl }) => vevent(listing, pageUrl)),
+    ...listings.flatMap(({ listing, pageUrl }) => vevent(listing, pageUrl, alarms)),
     'END:VCALENDAR',
   ];
   return lines.map(fold).join('\r\n') + '\r\n';
@@ -81,7 +90,7 @@ export function buildIcs(listings: { listing: Listing; pageUrl: string }[], calN
 
 /** Triggers a download of one listing's .ics file. */
 export function downloadIcs(listing: Listing, pageUrl: string) {
-  const blob = new Blob([buildIcs([{ listing, pageUrl }])], { type: 'text/calendar;charset=utf-8' });
+  const blob = new Blob([buildIcs([{ listing, pageUrl }], undefined, true)], { type: 'text/calendar;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;

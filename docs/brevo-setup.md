@@ -52,3 +52,22 @@ A separate free Brevo account for Magpie keeps its 300 emails a day apart from B
 - Actions → **Weekly email** → Run workflow (mode `draft`): a draft appears in Brevo → Campaigns and a test arrives.
 - Previews without Brevo: `npx tsx scripts/brevo-templates.ts --preview` and `npx tsx scripts/weekly-email.ts --preview`
   write HTML files to `email-preview/`.
+
+## Deadline reminders ("Email me before it closes")
+
+A separate list and form, so reminder requests don't join the weekly email.
+
+1. **List.** Contacts → Lists → Create a list: `Magpie reminders`. Note its number.
+2. **Form.** Marketing → Forms → Create a subscription form, name `Magpie reminders`.
+   - **Build:** drag **Attribute** onto the form under Email and pick **REMIND** in *Attribute list*. Untick
+     *Required field*. (REMIND and REMINDERS are created by the **Brevo signup emails** workflow.)
+   - **List:** `Magpie reminders`.
+   - **Settings:** **Simple confirmation** (no double opt-in: they asked for one email about one call), and no
+     confirmation email.
+   - Save and publish, then Share → HTML code: send the form's `action` link to Claude. It goes in
+     `REMINDER_FORM_URL` in `src/lib/site.ts`, which shows the button on listings.
+3. **GitHub.** Add a variable (or secret) `BREVO_REMINDERS_LIST_ID` = the list's number.
+
+`.github/workflows/reminders.yml` runs every 20 minutes: it saves new requests on the contact (REMIND → REMINDERS) and,
+from 8:00 London time, emails anyone whose saved calls close within three days. Preview the email with
+`npx tsx scripts/reminders.ts --preview`.

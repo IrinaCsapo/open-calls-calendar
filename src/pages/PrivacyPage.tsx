@@ -54,6 +54,14 @@ export function PrivacyPage() {
       </section>
 
       <section>
+        <h2>Deadline reminders</h2>
+        <p>If you ask for a reminder on a listing, your email address and which call it's for are kept by Brevo and used only
+          to send that reminder, three days before the deadline. It's one email per call; you won't be added to the weekly
+          email unless you sign up for it. Want your address removed? Email{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+      </section>
+
+      <section>
         <h2>Your rights</h2>
         <p>Under UK data protection law you can ask what we hold about you, ask us to correct it, or ask us to delete it. Email{' '}
           <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and we'll reply within a month. You can also complain to the{' '}

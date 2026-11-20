@@ -107,10 +107,13 @@ async function brevo(method: string, path: string, body?: unknown) {
 }
 
 // The PLACE contact attribute (UK, Europe, US…, sent by the sign-up box): create it if this account doesn't have it yet
+// …and REMIND / REMINDERS for deadline reminders (scripts/reminders.ts), so they're there to add to the reminders form
 const attributes: { name: string }[] = (await brevo('GET', '/contacts/attributes')).attributes ?? [];
-if (!attributes.some((x) => x.name === 'PLACE')) {
-  await brevo('POST', '/contacts/attributes/normal/PLACE', { type: 'text' });
-  console.log('Created the PLACE contact attribute');
+for (const name of ['PLACE', 'REMIND', 'REMINDERS']) {
+  if (!attributes.some((x) => x.name === name)) {
+    await brevo('POST', `/contacts/attributes/normal/${name}`, { type: 'text' });
+    console.log(`Created the ${name} contact attribute`);
+  }
 }
 
 // Update the template with the same name if it exists, otherwise create it

@@ -10,6 +10,7 @@ import { REPORT_URL } from '../lib/site';
 import { Placeholder, isNew, place, wash } from '../components/ListingCard';
 import { ListingRow } from '../components/ListingRow';
 import { ShareLink } from '../components/ShareLink';
+import { ReminderBox } from '../components/ReminderBox';
 import { NotFoundPage } from './NotFoundPage';
 import { FormatIcon, IconFlag, IconBuilding, IconCalendar, IconCheck, IconClock, IconGlobe, IconMoney, IconSwatch, IconTicket, IconUnknown, IconUsers, IconWarn } from '../components/Icons';
 import { perks } from '../lib/perks';
@@ -190,6 +191,7 @@ export function ListingPage({ id }: { id: string }) {
                 <IconCalendar />{opp && l.deadline ? 'Add deadline to calendar' : 'Add to calendar'}
               </button>
             )}
+            {live && opp && <ReminderBox l={l} now={now} />}
             <ShareLink title={l.title} />
             <a className="listing-panel__report" href={REPORT_URL(l.id, l.title)}><IconFlag />Report a problem</a>
           </aside>
