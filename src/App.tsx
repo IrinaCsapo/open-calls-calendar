@@ -5,6 +5,7 @@ import { SubmitPage } from './pages/SubmitPage';
 import { AboutPage } from './pages/AboutPage';
 import { StartPage } from './pages/StartPage';
 import { PrivacyPage } from './pages/PrivacyPage';
+import { SubscribedPage } from './pages/SubscribedPage';
 import { SubscribeBox } from './components/SubscribeBox';
 import { SubscribePage } from './pages/SubscribePage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -26,6 +27,7 @@ export function App() {
   else if (path === '/about') page = <AboutPage />;
   else if (path === '/start') page = <StartPage />;
   else if (path === '/privacy') page = <PrivacyPage />;
+  else if (path === '/subscribed') page = <SubscribedPage />;
   else if (path === '/subscribe') page = <SubscribePage />;
   else page = <NotFoundPage />;
 
@@ -58,7 +60,7 @@ export function App() {
         </nav>
       </header>
       <main id="main" tabIndex={-1}>{page}</main>
-      {path !== '/submit' && path !== '/start' && <div className="subscribe-wrap"><SubscribeBox /></div>}
+      {path !== '/submit' && path !== '/start' && path !== '/subscribed' && <div className="subscribe-wrap"><SubscribeBox /></div>}
       <footer className="site-footer">
         <nav className="site-footer__links" aria-label="More">
           <a href="/about">How we label fees</a>

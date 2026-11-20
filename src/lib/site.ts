@@ -14,7 +14,11 @@ export const REPORT_URL = (id: string, title: string) =>
   )}`;
 /** Subscribe-able calendar of every deadline, generated at build time by scripts/build-feed.ts */
 export const FEED_PATH = 'deadlines.ics';
-/** Buttondown newsletter username (buttondown.com/<username>). The sign-up box stays hidden while this is empty. */
-export const BUTTONDOWN_USERNAME = 'irinacsapo';
+/**
+ * The Brevo sign-up form for the weekly email: its "action" link, from Brevo → Contacts → Forms → the form → Share →
+ * HTML code (looks like https://xxxx.sibforms.com/serve/MUIF...). The sign-up box stays hidden while this is empty.
+ * Setup: docs/brevo-setup.md.
+ */
+export const NEWSLETTER_FORM_URL = '';
 /** Where people can reach us (forwards to Irina's inbox). */
 export const CONTACT_EMAIL = 'hello@magpie.cool';

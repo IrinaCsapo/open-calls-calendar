@@ -73,6 +73,7 @@ function page(path: string, meta?: { title: string; description: string; image?:
 
 page('about', { title: `About · ${SITE_NAME}`, description: 'Every open call, every fee, in one place. How Magpie finds open calls and labels their fees.' });
 page('submit', { title: `Submit an open call · ${SITE_NAME}`, description: 'Know an open call, prize, residency or event for artists that we are missing? Send it to Magpie.' });
+page('subscribed', { title: `You’re subscribed · ${SITE_NAME}`, description: 'You’re on the Magpie weekly email: open calls for artists, every fee up front, every Monday.' });
 page('privacy', { title: `Privacy · ${SITE_NAME}`, description: 'What Magpie collects (very little), and why.' });
 page('start', { title: `What do you make? · ${SITE_NAME}`, description: 'Pick your disciplines and see open calls for your work first.' });
 page('subscribe', { title: `Subscribe to deadlines · ${SITE_NAME}`, description: 'Every open call deadline in your own calendar.' });

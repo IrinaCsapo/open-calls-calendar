@@ -53,16 +53,24 @@ Then open http://localhost:5173/open-calls-calendar/
   feed of every deadline (`deadlines.ics`), with a **Subscribe** page (`/subscribe`, not linked anywhere for now) that has one
   button per calendar: Google, Apple, Outlook, plus copy-the-link. (A single `webcal://` link does nothing for most Google Calendar users.)
 
-## The weekly email (Buttondown)
+## The weekly email (Brevo)
 
-A **"The weekly roundup"** sign-up box sits above the footer on most pages ([`src/components/SubscribeBox.tsx`](src/components/SubscribeBox.tsx)).
-It posts to Buttondown and stays hidden until `BUTTONDOWN_USERNAME` in [`src/lib/site.ts`](src/lib/site.ts) is set.
+Sign-up journey (adapted from BuilderBee): **The weekly roundup** box above the footer
+([`SubscribeBox.tsx`](src/components/SubscribeBox.tsx)) sends the email and the visitor's rough place (UK, Europe, US…)
+to Magpie's Brevo form → Brevo sends our **confirm** email → they land on **/subscribed**
+([`SubscribedPage.tsx`](src/pages/SubscribedPage.tsx)) → Brevo sends our **welcome** email with calls near their place
+(or closing soon). The box stays hidden until `NEWSLETTER_FORM_URL` in [`src/lib/site.ts`](src/lib/site.ts) is set.
 
-Every Monday at 9:00 UTC, [`.github/workflows/weekly-email.yml`](.github/workflows/weekly-email.yml) runs
-[`scripts/weekly-email.ts`](scripts/weekly-email.ts): closing this week, new on Magpie, events coming up, and free calls
-with no fees if selected, each with its fees. It saves the email as a **draft** in Buttondown (needs the repository
-secret `BUTTONDOWN_API_KEY`), so nothing goes out until you press send. Preview it any time with
-`npx tsx scripts/weekly-email.ts`, or run the workflow by hand from the Actions tab.
+- [`scripts/email-parts.ts`](scripts/email-parts.ts): shared email layout, header picture (`public/email/hero.jpg`, drawn by
+  [`scripts/email-hero.ts`](scripts/email-hero.ts)), listing cards with a navy date tile, fee and perk pills, and a
+  thumbnail (`/thumb/<id>.jpg`, made by `build-og.ts`). Commercial listings stay out of emails.
+- [`scripts/brevo-templates.ts`](scripts/brevo-templates.ts): the confirm and welcome emails, uploaded to Brevo by
+  [`brevo-templates.yml`](.github/workflows/brevo-templates.yml) after listings change and every night.
+- [`scripts/weekly-email.ts`](scripts/weekly-email.ts): Mondays 07:17 UTC ([`weekly-email.yml`](.github/workflows/weekly-email.yml))
+  it saves the week's email in Brevo as a **draft** and sends a test; you press send. Sections: near you, closing this
+  week, new on Magpie, events, free with no fees if selected.
+- Previews: `npx tsx scripts/brevo-templates.ts --preview` and `npx tsx scripts/weekly-email.ts --preview` (to `email-preview/`).
+- Setup: [`docs/brevo-setup.md`](docs/brevo-setup.md). Needs `BREVO_API_KEY` (secret), `BREVO_LIST_ID` and `BREVO_TEST_EMAILS` (variables).
 
 ## Link previews
 

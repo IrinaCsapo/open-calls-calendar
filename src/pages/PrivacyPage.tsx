@@ -46,10 +46,11 @@ export function PrivacyPage() {
 
       <section>
         <h2>The weekly email</h2>
-        <p>If you sign up, your email address is kept by our newsletter service,{' '}
-          <a href="https://buttondown.com/legal/privacy" target="_blank" rel="noopener noreferrer">Buttondown</a>, and used only to
-          send you the weekly roundup. You confirm by email before anything is sent, and every email has a link to unsubscribe
-          straight away. We may see whether emails are opened, in total, to know if the roundup is useful.</p>
+        <p>If you sign up, your email address (and your rough place, like "UK" or "Europe", guessed from your time zone so we
+          can show calls near you) is kept by our email service,{' '}
+          <a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener noreferrer">Brevo</a>, and used only to
+          send you the Magpie emails. You confirm by email before anything is sent, and every email has a link to unsubscribe
+          straight away. We may see whether emails are opened and links clicked, to know if the roundup is useful.</p>
       </section>
 
       <section>

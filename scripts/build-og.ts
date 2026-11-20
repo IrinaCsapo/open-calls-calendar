@@ -133,6 +133,10 @@ const only = process.argv.slice(2);
 const list = only.length ? LISTINGS.filter((l) => only.includes(l.id)) : LISTINGS;
 const out = new URL('../dist/og/', import.meta.url);
 mkdirSync(out, { recursive: true });
+// Email thumbnails: the square middle of each card's picture frame (image on its colour wash), 240 px, a few KB each.
+// Used by the welcome and weekly emails as https://magpie.cool/thumb/<id>.jpg
+const thumbs = new URL('../dist/thumb/', import.meta.url);
+mkdirSync(thumbs, { recursive: true });
 
 let i = 0, done = 0, bytes = 0;
 await Promise.all(Array.from({ length: 8 }, async () => {
@@ -140,6 +144,8 @@ await Promise.all(Array.from({ length: 8 }, async () => {
     const l = list[i++];
     const jpg = await card(l);
     writeFileSync(new URL(`${l.id}.jpg`, out), jpg);
+    writeFileSync(new URL(`${l.id}.jpg`, thumbs),
+      await sharp(jpg).extract({ left: 694, top: 90, width: 450, height: 450 }).resize(240, 240).jpeg({ quality: 82, mozjpeg: true }).toBuffer());
     done++; bytes += jpg.length;
   }
 }));

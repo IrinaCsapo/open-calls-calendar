@@ -1,0 +1,39 @@
+name: Brevo signup emails
+
+# Creates or updates Magpie's "confirm" and "welcome" emails in Brevo (scripts/brevo-templates.ts).
+# The welcome email lists current open calls (near the subscriber, or closing soon), so it's refreshed whenever
+# the listings change (e.g. after the morning scout) and once a day, so closed calls drop off.
+on:
+  push:
+    branches: [main]
+    paths: ['src/data/listings.json', 'scripts/brevo-templates.ts', 'scripts/email-parts.ts']
+  schedule:
+    - cron: '41 0 * * *'   # just after midnight UTC, off the hour (GitHub drops busy on-the-hour runs)
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: 'Also send me the welcome email (to the first address in BREVO_TEST_EMAILS)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  templates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Upload the templates to Brevo
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_TEST_EMAILS: ${{ vars.BREVO_TEST_EMAILS }}
+          SEND_TEST: ${{ inputs.send_test }}
+        run: |
+          if [ -z "$BREVO_API_KEY" ]; then echo "BREVO_API_KEY isn't set yet: skipping."; exit 0; fi
+          npx tsx scripts/brevo-templates.ts $([ "$SEND_TEST" = "true" ] && echo --send-test)

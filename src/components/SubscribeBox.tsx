@@ -1,46 +1,60 @@
 import { useState } from 'react';
-import { BUTTONDOWN_USERNAME } from '../lib/site';
+import { NEWSLETTER_FORM_URL } from '../lib/site';
+import { guessPlace, loadPlaceSetting } from '../lib/location';
 import { wash } from './ListingCard';
 
 /**
- * "Get the weekly roundup": a Buttondown sign-up box. Buttondown wants a normal form post (not fetch), so the
- * form opens Buttondown's confirmation page in a new tab and this box says thank you. Hidden until
- * BUTTONDOWN_USERNAME is set in src/lib/site.ts.
+ * "The weekly roundup": sends the address straight to Magpie's Brevo sign-up form (double opt-in: Brevo emails a
+ * confirm link, then sends them to /subscribed), so Magpie itself never stores it. Also sends their place (UK,
+ * Europe, US…, from "Near you" or their time zone) so the welcome and weekly emails can show calls near them.
+ * Hidden until NEWSLETTER_FORM_URL is set in src/lib/site.ts.
  */
 export function SubscribeBox() {
-  const [sent, setSent] = useState(false);
-  if (!BUTTONDOWN_USERNAME) return null;
-  const action = `https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`;
+  const [email, setEmail] = useState('');
+  const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  if (!NEWSLETTER_FORM_URL) return null;
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setState('sending');
+    const setting = loadPlaceSetting();
+    const place = setting === 'off' ? '' : setting === 'auto' ? guessPlace() ?? '' : setting;
+    const body = new FormData();
+    body.append('EMAIL', email.trim());
+    body.append('PLACE', place);
+    body.append('email_address_check', '');   // Brevo's spam trap: must stay empty
+    body.append('locale', 'en');
+    try {
+      // Brevo doesn't let another site read its reply, so a sent request counts as success
+      await fetch(NEWSLETTER_FORM_URL, { method: 'POST', body, mode: 'no-cors' });
+      setState('done');
+    } catch {
+      setState('error');
+    }
+  };
 
   return (
     <section className="subscribe-box" aria-labelledby="subscribe-title" style={{ background: wash('weekly-roundup', true) }}>
       <div className="subscribe-box__text">
         <h2 id="subscribe-title">The weekly roundup</h2>
-        <p>Every Monday: new open calls, what closes this week, and what's free to enter. Every fee up front.</p>
+        <p>Every Monday: new open calls, what closes this week, and calls near you. Every fee up front.</p>
       </div>
-      {sent ? (
+      {state === 'done' ? (
         <p className="subscribe-box__done" role="status">
-          Nearly there! Check your inbox and click the link to confirm.
+          Nearly there! Check your inbox for an email from Magpie (hello@magpie.cool) and click “Yes, send me the weekly
+          email”. It can take a minute, so check spam too.
         </p>
       ) : (
-        <form
-          className="subscribe-box__form"
-          action={action}
-          method="post"
-          target="buttondown"
-          onSubmit={() => {
-            window.open(`https://buttondown.com/${BUTTONDOWN_USERNAME}`, 'buttondown');
-            window.setTimeout(() => setSent(true), 0);
-          }}
-        >
+        <form className="subscribe-box__form" onSubmit={submit}>
           <label className="sr-only" htmlFor="subscribe-email">Email address</label>
-          <input id="subscribe-email" type="email" name="email" required placeholder="Your email" autoComplete="email" />
-          <input type="hidden" name="embed" value="1" />
-          <input type="hidden" name="tag" value="website" />
-          <button type="submit" className="button">Subscribe</button>
+          <input id="subscribe-email" type="email" name="EMAIL" required placeholder="Your email" autoComplete="email"
+            value={email} onChange={(e) => setEmail(e.target.value)} />
+          <button type="submit" className="button" disabled={state === 'sending'}>{state === 'sending' ? 'Signing up…' : 'Subscribe'}</button>
         </form>
       )}
-      <p className="subscribe-box__small">Free. One email a week. Unsubscribe any time.</p>
+      <p className="subscribe-box__small">
+        {state === 'error' ? 'Something went wrong. Please try again in a moment.' : <>Free. One email a week. Unsubscribe any time. <a href="/privacy">Privacy</a></>}
+      </p>
     </section>
   );
 }

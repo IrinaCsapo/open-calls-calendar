@@ -3,3 +3,6 @@ dist
 .DS_Store
 *.local
 tsconfig.tsbuildinfo
+
+# local email previews (npx tsx scripts/brevo-templates.ts --preview)
+email-preview/

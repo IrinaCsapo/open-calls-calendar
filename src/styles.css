@@ -528,7 +528,7 @@ main:focus { outline: none; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 
-/* Weekly roundup sign-up (Buttondown), above the footer */
+/* Weekly roundup sign-up (Brevo), above the footer */
 .subscribe-box { margin: clamp(3rem, 6vw, 4.5rem) 0 clamp(2.5rem, 5vw, 4rem); padding: clamp(1.75rem, 4vw, 3rem); border-radius: 24px; display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 0.75rem 2.5rem; align-items: center; }
 .subscribe-box h2 { margin: 0 0 0.4rem; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem, 2vw + 1rem, 2.6rem); line-height: 1.1; }
@@ -620,3 +620,14 @@ main:focus { outline: none; }
 @media (max-width: 40rem) { .lost { grid-template-columns: minmax(0, 1fr); justify-items: start; } }
 .listing-panel__report { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 0.25rem; font-size: 0.9rem; color: var(--muted); text-underline-offset: 0.2em; }
 .listing-panel__report .icon { width: 1rem; height: 1rem; }
+
+/* "You're subscribed" page (after confirming the weekly email) */
+.subscribed__what { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.subscribed__what li { padding: 1.3rem 1.4rem; border-radius: 20px; color: var(--ink); }
+.subscribed__what h3 { margin: 0 0 0.35rem; font-family: var(--font); font-size: 1.1rem; font-weight: 700; }
+.subscribed__what p { margin: 0; }
+.subscribed__small { margin: 1rem 0 0; color: var(--muted); max-width: 70ch; }
+.subscribed__next .button { margin-top: auto; align-self: flex-start; }
+.subscribed__next .about-card { display: flex; flex-direction: column; gap: 0.5rem; }
+@media (max-width: 48rem) { .subscribed__what { grid-template-columns: minmax(0, 1fr); } }
+.subscribe-box__small a { color: var(--muted); text-underline-offset: 0.2em; }

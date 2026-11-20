@@ -1,18 +1,24 @@
-# Every Monday at 9:00 UTC (after the 7:00 scout): write the weekly roundup and save it as a DRAFT in
-# Buttondown. Nothing is sent to subscribers until you open the draft in Buttondown and press send.
-# Needs the repository secret BUTTONDOWN_API_KEY (Settings → Secrets and variables → Actions).
-name: Weekly email draft
+name: Weekly email
 
+# Mondays 07:17 UTC (after the 07:00 scout): writes the weekly Magpie email and saves it in Brevo as a DRAFT
+# campaign, sending a test copy to BREVO_TEST_EMAILS. Check it in Brevo → Campaigns and press send.
+# Run it by hand from the Actions tab: "draft" (the default) or "send" (straight to everyone on the list).
 on:
   schedule:
-    - cron: '0 9 * * 1'
+    - cron: '17 7 * * 1'   # off the hour on purpose: GitHub delays or drops busy :00 runs
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'draft = save in Brevo and send me a test; send = everyone on the list now'
+        type: choice
+        options: [draft, send]
+        default: draft
 
 permissions:
   contents: read
 
 jobs:
-  draft:
+  weekly:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,13 +27,16 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - name: Save this week's roundup as a Buttondown draft
+      - name: Make the weekly email
         env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_LIST_ID: ${{ vars.BREVO_LIST_ID }}
+          BREVO_TEST_EMAILS: ${{ vars.BREVO_TEST_EMAILS }}
+          MODE: ${{ inputs.mode }}
         run: |
-          if [ -z "$BUTTONDOWN_API_KEY" ]; then
-            echo "BUTTONDOWN_API_KEY isn't set yet, so this only prints the email."
-            npx tsx scripts/weekly-email.ts
+          if [ -z "$BREVO_API_KEY" ] || [ -z "$BREVO_LIST_ID" ]; then
+            echo "Brevo isn't set up yet, so this only prints the email's subject."
+            npx tsx scripts/weekly-email.ts --preview /tmp/weekly.html
           else
-            npx tsx scripts/weekly-email.ts --draft
+            npx tsx scripts/weekly-email.ts $([ "$MODE" = "send" ] && echo --send)
           fi
