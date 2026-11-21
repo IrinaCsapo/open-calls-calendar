@@ -2813,5 +2813,144 @@
     "apply_url": "https://ucrossfoundation.submittable.com/submit/353554/ucross-fellowship-for-native-american-writers-spring-2027",
     "source": "https://ucrossfoundation.submittable.com/submit/353554/ucross-fellowship-for-native-american-writers-spring-2027",
     "added": "2026-11-20"
+  },
+  {
+    "id": "flatpack-festival-short-film-submissions-2027",
+    "title": "Flatpack Festival 2027 short film submissions (BAFTA-qualifying)",
+    "organiser": "Flatpack Festival",
+    "type": "Open call",
+    "disciplines": [
+      "Film & video"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "Birmingham",
+    "country": "UK",
+    "region": "UK",
+    "lat": 52.4862,
+    "lng": -1.8904,
+    "deadline": "2027-01-17",
+    "start_date": "2027-05-04",
+    "end_date": "2027-05-09",
+    "eligibility": "Short films of any type or genre, under 20 minutes, completed after January 2025",
+    "entry_fee": "Paid",
+    "fee_amount": 13,
+    "currency": "USD",
+    "fee_details": "Films under 5 min: $13 (early bird to 1 Nov), $20 after; films 5-20 min: $30 then $38; FilmFreeway Gold members pay less",
+    "selected_fee": "None",
+    "selected_fee_details": "The festival FAQ lists no fees for selected films",
+    "prizes": [
+      "Four cash prizes from £300 to £1,000",
+      "BAFTA qualification for the winning film"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Other"
+    ],
+    "prize_value": 1000,
+    "apply_url": "https://flatpackfestival.org.uk/posts/flatpack-festival-2027-submissions-open",
+    "image_url": "https://images.baskercdn.com/flatpackfestival/media/Flatpack2026_Gamut_140526_34.jpg?t=2026-09-09T09%3A50%3A29.000Z&w=1200&h=630&fit=cover&fx=68&fy=49",
+    "source": "https://flatpackfestival.org.uk/posts/flatpack-festival-2027-submissions-open",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "score-follower-follow-my-score-call-for-works-2026",
+    "title": "Score Follower: Follow My Score 2026 call for works (score videos)",
+    "organiser": "Score Follower",
+    "type": "Open call",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "Online",
+    "timezone": "America/New_York",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "deadline": "2026-12-01",
+    "eligibility": "Composers of any age, nationality or background; completed works for instruments and/or electronics, up to 3 works each",
+    "entry_fee": "Free",
+    "currency": "USD",
+    "fee_details": "Free for the first piece; submitting more than one work requires an active Scorefol.io subscription (price not stated on the call page)",
+    "selected_fee": "None",
+    "selected_fee_details": "Terms list no fee if selected; you must secure permissions from publishers/performers for posting",
+    "prizes": [
+      "About 30 works selected and published as score videos on Score Follower's YouTube channel"
+    ],
+    "prize_kinds": [
+      "Publication"
+    ],
+    "apply_url": "https://scorefol.io/callforworks",
+    "image_url": "https://d1oqjeq19gt82y.cloudfront.net/assets/call-fms-26.png",
+    "source": "https://scorefol.io/callforworks",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "bernheim-artist-in-residence-2027",
+    "title": "Bernheim Artist in Residence 2027 (Kentucky, USA)",
+    "organiser": "Bernheim Forest and Arboretum",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium",
+      "Sound",
+      "Performance"
+    ],
+    "format": "In person",
+    "timezone": "America/Kentucky/Louisville",
+    "city": "Clermont, Kentucky",
+    "country": "USA",
+    "region": "North America",
+    "lat": 37.9137,
+    "lng": -85.6486,
+    "deadline": "2026-11-30",
+    "eligibility": "Regional, national and international visual and mixed-media artists in any medium, including sound and performance art; one slot for Kentucky/southern Indiana artists, one for environmental/climate work",
+    "entry_fee": "Unknown",
+    "fee_details": "No application fee is mentioned on the call page or FAQ, but it isn't stated explicitly",
+    "selected_fee": "None",
+    "selected_fee_details": "Housing and studio provided; artists donate a site-inspired artwork or project to Bernheim and are asked to engage the public",
+    "prizes": [
+      "$2,500 stipend",
+      "Furnished cabin and studio space for 6-8 weeks in 2027"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency"
+    ],
+    "prize_value": 2500,
+    "apply_url": "https://bernheim.org/arts-in-nature/artist-in-residence/",
+    "image_url": "https://bernheim.org/wp-content/uploads/2024/05/VisitorCenter_Aug09_02modica.jpg",
+    "source": "https://bernheim.org/news/call-for-2027-artist-in-residence/",
+    "added": "2026-11-21",
+    "currency": "USD"
+  },
+  {
+    "id": "ubah-rumah-residency-nikoi-island-2027-2028",
+    "title": "Ubah Rumah Residency, Nikoi Island (Southeast Asia artists) 2027/2028",
+    "organiser": "Ubah Rumah Residency",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Asia/Jakarta",
+    "city": "Nikoi Island, Bintan",
+    "country": "Indonesia",
+    "region": "Asia",
+    "lat": 1.1456,
+    "lng": 104.3917,
+    "deadline": "2026-11-30",
+    "eligibility": "Artists from or based in Southeast Asia whose practice engages art, ecology and hospitality",
+    "entry_fee": "Unknown",
+    "fee_details": "No application fee is mentioned on the open call page; the application form was not checked",
+    "selected_fee": "None",
+    "selected_fee_details": "Accommodation, artist fee and round-trip travel within Southeast Asia are provided",
+    "prizes": [
+      "4-6 week residency in 2027 or 2028 with accommodation, artist fee and regional round-trip travel"
+    ],
+    "prize_kinds": [
+      "Residency"
+    ],
+    "apply_url": "https://www.ubahrumah.com/ubah-rumah-residency/ubah-rumah-residency-open-call",
+    "source": "https://www.ubahrumah.com/ubah-rumah-residency/ubah-rumah-residency-open-call",
+    "added": "2026-11-21"
   }
 ]
