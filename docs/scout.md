@@ -181,7 +181,7 @@ Follow `src/types/listing.ts` exactly (allowed values are listed there).
 
 ## 5b. Exhibitions to see (`src/data/exhibitions.json`)
 
-Magpie also lists **exhibitions artists would want to visit**, on its Exhibitions page. Every run, add **2–5**
+Magpie also lists **exhibitions artists would want to visit**, on its Exhibitions page. **Every run, without exception,** add **2–5**
 exhibitions that are on now or open within the next 8 weeks and aren't in the file yet (check ids and `apply_url`).
 - **What:** open exhibitions and prize shows (the Discerning Eye, society annual shows, the shows that come out of
   the open calls we list), artist-run and public galleries, free-entry shows, and a few major museum shows.
@@ -206,6 +206,11 @@ exhibitions that are on now or open within the next 8 weeks and aren't in the fi
    node -e 'const L=require("./src/data/listings.json"),t=new Date().toISOString().slice(0,10);L.filter(l=>l.added===t&&!l.image_url).forEach(l=>console.log("NO IMAGE:",l.id,l.source))'
    ```
    Only a listing whose organiser has truly no usable picture may stay without one. Name it in the log line with the reason.
+   **Exhibitions check (required, every run):** count today's exhibitions and add more if it's under 2 (section 5b):
+   ```bash
+   node -e 'const E=require("./src/data/exhibitions.json"),t=new Date().toISOString().slice(0,10);const n=E.filter(e=>e.added===t);console.log("exhibitions added today:",n.length);n.filter(e=>!e.image_url).forEach(e=>console.log("NO IMAGE:",e.id,e.source))'
+   ```
+   Only finish with fewer than 2 if you truly couldn't confirm any, and say why in the log line.
 4. `npm ci`, then `npm run build`. It must pass (validates every listing and type-checks). Fix or remove a
    failing listing and build again. **Never push a failing build.**
 5. Every few days (when the day of the month is divisible by 3) also run `npm run check-links` and, for links that
