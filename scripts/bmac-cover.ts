@@ -28,7 +28,7 @@ const blobs = [
 
 const tree = h('div', { width: W, height: H, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 56,
   backgroundColor: '#faf9f6', backgroundImage: blobs, color: '#1f3456' },
-  h('img', { width: 250, height: 250 }),
+  h('img', { width: 450, height: 450, marginRight: -40, marginTop: 20 }),
   h('div', { display: 'flex', flexDirection: 'column' },
     h('div', { fontFamily: 'Goudy', fontSize: 112, lineHeight: 1.0, letterSpacing: -1.5 }, 'Open calls for artists,'),
     h('div', { fontFamily: 'Goudy', fontStyle: 'italic', fontSize: 112, lineHeight: 1.05, letterSpacing: -1.5 }, 'every fee up front'),
