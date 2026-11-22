@@ -2954,5 +2954,48 @@
     "image_url": "https://cdn.prod.website-files.com/6063c1b5a6a3932d05209ca8/6a8bb9c330afa83d3432d117_2022_010_Ubah%20Rumah_Nikoi%20Island4939.jpg",
     "source": "https://www.ubahrumah.com/ubah-rumah-residency/ubah-rumah-residency-open-call",
     "added": "2026-11-21"
+  },
+  {
+    "id": "groundwork-gallery-heat-open-call-2027",
+    "title": "GroundWork Gallery open call: Heat (Spring 2027) with £500 Tom Burke Heat Prize",
+    "organiser": "GroundWork Gallery",
+    "type": "Open call",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "King's Lynn",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "GroundWork Gallery",
+    "lat": 52.7543,
+    "lng": 0.3953,
+    "deadline": "2026-11-29",
+    "start_date": "2027-03-12",
+    "end_date": "2027-06-05",
+    "eligibility": "Open to all visual artists (painting, sculpture, photography, print, film, installation, ceramics, live art, textiles); work up to 2m; gallery may be unable to cover transport from outside the UK",
+    "entry_fee": "Paid",
+    "fee_amount": 10,
+    "currency": "GBP",
+    "fee_details": "£10 submission fee for up to five artworks, paid via CuratorSpace after submitting",
+    "selected_fee": "None",
+    "selected_fee_details": "Gallery covers the costs of creating and installing the exhibition; artists cover their own travel and making work",
+    "prizes": [
+      "£500 Tom Burke Heat Prize (all submissions entered automatically)",
+      "Up to 12 artists exhibited, 12 March to 5 June 2027"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition"
+    ],
+    "prize_value": 500,
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/open-call-groundwork-gallery-spring/11027",
+    "image_url": "https://www.groundworkgallery.com/wp-content/uploads/2026/08/conversion-still-colour-copy-1620x1080.jpg",
+    "source": "https://www.groundworkgallery.com/exhibition/heat-exhibit-open-call-for-spring-2027/",
+    "added": "2026-11-22",
+    "highlights": [
+      "Selected artists notified by Fri 18 Dec 2026"
+    ]
   }
 ]
