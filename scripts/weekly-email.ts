@@ -89,6 +89,17 @@ async function brevo(path: string, body: unknown) {
   return text ? JSON.parse(text) : {};
 }
 
+// GitHub sometimes runs scheduled jobs hours late, so the workflow also has a backup run. Only one email a week:
+// if today's campaign already exists in Brevo (draft or sent), stop.
+const recent = await fetch('https://api.brevo.com/v3/emailCampaigns?limit=50&sort=desc', {
+  headers: { 'api-key': key!, accept: 'application/json' },
+}).then((r) => (r.ok ? r.json() : { campaigns: [] })) as { campaigns?: { name: string; status: string }[] };
+const already = (recent.campaigns ?? []).find((c) => c.name === `Magpie weekly ${today}`);
+if (already && !args.includes('--force')) {
+  console.log(`This week's email already exists in Brevo (${already.status}), so nothing to do.`);
+  process.exit(0);
+}
+
 const campaign = await brevo('/emailCampaigns', {
   name: `Magpie weekly ${today}`, subject, sender: SENDER, replyTo: SENDER.email, htmlContent: html, recipients: { listIds: [listId] },
 });
