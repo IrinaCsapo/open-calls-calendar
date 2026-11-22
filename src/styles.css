@@ -918,3 +918,6 @@ main:focus { outline: none; }
   .site-header > .site-nav__submit { margin-left: clamp(1.25rem, 2.5vw, 2.25rem); min-height: 42px !important; padding: 0 1.15rem !important;
     font-size: 0.95rem; font-weight: 600; border-width: 1.5px; }
 }
+
+/* Underlines run unbroken under descenders (g, p, y), everywhere on the site */
+html { text-decoration-skip-ink: none; -webkit-text-decoration-skip: none; }
