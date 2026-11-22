@@ -923,3 +923,12 @@ main:focus { outline: none; }
 html { text-decoration-skip-ink: none; -webkit-text-decoration-skip: none; }
 /* "A letter from the founder": sentence case, not capitals */
 .letter .letter__eyebrow { text-transform: none; letter-spacing: 0; font-size: 0.95rem; font-weight: 600; }
+/* Weekly email box: warm paper, colour kept to the right (behind the field) so the text stays easy to read */
+.subscribe-box--warm { background-color: #fbf7f0;
+  background-image: radial-gradient(38% 70% at 88% 18%, rgba(246, 164, 102, 0.42), transparent 70%),
+    radial-gradient(34% 70% at 98% 88%, rgba(243, 148, 189, 0.32), transparent 70%),
+    radial-gradient(30% 60% at 68% 100%, rgba(243, 205, 102, 0.35), transparent 70%); }
+@media (max-width: 48rem) {
+  .subscribe-box--warm { background-image: radial-gradient(70% 45% at 85% 100%, rgba(246, 164, 102, 0.38), transparent 70%),
+    radial-gradient(60% 40% at 10% 100%, rgba(243, 148, 189, 0.26), transparent 70%); }
+}

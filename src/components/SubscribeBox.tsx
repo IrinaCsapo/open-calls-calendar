@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { IconMail } from './Icons';
 import { NEWSLETTER_FORM_URL } from '../lib/site';
 import { guessPlace, loadPlaceSetting } from '../lib/location';
-import { wash } from './ListingCard';
 
 /**
  * Signing up for the weekly email: sends the address straight to Magpie's Brevo sign-up form (double opt-in: Brevo
@@ -80,7 +79,7 @@ export function SubscribeBox() {
   const s = useSubscribe();
   if (!NEWSLETTER_FORM_URL) return null;
   return (
-    <section className="subscribe-box" aria-labelledby="subscribe-title" style={{ background: wash('weekly-roundup', true) }}>
+    <section className="subscribe-box subscribe-box--warm" aria-labelledby="subscribe-title">
       <div className="subscribe-box__text">
         <p className="subscribe-box__eyebrow">The Magpie weekly email</p>
         <h2 id="subscribe-title">Open calls in your inbox, every Monday</h2>
