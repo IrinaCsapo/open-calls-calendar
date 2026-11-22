@@ -7,7 +7,6 @@ import {
   IconBadge, IconBell, IconBuilding, IconCalendar, IconCheck, IconClock, IconMail, IconMoney, IconPin, IconRefresh, IconSearch, IconTicket, IconUnknown, IconWarn,
 } from '../components/Icons';
 import { isTotallyFree } from '../lib/money';
-import { SUPPORT_URL } from '../lib/site';
 import bird from '../assets/magpie-bird.png';
 import { HeroPaint } from '../components/HeroPaint';
 
@@ -32,8 +31,9 @@ const LABELS = [
     text: 'The organiser\'s page doesn\'t say. Check their terms before you apply, or hide these with "Fees stated" under More filters.' },
 ] as const;
 
-export function AboutPage() {
-  useDocumentTitle('About');
+/** magpie.cool/how-it-works: what Magpie does, how fees are labelled, and where the listings come from. */
+export function HowItWorksPage() {
+  useDocumentTitle('How it works');
   const now = useNow();
   const stats = useMemo(() => {
     const live = LISTINGS.filter((l) => isLive(l, now));
@@ -50,7 +50,7 @@ export function AboutPage() {
       <section className="about-hero">
         <HeroPaint />
         <div className="about-hero__text">
-          <p className="about-eyebrow">About Magpie</p>
+          <p className="about-eyebrow">How it works</p>
           <h1>Every open call, every fee, <em>in one place</em></h1>
           <p className="about-lede">Open calls are scattered across websites, newsletters and Instagram posts, and too many
             only mention the fees once you've filled in a long form. Like a magpie, we collect the good ones, check the costs,
@@ -155,13 +155,6 @@ export function AboutPage() {
           <a className="button" href="/submit">Submit an open call</a>
           <a className="button button--secondary" href="/">Browse calls</a>
         </p>
-      </section>
-
-      <section className="about-section about-support" aria-labelledby="support-h">
-        <h2 id="support-h">Keep Magpie free</h2>
-        <p>Magpie has no ads, no paywall and no tracking. It's made by one designer and artist, and supporters cover the
-          running costs: the email service, the domain and the daily research that finds and checks new calls.</p>
-        <p><a className="button button--secondary" href={SUPPORT_URL} target="_blank" rel="noopener noreferrer">☕ Buy me a coffee</a></p>
       </section>
     </div>
   );

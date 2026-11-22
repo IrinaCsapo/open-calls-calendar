@@ -41,7 +41,7 @@ export const FAQ: Faq[] = [
   {
     q: 'How does Magpie label fees?',
     a: [
-      'Every listing shows two things: what it costs to enter, and what you would pay if you are selected. “Free, no fees if selected” means nothing to pay at all. “Free to enter, pay if selected” means a fee comes later, and the amount is on the listing. Paid entry shows the cheapest way in, in the organiser’s currency. “Not stated” means the organiser’s page does not say. [More on how we label fees](/about).',
+      'Every listing shows two things: what it costs to enter, and what you would pay if you are selected. “Free, no fees if selected” means nothing to pay at all. “Free to enter, pay if selected” means a fee comes later, and the amount is on the listing. Paid entry shows the cheapest way in, in the organiser’s currency. “Not stated” means the organiser’s page does not say. [More on how we label fees](/how-it-works#fees).',
     ],
   },
   {

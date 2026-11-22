@@ -107,7 +107,7 @@ const listingItems = (list: Listing[]) =>
 const browseLinks = () => (['Kinds', 'Disciplines', 'Places'] as const).map((g) =>
   `<h2>${g === 'Kinds' ? 'Browse by kind' : g === 'Disciplines' ? 'Browse by what you make' : 'Browse by place'}</h2>
   <ul>${COLLECTIONS.filter((c) => c.group === g).map((c) => `<li>${a(`/${collectionPath(c)}`, c.title)} (${LIVE.filter(c.match).length} open)</li>`).join('')}</ul>`).join('');
-const nav = `<p>${a('/', 'All open calls')} · ${a('/exhibitions', 'Exhibitions')} · ${a('/open-calls', 'Browse')} · ${a('/faq', 'FAQ')} · ${a('/about', 'About')} · ${a('/submit', 'Submit an open call')}</p>`;
+const nav = `<p>${a('/', 'All open calls')} · ${a('/exhibitions', 'Exhibitions')} · ${a('/open-calls', 'Browse')} · ${a('/faq', 'FAQ')} · ${a('/how-it-works', 'How it works')} · ${a('/about', 'About')} · ${a('/submit', 'Submit an open call')}</p>`;
 const footer = `<p>Magpie is a free, independent project by ${a('https://irinacsapo.co.uk', 'designer')} and ${a('https://www.instagram.com/irina_csapo_art', 'artist')} ${a(LINKEDIN, 'Irina Csapo')}. Contact: ${esc(CONTACT_EMAIL)}. Free, with no ads: ${a('https://buymeacoffee.com/irina.csapo', 'buy me a coffee')}. Updated ${formatFull(TODAY)}.</p>`;
 
 function listingBody(l: Listing) {
@@ -197,9 +197,28 @@ page('', {
 });
 
 page('about', {
-  title: T('About'),
-  description: 'Every open call, every fee, in one place. How Magpie finds open calls and labels their fees.',
-  data: [ORGANIZATION, breadcrumbs([{ name: 'About', path: '/about' }])],
+  title: T('About: a letter from Irina'),
+  description: 'Why I made Magpie: a free calendar of open calls for artists, with every fee up front. A letter from designer and artist Irina Csapo.',
+  data: [ORGANIZATION, { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About Magpie', url: `${SITE_URL}about`, author: ORGANIZATION.founder },
+    breadcrumbs([{ name: 'About', path: '/about' }])],
+  body: `${nav}<h1>Why I made Magpie</h1>
+    <p>Hi, I’m Irina, a designer and artist in the UK. I made Magpie because I was tired of open calls hiding their fees until
+    you’d filled in a long form, or asking you to pay to display.</p>
+    <p>Magpie is a free calendar of open calls, prizes, residencies and exhibitions for artists around the world. Every listing
+    shows exactly what it costs to enter, and anything you’d pay if you’re selected. Free calls and real galleries come first;
+    pay-to-exhibit operators are labelled clearly. It’s updated every morning and sent out every Monday in a short email.</p>
+    <p>Magpie has no ads, no paywall and no tracking, and I’d like to keep it that way. Your coffees pay for the running costs
+    (the email service, the domain and the daily research that finds and checks new calls) and give me more time to check the
+    small print, so you don’t have to.</p>
+    <p>Thank you for helping keep Magpie free for every artist. Irina</p>
+    <p>${a('https://buymeacoffee.com/irina.csapo', 'Buy me a coffee')} · ${a('/how-it-works', 'How Magpie works')}</p>
+    ${footer}`,
+});
+
+page('how-it-works', {
+  title: T('How it works: fees, sources and free calls first'),
+  description: 'Every open call, every fee, in one place. How Magpie finds open calls, checks them and labels their fees.',
+  data: [ORGANIZATION, breadcrumbs([{ name: 'How it works', path: '/how-it-works' }])],
   body: `${nav}<h1>Every open call, every fee, in one place</h1>
     <p>Open calls are scattered across websites, newsletters and Instagram posts, and too many only mention the fees once you’ve
     filled in a long form. Magpie collects them, checks the costs, and puts them in one calendar, closing soonest first.</p>
@@ -308,7 +327,7 @@ const urls = [
   { loc: `${SITE_URL}exhibitions`, priority: '0.9', freq: 'daily', lastmod: TODAY },
   ...COLLECTIONS.filter((c) => LIVE.filter(c.match).length >= 2).map((c) => ({ loc: abs(`/${collectionPath(c)}`), priority: '0.8', freq: 'daily', lastmod: TODAY })),
   { loc: `${SITE_URL}faq`, priority: '0.7', freq: 'monthly' },
-  ...['about', 'submit', 'subscribe', 'privacy'].map((p) => ({ loc: `${SITE_URL}${p}`, priority: '0.5', freq: 'monthly' })),
+  ...['how-it-works', 'about', 'submit', 'subscribe', 'privacy'].map((p) => ({ loc: `${SITE_URL}${p}`, priority: '0.5', freq: 'monthly' })),
   ...LIVE.map((l) => ({ loc: listingUrl(l), priority: '0.8', freq: 'weekly', lastmod: l.added })),
   ...SHOWS.map((l) => ({ loc: listingUrl(l), priority: '0.6', freq: 'weekly', lastmod: l.added })),
 ];
@@ -349,7 +368,8 @@ ${FAQ.map((f) => `- [${f.q}](${SITE_URL}faq)`).join('\n')}
 - [Every open listing in full](${SITE_URL}llms-full.txt): eligibility, all fees, prizes and links
 - [Open listings as JSON](${SITE_URL}open-calls.json)
 - [Deadlines calendar feed](${SITE_URL}${FEED_PATH}): subscribe in Google Calendar, Apple Calendar or Outlook
-- [About Magpie and how fees are labelled](${SITE_URL}about)
+- [How Magpie works and how fees are labelled](${SITE_URL}how-it-works)
+- [About Magpie: a letter from its maker](${SITE_URL}about)
 - [Submit an open call](${SITE_URL}submit)
 `;
 writeFileSync(new URL('llms.txt', dist), llms);

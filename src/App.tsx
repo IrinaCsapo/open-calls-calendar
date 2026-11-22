@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage';
 import { ListingPage } from './pages/ListingPage';
 import { SubmitPage } from './pages/SubmitPage';
 import { AboutPage } from './pages/AboutPage';
+import { HowItWorksPage } from './pages/HowItWorksPage';
 import { StartPage } from './pages/StartPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { SubscribedPage } from './pages/SubscribedPage';
@@ -18,7 +19,7 @@ import { useHashRoute, useLinkInterceptor } from './lib/useHashRoute';
 import { SITE_NAME, SUPPORT_URL } from './lib/site';
 import { TodayBar } from './components/TodayBar';
 
-import logo from './assets/magpie-logo-header.png';
+import { MagpieLogo } from './components/MagpieLogo';
 
 export function App() {
   const { path } = useHashRoute();
@@ -32,6 +33,7 @@ export function App() {
   else if (listingMatch) page = <ListingPage id={listingMatch[1]} />;
   else if (path === '/submit') page = <SubmitPage />;
   else if (path === '/about') page = <AboutPage />;
+  else if (path === '/how-it-works') page = <HowItWorksPage />;
   else if (path === '/start') page = <StartPage />;
   else if (path === '/privacy') page = <PrivacyPage />;
   else if (path === '/subscribed') page = <SubscribedPage />;
@@ -73,7 +75,7 @@ export function App() {
       <div className="today-strip"><TodayBar /></div>
       <header className={`site-header${menuOpen ? ' is-menu-open' : ''}`} ref={headerRef}>
         <a href="/" className="site-name">
-          <img className="site-name__logo" src={logo} alt={SITE_NAME} width="640" height="203" />
+          <MagpieLogo alt={SITE_NAME} />
         </a>
         <button type="button" id="menu-toggle" className="menu-toggle" aria-expanded={menuOpen} aria-controls="site-nav"
           onClick={() => setMenuOpen(!menuOpen)}>
@@ -84,9 +86,13 @@ export function App() {
         <nav aria-label="Main" id="site-nav" className="site-nav">
           <a style={{ '--i': 0 } as React.CSSProperties} href="/" aria-current={path === '/' || (listingMatch && !exhibitionPage) || path.startsWith('/open-calls') ? 'page' : undefined}>Open calls</a>
           <a style={{ '--i': 1 } as React.CSSProperties} href="/exhibitions" aria-current={path === '/exhibitions' || exhibitionPage ? 'page' : undefined}>Exhibitions</a>
-          <a style={{ '--i': 2 } as React.CSSProperties} href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
-          <a style={{ '--i': 3 } as React.CSSProperties} href="/submit" className="site-nav__menu-submit" aria-current={path === '/submit' ? 'page' : undefined}>
+          <a style={{ '--i': 2 } as React.CSSProperties} href="/how-it-works" aria-current={path === '/how-it-works' ? 'page' : undefined}>How it works</a>
+          <a style={{ '--i': 3 } as React.CSSProperties} href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
+          <a style={{ '--i': 4 } as React.CSSProperties} href="/submit" className="site-nav__menu-submit" aria-current={path === '/submit' ? 'page' : undefined}>
             Submit an open call <span aria-hidden="true">→</span>
+          </a>
+          <a style={{ '--i': 5 } as React.CSSProperties} href={SUPPORT_URL} target="_blank" rel="noopener noreferrer" className="site-nav__menu-submit site-nav__menu-coffee">
+            <span aria-hidden="true">☕</span> Buy me a coffee
           </a>
         </nav>
         <a href="/submit" className="site-nav__submit" aria-current={path === '/submit' ? 'page' : undefined}>
@@ -102,7 +108,7 @@ export function App() {
           <a href="/open-calls">Browse by discipline and place</a>
           <a href="/open-calls/free">Free open calls</a>
           <a href="/faq">FAQ</a>
-          <a href="/about">How we label fees</a>
+          <a href="/how-it-works#fees">How we label fees</a>
           <a href="/start">Tell us what you make</a>
           <a href="/privacy">Privacy</a>
         </nav>
