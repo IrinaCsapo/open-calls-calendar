@@ -896,3 +896,25 @@ main:focus { outline: none; }
 @media (prefers-reduced-motion: reduce) {
   .logo__head, .logo__tail { animation: none !important; }
 }
+/* Letter: a wider sheet, with room for a bigger photo */
+.letter { max-width: 980px; }
+.letter__paper { padding: clamp(1.75rem, 6vw, 4.5rem) clamp(1.5rem, 7vw, 5.5rem); }
+.letter__photo { width: clamp(170px, 30%, 260px); margin-left: 2.5rem; }
+.letter__body p { max-width: 68ch; }
+@media (max-width: 40rem) { .letter__photo { width: 56%; margin: 0 auto 1.5rem; } }
+
+/* ---- Top bar (date and time, free + coffee) and a calmer header ---- */
+.today-strip { max-width: none; padding: 0; display: block; background: var(--surface); border-bottom: 1px solid var(--line); }
+.topbar { max-width: 1400px; margin: 0 auto; padding: 0.45rem clamp(16px, 2.5vw, 32px); display: flex; justify-content: space-between;
+  align-items: center; gap: 1rem; font-size: 0.8rem; }
+.topbar .today { font-size: inherit; display: inline-flex; align-items: center; gap: 0.4rem; }
+.topbar__note { margin: 0; color: var(--muted); white-space: nowrap; }
+.topbar__note a { color: var(--ink); text-underline-offset: 0.2em; }
+@media (max-width: 40rem) { .topbar__note { display: none; } .topbar { justify-content: flex-end; } }
+@media (min-width: 40.01rem) {
+  .site-header { padding-block: 1.25rem; }
+  .site-nav { gap: clamp(1rem, 2.2vw, 2rem); }
+  .site-nav a { font-size: 1rem; }
+  .site-header > .site-nav__submit { margin-left: clamp(1.25rem, 2.5vw, 2.25rem); min-height: 42px !important; padding: 0 1.15rem !important;
+    font-size: 0.95rem; font-weight: 600; border-width: 1.5px; }
+}

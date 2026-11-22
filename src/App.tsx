@@ -72,7 +72,12 @@ export function App() {
       <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>
         Skip to content
       </a>
-      <div className="today-strip"><TodayBar /></div>
+      <div className="today-strip">
+        <div className="topbar">
+          <TodayBar />
+          <p className="topbar__note">Free, no ads · <a href={SUPPORT_URL} target="_blank" rel="noopener noreferrer">☕ Buy me a coffee</a></p>
+        </div>
+      </div>
       <header className={`site-header${menuOpen ? ' is-menu-open' : ''}`} ref={headerRef}>
         <a href="/" className="site-name">
           <MagpieLogo alt={SITE_NAME} />
