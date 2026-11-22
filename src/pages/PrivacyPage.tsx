@@ -54,6 +54,13 @@ export function PrivacyPage() {
       </section>
 
       <section>
+        <h2>Supporting Magpie</h2>
+        <p>The “Buy me a coffee” links go to{' '}
+          <a href="https://www.buymeacoffee.com/privacy-policy" target="_blank" rel="noopener noreferrer">Buy Me a Coffee</a>, which
+          handles the payment and anything you choose to share there. Magpie never sees your card details.</p>
+      </section>
+
+      <section>
         <h2>Deadline reminders</h2>
         <p>If you ask for a reminder on a listing, your email address and which call it's for are kept by Brevo and used only
           to send that reminder, three days before the deadline. It's one email per call; you won't be added to the weekly

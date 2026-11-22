@@ -15,6 +15,7 @@ export const SENDER = { name: 'Magpie', email: 'hello@magpie.cool' };
 export const LINKEDIN = 'https://www.linkedin.com/in/irinacsapo/';
 export const PORTFOLIO = 'https://irinacsapo.co.uk';
 export const INSTAGRAM = 'https://www.instagram.com/irina_csapo_art';
+export const SUPPORT = 'https://buymeacoffee.com/irina.csapo';
 
 export const INK = '#1f3456';
 export const MUTED = '#56627a';
@@ -133,6 +134,7 @@ export function byPlace(block: (pl: Place) => string, fallback: string): string 
 
 export const FOOTER = (why: string) =>
   `${why} Magpie is made by <a href="${PORTFOLIO}" style="color:${MUTED}">designer</a> and <a href="${INSTAGRAM}" style="color:${MUTED}">artist</a> <a href="${LINKEDIN}" style="color:${MUTED};font-weight:700">Irina Csapo</a>.
+  Magpie is free with no ads; if it helps you, you can <a href="${SUPPORT}" style="color:${MUTED};font-weight:700">buy me a coffee</a>.
   Add hello@magpie.cool to your contacts so we don’t land in spam, and reply any time: we read every email.
   <a href="${SITE}/privacy" style="color:${MUTED}">Privacy policy</a>`;
 

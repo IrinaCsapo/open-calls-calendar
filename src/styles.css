@@ -830,3 +830,4 @@ main:focus { outline: none; }
   .menu-toggle { position: relative; z-index: 11; }
   .site-name { position: relative; z-index: 11; }
 }
+.about-support p { max-width: 62ch; }

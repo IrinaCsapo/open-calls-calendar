@@ -15,7 +15,7 @@ import { findListing, isExhibition } from './lib/listings';
 import { CollectionPage, CollectionsHubPage } from './pages/CollectionPage';
 import { findCollection } from './lib/collections';
 import { useHashRoute, useLinkInterceptor } from './lib/useHashRoute';
-import { SITE_NAME } from './lib/site';
+import { SITE_NAME, SUPPORT_URL } from './lib/site';
 import { TodayBar } from './components/TodayBar';
 
 import logo from './assets/magpie-logo-header.png';
@@ -110,7 +110,9 @@ export function App() {
         <p className="site-footer__credit">
           Project created by <a href="https://irinacsapo.co.uk" target="_blank" rel="noopener noreferrer">designer</a> and{' '}
           <a href="https://www.instagram.com/irina_csapo_art" target="_blank" rel="noopener noreferrer">artist</a>{' '}
-          <a href="https://www.linkedin.com/in/irinacsapo/" target="_blank" rel="noopener noreferrer">Irina Csapo</a>
+          <a href="https://www.linkedin.com/in/irinacsapo/" target="_blank" rel="noopener noreferrer">Irina Csapo</a>.
+          Magpie is free, with no ads. If it helps you, you can{' '}
+          <a href={SUPPORT_URL} target="_blank" rel="noopener noreferrer">buy me a coffee</a> ☕
         </p>
       </footer>
     </>

@@ -28,5 +28,7 @@ export const NEWSLETTER_FORM_URL =
  */
 export const REMINDER_FORM_URL =
   'https://e858efc7.sibforms.com/serve/MUIFABspnl_ZEZJ-v8QAeDYl2n336Rup1DPIM2sjcp9PS4bS_EO_tFjWDIefdLTgeHv7dQcVCr00y906yuTqcryQEA-GueJW6Z1shdlmleooHJJkNCKoVTF-Z_mr8MnAwGv8cu5f6IF3GP2Nz8Z--ymIsdsLubhxQhGeuk91ouWRs-JjEk37pEOQ7vs_XuWZp0xWyTUrtgEI8ZIbcw==';
+/** Buy Me a Coffee: supporters keep Magpie free (footer, About page, emails). */
+export const SUPPORT_URL = 'https://buymeacoffee.com/irina.csapo';
 /** Where people can reach us (forwards to Irina's inbox). */
 export const CONTACT_EMAIL = 'hello@magpie.cool';
