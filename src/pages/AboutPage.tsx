@@ -18,7 +18,7 @@ export function AboutPage() {
           <figcaption>Irina, who makes Magpie</figcaption>
         </figure>
 
-        <p className="about-eyebrow">A letter from Irina</p>
+        <p className="about-eyebrow letter__eyebrow">A letter from the founder</p>
         <h1 id="letter-title" className="letter__title">Why I made Magpie</h1>
 
         <div className="letter__body">

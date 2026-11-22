@@ -12,7 +12,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { closesAt, isOpportunity } from '../src/lib/dates';
 import type { Listing } from '../src/types/listing';
 import {
-  MUTED, OPEN, SENDER, SITE, FOOTER, SUBMIT_BOX, button, byPlace, card, eyebrow, h2, layout, nearPlace, p, track, type Place,
+  COFFEE_NOTE, MUTED, OPEN, SENDER, SITE, FOOTER, SUBMIT_BOX, button, byPlace, card, eyebrow, h2, layout, nearPlace, p, track, type Place,
 } from './email-parts';
 
 const DAY = 86_400_000;
@@ -57,7 +57,8 @@ const html = layout(
   ${section(eyebrow('Events', '#efe8f6', '#3f2f57'), 'Coming up', events)}
   ${section(eyebrow('Free', '#d4f7ee', '#0b4f42'), 'Free to enter, no fees if selected', free)}
   <tr><td class="mp-pad" style="padding:10px 32px 0">${button(track(`${SITE}/`, C), `See all ${OPEN.length} open calls`)}</td></tr>
-  ${SUBMIT_BOX(C)}`,
+  ${SUBMIT_BOX(C)}
+  ${COFFEE_NOTE(C)}`,
   FOOTER('You’re getting this because you signed up for the Magpie weekly email. Fees and dates come from the organisers’ pages and can change, so always check before you pay.'),
   ` <a href="{{ unsubscribe }}" style="color:${MUTED}">Unsubscribe</a>`,
 );

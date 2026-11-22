@@ -163,6 +163,16 @@ export function layout(title: string, preheader: string, body: string, footer: s
 </body></html>`.replace(/\n\s+/g, '\n');   // smaller: Gmail cuts off emails over ~100 KB
 }
 
+/** A short, warm note asking for a coffee, near the end of the weekly email */
+export const COFFEE_NOTE = (campaign: string) => `<tr><td class="mp-pad" style="padding:0 32px 24px">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr>
+    <td bgcolor="#fdf0d2" style="border-radius:20px;padding:20px 22px">
+      <p style="margin:0 0 6px;font:400 22px/1.25 ${SERIF};color:${INK}">Did Magpie help you this week?</p>
+      <p style="margin:0 0 14px;font:400 15px/1.5 ${SANS};color:${INK}">Magpie is free, with no ads and no paywall. If it saved you time or a fee, a coffee keeps it that way: it pays for the email, the domain and the daily research that checks every call.</p>
+      ${button(track(SUPPORT, campaign), '☕ Buy me a coffee', false)}
+    </td></tr></table>
+</td></tr>`;
+
 /** The green "know a call we're missing?" box near the end of the welcome and weekly emails */
 export const SUBMIT_BOX = (campaign: string) => `<tr><td class="mp-pad" style="padding:20px 32px 28px">
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr>

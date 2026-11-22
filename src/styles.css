@@ -921,3 +921,5 @@ main:focus { outline: none; }
 
 /* Underlines run unbroken under descenders (g, p, y), everywhere on the site */
 html { text-decoration-skip-ink: none; -webkit-text-decoration-skip: none; }
+/* "A letter from the founder": sentence case, not capitals */
+.letter .letter__eyebrow { text-transform: none; letter-spacing: 0; font-size: 0.95rem; font-weight: 600; }
