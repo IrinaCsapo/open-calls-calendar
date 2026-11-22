@@ -968,3 +968,8 @@ html { text-decoration-skip-ink: none; -webkit-text-decoration-skip: none; }
 .privacy__notice h2 { color: var(--ink); }
 .privacy__notice p { color: var(--ink); }
 .privacy__notice a { color: inherit; }
+/* Privacy, on the same paper sheet as the letter */
+.privacy .letter__paper { background-color: #fffdf8; }
+.privacy .about-lede { max-width: 62ch; }
+.privacy section:first-of-type { margin-top: 1.75rem; }
+.privacy p, .privacy li { max-width: 68ch; font-size: 1.02rem; line-height: 1.65; }

@@ -7,10 +7,11 @@ const UPDATED = '22 November 2026';
 export function PrivacyPage() {
   useDocumentTitle('Privacy');
   return (
-    <div className="submit privacy">
-      <header className="submit__head">
-        <p className="about-eyebrow">Privacy</p>
-        <h1>Your privacy</h1>
+    <article className="letter privacy" aria-labelledby="privacy-title">
+      <div className="letter__paper">
+      <header className="privacy__head">
+        <p className="about-eyebrow letter__eyebrow">Privacy</p>
+        <h1 id="privacy-title" className="letter__title">Your privacy</h1>
         <p className="about-lede">Magpie collects as little as it can. No ads, no tracking cookies, and we never sell or share your
           details. Here is everything, in plain English.</p>
       </header>
@@ -88,6 +89,7 @@ export function PrivacyPage() {
       </section>
 
       <p className="small muted">Last updated {UPDATED}.</p>
-    </div>
+      </div>
+    </article>
   );
 }
