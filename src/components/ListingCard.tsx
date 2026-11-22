@@ -125,6 +125,7 @@ export function ListingCard({ listing: l, now }: { listing: Listing; now: number
       <h3 className="card__title">
         <a href={`/listing/${l.id}`}>{l.title}</a>
       </h3>
+      <p className="card__org" title={l.organiser}><span className="sr-only">Organised </span>by {l.organiser}</p>
 
       <ul className="card__facts" aria-label="Details">
         <li><IconCalendar /><span aria-hidden="true">{when.short}</span><span className="sr-only">{when.full}</span></li>
