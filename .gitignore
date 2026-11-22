@@ -6,3 +6,6 @@ tsconfig.tsbuildinfo
 
 # local email previews (npx tsx scripts/brevo-templates.ts --preview)
 email-preview/
+
+# Irina's original photo (5 MB); the site uses the small crop, src/assets/irina.jpg
+src/assets/irina-csapo-linkedin-pic-square-2026-v1.jpg
