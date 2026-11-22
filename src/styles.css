@@ -862,35 +862,37 @@ main:focus { outline: none; }
 @media (max-width: 40rem) { .letter__photo { float: none; width: 52%; margin: 0 auto 1.5rem; } }
 @media (max-width: 40rem) { .site-nav .site-nav__menu-coffee { margin-top: 0; } }
 
-/* ---- Magpie logo: the bird hops off its perch and flicks its tail ----
+/* ---- Magpie logo: the magpie turns its head and flickers its tail ----
    Three copies of the 640×203 logo, each clipped to a part (percentages of the picture):
-   bird = left of the "M" above the perch (y < 159px), everything above y 84px; wordmark + perch = the rest;
-   tail = the long feathers, left of where they join the body (pivot ≈ 175px, 115px). */
+   head = the box above the neck (x 215–320px, y 0–52px), turning about the neck (≈265px, 46px);
+   tail = the long feathers, flicking about where they join the body (≈175px, 115px);
+   still = everything else (wordmark, perch, body, legs). The moving parts overlap the still part by a few pixels, so
+   no gap opens as they turn. */
 .logo { position: relative; display: block; line-height: 0; }
-.logo__word { clip-path: polygon(50% 0, 100% 0, 100% 100%, 21.1% 100%, 21.1% 79.8%, 41.9% 79.8%, 41.9% 41.4%, 50% 41.4%); }
-.logo__bird { position: absolute; inset: 0; transform-origin: 34% 78%; }
-.logo__bird .logo__part { position: absolute; inset: 0; width: 100%; height: 100%; }
-.logo__body { clip-path: polygon(0 0, 50% 0, 50% 41.4%, 41.9% 41.4%, 41.9% 79.8%, 21.1% 79.8%, 28.9% 59.1%, 25% 46.8%, 0 46.8%); }
-.logo__tail { clip-path: polygon(0 46.8%, 25% 46.8%, 28.9% 59.1%, 21.1% 79.8%, 21.1% 100%, 0 100%); transform-origin: 27.3% 56.7%; }
+.logo .logo__head, .logo .logo__tail { position: absolute; inset: 0; width: 100%; height: 100%; }
+.logo__still { clip-path: polygon(0 0, 33.6% 0, 33.6% 22.7%, 50% 22.7%, 50% 0, 100% 0, 100% 100%, 21.1% 100%, 21.1% 79.8%,
+  28.9% 59.1%, 25% 46.8%, 0 46.8%); }
+.logo__head { clip-path: polygon(33.6% 0, 50% 0, 50% 25.6%, 33.6% 25.6%); transform-origin: 41.4% 22.7%; }
+.logo__tail { clip-path: polygon(0 45%, 26% 45%, 30% 59.1%, 22% 79.8%, 22% 100%, 0 100%); transform-origin: 27.3% 56.7%; }
 
-@keyframes magpie-hop {
-  0% { transform: none; }
-  18% { transform: translateY(1.5%) scaleY(0.97); }                 /* crouch */
-  42% { transform: translateY(-13%) rotate(-4deg); }                /* up */
-  70% { transform: translateY(0) rotate(1deg) scaleY(0.98); }       /* land */
-  84% { transform: translateY(-2%) rotate(0deg); }
-  100% { transform: none; }
+@keyframes magpie-look {
+  0%, 100% { transform: none; }
+  16% { transform: rotate(-11deg); }                    /* looks down at the page */
+  40% { transform: rotate(-11deg); }
+  56% { transform: rotate(5deg) scaleX(0.86); }         /* turns to look back at you */
+  76% { transform: rotate(3deg) scaleX(0.9); }
 }
 @keyframes magpie-tail {
   0%, 100% { transform: none; }
-  30% { transform: rotate(-9deg); }
-  55% { transform: rotate(5deg); }
-  78% { transform: rotate(-2deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(3deg); }
+  60% { transform: rotate(-6deg); }
+  80% { transform: rotate(1.5deg); }
 }
-.logo.is-hello .logo__bird { animation: magpie-hop 0.9s cubic-bezier(0.3, 0.7, 0.4, 1) 0.35s both; }
-.logo.is-hello .logo__tail { animation: magpie-tail 0.9s ease-out 1.25s both; }
-.site-name:hover .logo__bird, .site-name:focus-visible .logo__bird { animation: magpie-hop 0.9s cubic-bezier(0.3, 0.7, 0.4, 1) both; }
-.site-name:hover .logo__tail, .site-name:focus-visible .logo__tail { animation: magpie-tail 0.9s ease-out 0.8s both; }
+.logo.is-hello .logo__head { animation: magpie-look 1.6s cubic-bezier(0.45, 0, 0.3, 1) 0.4s both; }
+.logo.is-hello .logo__tail { animation: magpie-tail 0.8s ease-out 2.1s both; }
+.site-name:hover .logo__head, .site-name:focus-visible .logo__head { animation: magpie-look 1.6s cubic-bezier(0.45, 0, 0.3, 1) both; }
+.site-name:hover .logo__tail, .site-name:focus-visible .logo__tail { animation: magpie-tail 0.8s ease-out 1.6s both; }
 @media (prefers-reduced-motion: reduce) {
-  .logo__bird, .logo__tail { animation: none !important; }
+  .logo__head, .logo__tail { animation: none !important; }
 }
