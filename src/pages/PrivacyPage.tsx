@@ -1,7 +1,7 @@
 import { useDocumentTitle } from '../lib/useDocumentTitle';
 import { CONTACT_EMAIL } from '../lib/site';
 
-const UPDATED = '20 November 2026';
+const UPDATED = '22 November 2026';
 
 /** Plain-English privacy notice. Keep it true: update it whenever a new service is added to the site. */
 export function PrivacyPage() {
@@ -14,6 +14,18 @@ export function PrivacyPage() {
         <p className="about-lede">Magpie collects as little as it can. No ads, no tracking cookies, and we never sell or share your
           details. Here is everything, in plain English.</p>
       </header>
+
+      <section className="privacy__notice">
+        <h2>Magpie will never ask you for money</h2>
+        <p>Magpie will never email, message or call you asking you to pay to enter an open call, prize, residency or exhibition,
+          or to pay a fee because you've been selected. We don't take entry fees, we don't collect payments for organisers, and
+          we never ask for your card or bank details.</p>
+        <p>Every fee shown on Magpie comes from the organiser's own page, and you pay it, if you choose to apply, directly to the
+          organiser on their site. If you get a message claiming to be from Magpie and asking for money, it isn't from us:
+          please don't pay, and forward it to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+        <p>The only payment connected to Magpie is optional: a “Buy me a coffee” to support the site, which goes through Buy Me
+          a Coffee and is never required for anything.</p>
+      </section>
 
       <section>
         <h2>Who runs Magpie</h2>

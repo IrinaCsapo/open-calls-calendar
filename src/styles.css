@@ -963,3 +963,8 @@ html { text-decoration-skip-ink: none; -webkit-text-decoration-skip: none; }
 }
 /* "by Organiser" under the card title: one line, cut off with … if long */
 .card__org { margin: -0.15rem 0 0.15rem; font-size: 0.92rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Privacy: the "never ask you for money" notice stands out */
+.privacy__notice { padding: 1.25rem 1.5rem; border-radius: 18px; background: var(--free-bg); color: var(--free-fg); }
+.privacy__notice h2 { color: var(--ink); }
+.privacy__notice p { color: var(--ink); }
+.privacy__notice a { color: inherit; }
