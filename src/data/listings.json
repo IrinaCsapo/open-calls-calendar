@@ -2997,5 +2997,89 @@
     "highlights": [
       "Selected artists notified by Fri 18 Dec 2026"
     ]
+  },
+  {
+    "id": "unravel-gawthorpe-btb-residencies-2027",
+    "title": "Unravel: three paid residencies with Gawthorpe Textiles Collection and British Textile Biennial",
+    "organiser": "Gawthorpe Textiles Collection × British Textile Biennial",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "Brierfield",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "Gawthorpe Textiles Collection, Northlight",
+    "lat": 53.8231,
+    "lng": -2.2331,
+    "deadline": "2026-12-07",
+    "start_date": "2027-02-01",
+    "end_date": "2028-02-29",
+    "eligibility": "Artists, makers, researchers and curators in any discipline; no textile or museum experience needed; budget set with UK-based applicants in mind, time with the Collection in person required",
+    "entry_fee": "Free",
+    "fee_details": "No submission fee shown on the official call or the CuratorSpace form",
+    "selected_fee": "None",
+    "selected_fee_details": "Paid residency; travel, accommodation and visa costs come out of the £1,000 travel budget",
+    "prizes": [
+      "£7,500 total budget per residency: £5,000 artist/researcher fee, up to £1,500 materials, up to £1,000 travel",
+      "Three six-month residencies between Feb 2027 and Feb 2028"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency"
+    ],
+    "prize_value": 5000,
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/open-call-unravel/11346",
+    "image_url": "https://britishtextilebiennial.co.uk/wp-content/uploads/2026/11/1-819x1024.png",
+    "source": "https://britishtextilebiennial.co.uk/news/open-call-unravel/",
+    "added": "2026-11-23",
+    "highlights": [
+      "Deadline noon, 7 Dec 2026; interviews week of 4 Jan 2027; notified week of 11 Jan 2027"
+    ],
+    "currency": "GBP"
+  },
+  {
+    "id": "13b-neon-international-photography-open-call-2027",
+    "title": "Neon: international photography open call at 13b (Slovenia)",
+    "organiser": "13b",
+    "type": "Open call",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Ljubljana",
+    "city": "Kamnik",
+    "country": "Slovenia",
+    "region": "Europe",
+    "venue": "13b gallery",
+    "lat": 46.2258,
+    "lng": 14.6117,
+    "deadline": "2026-11-30",
+    "start_date": "2027-01-08",
+    "end_date": "2027-02-05",
+    "eligibility": "Photographers worldwide, amateur and professional; up to 3 images, one selected",
+    "entry_fee": "Free",
+    "fee_details": "Submissions are free",
+    "selected_fee": "Yes",
+    "selected_fee_details": "€24 participation fee via PayPal within 4 days of acceptance (covers printing, framing and installation, admin and the opening). No commission on sales; artists are not paid",
+    "commercial": true,
+    "selected_fee_amount": 24,
+    "prizes": [
+      "4-week group exhibition, 8 Jan to 5 Feb 2027, with A4 print, mount and frame supplied",
+      "Social media promotion"
+    ],
+    "prize_kinds": [
+      "Exhibition"
+    ],
+    "commission": "None",
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/international-photography-open-call-lumen/11149",
+    "source": "https://www.curatorspace.com/opportunities/detail/international-photography-open-call-lumen/11149",
+    "added": "2026-11-23",
+    "highlights": [
+      "Successful artists contacted 2 Dec 2026; private view 8 Jan 2027, 6–9pm"
+    ],
+    "currency": "EUR"
   }
 ]

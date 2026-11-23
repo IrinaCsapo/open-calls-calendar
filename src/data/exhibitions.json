@@ -876,5 +876,67 @@
     "image_url": "https://www.kw-berlin.de/images/03_KW_KOO_JEONG_A_Abstract_house_10_1999_2.jpg?w=2000",
     "source": "https://www.kw-berlin.de/en/visit/tickets",
     "added": "2026-11-22"
+  },
+  {
+    "id": "ivan-argote-how-to-move-a-monument-dallas-contemporary",
+    "title": "Iván Argote: How to Move a Monument on a Tuesday Morning",
+    "organiser": "Dallas Contemporary",
+    "type": "Exhibition",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "America/Chicago",
+    "city": "Dallas",
+    "country": "United States",
+    "region": "North America",
+    "venue": "Dallas Contemporary, 161 Glass Street",
+    "lat": 32.7889,
+    "lng": -96.8212,
+    "start_date": "2026-10-03",
+    "end_date": "2027-01-31",
+    "eligibility": "Solo show by Colombian-born artist Iván Argote: video installation, sculpture and bas-relief on public monuments and collective memory.",
+    "entry_fee": "Free",
+    "fee_details": "Free admission, $10 suggested donation; reserve a visit in advance",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.dallascontemporary.org/ivan-argote",
+    "image_url": "http://static1.squarespace.com/static/5e013b5ea48f3b2a14f3943f/t/6ac7de801de93e29f7deb323/1774470513898/img-008.jpg?format=1500w",
+    "source": "https://www.dallascontemporary.org/visit",
+    "added": "2026-11-23",
+    "highlights": [
+      "Free guided process tour, Sun 29 Nov 2026, 1–2pm"
+    ]
+  },
+  {
+    "id": "an-encounter-with-contemporary-art-miyagi-museum-of-art-2026",
+    "title": "An Encounter with Contemporary Art",
+    "organiser": "Miyagi Museum of Art",
+    "type": "Exhibition",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Asia/Tokyo",
+    "city": "Sendai",
+    "country": "Japan",
+    "region": "Asia",
+    "venue": "Miyagi Museum of Art, Main Building 2nd Floor",
+    "lat": 38.2554,
+    "lng": 140.8479,
+    "start_date": "2026-11-14",
+    "end_date": "2027-01-24",
+    "eligibility": "A guide to contemporary art through keywords such as colour, shape, light and memory, with works by Yayoi Kusama, Yoshitomo Nara, Takashi Murakami, Andy Warhol and Banksy.",
+    "entry_fee": "Paid",
+    "fee_amount": 1500,
+    "currency": "JPY",
+    "fee_details": "Adult ¥1,500 (group ¥1,300); university students ¥1,300; school students ¥750. Closed Mondays; open 9:30am–5pm",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.pref.miyagi.jp/site/museum-en/20261114-s01-01-en.html",
+    "source": "https://www.pref.miyagi.jp/site/museum-en/20261114-s01-01-en.html",
+    "added": "2026-11-23"
   }
 ]
