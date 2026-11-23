@@ -93,8 +93,14 @@ async function brevo(path: string, body: unknown) {
 // if today's campaign already exists in Brevo (draft or sent), stop.
 const recent = await fetch('https://api.brevo.com/v3/emailCampaigns?limit=50&sort=desc', {
   headers: { 'api-key': key!, accept: 'application/json' },
-}).then((r) => (r.ok ? r.json() : { campaigns: [] })) as { campaigns?: { name: string; status: string }[] };
+}).then((r) => (r.ok ? r.json() : { campaigns: [] })) as { campaigns?: { id: number; name: string; status: string }[] };
 const already = (recent.campaigns ?? []).find((c) => c.name === `Magpie weekly ${today}`);
+// "send" with today's draft already made (the usual Monday): send that draft, the one you checked.
+if (already && already.status === 'draft' && args.includes('--send') && !args.includes('--force')) {
+  await brevo(`/emailCampaigns/${already.id}/sendNow`, {});
+  console.log(`Sent this week's draft to list ${listId} (campaign ${already.id}).`);
+  process.exit(0);
+}
 if (already && !args.includes('--force')) {
   console.log(`This week's email already exists in Brevo (${already.status}), so nothing to do.`);
   process.exit(0);
