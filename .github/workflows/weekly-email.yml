@@ -6,7 +6,10 @@ name: Weekly email
 on:
   schedule:
     - cron: '17 7 * * 1'   # off the hour on purpose: GitHub delays or drops busy :00 runs
-    - cron: '47 8 * * 1'   # backup, in case the first is late or dropped (the script makes only one email a week)
+    - cron: '47 8 * * 1'   # backups, in case earlier runs are late or dropped (GitHub skipped both on 23 Nov 2026);
+    - cron: '37 9 * * 1'   # the script makes only one email a week, so extra runs just skip
+    - cron: '57 10 * * 1'
+    - cron: '27 12 * * 1'
   workflow_dispatch:
     inputs:
       mode:
