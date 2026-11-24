@@ -51,7 +51,7 @@ export const ENTRY_FEES = ['Free', 'Paid', 'Unknown'] as const;
 export const SELECTED_FEES = ['None', 'Yes', 'Unknown'] as const;
 
 /** Where you can apply from. "Restricted" needs open_to_where, e.g. "UK only". */
-export const OPEN_TO = ['Worldwide', 'Restricted', 'Not stated'] as const;
+export const OPEN_TO = ['Worldwide', 'Restricted'] as const;
 
 export const PRIZE_KINDS = ['Cash', 'Exhibition', 'Residency', 'Publication', 'Mentoring', 'Sales', 'Commission', 'Other'] as const;
 

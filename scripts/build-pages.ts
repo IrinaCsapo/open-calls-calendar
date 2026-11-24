@@ -39,7 +39,7 @@ const collectionPath = (c: Collection) => `open-calls/${c.slug}`;
 
 /** "Open worldwide · Women only", "UK only", or "" when the listing doesn't have it. */
 function openTo(l: Listing): string {
-  const where = l.open_to === 'Worldwide' ? 'Open worldwide' : l.open_to === 'Restricted' ? l.open_to_where : l.open_to === 'Not stated' ? 'Where you can apply from is not stated' : undefined;
+  const where = l.open_to === 'Worldwide' ? 'Open worldwide' : l.open_to === 'Restricted' ? l.open_to_where : undefined;
   return [where, l.open_to_who].filter(Boolean).join(' · ');
 }
 

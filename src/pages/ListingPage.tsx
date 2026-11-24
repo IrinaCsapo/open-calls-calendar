@@ -142,7 +142,6 @@ export function ListingPage({ id }: { id: string }) {
                   {!show && (l.open_to || l.open_to_who) && (
                     <ul className="card__facts gtk-who__tags" aria-label="Who can apply">
                       <OpenToFacts l={l} />
-                      {l.open_to === 'Not stated' && <li><IconUnknown />Where you can apply from: not stated</li>}
                     </ul>
                   )}
                 </div>

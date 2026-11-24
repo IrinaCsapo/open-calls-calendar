@@ -101,7 +101,6 @@ if (!Array.isArray(data)) {
     date('deadline'); date('start_date'); date('end_date'); date('added', true);
     const isOpp = (OPPORTUNITY_TYPES as readonly string[]).includes(l.type as string);
     if (isOpp && l.deadline === undefined) fail(`a ${l.type} needs a deadline`);
-    if (isOpp && l.open_to === undefined) fail(`a ${l.type} needs open_to: "Worldwide", "Restricted" (with open_to_where) or "Not stated"`);
     if (!isOpp && l.start_date === undefined) fail(`a ${l.type} needs a start_date`);
     if (l.end_date !== undefined && l.start_date === undefined) fail('end_date needs a start_date');
     if (isDate(l.start_date) && isDate(l.end_date) && (l.end_date as string) < (l.start_date as string)) fail('end_date is before start_date');

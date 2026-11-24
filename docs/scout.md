@@ -169,11 +169,11 @@ Follow `src/types/listing.ts` exactly (allowed values are listed there).
 - `deadline`: required for opportunities; for events only if registration closes before the start
 - `start_date`/`end_date`: exhibition / residency / event dates if stated; required for events
 - `eligibility`: the organiser's words, briefly (`"Women artists worldwide, 18+"`, `"UK-based, 18+, any stage"`)
-- `open_to` (required for open calls, prizes, residencies, grants, fellowships, commissions): where you can apply from.
+- `open_to` (open calls, prizes, residencies, grants, fellowships, commissions): where you can apply from.
   `"Worldwide"` when the organiser says any nationality, international or worldwide, or the call is plainly open to
   anyone anywhere. `"Restricted"` when only some places can apply, with `open_to_where` as a short label ending in
   "only": `"UK only"`, `"USA only"`, `"Southeast Asia only"`, `"Chicago area only"`, `"Mexican citizens only"`.
-  `"Not stated"` when the page doesn't say: don't guess from the venue's country.
+  Leave it out when the page doesn't say: don't guess from the venue's country.
 - `open_to_who` (optional): only when just some people can apply, as a short card label: `"Women only"`,
   `"Ages 18–30"`, `"Under 35"`, `"Students aged 18–30"`, `"Recent graduates"`, `"Members only"`. Leave it out for
   18+ (nearly everything is) and for soft wording like "emerging artists"
