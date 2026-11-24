@@ -37,6 +37,12 @@ const collectionPath = (c: Collection) => `open-calls/${c.slug}`;
 
 // ---- Small facts about a listing, in words -------------------------------------------------------
 
+/** "Open worldwide · Women only", "UK only", or "" when the listing doesn't have it. */
+function openTo(l: Listing): string {
+  const where = l.open_to === 'Worldwide' ? 'Open worldwide' : l.open_to === 'Restricted' ? l.open_to_where : l.open_to === 'Not stated' ? 'Where you can apply from is not stated' : undefined;
+  return [where, l.open_to_who].filter(Boolean).join(' · ');
+}
+
 function where(l: Listing): string {
   if (l.format === 'Online') return l.region === 'Global' ? 'Online, open worldwide' : `Online (${l.country || l.region})`;
   const at = [l.venue, l.city, l.country].filter(Boolean).join(', ');
@@ -121,6 +127,7 @@ function listingBody(l: Listing) {
     ['Where', where(l)],
     ['Disciplines', l.disciplines.join(', ')],
     [l.type === 'Exhibition' ? 'About' : 'Who can apply', l.eligibility],
+    ...(openTo(l) ? [['Open to', openTo(l)!] as [string, string]] : []),
     ...(l.highlights?.length ? [['Also on', l.highlights.join('; ')] as [string, string]] : []),
     [opp ? 'Cost to enter' : 'Cost', l.fee_details ?? f.headline],
     ...(opp ? [['If you’re selected', l.selected_fee === 'Yes' ? `Fee: ${l.selected_fee_details ?? 'yes'}` : l.selected_fee === 'None' ? 'Nothing more to pay the organiser' : 'Not stated by the organiser'] as [string, string]] : []),
@@ -390,6 +397,7 @@ ${LIVE.map((l) => {
     `- Where: ${where(l)}`,
     `- Disciplines: ${l.disciplines.join(', ')}`,
     `- Who can apply: ${l.eligibility}`,
+    ...(openTo(l) ? [`- Open to: ${openTo(l)}`] : []),
     `- Cost to enter: ${l.fee_details ?? f.headline}`,
     ...(isOpportunity(l) ? [`- If selected: ${l.selected_fee === 'Yes' ? l.selected_fee_details ?? 'a fee' : l.selected_fee === 'None' ? 'nothing more to pay the organiser' : 'not stated'}`] : []),
     ...(l.commission ? [`- Commission on sales: ${l.commission}`] : []),

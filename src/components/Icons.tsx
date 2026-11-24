@@ -6,7 +6,7 @@ import {
   ArrowPathIcon, ArrowsRightLeftIcon, BanknotesIcon, CheckBadgeIcon, SparklesIcon, CalendarDaysIcon, CheckIcon, ClockIcon, ExclamationTriangleIcon,
   GlobeAltIcon, LinkIcon, MagnifyingGlassIcon, MapPinIcon, QuestionMarkCircleIcon, TrophyIcon,
   UserGroupIcon, GiftIcon, PhotoIcon, HomeModernIcon, BookOpenIcon, ChatBubbleLeftRightIcon, ShoppingBagIcon,
-  BriefcaseIcon, TicketIcon, BuildingLibraryIcon, SwatchIcon, FlagIcon,
+  BriefcaseIcon, TicketIcon, BuildingLibraryIcon, SwatchIcon, FlagIcon, GlobeEuropeAfricaIcon, IdentificationIcon, UserIcon,
 } from '@heroicons/react/24/outline';
 import type { Format } from '../types/listing';
 
@@ -21,6 +21,9 @@ export const IconCalendar = make(CalendarDaysIcon);
 export const IconPin = make(MapPinIcon);
 export const IconGlobe = make(GlobeAltIcon);
 export const IconHybrid = make(ArrowsRightLeftIcon);
+export const IconWorld = make(GlobeEuropeAfricaIcon);     // "Open worldwide"
+export const IconId = make(IdentificationIcon);           // "UK only": where you can apply from
+export const IconPerson = make(UserIcon);                 // "Women only", "Ages 18–30": who can apply
 export const IconTrophy = make(TrophyIcon);
 export const IconLink = make(LinkIcon);
 export const IconSearch = make(MagnifyingGlassIcon);

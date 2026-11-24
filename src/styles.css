@@ -594,6 +594,9 @@ main:focus { outline: none; }
 .tag--paid { border: 0; background: var(--paid-bg); color: var(--paid-fg); }
 .tag--warn { border: 0; background: var(--caution-bg); color: var(--caution-fg); }
 .tag--unknown { border: 1px dashed #b9b4a8; background: transparent; color: var(--muted); font-weight: 500; }
+.card__facts .fact--limited { background: #fff; box-shadow: inset 0 0 0 1px #d6d0c4; }
+.gtk-who__tags { margin: 0.8rem 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.gtk-who__tags li { background: #fff; }
 .tag--perk { border: 0; background: #efe8f6; color: #3f2f57; }
 .card__facts li { display: inline-flex; align-items: center; gap: 0.35rem; min-width: 0; max-width: 100%; padding: 0.28rem 0.6rem; border-radius: 10px;
   background: #efede7; font-size: 0.84rem; color: var(--ink); }

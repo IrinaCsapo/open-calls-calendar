@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { Listing } from '../types/listing';
 import { formatFull, formatShort, isOpportunity, timeLeft } from '../lib/dates';
 import { formatMoney, priceTag } from '../lib/money';
-import { IconCalendar, IconCheck, IconClock, IconGlobe, IconHybrid, IconMoney, IconPin, IconUnknown, IconUsers, IconWarn } from './Icons';
+import { IconCalendar, IconCheck, IconClock, IconGlobe, IconHybrid, IconId, IconMoney, IconPerson, IconPin, IconUnknown, IconUsers, IconWarn, IconWorld } from './Icons';
 import { perks } from '../lib/perks';
 
 const NEW_DAYS = 3;
@@ -77,6 +77,17 @@ function Media({ l }: { l: Listing }) {
  * the full amounts are on the listing page.
  */
 /** Fee pills: what it costs to enter, and a warning pill when selected artists pay (or it isn't stated). */
+/** Who can apply: "Open worldwide" or "UK only", plus "Women only" / "Ages 18–30" when it's limited. Nothing if not stated. */
+export function OpenToFacts({ l }: { l: Listing }) {
+  return (
+    <>
+      {l.open_to === 'Worldwide' && <li className="fact--open"><IconWorld />Open worldwide</li>}
+      {l.open_to === 'Restricted' && l.open_to_where && <li className="fact--limited"><IconId /><span className="tag__text">{l.open_to_where}</span></li>}
+      {l.open_to_who && <li className="fact--limited"><IconPerson /><span className="tag__text">{l.open_to_who}</span></li>}
+    </>
+  );
+}
+
 function FeePills({ l }: { l: Listing }) {
   const apply = isOpportunity(l);
   return (
@@ -131,6 +142,7 @@ export function ListingCard({ listing: l, now }: { listing: Listing; now: number
         <li><IconCalendar /><span aria-hidden="true">{when.short}</span><span className="sr-only">{when.full}</span></li>
         <li>{l.format === 'Online' ? <IconGlobe /> : l.format === 'Hybrid' ? <IconHybrid /> : <IconUsers />}{l.format === 'Online' ? place(l) : l.format}</li>
         {l.format !== 'Online' && <li className="card__fact--place"><IconPin /><span className="tag__text">{[l.city, l.country].filter(Boolean).join(', ')}</span></li>}
+        <OpenToFacts l={l} />
         <li>{l.type}</li>
       </ul>
 

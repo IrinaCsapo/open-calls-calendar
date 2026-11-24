@@ -2,7 +2,7 @@
 // so a typo (from a person or the daily scout) never reaches the live site.
 import { readFileSync } from 'node:fs';
 import {
-  CURRENCIES, DISCIPLINES, ENTRY_FEES, FORMATS, LISTING_TYPES, OPPORTUNITY_TYPES, PRIZE_KINDS, REGIONS, SELECTED_FEES,
+  CURRENCIES, DISCIPLINES, ENTRY_FEES, FORMATS, LISTING_TYPES, OPEN_TO, OPPORTUNITY_TYPES, PRIZE_KINDS, REGIONS, SELECTED_FEES,
 } from '../src/types/listing';
 
 // Two files, one shape: open calls and events (listings.json), and exhibitions to visit (exhibitions.json).
@@ -17,7 +17,7 @@ const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const KNOWN_FIELDS = new Set([
   'id', 'title', 'organiser', 'type', 'disciplines', 'format', 'timezone', 'city', 'country', 'region', 'venue',
-  'lat', 'lng', 'deadline', 'start_date', 'end_date', 'eligibility', 'entry_fee', 'fee_amount', 'currency',
+  'lat', 'lng', 'deadline', 'start_date', 'end_date', 'eligibility', 'open_to', 'open_to_where', 'open_to_who', 'entry_fee', 'fee_amount', 'currency',
   'fee_details', 'selected_fee', 'selected_fee_details', 'selected_fee_amount', 'commercial', 'commission', 'prizes', 'prize_kinds', 'prize_value',
   'apply_url', 'image_url', 'source', 'added', 'highlights',
 ]);
@@ -75,6 +75,10 @@ if (!Array.isArray(data)) {
     oneOf('selected_fee', SELECTED_FEES);
     list('disciplines', DISCIPLINES, 1);
     list('prize_kinds', PRIZE_KINDS);
+    str('open_to_where', false); str('open_to_who', false);
+    if (l.open_to !== undefined) oneOf('open_to', OPEN_TO);
+    if (l.open_to === 'Restricted' && !l.open_to_where) fail('open_to is "Restricted" so open_to_where must say where, e.g. "UK only"');
+    if (l.open_to !== 'Restricted' && l.open_to_where !== undefined) fail('open_to_where is only for open_to "Restricted"');
 
     if (!Array.isArray(l.prizes) || l.prizes.some((p) => typeof p !== 'string' || !p.trim())) fail('prizes must be an array of non-empty strings ([] if none)');
 
@@ -97,6 +101,7 @@ if (!Array.isArray(data)) {
     date('deadline'); date('start_date'); date('end_date'); date('added', true);
     const isOpp = (OPPORTUNITY_TYPES as readonly string[]).includes(l.type as string);
     if (isOpp && l.deadline === undefined) fail(`a ${l.type} needs a deadline`);
+    if (isOpp && l.open_to === undefined) fail(`a ${l.type} needs open_to: "Worldwide", "Restricted" (with open_to_where) or "Not stated"`);
     if (!isOpp && l.start_date === undefined) fail(`a ${l.type} needs a start_date`);
     if (l.end_date !== undefined && l.start_date === undefined) fail('end_date needs a start_date');
     if (isDate(l.start_date) && isDate(l.end_date) && (l.end_date as string) < (l.start_date as string)) fail('end_date is before start_date');

@@ -50,6 +50,9 @@ export const ENTRY_FEES = ['Free', 'Paid', 'Unknown'] as const;
 /** Is there a fee to pay if you're selected (hanging fee, exhibition fee, "secure your space", etc.)? */
 export const SELECTED_FEES = ['None', 'Yes', 'Unknown'] as const;
 
+/** Where you can apply from. "Restricted" needs open_to_where, e.g. "UK only". */
+export const OPEN_TO = ['Worldwide', 'Restricted', 'Not stated'] as const;
+
 export const PRIZE_KINDS = ['Cash', 'Exhibition', 'Residency', 'Publication', 'Mentoring', 'Sales', 'Commission', 'Other'] as const;
 
 /** Currencies we can convert for the "max fee" filter (approximate rates live in src/lib/money.ts). */
@@ -61,6 +64,7 @@ export type Format = (typeof FORMATS)[number];
 export type Region = (typeof REGIONS)[number];
 export type EntryFee = (typeof ENTRY_FEES)[number];
 export type SelectedFee = (typeof SELECTED_FEES)[number];
+export type OpenTo = (typeof OPEN_TO)[number];
 export type PrizeKind = (typeof PRIZE_KINDS)[number];
 export type Currency = (typeof CURRENCIES)[number];
 
@@ -84,6 +88,9 @@ export interface Listing {
   end_date?: string;          // YYYY-MM-DD
 
   eligibility: string;        // who can apply, in the organiser's words, briefly
+  open_to?: OpenTo;           // where you can apply from (required for open calls, prizes, residencies etc.)
+  open_to_where?: string;     // when "Restricted": a short label, e.g. "UK only", "Southeast Asia only"
+  open_to_who?: string;       // only when some people can apply: "Women only", "Ages 18–30", "Students aged 18–30"
 
   // ---- money: the whole point of the site ----
   entry_fee: EntryFee;

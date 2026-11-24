@@ -7,7 +7,7 @@ import { calendarLinks, downloadIcs } from '../lib/ics';
 import { getListHash } from '../lib/useHashRoute';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
 import { REPORT_URL, SITE_URL } from '../lib/site';
-import { Placeholder, isNew, place, wash } from '../components/ListingCard';
+import { OpenToFacts, Placeholder, isNew, place, wash } from '../components/ListingCard';
 import { ListingRow } from '../components/ListingRow';
 import { ShareLink } from '../components/ShareLink';
 import { ReminderBox } from '../components/ReminderBox';
@@ -139,6 +139,12 @@ export function ListingPage({ id }: { id: string }) {
                 <div>
                   <p className="gtk-eyebrow">{show ? 'About the exhibition' : 'Who it\'s for'}</p>
                   <p className="gtk-who__quote">“{l.eligibility.replace(/\.$/, '')}”</p>
+                  {!show && (l.open_to || l.open_to_who) && (
+                    <ul className="card__facts gtk-who__tags" aria-label="Who can apply">
+                      <OpenToFacts l={l} />
+                      {l.open_to === 'Not stated' && <li><IconUnknown />Where you can apply from: not stated</li>}
+                    </ul>
+                  )}
                 </div>
               </div>
 
