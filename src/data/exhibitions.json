@@ -938,5 +938,67 @@
     "apply_url": "https://www.pref.miyagi.jp/site/museum-en/20261114-s01-01-en.html",
     "source": "https://www.pref.miyagi.jp/site/museum-en/20261114-s01-01-en.html",
     "added": "2026-11-23"
+  },
+  {
+    "id": "amar-kanwar-serpentine-north-2026",
+    "title": "Amar Kanwar",
+    "organiser": "Serpentine Galleries",
+    "type": "Exhibition",
+    "disciplines": [
+      "Film & video",
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "Serpentine North Gallery, Kensington Gardens",
+    "lat": 51.5086,
+    "lng": -0.175,
+    "start_date": "2026-09-23",
+    "end_date": "2027-01-31",
+    "eligibility": "A solo exhibition by the Indian artist and filmmaker Amar Kanwar at Serpentine North, with a free exhibition programme to download.",
+    "entry_fee": "Free",
+    "fee_details": "Free admission",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "highlights": [
+      "Free Saturday Talk: Kit Gurnos on Amar Kanwar, Sat 16 Jan 2027, 12:30pm"
+    ],
+    "apply_url": "https://www.serpentinegalleries.org/whats-on/amar-kanwar-exhibition/",
+    "image_url": "https://d37zoqglehb9o7.cloudfront.net/uploads/2025/10/lr2-SaM-amar-kanwar-IMG_8453-AA-1200x627.jpg",
+    "source": "https://www.serpentinegalleries.org/whats-on/amar-kanwar-exhibition/",
+    "added": "2026-11-24"
+  },
+  {
+    "id": "zineb-sedira-tate-britain-commission-2026",
+    "title": "Tate Britain Commission 2026: Zineb Sedira, When Words Fall Silent, Cinema Speaks",
+    "organiser": "Tate Britain",
+    "type": "Exhibition",
+    "disciplines": [
+      "Mixed media",
+      "Film & video"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "Duveen Galleries, Tate Britain, Millbank",
+    "lat": 51.491,
+    "lng": -0.1276,
+    "start_date": "2026-05-13",
+    "end_date": "2027-01-17",
+    "eligibility": "A large site-specific installation by the British-French-Algerian artist Zineb Sedira in the Duveen Galleries, exploring memory, migration and trauma.",
+    "entry_fee": "Free",
+    "fee_details": "Free admission",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.tate.org.uk/whats-on/tate-britain/zineb-sedira",
+    "source": "https://www.tate.org.uk/whats-on/tate-britain/zineb-sedira",
+    "added": "2026-11-24"
   }
 ]

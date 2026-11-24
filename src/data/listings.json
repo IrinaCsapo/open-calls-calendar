@@ -3081,5 +3081,165 @@
       "Successful artists contacted 2 Dec 2026; private view 8 Jan 2027, 6–9pm"
     ],
     "currency": "EUR"
+  },
+  {
+    "id": "ortung-15-schwabach-art-prize-2027",
+    "title": "ortung 15: Schwabach Art Prize competition (Germany)",
+    "organiser": "Stadt Schwabach, Kulturamt",
+    "type": "Prize",
+    "disciplines": [
+      "Any medium",
+      "Sculpture",
+      "Painting",
+      "Textiles",
+      "Film & video",
+      "Digital art"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Berlin",
+    "city": "Schwabach",
+    "country": "Germany",
+    "region": "Europe",
+    "lat": 49.3294,
+    "lng": 11.0225,
+    "deadline": "2027-01-11",
+    "start_date": "2027-08-07",
+    "end_date": "2027-08-22",
+    "eligibility": "Artists working in painting, sculpture, graphics, textiles, installation (incl. video, architecture) and computer art; theme 'Inspired by gold'. 20 entries chosen; chosen artists must attend a colloquium on 6 Mar 2027",
+    "entry_fee": "Free",
+    "fee_details": "No application fee in the call; apply by uploading a PDF (max 20 MB) by midnight 11 Jan 2027",
+    "selected_fee": "None",
+    "selected_fee_details": "Chosen artists receive EUR 1,000 towards expenses. Artists install and remove their own work",
+    "prizes": [
+      "EUR 6,000 first Art Prize",
+      "EUR 3,000 second Art Prize",
+      "Three audience prizes (EUR 3,000, 2,000, 1,000)",
+      "Possible solo show at Schwabach town gallery for the prize winner"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition"
+    ],
+    "prize_value": 6000,
+    "currency": "EUR",
+    "commission": "Works must be made available for sale; commission not stated",
+    "apply_url": "https://www.schwabach.de/de/kulturamt/infoseiten-kulturamt/13682-ortung-15-die-ausschreibung-fuer-den-wettbewerb-2027-hat-begonnen.html",
+    "image_url": "https://www.schwabach.de/images/referate/kulturportal/kultureinrichtungen/kulturamt/Festivals/ortung/ortung_14/1315_x_700_ortung15.jpg",
+    "source": "https://www.schwabach.de/images/referate/Kulturamt/ortung/ortung_15/ortung_15_Call_online_final.pdf",
+    "added": "2026-11-24"
+  },
+  {
+    "id": "idensitat-esteticas-transversales-residency-2027",
+    "title": "Estéticas Transversales 2027: research and production residencies (Spain)",
+    "organiser": "Idensitat and Centro Huarte",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Madrid",
+    "city": "Barcelona",
+    "country": "Spain",
+    "region": "Europe",
+    "lat": 41.3874,
+    "lng": 2.1686,
+    "deadline": "2026-11-30",
+    "start_date": "2027-02-01",
+    "end_date": "2027-06-30",
+    "eligibility": "Artists or collectives developing a project linked to a territory; Spanish, Catalan and/or Basque viewed positively",
+    "entry_fee": "Free",
+    "fee_details": "No application fee mentioned; proposal sent as one PDF (max 8 MB) via the online form",
+    "selected_fee": "None",
+    "selected_fee_details": "Organisers cover accommodation; EUR 2,500 fee and per diems, production up to EUR 1,500 and travel aid up to EUR 400 per project",
+    "prizes": [
+      "EUR 2,500 fees and per diems per project",
+      "Production budget up to EUR 1,500",
+      "Travel aid up to EUR 400",
+      "Accommodation covered"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency"
+    ],
+    "prize_value": 2500,
+    "currency": "EUR",
+    "apply_url": "https://www.idensitat.net/es/proyectos-en-proceso/esteticas-transversales-2/idensitat-centro-huarte/1926-esteticas-transversales-2027",
+    "source": "https://www.idensitat.net/es/proyectos-en-proceso/esteticas-transversales-2/idensitat-centro-huarte/1926-esteticas-transversales-2027",
+    "added": "2026-11-24",
+    "highlights": [
+      "Six-week residencies, between February and June 2027; results announced the week of 28 Dec 2026"
+    ]
+  },
+  {
+    "id": "asemic-text-as-art-pad-journal-2026",
+    "title": "Call for work: 'Asemic: Text As Art' (PAD journal, UK)",
+    "organiser": "PAD: Perspectives in Art & Design (The Northern School of Art)",
+    "type": "Open call",
+    "disciplines": [
+      "Any medium",
+      "Illustration",
+      "Collage",
+      "Photography",
+      "Writing"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "United Kingdom",
+    "region": "Global",
+    "deadline": "2026-12-04",
+    "eligibility": "Open to all artists and writers regardless of experience; no generative AI. Up to 4 artworks or one essay",
+    "entry_fee": "Free",
+    "fee_details": "Free to submit (CuratorSpace FAQ)",
+    "selected_fee": "None",
+    "selected_fee_details": "No costs to selected artists. Not paid: work is published in a freely accessible online journal edition due Dec 2026",
+    "prizes": [
+      "Publication in a special edition of the PAD journal"
+    ],
+    "prize_kinds": [
+      "Publication"
+    ],
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/call-for-work-asemic-text-as-art/11367",
+    "source": "https://www.curatorspace.com/opportunities/detail/call-for-work-asemic-text-as-art/11367",
+    "added": "2026-11-24",
+    "highlights": [
+      "Artists are not paid; exact publication date TBA, December 2026"
+    ]
+  },
+  {
+    "id": "means-8-future-tripping-magazine-2026",
+    "title": "MEANS 8: Future Tripping (magazine submissions)",
+    "organiser": "MEANS magazine (Daniel Hignell-Tully)",
+    "type": "Open call",
+    "disciplines": [
+      "Any medium",
+      "Music",
+      "Writing"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "United Kingdom",
+    "region": "Global",
+    "deadline": "2026-12-04",
+    "eligibility": "Artists of all statures, any medium; art, music and writing around the theme of anxiety about the future at New Year",
+    "entry_fee": "Paid",
+    "fee_amount": 3,
+    "currency": "GBP",
+    "fee_details": "GBP 3 submission fee; the curator says artists who cannot afford it can submit regardless and it won't affect selection",
+    "selected_fee": "None",
+    "selected_fee_details": "No fee if selected; accepted artworks are paid a minimum of GBP 20",
+    "prizes": [
+      "Publication in the December MEANS magazine issues",
+      "Minimum GBP 20 payment per accepted artwork"
+    ],
+    "prize_kinds": [
+      "Publication",
+      "Cash"
+    ],
+    "prize_value": 20,
+    "apply_url": "https://www.curatorspace.com/opportunities/detail/means--future-tripping/11303",
+    "source": "https://www.curatorspace.com/opportunities/detail/means--future-tripping/11303",
+    "added": "2026-11-24"
   }
 ]
