@@ -58,6 +58,7 @@ export interface Filters {
   noSelectedFee: boolean;     // hide anything that charges selected artists
   hideUnknownFees: boolean;   // hide anything whose fees aren't stated
   cashPrize: boolean;
+  worldwide: boolean;         // only calls anyone, anywhere can apply to (open_to "Worldwide")
   closingWithin: number;      // days, 0 = any
   sort: Sort;
   currency: DisplayCurrency;
@@ -65,7 +66,7 @@ export interface Filters {
 
 export const defaultFilters = (currency: DisplayCurrency): Filters => ({
   query: '', kind: 'all', type: '', disciplines: [], formats: [], places: [],
-  price: 'any', maxFee: 0, noSelectedFee: false, hideUnknownFees: false, cashPrize: false,
+  price: 'any', maxFee: 0, noSelectedFee: false, hideUnknownFees: false, cashPrize: false, worldwide: false,
   closingWithin: 0, sort: 'closing', currency,
 });
 
@@ -73,7 +74,7 @@ export const defaultFilters = (currency: DisplayCurrency): Filters => ({
 export function countActive(f: Filters): number {
   return [
     f.query.trim(), f.kind !== 'all', f.type, f.disciplines.length, f.formats.length, f.places.length, f.price !== 'any',
-    f.maxFee, f.noSelectedFee, f.hideUnknownFees, f.cashPrize, f.closingWithin,
+    f.maxFee, f.noSelectedFee, f.hideUnknownFees, f.cashPrize, f.worldwide, f.closingWithin,
   ].filter(Boolean).length;
 }
 
@@ -123,6 +124,7 @@ export function applyFilters(list: Listing[], f: Filters, now = Date.now()): Lis
     if (f.noSelectedFee && l.selected_fee === 'Yes') return false;
     if (f.hideUnknownFees && hasUnknownFees(l)) return false;
     if (f.cashPrize && !l.prize_kinds.includes('Cash')) return false;
+    if (f.worldwide && l.open_to !== 'Worldwide') return false;
     if (f.closingWithin && closesAt(l) - now > f.closingWithin * 86_400_000) return false;
     return true;
   });
@@ -173,6 +175,7 @@ export function filtersFromQuery(q: URLSearchParams, fallbackCurrency: DisplayCu
     noSelectedFee: q.get('noselfee') === '1',
     hideUnknownFees: q.get('known') === '1',
     cashPrize: q.get('cash') === '1',
+    worldwide: q.get('worldwide') === '1',
     closingWithin: pickNum(CLOSING_FILTERS, q.get('within')),
     sort: pick(SORTS, q.get('sort')) || 'closing',
     currency: pick(DISPLAY_CURRENCIES, q.get('cur')) || fallbackCurrency,
@@ -192,6 +195,7 @@ export function filtersToQuery(f: Filters, fallbackCurrency: DisplayCurrency): s
   if (f.noSelectedFee) q.set('noselfee', '1');
   if (f.hideUnknownFees) q.set('known', '1');
   if (f.cashPrize) q.set('cash', '1');
+  if (f.worldwide) q.set('worldwide', '1');
   if (f.closingWithin) q.set('within', String(f.closingWithin));
   if (f.sort !== 'closing') q.set('sort', f.sort);
   if (f.currency !== fallbackCurrency) q.set('cur', f.currency);

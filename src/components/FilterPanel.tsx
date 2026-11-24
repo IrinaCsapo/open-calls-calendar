@@ -42,7 +42,7 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
   // Phones get a shorter placeholder so it isn't cut off
   const [narrow] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 40rem)').matches);
   const moreCount = [f.kind !== 'all', f.type, f.formats.length, f.disciplines.length, f.maxFee, f.noSelectedFee, f.hideUnknownFees,
-    f.cashPrize, f.closingWithin, f.price === 'free-entry' || f.price === 'paid'].filter(Boolean).length;
+    f.cashPrize, f.worldwide, f.closingWithin, f.price === 'free-entry' || f.price === 'paid'].filter(Boolean).length;
 
   return (
     <form className="filterbar" role="search" aria-label="Find open calls"
@@ -127,6 +127,14 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
                 ? "We couldn't get your location (it may be switched off in your browser). Choose a place from the list instead."
                 : loc.hasCoords ? 'Your location stays in this browser: it is never sent or stored.' : ''}
             </p>
+          </div>
+
+          <div className="filters__section" role="group" aria-labelledby={`${id}-open`}>
+            <p className="filters__heading" id={`${id}-open`}>Who can apply</p>
+            <div className="chips">
+              <Chip on={f.worldwide} onToggle={() => set('worldwide', !f.worldwide)}>Open worldwide</Chip>
+            </div>
+            <p className="hint filters__hint">Only calls that artists anywhere can apply to.</p>
           </div>
 
           <div className="filters__section" role="group" aria-labelledby={`${id}-format`}>
