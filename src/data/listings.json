@@ -3481,5 +3481,40 @@
     "apply_url": "https://www.curatorspace.com/opportunities/detail/textile-art--open-call-for-exhibition/11349",
     "source": "https://www.curatorspace.com/opportunities/detail/textile-art--open-call-for-exhibition/11349",
     "added": "2026-11-25"
+  },
+  {
+    "id": "mf-gallery-turn-the-camera-around-2027",
+    "title": "Turn the Camera Around: photographer self-portraits (online exhibition)",
+    "organiser": "The MF Gallery",
+    "type": "Open call",
+    "disciplines": [
+      "Photography"
+    ],
+    "format": "Online",
+    "timezone": "America/New_York",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "deadline": "2027-01-20",
+    "start_date": "2027-03-01",
+    "eligibility": "Photographers worldwide, 18+; self-portraits only, film or digital; judged blind, no AI",
+    "open_to": "Worldwide",
+    "entry_fee": "Paid",
+    "fee_amount": 45,
+    "currency": "USD",
+    "fee_details": "$45 for up to 5 self-portraits, paid by Venmo or PayPal; non-refundable unless too few entries come in",
+    "selected_fee": "None",
+    "prizes": [
+      "Place in the online exhibition at The MF Gallery (on view for at least a year)",
+      "Instagram feature in the exhibition series"
+    ],
+    "prize_kinds": [
+      "Exhibition"
+    ],
+    "apply_url": "https://www.themfgallery.com/exhibitions",
+    "image_url": "https://static1.squarespace.com/static/611abe972620cf44c9cdd544/t/6b0448a87340eb088321fe18/1795442856062/0-1.jpg?format=1500w",
+    "source": "https://www.themfgallery.com/exhibitions",
+    "added": "2026-11-25",
+    "commercial": true
   }
 ]
