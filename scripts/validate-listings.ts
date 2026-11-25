@@ -4,6 +4,8 @@ import { readFileSync } from 'node:fs';
 import {
   CURRENCIES, DISCIPLINES, ENTRY_FEES, FORMATS, LISTING_TYPES, OPEN_TO, OPPORTUNITY_TYPES, PRIZE_KINDS, REGIONS, SELECTED_FEES,
 } from '../src/types/listing';
+import type { Listing } from '../src/types/listing';
+import { entryFeeIn } from '../src/lib/money';
 
 // Two files, one shape: open calls and events (listings.json), and exhibitions to visit (exhibitions.json).
 const FILES = [
@@ -93,6 +95,10 @@ if (!Array.isArray(data)) {
     if (l.selected_fee_amount !== undefined && l.selected_fee !== 'Yes') fail('selected_fee_amount is only for selected_fee "Yes"');
     if (l.selected_fee_amount !== undefined && l.currency === undefined) fail('currency is required when selected_fee_amount is set');
     if (l.commercial !== undefined && l.commercial !== true) fail('commercial is either true or left out');
+    // House rule: an entry fee above US$50 (or about that in another currency) is steep, so it's listed as commercial
+    const usd = l.entry_fee === 'Paid' && typeof l.fee_amount === 'number' && typeof l.currency === 'string'
+      ? entryFeeIn(l as unknown as Listing, 'USD') : undefined;
+    if (usd !== undefined && usd > 50 && l.commercial !== true) fail(`the entry fee is about US$${Math.round(usd)}, above US$50, so add "commercial": true`);
     if (l.selected_fee === 'Yes' && !l.selected_fee_details) fail('selected_fee is "Yes" so selected_fee_details must say what selected artists pay');
     if (l.prize_value !== undefined && Array.isArray(l.prize_kinds) && !l.prize_kinds.includes('Cash')) fail('prize_value is set so prize_kinds must include "Cash"');
     if (Array.isArray(l.prize_kinds) && l.prize_kinds.length && Array.isArray(l.prizes) && !l.prizes.length) fail('prize_kinds is set but prizes is empty: list the prizes');
