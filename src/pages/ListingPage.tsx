@@ -7,7 +7,7 @@ import { calendarLinks, downloadIcs } from '../lib/ics';
 import { getListHash } from '../lib/useHashRoute';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
 import { REPORT_URL, SITE_URL } from '../lib/site';
-import { OpenToFacts, Placeholder, isNew, place, wash } from '../components/ListingCard';
+import { OpenToFacts, Placeholder, isNew, place, useListingImage, wash } from '../components/ListingCard';
 import { ListingRow } from '../components/ListingRow';
 import { ShareLink } from '../components/ShareLink';
 import { ReminderBox } from '../components/ReminderBox';
@@ -64,6 +64,7 @@ export function ListingPage({ id }: { id: string }) {
   useDocumentTitle(l?.title ?? 'Not found');
   const now = useNow();
   const related = useMemo(() => (l ? moreLikeThis(l, now) : []), [l, now]);
+  const heroImg = useListingImage(l);
   if (!l) return <NotFoundPage />;
 
   const left = timeLeft(l, now);
@@ -124,7 +125,7 @@ export function ListingPage({ id }: { id: string }) {
           </div>
           <div className={`lhero__media${l.image_url ? '' : ' lhero__media--wash'}`} style={{ background: wash(l.id, true) }}>
             {l.image_url
-              ? <img src={l.image_url} alt="" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+              ? heroImg.src && <img src={heroImg.src} alt="" referrerPolicy="no-referrer" onError={heroImg.onError} />
               : <Placeholder l={l} />}
           </div>
         </section>

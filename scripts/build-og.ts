@@ -48,16 +48,17 @@ const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1).repl
 
 /** The organiser's image, shrunk to fit the frame. Hotlinked images can be slow, huge, or webp (resvg can't draw webp). */
 async function picture(url: string, boxW: number, boxH: number) {
-  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/130 Safari/537.36' }, signal: AbortSignal.timeout(20_000) });
+  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/130 Safari/537.36' }, signal: AbortSignal.timeout(45_000) });   // some organisers' servers take 20 s+
   if (!res.ok) throw new Error(`${res.status}`);
-  const { data, info } = await sharp(Buffer.from(await res.arrayBuffer()))
+  const raw = Buffer.from(await res.arrayBuffer());
+  const { data, info } = await sharp(raw)
     .rotate()
     .resize(boxW * 2, boxH * 2, { fit: 'inside', withoutEnlargement: true })
     .flatten({ background: '#ffffff' })
     .jpeg({ quality: 82 })
     .toBuffer({ resolveWithObject: true });
   const scale = Math.min(boxW / info.width, boxH / info.height);
-  return { src: `data:image/jpeg;base64,${data.toString('base64')}`, width: Math.round(info.width * scale), height: Math.round(info.height * scale) };
+  return { raw, src: `data:image/jpeg;base64,${data.toString('base64')}`, width: Math.round(info.width * scale), height: Math.round(info.height * scale) };
 }
 
 function pills(l: Listing): { text: string; tone: keyof typeof PILL }[] {
@@ -114,7 +115,7 @@ async function card(l: Listing) {
 
   const svg = await satori(tree as never, { width: W, height: H, fonts });
   const png = new Resvg(svg, { fitTo: { mode: 'width', value: W } }).render().asPng();
-  return sharp(png).composite([{ input: grain, blend: 'soft-light' }]).jpeg({ quality: 84, mozjpeg: true }).toBuffer();
+  return { pic, jpg: await sharp(png).composite([{ input: grain, blend: 'soft-light' }]).jpeg({ quality: 84, mozjpeg: true }).toBuffer() };
 }
 
 // Paper grain, the same on every card (seeded), drawn once
@@ -138,16 +139,26 @@ mkdirSync(out, { recursive: true });
 // Used by the welcome and weekly emails as https://magpie.cool/thumb/<id>.jpg
 const thumbs = new URL('../dist/thumb/', import.meta.url);
 mkdirSync(thumbs, { recursive: true });
+// Our own copy of each organiser's picture, sized for the cards and listing pages: https://magpie.cool/img/<id>.jpg.
+// Organisers' servers can be slow or block other sites, so the site loads this copy first (see CardImage).
+const imgs = new URL('../dist/img/', import.meta.url);
+mkdirSync(imgs, { recursive: true });
+let copied = 0;
 
 let i = 0, done = 0, bytes = 0;
 await Promise.all(Array.from({ length: 8 }, async () => {
   while (i < list.length) {
     const l = list[i++];
-    const jpg = await card(l);
+    const { jpg, pic } = await card(l);
+    if (pic) {
+      writeFileSync(new URL(`${l.id}.jpg`, imgs), await sharp(pic.raw).rotate().resize(1000, 1000, { fit: 'inside', withoutEnlargement: true })
+        .flatten({ background: '#ffffff' }).jpeg({ quality: 80, mozjpeg: true }).toBuffer());
+      copied++;
+    }
     writeFileSync(new URL(`${l.id}.jpg`, out), jpg);
     writeFileSync(new URL(`${l.id}.jpg`, thumbs),
       await sharp(jpg).extract({ left: 694, top: 90, width: 450, height: 450 }).resize(240, 240).jpeg({ quality: 82, mozjpeg: true }).toBuffer());
     done++; bytes += jpg.length;
   }
 }));
-console.log(`✓ drew ${done} link-preview cards in dist/og/ (average ${Math.round(bytes / done / 1024)} KB)`);
+console.log(`✓ drew ${done} link-preview cards in dist/og/ (average ${Math.round(bytes / done / 1024)} KB), and copied ${copied} pictures to dist/img/`);

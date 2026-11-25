@@ -184,7 +184,10 @@ Follow `src/types/listing.ts` exactly (allowed values are listed there).
   `twitter:image` when it is a real picture. If the apply page is on an aggregator (CuratorSpace, artopps, CaFÉ,
   Submittable, SurveyMonkey, Google Forms), look on the organiser's own website instead. Never use an aggregator's
   generic logo (e.g. `curatorspace.com/images/logos/logo_fb.png`, `apply.artstoheartsproject.com/images/og-image.jpg`,
-  the SurveyMonkey default image) or a tiny favicon. Check it loads with
+  the SurveyMonkey default image) or a tiny favicon. **On CuratorSpace the call's own poster is in the page, not in
+  its og:image:** use the `https://s3.eu-west-1.amazonaws.com/curatorspace.com/<n>/opportunity/<call id>/image/…` URL
+  (find it with `curl -sL URL | grep -oE 'https://s3[^"]*opportunity[^"]*\.(jpe?g|png|webp)'`). Pages without an
+  og:image often still have a poster or exhibition photo in an `<img>` or `srcset`: look there before giving up. Check it loads with
   `curl -sIL -A "Mozilla/5.0" URL` (final status 200, `content-type: image/...`). Only if nothing suitable exists,
   leave it out and the card shows a colour wash
 - `source`: URL where you confirmed the details; `added`: today's date

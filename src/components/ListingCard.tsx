@@ -60,13 +60,25 @@ export function Placeholder({ l }: { l: Listing }) {
   );
 }
 
+/**
+ * The organiser's picture: our own copy first (magpie.cool/img/<id>.jpg, saved at build time by scripts/build-og.ts),
+ * then the organiser's link if there's no copy, then nothing (onFail) if that fails too.
+ */
+export function useListingImage(l: Listing | undefined) {
+  const [tried, setTried] = useState({ id: '', step: 0 });   // keyed by id, so moving to another listing starts again
+  const step = l && tried.id === l.id ? tried.step : 0;
+  const src = !l?.image_url ? undefined : step === 0 ? `/img/${l.id}.jpg` : step === 1 ? l.image_url : undefined;
+  return { src, onError: () => l && setTried({ id: l.id, step: step + 1 }) };
+}
+
 function Media({ l }: { l: Listing }) {
-  const [failed, setFailed] = useState(false);
+  const img = useListingImage(l);
+  const failed = !img.src;
   return (
     <div className={`card__media${l.image_url && !failed ? ' card__media--image' : ''}`}
       style={l.image_url && !failed ? { background: wash(l.id, true) } : undefined}>
       {l.image_url && !failed
-        ? <img className="card__img" src={l.image_url} alt="" loading="lazy" referrerPolicy="no-referrer" onError={() => setFailed(true)} />
+        ? <img className="card__img" src={img.src} alt="" loading="lazy" referrerPolicy="no-referrer" onError={img.onError} />
         : <Placeholder l={l} />}
     </div>
   );
