@@ -100,7 +100,7 @@ export function ListingPage({ id }: { id: string }) {
               <li className="pill pill--plain"><FormatIcon format={l.format} />{l.format}</li>
               {isTotallyFree(l)
                 ? <li className="pill pill--free-fill"><IconCheck />{show ? 'Free entry' : 'Totally free'}</li>
-                : <li className={`pill pill--${feeTone}`}>{fee.headline}</li>}
+                : !l.commercial && <li className={`pill pill--${feeTone}`}>{fee.headline}</li>}{/* commercial: the Commercial tag carries the price */}
               {opp && l.selected_fee === 'Yes' && !l.commercial && <li className="pill pill--caution"><IconWarn />Pay if selected</li>}
               {l.commercial && <li className="pill pill--commercial">Commercial · {priceTag(l)}</li>}
               {isNew(l, now) && <li className="pill pill--new">New</li>}
