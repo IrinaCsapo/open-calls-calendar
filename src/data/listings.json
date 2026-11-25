@@ -3516,5 +3516,33 @@
     "source": "https://www.themfgallery.com/exhibitions",
     "added": "2026-11-25",
     "commercial": true
+  },
+  {
+    "id": "seed-talks-creative-arts-brain-summit-2027",
+    "title": "Creative Arts & the Brain Summit (online)",
+    "organiser": "Seed Talks",
+    "type": "Event",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "Online",
+    "timezone": "America/New_York",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "start_date": "2027-02-07",
+    "end_date": "2027-02-07",
+    "eligibility": "Anyone curious about what neuroscience can teach us about creativity; a day of talks by researchers, streamed live on Zoom, 11am–5:30pm ET (4pm–10:30pm UK)",
+    "entry_fee": "Paid",
+    "fee_amount": 42.95,
+    "currency": "USD",
+    "fee_details": "US$42.95 ticket (the Canada listing is CA$62.95)",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.eventbrite.co.uk/e/creative-arts-the-brain-summit-online-tickets-2005037297531",
+    "image_url": "https://www.eventbrite.co.uk/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F1198613785%252F1941367747473%252F1%252Foriginal.20261124-152034%3Fcrop%3Dfocalpoint%26fit%3Dcrop%26w%3D940%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26fp-x%3D0.5%26fp-y%3D0.5%26s%3Deef850de245c0dde56aed1fd7ee3ae62&w=940&q=75",
+    "source": "https://www.eventbrite.co.uk/e/creative-arts-the-brain-summit-online-tickets-2005037297531",
+    "added": "2026-11-25"
   }
 ]
