@@ -12,7 +12,8 @@ import { SubscribePage } from './pages/SubscribePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { FaqPage } from './pages/FaqPage';
 import { ExhibitionsPage } from './pages/ExhibitionsPage';
-import { findListing, isExhibition } from './lib/listings';
+import { EventsPage } from './pages/EventsPage';
+import { findListing, isEvent, isExhibition } from './lib/listings';
 import { CollectionPage, CollectionsHubPage } from './pages/CollectionPage';
 import { findCollection } from './lib/collections';
 import { useHashRoute, useLinkInterceptor } from './lib/useHashRoute';
@@ -26,6 +27,7 @@ export function App() {
   useLinkInterceptor();
   const listingMatch = path.match(/^\/listing\/([a-z0-9-]+)\/?$/);
   const exhibitionPage = !!listingMatch && (() => { const x = findListing(listingMatch[1]); return !!x && isExhibition(x); })();
+  const eventPage = !!listingMatch && (() => { const x = findListing(listingMatch[1]); return !!x && isEvent(x); })();
   const collection = findCollection(path.match(/^\/open-calls\/([a-z0-9-]+)\/?$/)?.[1] ?? '');
 
   let page;
@@ -40,6 +42,7 @@ export function App() {
   else if (path === '/subscribe') page = <SubscribePage />;
   else if (path === '/faq') page = <FaqPage />;
   else if (path === '/exhibitions') page = <ExhibitionsPage />;
+  else if (path === '/events') page = <EventsPage />;
   else if (path === '/open-calls' || path === '/open-calls/') page = <CollectionsHubPage />;
   else if (collection) page = <CollectionPage key={collection.slug} c={collection} />;
   else page = <NotFoundPage />;
@@ -89,14 +92,15 @@ export function App() {
         </button>
         <div className="menu-veil" aria-hidden="true" onClick={() => setMenuOpen(false)} />
         <nav aria-label="Main" id="site-nav" className="site-nav">
-          <a style={{ '--i': 0 } as React.CSSProperties} href="/" aria-current={path === '/' || (listingMatch && !exhibitionPage) || path.startsWith('/open-calls') ? 'page' : undefined}>Open calls</a>
+          <a style={{ '--i': 0 } as React.CSSProperties} href="/" aria-current={path === '/' || (listingMatch && !exhibitionPage && !eventPage) || path.startsWith('/open-calls') ? 'page' : undefined}>Open calls</a>
           <a style={{ '--i': 1 } as React.CSSProperties} href="/exhibitions" aria-current={path === '/exhibitions' || exhibitionPage ? 'page' : undefined}>Exhibitions</a>
-          <a style={{ '--i': 2 } as React.CSSProperties} href="/how-it-works" aria-current={path === '/how-it-works' ? 'page' : undefined}>How it works</a>
-          <a style={{ '--i': 3 } as React.CSSProperties} href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
-          <a style={{ '--i': 4 } as React.CSSProperties} href="/submit" className="site-nav__menu-submit" aria-current={path === '/submit' ? 'page' : undefined}>
+          <a style={{ '--i': 2 } as React.CSSProperties} href="/events" aria-current={path === '/events' || eventPage ? 'page' : undefined}>Events</a>
+          <a style={{ '--i': 3 } as React.CSSProperties} href="/how-it-works" aria-current={path === '/how-it-works' ? 'page' : undefined}>How it works</a>
+          <a style={{ '--i': 4 } as React.CSSProperties} href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a>
+          <a style={{ '--i': 5 } as React.CSSProperties} href="/submit" className="site-nav__menu-submit" aria-current={path === '/submit' ? 'page' : undefined}>
             Submit an open call <span aria-hidden="true">→</span>
           </a>
-          <a style={{ '--i': 5 } as React.CSSProperties} href={SUPPORT_URL} target="_blank" rel="noopener noreferrer" className="site-nav__menu-submit site-nav__menu-coffee">
+          <a style={{ '--i': 6 } as React.CSSProperties} href={SUPPORT_URL} target="_blank" rel="noopener noreferrer" className="site-nav__menu-submit site-nav__menu-coffee">
             <span aria-hidden="true">☕</span> Buy me a coffee
           </a>
         </nav>
@@ -110,6 +114,7 @@ export function App() {
       <footer className="site-footer">
         <nav className="site-footer__links" aria-label="More">
           <a href="/exhibitions">Exhibitions</a>
+          <a href="/events">Workshops and events</a>
           <a href="/open-calls">Browse by discipline and place</a>
           <a href="/open-calls/free">Free open calls</a>
           <a href="/faq">FAQ</a>

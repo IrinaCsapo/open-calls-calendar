@@ -9,3 +9,6 @@ export const LISTINGS = data as Listing[];
 export const EXHIBITIONS = exhibitions as Listing[];
 export const findListing = (id: string) => LISTINGS.find((l) => l.id === id) ?? EXHIBITIONS.find((l) => l.id === id);
 export const isExhibition = (l: Listing) => l.type === 'Exhibition';
+/** Things to go to that aren't exhibitions: each is a row on the Events page (magpie.cool/events). */
+export const EVENT_TYPES = ['Workshop', 'Meetup', 'Event'] as const;
+export const isEvent = (l: Listing) => (EVENT_TYPES as readonly string[]).includes(l.type);

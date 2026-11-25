@@ -9,7 +9,7 @@
 // It also writes sitemap.xml, llms.txt and llms-full.txt (plain-text guides for AI tools), and open-calls.json.
 // dist/404.html stays as the fallback for anything else.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { EXHIBITIONS, LISTINGS } from '../src/lib/listings';
+import { EXHIBITIONS, LISTINGS, isEvent } from '../src/lib/listings';
 import { closesAt, endsAt, formatFull, formatRange, isLive, isOpportunity } from '../src/lib/dates';
 import type { Listing } from '../src/types/listing';
 import { feeSummary } from '../src/lib/money';
@@ -33,6 +33,8 @@ const listingUrl = (l: Listing) => `${SITE_URL}listing/${l.id}`;
 const SHOWS = EXHIBITIONS.filter((l) => isLive(l, now));
 const SHOWS_NOW = SHOWS.filter((l) => closesAt(l) <= now).sort((a, b) => endsAt(a) - endsAt(b));
 const SHOWS_SOON = SHOWS.filter((l) => closesAt(l) > now).sort((a, b) => closesAt(a) - closesAt(b));
+// Workshops, meetups and talks still to come, soonest first
+const EVENTS = LIVE.filter(isEvent);
 const collectionPath = (c: Collection) => `open-calls/${c.slug}`;
 
 // ---- Small facts about a listing, in words -------------------------------------------------------
@@ -113,7 +115,7 @@ const listingItems = (list: Listing[]) =>
 const browseLinks = () => (['Kinds', 'Disciplines', 'Places'] as const).map((g) =>
   `<h2>${g === 'Kinds' ? 'Browse by kind' : g === 'Disciplines' ? 'Browse by what you make' : 'Browse by place'}</h2>
   <ul>${COLLECTIONS.filter((c) => c.group === g).map((c) => `<li>${a(`/${collectionPath(c)}`, c.title)} (${LIVE.filter(c.match).length} open)</li>`).join('')}</ul>`).join('');
-const nav = `<p>${a('/', 'All open calls')} · ${a('/exhibitions', 'Exhibitions')} · ${a('/open-calls', 'Browse')} · ${a('/faq', 'FAQ')} · ${a('/how-it-works', 'How it works')} · ${a('/about', 'About')} · ${a('/submit', 'Submit an open call')}</p>`;
+const nav = `<p>${a('/', 'All open calls')} · ${a('/exhibitions', 'Exhibitions')} · ${a('/events', 'Workshops and events')} · ${a('/open-calls', 'Browse')} · ${a('/faq', 'FAQ')} · ${a('/how-it-works', 'How it works')} · ${a('/about', 'About')} · ${a('/submit', 'Submit an open call')}</p>`;
 const footer = `<p>Magpie is a free, independent project by ${a('https://irinacsapo.co.uk', 'designer')} and ${a('https://www.instagram.com/irina_csapo_art', 'artist')} ${a(LINKEDIN, 'Irina Csapo')}. Contact: ${esc(CONTACT_EMAIL)}. Free, with no ads: ${a('https://buymeacoffee.com/irina.csapo', 'buy me a coffee')}. Updated ${formatFull(TODAY)}.</p>`;
 
 function listingBody(l: Listing) {
@@ -308,6 +310,20 @@ page('exhibitions', {
     ${footer}`,
 });
 
+// Workshops, meetups and events
+page('events', {
+  title: T(`Workshops, meetups and events for artists, ${MONTH}`),
+  description: `${EVENTS.length} workshops, artist meetups and talks, online and in person, most of them free, with dates and prices.`,
+  data: [
+    { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Workshops, meetups and events', url: `${SITE_URL}events`, dateModified: TODAY, mainEntity: itemList(EVENTS) },
+    breadcrumbs([{ name: 'Events', path: '/events' }]),
+  ],
+  body: `${nav}<h1>Workshops, meetups and events</h1>
+    <p>Workshops, artist meetups and talks to go to, online and in person, with the dates and the price. Updated ${formatFull(TODAY)}.</p>
+    ${(['Workshop', 'Meetup', 'Event'] as const).map((t) => { const list = EVENTS.filter((l) => l.type === t); return list.length ? `<h2>${t === 'Event' ? 'Talks and events' : t + 's'}</h2>${listingItems(list)}` : ''; }).join('')}
+    ${footer}`,
+});
+
 // One page per listing (open calls, events and exhibitions)
 for (const l of [...LISTINGS, ...EXHIBITIONS]) {
   const fee = feeSummary(l);
@@ -320,7 +336,7 @@ for (const l of [...LISTINGS, ...EXHIBITIONS]) {
     image: `${SITE_URL}og/${l.id}.jpg`,
     data: [
       ...(isOpportunity(l) || l.entry_fee === 'Unknown' ? [] : [eventData(l)]),
-      breadcrumbs([...(l.type === 'Exhibition' ? [{ name: 'Exhibitions', path: '/exhibitions' }] : top ? [{ name: top.title, path: `/${collectionPath(top)}` }] : []), { name: l.title, path: `/listing/${l.id}` }]),
+      breadcrumbs([...(l.type === 'Exhibition' ? [{ name: 'Exhibitions', path: '/exhibitions' }] : isEvent(l) ? [{ name: 'Events', path: '/events' }] : top ? [{ name: top.title, path: `/${collectionPath(top)}` }] : []), { name: l.title, path: `/listing/${l.id}` }]),
     ],
     body: listingBody(l),
   });
@@ -332,6 +348,7 @@ const urls = [
   { loc: SITE_URL, priority: '1.0', freq: 'daily', lastmod: TODAY },
   { loc: `${SITE_URL}open-calls`, priority: '0.9', freq: 'daily', lastmod: TODAY },
   { loc: `${SITE_URL}exhibitions`, priority: '0.9', freq: 'daily', lastmod: TODAY },
+  { loc: `${SITE_URL}events`, priority: '0.8', freq: 'daily', lastmod: TODAY },
   ...COLLECTIONS.filter((c) => LIVE.filter(c.match).length >= 2).map((c) => ({ loc: abs(`/${collectionPath(c)}`), priority: '0.8', freq: 'daily', lastmod: TODAY })),
   { loc: `${SITE_URL}faq`, priority: '0.7', freq: 'monthly' },
   ...['how-it-works', 'about', 'submit', 'subscribe', 'privacy'].map((p) => ({ loc: `${SITE_URL}${p}`, priority: '0.5', freq: 'monthly' })),
