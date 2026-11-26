@@ -3549,5 +3549,73 @@
     "image_url": "https://www.eventbrite.co.uk/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F1198613785%252F1941367747473%252F1%252Foriginal.20261124-152034%3Fcrop%3Dfocalpoint%26fit%3Dcrop%26w%3D940%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26fp-x%3D0.5%26fp-y%3D0.5%26s%3Deef850de245c0dde56aed1fd7ee3ae62&w=940&q=75",
     "source": "https://www.eventbrite.co.uk/e/creative-arts-the-brain-summit-online-tickets-2005037297531",
     "added": "2026-11-25"
+  },
+  {
+    "id": "studio17-residency-stavanger-2027",
+    "title": "Studio17 Residency 2027 (Stavanger, duo applications)",
+    "organiser": "Studio17",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Oslo",
+    "city": "Stavanger",
+    "country": "Norway",
+    "region": "Europe",
+    "venue": "Studio17, Øvre Strandgate 66, Old Stavanger",
+    "lat": 58.97,
+    "lng": 5.7331,
+    "deadline": "2026-12-01",
+    "start_date": "2027-02-15",
+    "end_date": "2027-11-14",
+    "eligibility": "Artists from all disciplines (visual artists developing a project in Stavanger); 2027 round focuses on duos or artists applying together with a shared project",
+    "entry_fee": "Free",
+    "fee_details": "No application fee mentioned; one combined PDF (max 10MB) via online form or PDF",
+    "selected_fee": "None",
+    "selected_fee_details": "Free accommodation in the artist apartment and a fixed fee of NOK 20,000 per artist; one-month stays (Feb, Jun, Aug or Oct 2027)",
+    "prizes": [
+      "Free accommodation in Stavanger",
+      "Fixed fee of NOK 20,000 per artist"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency"
+    ],
+    "prize_value": 20000,
+    "currency": "NOK",
+    "apply_url": "https://s17.no/open-call-residency-2027/?lang=en",
+    "image_url": "https://s17.no/wp-content/uploads/2026/10/p1-grafikk-nettside.png",
+    "source": "https://s17.no/open-call-residency-2027/?lang=en",
+    "added": "2026-11-26"
+  },
+  {
+    "id": "riga-performance-festival-starptelpa-2027-open-call",
+    "title": "Riga Performance Festival STARPTELPA 2027: The Fine Art of Losing Face",
+    "organiser": "Riga Performance Festival STARPTELPA",
+    "type": "Open call",
+    "disciplines": [
+      "Performance"
+    ],
+    "format": "In person",
+    "timezone": "Europe/Riga",
+    "city": "Riga",
+    "country": "Latvia",
+    "region": "Europe",
+    "lat": 56.9496,
+    "lng": 24.1052,
+    "deadline": "2026-12-15",
+    "start_date": "2027-05-24",
+    "end_date": "2027-05-30",
+    "eligibility": "Artists invited to propose performances and artistic works responding to the theme and the festival's shared table",
+    "entry_fee": "Unknown",
+    "fee_details": "Official page does not state any fee; application via an online form",
+    "selected_fee": "Unknown",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.rigaperformancefestival.com/",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/64033b3b0b3a7f65938b7b41/1777396929362-78QFE8IZL4Z43XSXKWM8/RPFS26_post_vol.jpg",
+    "source": "https://www.rigaperformancefestival.com/",
+    "added": "2026-11-26"
   }
 ]
