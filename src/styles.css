@@ -729,8 +729,13 @@ main:focus { outline: none; }
 .save-card { min-width: 0; display: grid; gap: 0.8rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 24px; background: #fff; }
 .save-card h2 { margin: 0 0 0.2rem; font-size: 1.6rem; }
 .save-card__label { margin: 0; font-weight: 700; }
-.save-card__cals { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-.save-card__cals .button { min-height: 44px; padding: 0 0.5rem; font-size: 0.92rem; justify-content: center; }
+.save-card__more summary { list-style: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 0.2em; width: fit-content; }
+.save-card__more[open] summary { margin-bottom: 0.6rem; }
+.save-card__menu > summary { list-style: none; width: 100%; justify-content: center; }
+.save-card__menu > summary::-webkit-details-marker, .save-card__more > summary::-webkit-details-marker { display: none; }
+.save-card__cal-list { list-style: none; margin: 0.5rem 0 0; padding: 0.25rem 0; border: 1px solid var(--line); border-radius: 14px; }
+.save-card__cal-list a { display: block; padding: 0.6rem 1rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+.save-card__cal-list a:hover { background: #f4f2ec; }
 .save-card__small { margin: 0; font-size: 0.85rem; color: var(--muted); }
 .save-card .button { gap: 0.5rem; }
 .save-card__status { margin: -0.4rem 0 0; min-height: 1.2em; text-align: center; font-size: 0.85rem; }

@@ -1,4 +1,4 @@
-import { useMemo, type ReactNode } from 'react';
+import { useMemo, type MouseEvent, type ReactNode } from 'react';
 import type { Listing } from '../types/listing';
 import { EXHIBITIONS, LISTINGS, findListing, isExhibition } from '../lib/listings';
 import { closesAt, endsAt, formatFull, formatRange, isLive, isOpportunity, timeLeft, useNow } from '../lib/dates';
@@ -16,6 +16,15 @@ import { FormatIcon, IconFlag, IconBuilding, IconCalendar, IconCheck, IconClock,
 import { perks } from '../lib/perks';
 import { collectionUrl, collectionsFor } from '../lib/collections';
 
+
+/** Which calendar a phone has built in: Apple Calendar on iPhone and iPad, Google Calendar on Android; null elsewhere. */
+function phoneCalendar(): 'apple' | 'google' | null {
+  if (typeof navigator === 'undefined') return null;
+  const ua = navigator.userAgent;
+  if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return 'apple';
+  if (/Android/.test(ua)) return 'google';
+  return null;
+}
 
 /** Up to 4 other open listings that share a discipline (closing soonest), topped up with the same type. */
 function moreLikeThis(l: Listing, now: number): Listing[] {
@@ -65,6 +74,7 @@ export function ListingPage({ id }: { id: string }) {
   const now = useNow();
   const related = useMemo(() => (l ? moreLikeThis(l, now) : []), [l, now]);
   const heroImg = useListingImage(l);
+  const phone = useMemo(phoneCalendar, []);
   if (!l) return <NotFoundPage />;
 
   const left = timeLeft(l, now);
@@ -76,6 +86,19 @@ export function ListingPage({ id }: { id: string }) {
   const show = isExhibition(l);
 
   const cal = calendarLinks(l, `${SITE_URL}listing/${l.id}`);
+  // A real .ics on the site opens straight in Apple Calendar on iPhone and Mac. In dev the file isn't built, so download one.
+  const appleCal = {
+    href: `/cal/${l.id}.ics`,
+    onClick: import.meta.env.DEV ? (e: MouseEvent) => { e.preventDefault(); downloadIcs(l, window.location.href); } : undefined,
+  };
+  const calLinks = (
+    <ul className="save-card__cal-list">
+      <li><a href={cal.google} target="_blank" rel="noopener noreferrer">Google Calendar</a></li>
+      <li><a {...appleCal}>Apple Calendar</a></li>
+      <li><a href={cal.outlook} target="_blank" rel="noopener noreferrer">Outlook</a></li>
+      <li><a href={cal.office} target="_blank" rel="noopener noreferrer">Microsoft 365</a></li>
+    </ul>
+  );
   const feeTone = fee.tone === 'free' ? 'free' : fee.tone === 'caution' ? 'caution' : fee.tone === 'paid' ? 'paid' : 'unknown';
 
   return (
@@ -221,18 +244,26 @@ export function ListingPage({ id }: { id: string }) {
             <h2 id="save-h">Save it for later</h2>
             {live && (
               <>
-                <p className="save-card__label">{opp && l.deadline ? 'Add the deadline to your calendar' : 'Add to your calendar'}</p>
-                <div className="save-card__cals">
-                  <a className="button button--secondary" href={cal.google} target="_blank" rel="noopener noreferrer">Google</a>
-                  <a className="button button--secondary" href={cal.outlook} target="_blank" rel="noopener noreferrer">Outlook</a>
-                  {/* A real .ics on the site opens in Apple Calendar on iPhone and Mac; in dev the file isn't built, so download one */}
-                  <a className="button button--secondary" href={`/cal/${l.id}.ics`}
-                    onClick={import.meta.env.DEV ? (e) => { e.preventDefault(); downloadIcs(l, window.location.href); } : undefined}>Apple</a>
-                  <a className="button button--secondary" href={cal.office} target="_blank" rel="noopener noreferrer">Microsoft 365</a>
-                </div>
+                {phone ? (
+                  <>
+                    {/* On a phone, one button that opens the phone's own calendar app */}
+                    <a className="button button--secondary" {...(phone === 'apple' ? appleCal : { href: cal.google, target: '_blank', rel: 'noopener noreferrer' })}>
+                      <IconCalendar />Add to calendar
+                    </a>
+                    <details className="save-card__more">
+                      <summary>Use a different calendar</summary>
+                      {calLinks}
+                    </details>
+                  </>
+                ) : (
+                  <details className="save-card__menu">
+                    <summary className="button button--secondary"><IconCalendar />Add to calendar</summary>
+                    {calLinks}
+                  </details>
+                )}
                 <p className="save-card__small">
-                  {opp && l.deadline ? 'Added as an all-day entry on the deadline. ' : 'Added as an all-day event. '}
-                  Apple opens it in your Calendar app{opp && l.deadline ? ', with reminders three days before and on the day' : ''}.{' '}
+                  {opp && l.deadline ? 'Added as an all-day entry on the deadline' : 'Added as an all-day event'}
+                  .{' '}
                   {!show && <>Want every deadline? <a href="/subscribe">Subscribe to the calendar</a>.</>}
                 </p>
                 {opp && <ReminderBox l={l} now={now} />}
