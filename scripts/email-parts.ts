@@ -35,8 +35,9 @@ export const track = (url: string, campaign: string) => `${url}${url.includes('?
 export const p = (text: string, extra = '') => `<p style="margin:0 0 16px;font:400 17px/1.55 ${SANS};color:${INK};${extra}">${text}</p>`;
 export const h1 = (text: string) => `<h1 style="margin:0 0 14px;font:400 36px/1.12 ${SERIF};color:${INK}">${text}</h1>`;
 export const h2 = (text: string) => `<h2 style="margin:10px 0 16px;font:400 28px/1.15 ${SERIF};color:${INK}">${text}</h2>`;
+// The small coloured label above a heading, on its own line with a gap under it (a bare inline span sat right on the h1)
 export const eyebrow = (text: string, bg = '#d4f7ee', color = '#0b4f42') =>
-  `<span style="display:inline-block;padding:4px 12px;border-radius:999px;background:${bg};font:700 12px/1.4 ${SANS};letter-spacing:0.06em;text-transform:uppercase;color:${color}">${text}</span>`;
+  `<div style="margin:0 0 12px"><span style="display:inline-block;padding:4px 12px;border-radius:999px;background:${bg};font:700 12px/1.4 ${SANS};letter-spacing:0.06em;text-transform:uppercase;color:${color}">${text}</span></div>`;
 export const pill = (text: string, bg: string, color = INK, border = bg) =>
   `<span style="display:inline-block;margin:6px 6px 0 0;padding:3px 10px;border:1px solid ${border};border-radius:8px;background:${bg};color:${color};font:600 12px/1.4 ${SANS};white-space:nowrap">${esc(text)}</span>`;
 export const button = (href: string, label: string, dark = true) =>
