@@ -129,23 +129,6 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
             </p>
           </div>
 
-          <div className="filters__section" role="group" aria-labelledby={`${id}-open`}>
-            <p className="filters__heading" id={`${id}-open`}>Who can apply</p>
-            <p className="hint filters__hint">Only calls that artists anywhere can apply to.</p>
-            <div className="chips">
-              <Chip on={f.worldwide} onToggle={() => set('worldwide', !f.worldwide)}>Open worldwide</Chip>
-            </div>
-          </div>
-
-          <div className="filters__section" role="group" aria-labelledby={`${id}-format`}>
-            <p className="filters__heading" id={`${id}-format`}>Format</p>
-            <div className="chips">
-              {FORMATS.map((fm) => (
-                <Chip key={fm} on={f.formats.includes(fm)} onToggle={() => set('formats', toggleInList(f.formats, fm))}>{fm}</Chip>
-              ))}
-            </div>
-          </div>
-
           <div className="filters__section" role="group" aria-labelledby={`${id}-money`}>
             <p className="filters__heading" id={`${id}-money`}>Money</p>
             <div className="chips">
@@ -164,6 +147,23 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
             </div>
             {f.under50 && <p className="hint">Everything you’d pay, entry or ticket plus any fee if you’re selected, is under US$50 (other currencies converted roughly). Calls that don’t say their fees are hidden.</p>}
             {f.maxFee > 0 && <p className="hint">Fees in other currencies are converted roughly. Calls that don't say their fee are hidden.</p>}
+          </div>
+
+          <div className="filters__section" role="group" aria-labelledby={`${id}-open`}>
+            <p className="filters__heading" id={`${id}-open`}>Who can apply</p>
+            <p className="hint filters__hint">Only calls that artists anywhere can apply to.</p>
+            <div className="chips">
+              <Chip on={f.worldwide} onToggle={() => set('worldwide', !f.worldwide)}>Open worldwide</Chip>
+            </div>
+          </div>
+
+          <div className="filters__section" role="group" aria-labelledby={`${id}-format`}>
+            <p className="filters__heading" id={`${id}-format`}>Format</p>
+            <div className="chips">
+              {FORMATS.map((fm) => (
+                <Chip key={fm} on={f.formats.includes(fm)} onToggle={() => set('formats', toggleInList(f.formats, fm))}>{fm}</Chip>
+              ))}
+            </div>
           </div>
 
           <div className="filters__section" role="group" aria-labelledby={`${id}-disc`}>
