@@ -7,7 +7,7 @@
 //
 //   npx tsx scripts/build-og.ts            all listings (run by `npm run build`)
 //   npx tsx scripts/build-og.ts <id>…      just these, for checking a design change
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
@@ -47,10 +47,19 @@ const h = (type: string, props: Record<string, unknown>, ...children: (El | stri
 const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1).replace(/[\s,;:·–-]+\S*$/, '')}…` : s);
 
 /** The organiser's image, shrunk to fit the frame. Hotlinked images can be slow, huge, or webp (resvg can't draw webp). */
-async function picture(url: string, boxW: number, boxH: number) {
+// Some organisers' servers send the build a "checking your browser" page instead of the picture. For those we keep
+// a copy of the picture in scripts/pictures/<id>.jpg, used instead of fetching.
+const SAVED = new URL('./pictures/', import.meta.url);
+async function fetchPicture(id: string, url: string): Promise<Buffer> {
+  const saved = new URL(`${id}.jpg`, SAVED);
+  if (existsSync(saved)) return readFileSync(saved);
   const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/130 Safari/537.36' }, signal: AbortSignal.timeout(45_000) });   // some organisers' servers take 20 s+
   if (!res.ok) throw new Error(`${res.status}`);
-  const raw = Buffer.from(await res.arrayBuffer());
+  return Buffer.from(await res.arrayBuffer());
+}
+
+async function picture(id: string, url: string, boxW: number, boxH: number) {
+  const raw = await fetchPicture(id, url);
   const { data, info } = await sharp(raw)
     .rotate()
     .resize(boxW * 2, boxH * 2, { fit: 'inside', withoutEnlargement: true })
@@ -79,7 +88,7 @@ async function card(l: Listing) {
   const FRAME_W = 450, FRAME_H = 518, TEXT_W = W - 112 - 48 - FRAME_W;
   let pic: Awaited<ReturnType<typeof picture>> | undefined;
   if (l.image_url) {
-    try { pic = await picture(l.image_url, FRAME_W - 60, FRAME_H - 60).catch(() => picture(l.image_url!, FRAME_W - 60, FRAME_H - 60)); }   // one retry
+    try { pic = await picture(l.id, l.image_url, FRAME_W - 60, FRAME_H - 60).catch(() => picture(l.id, l.image_url!, FRAME_W - 60, FRAME_H - 60)); }   // one retry
     catch (e) { console.warn(`  ! ${l.id}: image not loaded (${(e as Error).message}), drawing the card without it`); }
   }
 
