@@ -70,6 +70,8 @@ export function closesAt(l: Listing): number {
 export function isLive(l: Listing, now = Date.now()): boolean {
   if (closesAt(l) > now) return true;
   if (isOpportunity(l)) return false;
+  // A workshop or event with its own sign-up deadline is done once that passes, even if it hasn't started yet
+  if (l.deadline && l.type !== 'Exhibition') return false;
   const end = l.end_date ?? l.start_date;
   return !!end && zonedTime(end, '23:59:59', l.timezone) > now;
 }

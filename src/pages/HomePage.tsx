@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { LISTINGS } from '../lib/listings';
-import { isLive, urgencyGroup, useNow } from '../lib/dates';
+import { LISTINGS, isEvent } from '../lib/listings';
+import { closesAt, isLive, urgencyGroup, useNow } from '../lib/dates';
 import { SORT_LABELS, applyFilters, defaultFilters, filtersFromQuery, filtersToQuery, sortListings, type Filters } from '../lib/filters';
 import { guessCurrency } from '../lib/money';
 import { replaceHashQuery, useHashRoute } from '../lib/useHashRoute';
@@ -83,7 +83,10 @@ export function HomePage() {
     <ListingRow key="commercial" id="commercial" title="Commercial opportunities" listings={commercial} now={now}
       note={<>Run as businesses: you pay to enter, or to show if you're selected. The price tag is everything you pay.</>} />
   );
-  const firstGroup = GROUPS.find((g) => main.some((l) => urgencyGroup(l, now) === g.key))?.key;
+  // Workshops, meetups and talks get their own row after the open calls, soonest first (all of them: magpie.cool/events)
+  const calls = useMemo(() => main.filter((l) => !isEvent(l)), [main]);
+  const events = useMemo(() => main.filter(isEvent).sort((a, b) => closesAt(a) - closesAt(b)), [main]);
+  const firstGroup = GROUPS.find((g) => calls.some((l) => urgencyGroup(l, now) === g.key))?.key;
   const viewSwitch = (
     <div className="view-switch" role="group" aria-label="View">
       <button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')}>List</button>
@@ -128,10 +131,14 @@ export function HomePage() {
               note={<>{coords ? 'Closest to your location first.' : 'Based on your time zone.'} Change it under <em>More filters</em>.</>} />
           )}
           {GROUPS.map((g) => {
-            const items = main.filter((l) => urgencyGroup(l, now) === g.key);
+            const items = calls.filter((l) => urgencyGroup(l, now) === g.key);
             return items.length ? <ListingRow key={g.key} id={g.key} title={g.label} listings={items} now={now}
               aside={near.length === 0 && g.key === firstGroup ? viewSwitch : undefined} /> : null;
           })}
+          {events.length > 0 && (
+            <ListingRow key="events" id="events" title="Workshops, meetups and events" listings={events} now={now} noun="event"
+              note={<>Things to go to, online and in person, soonest first. <a href="/events">All events and filters</a></>} />
+          )}
           {commercialRow}
         </div>
       ) : (
