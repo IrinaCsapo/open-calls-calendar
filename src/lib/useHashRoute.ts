@@ -42,7 +42,7 @@ export function useHashRoute(): HashRoute {
 
 /**
  * Makes ordinary <a href="/about"> links move within the app instead of reloading the page.
- * Leaves alone: other sites, new tabs, modified clicks (cmd/ctrl/shift), downloads and in-page anchors (#main).
+ * Leaves alone: other sites, new tabs, modified clicks (cmd/ctrl/shift), downloads, links to files (/cal/x.ics) and in-page anchors (#main).
  */
 export function useLinkInterceptor() {
   useEffect(() => {
@@ -52,6 +52,8 @@ export function useLinkInterceptor() {
       if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
       const href = a.getAttribute('href') ?? '';
       if (!href.startsWith('/') || href.startsWith('//')) return;
+      // Real files on the site (a calendar .ics, the feed, a JSON or image) load for real, not as an app page
+      if (/\.[a-z0-9]+(?:[?#]|$)/i.test(href.split('/').pop() ?? '')) return;
       e.preventDefault();
       navigate(href);
     };
