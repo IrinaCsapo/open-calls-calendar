@@ -95,8 +95,9 @@ if (!Array.isArray(data)) {
     if (l.selected_fee_amount !== undefined && l.selected_fee !== 'Yes') fail('selected_fee_amount is only for selected_fee "Yes"');
     if (l.selected_fee_amount !== undefined && l.currency === undefined) fail('currency is required when selected_fee_amount is set');
     if (l.commercial !== undefined && l.commercial !== true) fail('commercial is either true or left out');
-    // House rule: an entry fee above US$50 (or about that in another currency) is steep, so it's listed as commercial
-    const usd = l.entry_fee === 'Paid' && typeof l.fee_amount === 'number' && typeof l.currency === 'string'
+    // House rule: an entry fee above US$50 (or about that in another currency) to apply is steep, so it's listed as
+    // commercial. Only for things you apply to: a workshop or event ticket can cost more and still be a normal listing.
+    const usd = (OPPORTUNITY_TYPES as readonly string[]).includes(l.type as string) && l.entry_fee === 'Paid' && typeof l.fee_amount === 'number' && typeof l.currency === 'string'
       ? entryFeeIn(l as unknown as Listing, 'USD') : undefined;
     if (usd !== undefined && usd > 50 && l.commercial !== true) fail(`the entry fee is about US$${Math.round(usd)}, above US$50, so add "commercial": true`);
     if (l.selected_fee === 'Yes' && !l.selected_fee_details) fail('selected_fee is "Yes" so selected_fee_details must say what selected artists pay');

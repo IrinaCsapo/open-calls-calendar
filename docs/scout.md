@@ -46,7 +46,7 @@ organiser's business is selling opportunities to artists, or when artists pay to
 - pay-to-exhibit: a selection, participation, hanging, wall or "secure your space" fee if you're selected
 - businesses running paid virtual exhibitions, paid art books or magazines, or paid awards as their main activity
   (e.g. Arts to Hearts Project, Open Call for Artists, Gallerium, most CuratorSpace "international online exhibition" calls)
-- **any entry fee above US$50** (about £39 or €45 for the cheapest way in, converted roughly), whoever runs it: that
+- **any entry fee above US$50 to apply** (about £39 or €45 for the cheapest way in, converted roughly), whoever runs it: that
   price is steep for artists. The build checks this.
 
 For these, also set `selected_fee_amount` (a number, in `currency`) when the fee if selected is a single amount, so
