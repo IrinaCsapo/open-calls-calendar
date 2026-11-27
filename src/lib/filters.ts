@@ -1,7 +1,7 @@
 import { DISCIPLINES, FORMATS, LISTING_TYPES } from '../types/listing';
 import type { Discipline, Format, Listing, ListingType } from '../types/listing';
 import { closesAt, isOpportunity } from './dates';
-import { DISPLAY_CURRENCIES, entryFeeIn, isTotallyFree, prizeIn, type DisplayCurrency } from './money';
+import { DISPLAY_CURRENCIES, entryFeeIn, isTotallyFree, prizeIn, totalCostIn, type DisplayCurrency } from './money';
 
 export const KINDS = ['all', 'apply', 'attend'] as const;
 export type Kind = (typeof KINDS)[number];
@@ -59,6 +59,7 @@ export interface Filters {
   hideUnknownFees: boolean;   // hide anything whose fees aren't stated
   cashPrize: boolean;
   worldwide: boolean;         // only calls anyone, anywhere can apply to (open_to "Worldwide")
+  under50: boolean;           // everything you'd pay (entry or ticket, plus any fee if selected) is under US$50
   closingWithin: number;      // days, 0 = any
   sort: Sort;
   currency: DisplayCurrency;
@@ -66,7 +67,7 @@ export interface Filters {
 
 export const defaultFilters = (currency: DisplayCurrency): Filters => ({
   query: '', kind: 'all', type: '', disciplines: [], formats: [], places: [],
-  price: 'any', maxFee: 0, noSelectedFee: false, hideUnknownFees: false, cashPrize: false, worldwide: false,
+  price: 'any', maxFee: 0, noSelectedFee: false, hideUnknownFees: false, cashPrize: false, worldwide: false, under50: false,
   closingWithin: 0, sort: 'closing', currency,
 });
 
@@ -74,7 +75,7 @@ export const defaultFilters = (currency: DisplayCurrency): Filters => ({
 export function countActive(f: Filters): number {
   return [
     f.query.trim(), f.kind !== 'all', f.type, f.disciplines.length, f.formats.length, f.places.length, f.price !== 'any',
-    f.maxFee, f.noSelectedFee, f.hideUnknownFees, f.cashPrize, f.worldwide, f.closingWithin,
+    f.maxFee, f.noSelectedFee, f.hideUnknownFees, f.cashPrize, f.worldwide, f.under50, f.closingWithin,
   ].filter(Boolean).length;
 }
 
@@ -125,6 +126,7 @@ export function applyFilters(list: Listing[], f: Filters, now = Date.now()): Lis
     if (f.hideUnknownFees && hasUnknownFees(l)) return false;
     if (f.cashPrize && !l.prize_kinds.includes('Cash')) return false;
     if (f.worldwide && l.open_to !== 'Worldwide') return false;
+    if (f.under50) { const total = totalCostIn(l, 'USD'); if (total === undefined || total >= 50) return false; }
     if (f.closingWithin && closesAt(l) - now > f.closingWithin * 86_400_000) return false;
     return true;
   });
@@ -176,6 +178,7 @@ export function filtersFromQuery(q: URLSearchParams, fallbackCurrency: DisplayCu
     hideUnknownFees: q.get('known') === '1',
     cashPrize: q.get('cash') === '1',
     worldwide: q.get('worldwide') === '1',
+    under50: q.get('under50') === '1',
     closingWithin: pickNum(CLOSING_FILTERS, q.get('within')),
     sort: pick(SORTS, q.get('sort')) || 'closing',
     currency: pick(DISPLAY_CURRENCIES, q.get('cur')) || fallbackCurrency,
@@ -196,6 +199,7 @@ export function filtersToQuery(f: Filters, fallbackCurrency: DisplayCurrency): s
   if (f.hideUnknownFees) q.set('known', '1');
   if (f.cashPrize) q.set('cash', '1');
   if (f.worldwide) q.set('worldwide', '1');
+  if (f.under50) q.set('under50', '1');
   if (f.closingWithin) q.set('within', String(f.closingWithin));
   if (f.sort !== 'closing') q.set('sort', f.sort);
   if (f.currency !== fallbackCurrency) q.set('cur', f.currency);

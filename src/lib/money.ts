@@ -41,6 +41,17 @@ export function entryFeeIn(l: Listing, to: Currency): number | undefined {
   return undefined;
 }
 
+/**
+ * Everything you'd pay, roughly, in `to`: the entry fee (or ticket) plus any fee if you're selected.
+ * Undefined when either isn't known (a fee if selected with no amount counts as not known).
+ */
+export function totalCostIn(l: Listing, to: Currency): number | undefined {
+  const entry = entryFeeIn(l, to);
+  if (entry === undefined || l.selected_fee === 'Unknown') return undefined;
+  if (l.selected_fee !== 'Yes') return entry;
+  return l.selected_fee_amount !== undefined && l.currency ? entry + convert(l.selected_fee_amount, l.currency, to) : undefined;
+}
+
 export function prizeIn(l: Listing, to: Currency): number {
   return l.prize_value !== undefined && l.currency ? convert(l.prize_value, l.currency, to) : 0;
 }

@@ -42,7 +42,7 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
   // Phones get a shorter placeholder so it isn't cut off
   const [narrow] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 40rem)').matches);
   const moreCount = [f.kind !== 'all', f.type, f.formats.length, f.disciplines.length, f.maxFee, f.noSelectedFee, f.hideUnknownFees,
-    f.cashPrize, f.worldwide, f.closingWithin, f.price === 'free-entry' || f.price === 'paid'].filter(Boolean).length;
+    f.cashPrize, f.worldwide, f.under50, f.closingWithin, f.price === 'free-entry' || f.price === 'paid'].filter(Boolean).length;
 
   return (
     <form className="filterbar" role="search" aria-label="Find open calls"
@@ -131,10 +131,10 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
 
           <div className="filters__section" role="group" aria-labelledby={`${id}-open`}>
             <p className="filters__heading" id={`${id}-open`}>Who can apply</p>
+            <p className="hint filters__hint">Only calls that artists anywhere can apply to.</p>
             <div className="chips">
               <Chip on={f.worldwide} onToggle={() => set('worldwide', !f.worldwide)}>Open worldwide</Chip>
             </div>
-            <p className="hint filters__hint">Only calls that artists anywhere can apply to.</p>
           </div>
 
           <div className="filters__section" role="group" aria-labelledby={`${id}-format`}>
@@ -153,6 +153,7 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
               <Chip on={f.price === 'paid'} onToggle={() => togglePrice('paid')}>Paid entry</Chip>
               <Chip on={f.noSelectedFee} onToggle={() => set('noSelectedFee', !f.noSelectedFee)}>Hide pay-if-selected</Chip>
               <Chip on={f.hideUnknownFees} onToggle={() => set('hideUnknownFees', !f.hideUnknownFees)}>Fees stated</Chip>
+              <Chip on={f.under50} onToggle={() => set('under50', !f.under50)}>Under $50</Chip>
               <Chip on={f.cashPrize} onToggle={() => set('cashPrize', !f.cashPrize)}>Cash prize</Chip>
               <label>
                 <span className="sr-only">Maximum entry fee</span>
@@ -161,6 +162,7 @@ export function FilterPanel({ filters: f, onChange, onReset, count, location: lo
                 </select>
               </label>
             </div>
+            {f.under50 && <p className="hint">Everything you’d pay, entry or ticket plus any fee if you’re selected, is under US$50 (other currencies converted roughly). Calls that don’t say their fees are hidden.</p>}
             {f.maxFee > 0 && <p className="hint">Fees in other currencies are converted roughly. Calls that don't say their fee are hidden.</p>}
           </div>
 
