@@ -3617,5 +3617,214 @@
     "image_url": "https://images.squarespace-cdn.com/content/v1/64033b3b0b3a7f65938b7b41/1777396929362-78QFE8IZL4Z43XSXKWM8/RPFS26_post_vol.jpg",
     "source": "https://www.rigaperformancefestival.com/",
     "added": "2026-11-26"
+  },
+  {
+    "prizes": [
+      "CAD 5,000 per month stipend for up to 3 months",
+      "Travel and visa support, private office and Study Room access"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency"
+    ],
+    "added": "2026-11-27",
+    "id": "cca-wri-research-fellowship-2027",
+    "title": "CCA-WRI Research Fellowship 2027: 'Vacancy'",
+    "organiser": "Canadian Centre for Architecture (CCA) and WRI Ross Center",
+    "type": "Fellowship",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "America/Toronto",
+    "city": "Montreal",
+    "country": "Canada",
+    "region": "North America",
+    "lat": 45.5017,
+    "lng": -73.5673,
+    "deadline": "2026-11-30",
+    "start_date": "2027-07-01",
+    "end_date": "2027-10-31",
+    "eligibility": "Practitioners with substantial professional experience (architects, urban planners, cultural producers, artists) and researchers with a relevant doctorate; fellows research at the CCA in Montreal for 1–3 months, July–October 2027",
+    "open_to": "Worldwide",
+    "entry_fee": "Unknown",
+    "fee_details": "Official page does not mention an application fee",
+    "selected_fee": "None",
+    "selected_fee_details": "Stipend of CAD 5,000 per month plus travel and visa support; page lists no participation costs",
+    "currency": "CAD",
+    "apply_url": "https://www.cca.qc.ca/en/101525/cca-wri-research-fellowship-program",
+    "source": "https://www.cca.qc.ca/en/101525/cca-wri-research-fellowship-program"
+  },
+  {
+    "prizes": [
+      "US$1,000 cash to the composer on receipt of the score",
+      "World premiere by Mendelssohn Chorus in spring 2028",
+      "Up to three mentoring sessions with professional composers"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Mentoring",
+      "Commission"
+    ],
+    "added": "2026-11-27",
+    "id": "joyful-abundance-emerging-composer-commission-2028",
+    "title": "Joyful Abundance 2028: Emerging Artist Commissioning Award (composers)",
+    "organiser": "Mendelssohn Chorus of Philadelphia",
+    "type": "Commission",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "In person",
+    "timezone": "America/New_York",
+    "city": "Philadelphia",
+    "country": "United States",
+    "region": "North America",
+    "lat": 39.9526,
+    "lng": -75.1652,
+    "deadline": "2027-01-31",
+    "eligibility": "Adult (18+) emerging composers living in the Greater Philadelphia area (PA, NJ and DE counties listed by the organiser); poets and performers apply separately",
+    "open_to": "Restricted",
+    "open_to_where": "Greater Philadelphia only",
+    "entry_fee": "Free",
+    "fee_details": "No application fee (stated in the guidelines)",
+    "selected_fee": "None",
+    "selected_fee_details": "None stated; composer and poet receive US$1,000 each on delivery of the finished score",
+    "prize_value": 1000,
+    "currency": "USD",
+    "apply_url": "https://www.mcchorus.org/joyful-abundance",
+    "image_url": "https://irp.cdn-website.com/6b9f96fa/dms3rep/multi/opt/Joyful-Abundance_final-a9852120-6309ad55-2880w.jpeg",
+    "source": "https://www.mcchorus.org/joyful-abundance"
+  },
+  {
+    "prizes": [],
+    "prize_kinds": [],
+    "added": "2026-11-27",
+    "id": "kunstraum-artist-in-residence-new-york-2027",
+    "title": "KUNSTRAUM Artist-in-Residence 2027 (Brooklyn, New York)",
+    "organiser": "KUNSTRAUM LLC",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "America/New_York",
+    "city": "New York",
+    "country": "United States",
+    "region": "North America",
+    "lat": 40.6782,
+    "lng": -73.9442,
+    "deadline": "2026-12-31",
+    "start_date": "2027-01-01",
+    "end_date": "2027-12-31",
+    "eligibility": "National and international visual artists; 3-month terms (Jan–Mar rolling, Jul–Sep and Oct–Dec by 31 Dec 2026 deadline); no living space included",
+    "open_to": "Worldwide",
+    "entry_fee": "Free",
+    "fee_details": "No application fee mentioned; apply by email",
+    "selected_fee": "Yes",
+    "selected_fee_details": "Residency fee US$800 per month (about US$2,400 for the 3 months); accommodation, visa and living costs are the artist's own",
+    "apply_url": "https://www.kunstraumllc.com/single-post/open-call-for-artists-in-residence-2026-2027-deadline-december-31-2026",
+    "image_url": "https://static.wixstatic.com/media/ee9ca9_ad4ed3a7a4874bfbb5ce88d8a71b5060~mv2.jpg/v1/fill/w_2000,h_1429,al_c,q_90,usm_0.66_1.00_0.01/ee9ca9_ad4ed3a7a4874bfbb5ce88d8a71b5060~mv2.jpg",
+    "currency": "USD",
+    "source": "https://www.kunstraumllc.com/single-post/open-call-for-artists-in-residence-2026-2027-deadline-december-31-2026"
+  },
+  {
+    "prizes": [
+      "One full scholarship covering the programme fee (not accommodation, travel or materials)"
+    ],
+    "prize_kinds": [
+      "Residency"
+    ],
+    "added": "2026-11-27",
+    "id": "raro-bogota-residency-full-scholarship-2027",
+    "title": "R.A.R.O. Bogotá Residency 2027 (one full scholarship)",
+    "organiser": "R.A.R.O. (Residencias Artísticas Raramente Organizadas)",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "America/Bogota",
+    "city": "Bogotá",
+    "country": "Colombia",
+    "region": "LatAm",
+    "lat": 4.711,
+    "lng": -74.0721,
+    "deadline": "2026-12-11",
+    "start_date": "2027-01-21",
+    "end_date": "2027-03-03",
+    "eligibility": "Artists of any nationality, with or without formal training; also researchers, curators and cultural managers; in-person attendance",
+    "open_to": "Worldwide",
+    "entry_fee": "Unknown",
+    "fee_details": "No application fee stated on the call page; the programme itself is fee-based and exact prices are given on request",
+    "selected_fee": "Yes",
+    "selected_fee_details": "Residency is fee-based (price quoted by email). One full scholarship covers the programme fee only; accommodation, travel, materials and living costs are not covered",
+    "apply_url": "https://www.esraro.com/bogota",
+    "image_url": "https://static.wixstatic.com/media/2d1e20_024ad637fe5b4778817c0ed70faded58%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/2d1e20_024ad637fe5b4778817c0ed70faded58%7Emv2.jpg",
+    "source": "https://www.esraro.com/bogota"
+  },
+  {
+    "prizes": [
+      "GBP 7,000 commission fee for ~40 minutes of music (2027)",
+      "Further GBP 10,000 fee for the full opera, subject to separate agreement"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Commission"
+    ],
+    "added": "2026-11-27",
+    "id": "gothic-opera-northanger-abbey-composer-open-call-2027",
+    "title": "Gothic Opera: composer open call for new opera Northanger Abbey",
+    "organiser": "Gothic Opera",
+    "type": "Commission",
+    "disciplines": [
+      "Music"
+    ],
+    "format": "Hybrid",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "lat": 51.5072,
+    "lng": -0.1276,
+    "deadline": "2027-01-05",
+    "start_date": "2027-01-25",
+    "end_date": "2027-09-30",
+    "eligibility": "Early- to mid-career composers with vocal/dramatic experience; writing can be remote, workshops and rehearsals in or near London",
+    "open_to": "Worldwide",
+    "entry_fee": "Free",
+    "fee_details": "Apply by email with CV and statement; no fee mentioned",
+    "selected_fee": "None",
+    "selected_fee_details": "Paid commission; organiser provides no travel or accommodation costs",
+    "prize_value": 7000,
+    "currency": "GBP",
+    "apply_url": "https://soundandmusic.org/opportunities/listing/composer-open-call-northanger-abbey/",
+    "source": "https://soundandmusic.org/opportunities/listing/composer-open-call-northanger-abbey/"
+  },
+  {
+    "prizes": [],
+    "prize_kinds": [],
+    "added": "2026-11-27",
+    "id": "cities-and-memory-autumn-project-2026",
+    "title": "Cities and Memory Autumn Project 2026: remix a field recording",
+    "organiser": "Cities and Memory",
+    "type": "Open call",
+    "disciplines": [
+      "Sound",
+      "Music"
+    ],
+    "format": "Online",
+    "timezone": "Europe/London",
+    "city": "",
+    "country": "",
+    "region": "Global",
+    "deadline": "2026-12-13",
+    "eligibility": "Artists and musicians from any background; one 2–20 minute composition based on one provided recording, no AI use",
+    "open_to": "Worldwide",
+    "entry_fee": "Free",
+    "fee_details": "Join by email to receive the sound database link; no fee mentioned",
+    "selected_fee": "None",
+    "apply_url": "https://citiesandmemory.com/2026/10/autumn-project-2026",
+    "image_url": "https://citiesandmemory.com/wp-content/uploads/2024/08/Autumn_Featured_Fb_Tw_2.jpg",
+    "source": "https://citiesandmemory.com/2026/10/autumn-project-2026"
   }
 ]
