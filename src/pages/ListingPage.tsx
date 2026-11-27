@@ -225,12 +225,14 @@ export function ListingPage({ id }: { id: string }) {
                 <div className="save-card__cals">
                   <a className="button button--secondary" href={cal.google} target="_blank" rel="noopener noreferrer">Google</a>
                   <a className="button button--secondary" href={cal.outlook} target="_blank" rel="noopener noreferrer">Outlook</a>
-                  <button type="button" className="button button--secondary" onClick={() => downloadIcs(l, window.location.href)}>Apple</button>
+                  {/* A real .ics on the site opens in Apple Calendar on iPhone and Mac; in dev the file isn't built, so download one */}
+                  <a className="button button--secondary" href={`/cal/${l.id}.ics`}
+                    onClick={import.meta.env.DEV ? (e) => { e.preventDefault(); downloadIcs(l, window.location.href); } : undefined}>Apple</a>
                   <a className="button button--secondary" href={cal.office} target="_blank" rel="noopener noreferrer">Microsoft 365</a>
                 </div>
                 <p className="save-card__small">
                   {opp && l.deadline ? 'Added as an all-day entry on the deadline. ' : 'Added as an all-day event. '}
-                  Other apps: use Apple, it downloads a calendar file{opp && l.deadline ? ' with reminders three days before and on the day' : ''}.
+                  Apple opens it in your Calendar app{opp && l.deadline ? ', with reminders three days before and on the day' : ''}.{' '}
                   {!show && <>Want every deadline? <a href="/subscribe">Subscribe to the calendar</a>.</>}
                 </p>
                 {opp && <ReminderBox l={l} now={now} />}

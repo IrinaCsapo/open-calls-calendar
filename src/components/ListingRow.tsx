@@ -35,15 +35,15 @@ export function ListingRow({ id, title, listings, now, startOpen = false, note, 
   return (
     <section className={`row row--${id}`} aria-labelledby={`row-${id}`}>
       <div className="row__head">
-        <h2 id={`row-${id}`} className="row__title">
-          {title}
-          <span className="row__count"><span className="sr-only">, </span>{listings.length} {listings.length === 1 ? noun : `${noun}s`}</span>
-        </h2>
-        {more && (
-          <button type="button" className="row__toggle" aria-expanded={open} aria-controls={`row-list-${id}`} onClick={() => setOpen(!open)}>
-            {open ? 'View fewer' : 'View all'}<span className="sr-only"> {title.toLowerCase()}</span>
-          </button>
-        )}
+        <h2 id={`row-${id}`} className="row__title">{title}</h2>
+        <p className="row__meta">
+          <span className="row__count">{listings.length} {listings.length === 1 ? noun : `${noun}s`}</span>
+          {more && (
+            <button type="button" className="row__toggle" aria-expanded={open} aria-controls={`row-list-${id}`} onClick={() => setOpen(!open)}>
+              {open ? 'View fewer' : 'View all'}<span className="sr-only"> {title.toLowerCase()}</span>
+            </button>
+          )}
+        </p>
         {aside && <div className="row__aside">{aside}</div>}
       </div>
       {note && <p className="row__note">{note}</p>}
