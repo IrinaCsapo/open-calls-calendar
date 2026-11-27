@@ -4065,5 +4065,360 @@
     "added": "2026-11-27",
     "lat": 40.7128,
     "lng": -74.006
+  },
+  {
+    "format": "In person",
+    "region": "Europe",
+    "prizes": [
+      "7-week residency in April–May or June–July 2027",
+      "Honorarium up to €2,450",
+      "Materials up to €400, travel up to €400",
+      "5 mentoring sessions with curator Ahmad Darkhabani"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency",
+      "Mentoring",
+      "Publication"
+    ],
+    "selected_fee": "None",
+    "added": "2026-11-27",
+    "id": "air-insilo-residency-2027",
+    "title": "AIR InSILo Residency 2027: when the hourless seeps",
+    "organiser": "AIR InSILo",
+    "type": "Residency",
+    "disciplines": [
+      "Any medium"
+    ],
+    "timezone": "Europe/Vienna",
+    "city": "Hollabrunn",
+    "country": "Austria",
+    "lat": 48.5627,
+    "lng": 16.0796,
+    "deadline": "2026-12-30",
+    "eligibility": "Artists worldwide working in any medium, apart from current BA/MA students (PhD students can apply). Priority for working mothers, under-represented and LGBTIQA+ artists, and artists from countries with little arts funding. Stage 1 is a 3-sentence motivation letter and a portfolio link; stage 2 (by invitation) closes 31 January 2027",
+    "open_to": "Worldwide",
+    "entry_fee": "Free",
+    "fee_details": "Stage 1 is free. If you are invited to stage 2 there is a €7 solidarity fee for their hardship programme (waivers available)",
+    "prize_value": 2450,
+    "currency": "EUR",
+    "apply_url": "https://in-silo.com/open_call_2027_stage_1",
+    "source": "https://in-silo.com/open_call_2027_stage_1"
+  },
+  {
+    "format": "In person",
+    "region": "Europe",
+    "prizes": [
+      "Exhibition across Kranj, Tržič, Škofja Loka and Jesenice, 29 May–14 August 2027",
+      "Main award: a residency in Kranj of up to 4 weeks, with travel, accommodation, per diem and production covered",
+      "ETA Award for under-29s: a 2-week residency in Kranj"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Residency"
+    ],
+    "selected_fee": "Yes",
+    "added": "2026-11-27",
+    "id": "bien-textile-art-biennial-2027",
+    "title": "BIEN 2027 Textile Art Biennial: Traces of Grace",
+    "organiser": "Carnica Institute",
+    "type": "Open call",
+    "disciplines": [
+      "Textiles"
+    ],
+    "timezone": "Europe/Ljubljana",
+    "city": "Kranj",
+    "country": "Slovenia",
+    "lat": 46.2389,
+    "lng": 14.3556,
+    "deadline": "2026-12-21",
+    "start_date": "2027-05-29",
+    "end_date": "2027-08-14",
+    "eligibility": "Artists and collectives worldwide working in textile and fibre art, or work that refers to textiles; up to 3 works made in the last 3 years. Students apply free; waivers for artists in war or conflict zones",
+    "open_to": "Worldwide",
+    "entry_fee": "Paid",
+    "fee_amount": 10,
+    "currency": "EUR",
+    "fee_details": "€10, non-refundable; free for students",
+    "selected_fee_details": "You pay shipping and customs to the biennial; they pay the return and insure works up to €999",
+    "apply_url": "https://layer.si/bien/en/kr/open-call-2027/",
+    "image_url": "https://layer.si/bien/wp-content/uploads/2026/06/OPEN-CALL-819x1024.png",
+    "source": "https://layer.si/bien/en/kr/open-call-2027/"
+  },
+  {
+    "format": "In person",
+    "region": "Europe",
+    "prizes": [
+      "3 best proposals and the best Serbian proposal shown in the New Talents exhibition, May 2027",
+      "1st, 2nd and 3rd prizes (amounts not stated)",
+      "Finalists' work printed by the festival"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Other"
+    ],
+    "selected_fee": "None",
+    "added": "2026-11-27",
+    "id": "belgrade-photo-month-new-talents-2027",
+    "title": "Belgrade Photo Month 2027: New Talents (REBORN)",
+    "organiser": "Belgrade Photo Month",
+    "type": "Prize",
+    "disciplines": [
+      "Photography"
+    ],
+    "timezone": "Europe/Belgrade",
+    "city": "Belgrade",
+    "country": "Serbia",
+    "lat": 44.7866,
+    "lng": 20.4489,
+    "deadline": "2027-02-14",
+    "eligibility": "Photographers of any nationality, professional or amateur, born after 1 January 2002. One project of 8–15 photos, sent by email; no AI images",
+    "open_to": "Worldwide",
+    "open_to_who": "Born 2002 or later",
+    "entry_fee": "Free",
+    "apply_url": "https://www.belgradephotomonth.org/en/new-talents-2027/",
+    "image_url": "https://www.belgradephotomonth.org/wp-content/uploads/2026/09/New-talents-1-FILEminimizer.jpg",
+    "source": "https://www.belgradephotomonth.org/en/new-talents-2027/"
+  },
+  {
+    "format": "In person",
+    "region": "Europe",
+    "prizes": [
+      "€3,000 production prize",
+      "Your own exhibition space in the festival programme, 22 April–6 June 2027",
+      "Insurance and promotion"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition"
+    ],
+    "selected_fee": "Yes",
+    "added": "2026-11-27",
+    "id": "fotografia-europea-2027-open-call",
+    "title": "Fotografia Europea 2027 Open Call: Imparare dagli altri",
+    "organiser": "Fondazione Palazzo Magnani / Fotografia Europea",
+    "type": "Open call",
+    "disciplines": [
+      "Photography"
+    ],
+    "timezone": "Europe/Rome",
+    "city": "Reggio Emilia",
+    "country": "Italy",
+    "lat": 44.6983,
+    "lng": 10.6312,
+    "deadline": "2027-01-15",
+    "start_date": "2027-04-22",
+    "end_date": "2027-06-06",
+    "eligibility": "Photographers, curators and collectives born in or living in Europe, any age. The page is in Italian",
+    "open_to": "Restricted",
+    "open_to_where": "Born in or living in Europe",
+    "entry_fee": "Paid",
+    "fee_amount": 25,
+    "currency": "EUR",
+    "fee_details": "€25 to apply",
+    "selected_fee_details": "You pack and ship your work both ways",
+    "prize_value": 3000,
+    "apply_url": "https://www.fotografiaeuropea.it/fe2027-open-call/",
+    "image_url": "https://www.fotografiaeuropea.it/wp-content/uploads/2026/11/call-orizz-lr.jpg",
+    "source": "https://www.fotografiaeuropea.it/fe2027-open-call/"
+  },
+  {
+    "format": "In person",
+    "region": "Europe",
+    "prizes": [
+      "A month on site, 1–31 July 2027, with full board, tools and help",
+      "€2,000 net royalties (taxes paid by the museum)",
+      "Your work placed permanently in the Forma viva sculpture park"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency",
+      "Commission"
+    ],
+    "selected_fee": "Yes",
+    "added": "2026-11-27",
+    "id": "forma-viva-sculpture-symposium-2027",
+    "title": "Forma viva 2027: International Symposium of Sculptors in wood",
+    "organiser": "Galerija Božidar Jakac – Museum of Modern and Contemporary Art",
+    "type": "Residency",
+    "disciplines": [
+      "Sculpture"
+    ],
+    "timezone": "Europe/Ljubljana",
+    "city": "Kostanjevica na Krki",
+    "country": "Slovenia",
+    "lat": 45.8462,
+    "lng": 15.4219,
+    "deadline": "2027-01-11",
+    "start_date": "2027-07-01",
+    "end_date": "2027-07-31",
+    "eligibility": "Sculptors worldwide with experience in wood, proposing one oak sculpture or installation. Apply by email or post. About 2 artists are chosen",
+    "open_to": "Worldwide",
+    "entry_fee": "Free",
+    "selected_fee_details": "You pay your own travel and health/accident insurance",
+    "prize_value": 2000,
+    "currency": "EUR",
+    "apply_url": "https://www.galerija-bj.si/en/dogodki/javni-natecaj-za-mednarodni-simpozij-kiparjev-forma-viva-202/",
+    "image_url": "https://www.galerija-bj.si/wp-content/uploads/2026/11/01-Slajder-GBJ_FORMA-VIVA-2025_18051.-Foto-Jaka-Babnik-SMALL.jpg",
+    "source": "https://www.galerija-bj.si/en/dogodki/javni-natecaj-za-mednarodni-simpozij-kiparjev-forma-viva-202/"
+  },
+  {
+    "format": "In person",
+    "region": "Europe",
+    "prizes": [
+      "Artist fee: €640 for existing work, €1,485 for an adaptation, €3,179 for new work",
+      "Printing, framing, insurance and transport covered",
+      "Shown at the Noorderlicht Biennale 2027"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Exhibition"
+    ],
+    "selected_fee": "None",
+    "added": "2026-11-27",
+    "id": "noorderlicht-biennale-play-2027",
+    "title": "Noorderlicht Biennale 2027 Open Call: PLAY!",
+    "organiser": "Noorderlicht",
+    "type": "Open call",
+    "disciplines": [
+      "Photography"
+    ],
+    "timezone": "Europe/Amsterdam",
+    "city": "Groningen",
+    "country": "Netherlands",
+    "lat": 53.2194,
+    "lng": 6.5665,
+    "deadline": "2026-12-15",
+    "eligibility": "Photographers and lens-based artists of all nationalities and career stages, individuals or collectives; existing or new work",
+    "open_to": "Worldwide",
+    "entry_fee": "Paid",
+    "fee_amount": 5,
+    "currency": "EUR",
+    "fee_details": "€5 per project",
+    "prize_value": 3179,
+    "apply_url": "https://noorderlicht.com/en/updates/open-call-noorderlicht-bi%C3%ABnnale-play-2027",
+    "image_url": "https://noorderlicht.com/en/media/1/_1200x630_crop_center-center_82_none_ns/PLAY-bannerZealous.jpg?v=1795513619",
+    "source": "https://noorderlicht.com/en/updates/open-call-noorderlicht-bi%C3%ABnnale-play-2027"
+  },
+  {
+    "format": "In person",
+    "region": "Europe",
+    "prizes": [
+      "€3,000 artist fee",
+      "Production costs up to €1,000",
+      "4-week residency in March–April 2027 with travel, accommodation and subsistence",
+      "Exhibitions from late April 2027"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Residency",
+      "Exhibition"
+    ],
+    "selected_fee": "None",
+    "added": "2026-11-27",
+    "id": "wonder-women-in-resistance-residencies-2027",
+    "title": "WONDER: Women in Resistance Movements, residencies 2027",
+    "organiser": "ECCOM and partners",
+    "type": "Residency",
+    "disciplines": [
+      "Photography",
+      "Film & video",
+      "Digital art",
+      "Sound",
+      "Mixed media"
+    ],
+    "timezone": "Europe/Rome",
+    "city": "Rome",
+    "country": "Italy",
+    "lat": 41.9028,
+    "lng": 12.4964,
+    "deadline": "2026-12-06",
+    "eligibility": "Artists 18+ living in an EU country who speak the host country's language, for socially engaged work (photography, film, digital, sound, small installation; not performance only). Five residencies: Italy (Rome/Merano), Hittisau (Austria), Germany, Amsterdam and Poland, each with its own call. Any gender",
+    "open_to": "Restricted",
+    "open_to_where": "EU residents who speak the host language",
+    "entry_fee": "Free",
+    "prize_value": 3000,
+    "currency": "EUR",
+    "apply_url": "https://www.eccom.it/wonder-open-call-for-artists/",
+    "image_url": "https://www.eccom.it/wp-content/uploads/2026/10/Wonder_open-call-visual-sito.jpg",
+    "source": "https://www.eccom.it/wonder-open-call-for-artists/"
+  },
+  {
+    "format": "In person",
+    "region": "Europe",
+    "prizes": [
+      "Exhibition at Nová tržnica, Bratislava, 20 April–5 May 2027",
+      "Travel and accommodation repaid up to €300 per project"
+    ],
+    "prize_kinds": [
+      "Exhibition"
+    ],
+    "selected_fee": "None",
+    "added": "2026-11-27",
+    "id": "are-2027-artistic-research-exhibition-off-grid",
+    "title": "ARE 2027 Artistic Research Exhibition: OFF GRID",
+    "organiser": "WIRE by FilmEU, with the Academy of Performing Arts Bratislava",
+    "type": "Open call",
+    "disciplines": [
+      "Film & video",
+      "Digital art",
+      "Sound"
+    ],
+    "timezone": "Europe/Bratislava",
+    "city": "Bratislava",
+    "country": "Slovakia",
+    "lat": 48.1486,
+    "lng": 17.1077,
+    "deadline": "2026-12-13",
+    "start_date": "2027-04-20",
+    "end_date": "2027-05-05",
+    "eligibility": "Anyone whose practice involves artistic research (an academic link helps but isn't needed), with audiovisual or media work no more than 2 years old. Some places are kept for FilmEU alliance members",
+    "open_to": "Worldwide",
+    "entry_fee": "Free",
+    "fee_details": "No fee mentioned; apply through an online form",
+    "apply_url": "https://www.ulusofona.pt/en/news/are-2027-open-call",
+    "image_url": "https://www.ulusofona.pt/images/are-2027-open-call_628.jpg",
+    "source": "https://www.ulusofona.pt/en/news/are-2027-open-call"
+  },
+  {
+    "format": "In person",
+    "region": "Europe",
+    "prizes": [
+      "Single images printed 2.5 × 2.5 m on the festival containers",
+      "Projects get their own exhibition space",
+      "5 projects get a €3,000 production grant",
+      "No commission on sales"
+    ],
+    "prize_kinds": [
+      "Exhibition",
+      "Cash"
+    ],
+    "selected_fee": "None",
+    "added": "2026-11-27",
+    "id": "rotterdam-photo-2027-vibrance-extended",
+    "title": "Rotterdam Photo 2027 Open Call: Vibrance",
+    "organiser": "Rotterdam Photo",
+    "type": "Open call",
+    "disciplines": [
+      "Photography"
+    ],
+    "timezone": "Europe/Amsterdam",
+    "city": "Rotterdam",
+    "country": "Netherlands",
+    "lat": 51.9244,
+    "lng": 4.4777,
+    "deadline": "2026-12-10",
+    "start_date": "2027-03-17",
+    "end_date": "2027-03-21",
+    "eligibility": "Photographers worldwide; single images or projects. Shown during Rotterdam Art Week",
+    "open_to": "Worldwide",
+    "entry_fee": "Paid",
+    "fee_amount": 19,
+    "currency": "EUR",
+    "fee_details": "€19 per single image; €35 per project",
+    "prize_value": 3000,
+    "apply_url": "https://rotterdamphoto.eu/open-calls/",
+    "image_url": "https://images.e-flux.com/test/996056bb-b478-435b-8bf0-b343c338a4f4?width=1200&height=630",
+    "source": "https://rotterdamphoto.eu/open-calls/"
   }
 ]
