@@ -11,6 +11,7 @@ import { SubscribeBox } from './components/SubscribeBox';
 import { SubscribePage } from './pages/SubscribePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { FaqPage } from './pages/FaqPage';
+import { SponsorPage } from './pages/SponsorPage';
 import { ExhibitionsPage } from './pages/ExhibitionsPage';
 import { EventsPage } from './pages/EventsPage';
 import { findListing, isEvent, isExhibition } from './lib/listings';
@@ -41,6 +42,7 @@ export function App() {
   else if (path === '/subscribed') page = <SubscribedPage />;
   else if (path === '/subscribe') page = <SubscribePage />;
   else if (path === '/faq') page = <FaqPage />;
+  else if (path === '/sponsor') page = <SponsorPage />;   // test page, not linked anywhere yet
   else if (path === '/exhibitions') page = <ExhibitionsPage />;
   else if (path === '/events') page = <EventsPage />;
   else if (path === '/open-calls' || path === '/open-calls/') page = <CollectionsHubPage />;
