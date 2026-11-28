@@ -1212,5 +1212,36 @@
     "apply_url": "https://palaisdetokyo.com/exposition/toi-et-ta-bande/",
     "image_url": "https://admin.palaisdetokyo.com/wp-content/uploads/2026/06/Gina-Proenza-Toi-et-ta-bande-768x768.png",
     "source": "https://palaisdetokyo.com/exposition/toi-et-ta-bande/"
+  },
+  {
+    "id": "rising-voices-contemporary-art-asia-australia-pacific-va",
+    "title": "Rising Voices: Contemporary Art from Asia, Australia and the Pacific",
+    "organiser": "V&A with QAGOMA",
+    "type": "Exhibition",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "In person",
+    "timezone": "Europe/London",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "UK",
+    "venue": "V&A South Kensington (Porter Gallery)",
+    "lat": 51.4966,
+    "lng": -0.1722,
+    "start_date": "2026-05-16",
+    "end_date": "2027-01-10",
+    "eligibility": "Over 70 works by more than 40 artists from 25 countries, marking 30 years of QAGOMA's Asia Pacific Triennial.",
+    "entry_fee": "Paid",
+    "fee_amount": 17,
+    "currency": "GBP",
+    "fee_details": "Standard adult ticket £17, concessions available (vam.ac.uk)",
+    "selected_fee": "None",
+    "prizes": [],
+    "prize_kinds": [],
+    "apply_url": "https://www.vam.ac.uk/exhibitions/rising-voices-contemporary-art-from-asia-australia-and-the-pacific",
+    "image_url": "https://assets-cdn.vam.ac.uk/2025/11/26/11/22/49/6b64fdc3-871a-444b-b45b-5d519195fc84/320.jpg",
+    "source": "https://www.vam.ac.uk/exhibitions/rising-voices-contemporary-art-from-asia-australia-and-the-pacific",
+    "added": "2026-11-28"
   }
 ]

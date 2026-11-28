@@ -4420,5 +4420,150 @@
     "apply_url": "https://rotterdamphoto.eu/open-calls/",
     "image_url": "https://images.e-flux.com/test/996056bb-b478-435b-8bf0-b343c338a4f4?width=1200&height=630",
     "source": "https://rotterdamphoto.eu/open-calls/"
+  },
+  {
+    "id": "luminarts-creative-writing-fellowship-2027",
+    "title": "Luminarts Creative Writing Fellowship 2027",
+    "disciplines": [
+      "Writing"
+    ],
+    "organiser": "Luminarts Cultural Foundation",
+    "type": "Fellowship",
+    "format": "In person",
+    "timezone": "America/Chicago",
+    "city": "Chicago",
+    "country": "United States",
+    "region": "North America",
+    "lat": 41.8781,
+    "lng": -87.6298,
+    "deadline": "2027-01-15",
+    "eligibility": "Aged 18-30 on the day of submission; living within 150 miles of the Chicago Loop (or 4-6 formative years there); able to receive taxable income in the US",
+    "open_to": "Restricted",
+    "open_to_where": "Chicago area only",
+    "open_to_who": "Ages 18–30",
+    "entry_fee": "Unknown",
+    "fee_details": "The call page lists no application fee but does not say outright that there is none; check the Submittable form",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "Not stated on the official pages",
+    "prizes": [
+      "$10,000 unrestricted fellowship",
+      "$300 Honorable Mention Award for finalists"
+    ],
+    "prize_kinds": [
+      "Cash"
+    ],
+    "prize_value": 10000,
+    "currency": "USD",
+    "apply_url": "https://luminarts.submittable.com/submit/368050/2027-luminarts-creative-writing-fellowship",
+    "source": "https://luminarts.submittable.com/",
+    "added": "2026-11-28"
+  },
+  {
+    "id": "luminarts-jazz-improvisation-fellowship-2027",
+    "title": "Luminarts Jazz Improvisation Fellowship 2027",
+    "disciplines": [
+      "Music"
+    ],
+    "image_url": "https://luminarts.org/wp-content/uploads/2013/09/music-home_-About-Us_-web.jpg",
+    "organiser": "Luminarts Cultural Foundation",
+    "type": "Fellowship",
+    "format": "In person",
+    "timezone": "America/Chicago",
+    "city": "Chicago",
+    "country": "United States",
+    "region": "North America",
+    "lat": 41.8781,
+    "lng": -87.6298,
+    "deadline": "2027-01-15",
+    "eligibility": "Aged 18-30 on the day of submission; living within 150 miles of the Chicago Loop (or 4-6 formative years there); able to receive taxable income in the US",
+    "open_to": "Restricted",
+    "open_to_where": "Chicago area only",
+    "open_to_who": "Ages 18–30",
+    "entry_fee": "Unknown",
+    "fee_details": "The call page lists no application fee but does not say outright that there is none; check the Submittable form",
+    "selected_fee": "Unknown",
+    "selected_fee_details": "Not stated on the official pages",
+    "prizes": [
+      "$10,000 unrestricted fellowship",
+      "$300 Honorable Mention Award for finalists"
+    ],
+    "prize_kinds": [
+      "Cash"
+    ],
+    "prize_value": 10000,
+    "currency": "USD",
+    "apply_url": "https://luminarts.submittable.com/submit/368049/2027-luminarts-jazz-improvisation-fellowship",
+    "source": "https://luminarts.submittable.com/",
+    "added": "2026-11-28"
+  },
+  {
+    "id": "mophradat-new-agents-programme-2027",
+    "title": "Mophradat New Agents 2027 (10-month collective programme)",
+    "organiser": "Mophradat",
+    "type": "Fellowship",
+    "disciplines": [
+      "Any medium"
+    ],
+    "format": "Hybrid",
+    "timezone": "Europe/Brussels",
+    "city": "Brussels",
+    "country": "Belgium",
+    "region": "Middle East",
+    "lat": 50.8503,
+    "lng": 4.3517,
+    "deadline": "2026-12-06",
+    "start_date": "2027-03-01",
+    "eligibility": "Artists, curators and researchers with at least five years' practice and firsthand experience of the Arab world; native or strong Arabic; residing in time zone GMT-1/+4",
+    "open_to": "Restricted",
+    "open_to_where": "Arab world time zones only",
+    "entry_fee": "Free",
+    "fee_details": "No application fee mentioned on the call or application page",
+    "selected_fee": "None",
+    "selected_fee_details": "Retreat travel (Athens, July 2027) and the public event budget (Brussels) are covered by Mophradat; participation in all activities is mandatory",
+    "prizes": [
+      "USD 6,000 stipend (in three instalments), retreat travel and event budget covered"
+    ],
+    "prize_kinds": [
+      "Cash"
+    ],
+    "prize_value": 6000,
+    "currency": "USD",
+    "apply_url": "https://mophradat.org/program/new-agents/",
+    "source": "https://mophradat.org/program/new-agents/",
+    "added": "2026-11-28"
+  },
+  {
+    "id": "apila-first-printing-award-2027",
+    "title": "Apila's First Printing Award 2027 (illustrated picture book)",
+    "organiser": "Apila Ediciones",
+    "type": "Prize",
+    "disciplines": [
+      "Illustration"
+    ],
+    "format": "Online",
+    "timezone": "Europe/Madrid",
+    "city": "",
+    "country": "Spain",
+    "region": "Global",
+    "deadline": "2027-02-14",
+    "eligibility": "Illustrators of any nationality, 18+, with no ISBN-published children's book before 30 June 2026; text in Spanish or English; no generative AI",
+    "open_to": "Worldwide",
+    "entry_fee": "Free",
+    "fee_details": "The official rules list no entry fee; submit one PDF per project via the online form",
+    "selected_fee": "None",
+    "selected_fee_details": "Winner signs a publishing contract that transfers the book's rights to Apila for 12 years",
+    "prizes": [
+      "Publishing contract with Apila Ediciones, EUR 4,000 (10% of first print run value), international distribution"
+    ],
+    "prize_kinds": [
+      "Cash",
+      "Publication"
+    ],
+    "prize_value": 4000,
+    "currency": "EUR",
+    "apply_url": "https://www.apilaediciones.com/premio-apila-primera-impresion/",
+    "image_url": "https://www.apilaediciones.com/wp-content/uploads/2026/06/BASES-CONCURSO-SPANISH-27-INSTAGRAM.jpg",
+    "source": "https://www.apilaediciones.com/wp-content/uploads/2026/06/BASES-CONCURSO-ENGLISH-27-INSTAGRAM_00.pdf",
+    "added": "2026-11-28"
   }
 ]
