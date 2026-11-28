@@ -11,8 +11,9 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { closesAt, isOpportunity } from '../src/lib/dates';
 import type { Listing } from '../src/types/listing';
+import { SAMPLE_SPONSOR, sponsorOn, type Sponsor } from '../src/lib/sponsors';
 import {
-  COFFEE_NOTE, MUTED, OPEN, SENDER, SITE, FOOTER, SUBMIT_BOX, button, byPlace, card, eyebrow, h2, layout, nearPlace, p, track, type Place,
+  COFFEE_NOTE, MUTED, SANS, esc, OPEN, SENDER, SITE, FOOTER, SUBMIT_BOX, button, byPlace, card, eyebrow, h2, layout, nearPlace, p, track, type Place,
 } from './email-parts';
 
 const DAY = 86_400_000;
@@ -41,6 +42,22 @@ const near = byPlace((pl: Place) => {
   return list.length >= 2 ? `<tr><td class="mp-pad" style="padding:22px 32px 4px">${eyebrow(`Near you · ${pl}`)}${h2('Open calls near you')}${list.map((l) => card(l, C)).join('')}</td></tr>` : '';
 }, '');
 
+// This week's sponsored feature (magpie.cool/sponsor), clearly labelled, after the first section
+const sponsor = process.argv.includes('--sponsor-preview') ? SAMPLE_SPONSOR : sponsorOn(today);
+const sponsored = (s: Sponsor) => `<tr><td class="mp-pad" style="padding:22px 32px 4px">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border:1px solid #e5e2da;border-radius:16px;background:#ffffff">
+    ${s.image ? `<tr><td><a href="${esc(s.url)}"><img src="${esc(s.image)}" width="100%" alt="" style="display:block;width:100%;max-height:260px;object-fit:cover;border-radius:16px 16px 0 0;border:0"></a></td></tr>` : ''}
+    <tr><td style="padding:18px 20px 12px">
+      <div style="margin:0 0 8px;font:700 12px/1.4 ${SANS};letter-spacing:0.06em;text-transform:uppercase;color:${MUTED}">Sponsored · ${esc(s.name)}</div>
+      ${h2(esc(s.title))}
+      ${p(esc(s.blurb))}
+      ${button(esc(s.url), `Visit ${s.name}`, false)}
+      <div style="margin-top:6px;font:400 13px/1.4 ${SANS};color:${MUTED}">Sponsored features are paid and kept apart from the listings. <a href="${track(`${SITE}/sponsor`, C)}" style="color:${MUTED}">What’s this?</a></div>
+    </td></tr>
+  </table>
+</td></tr>`;
+const sponsorBlock = sponsor ? sponsored(sponsor) : '';
+
 const total = closing.length + fresh.length + events.length + free.length;
 const bits = [fresh.length && `${fresh.length} new`, closing.length && `${closing.length} closing this week`].filter(Boolean);
 const subject = `Magpie weekly: ${bits.length ? bits.join(', ') : 'open calls for artists'}`;
@@ -53,6 +70,7 @@ const html = layout(
   </td></tr>
   ${near}
   ${section(eyebrow('Closing this week', '#fde2c2', '#6e3300'), 'Last chance', closing, 'Deadlines are at the end of the day in the organiser’s time zone.')}
+  ${sponsorBlock}
   ${section(eyebrow('New on Magpie'), 'Just added', fresh)}
   ${section(eyebrow('Events', '#efe8f6', '#3f2f57'), 'Coming up', events)}
   ${section(eyebrow('Free', '#d4f7ee', '#0b4f42'), 'Free to enter, no fees if selected', free)}

@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { LISTINGS, isEvent } from '../lib/listings';
-import { closesAt, isLive, urgencyGroup, useNow } from '../lib/dates';
+import { closesAt, isLive, todayISO, urgencyGroup, useNow } from '../lib/dates';
+import { SAMPLE_SPONSOR, sponsorOn } from '../lib/sponsors';
+import { SponsoredSlot } from '../components/SponsoredSlot';
 import { SORT_LABELS, applyFilters, defaultFilters, filtersFromQuery, filtersToQuery, sortListings, type Filters } from '../lib/filters';
 import { guessCurrency } from '../lib/money';
 import { replaceHashQuery, useHashRoute } from '../lib/useHashRoute';
@@ -93,6 +95,10 @@ export function HomePage() {
       <button type="button" aria-pressed={view === 'calendar'} onClick={() => setView('calendar')}>Calendar</button>
     </div>
   );
+  // The week's sponsored feature (if any) sits after the first row of open calls, apart from the listings
+  const sponsor = query.has('sponsor-preview') ? SAMPLE_SPONSOR : sponsorOn(todayISO(new Date(now)));
+  const sponsorSlot = sponsor && <SponsoredSlot key="sponsored" s={sponsor} />;
+  const firstShown = near.length > 0 ? 'near' : firstGroup;
   const nearTitle = coords ? 'Near you' : place ? `Near you · ${place}` : 'Near you';
 
   return (
@@ -130,10 +136,11 @@ export function HomePage() {
             <ListingRow key={`near-${place}-${!!coords}`} id="near" title={nearTitle} listings={near} now={now} aside={viewSwitch}
               note={<>{coords ? 'Closest to your location first.' : 'Based on your time zone.'} Change it under <em>More filters</em>.</>} />
           )}
+          {firstShown === 'near' && sponsorSlot}
           {GROUPS.map((g) => {
             const items = calls.filter((l) => urgencyGroup(l, now) === g.key);
-            return items.length ? <ListingRow key={g.key} id={g.key} title={g.label} listings={items} now={now}
-              aside={near.length === 0 && g.key === firstGroup ? viewSwitch : undefined} /> : null;
+            return items.length ? [<ListingRow key={g.key} id={g.key} title={g.label} listings={items} now={now}
+              aside={near.length === 0 && g.key === firstGroup ? viewSwitch : undefined} />, firstShown === g.key && sponsorSlot] : null;
           })}
           {events.length > 0 && (
             <ListingRow key="events" id="events" title="Workshops, meetups and events" listings={events} now={now} noun="event"
@@ -144,6 +151,7 @@ export function HomePage() {
       ) : (
         <div className="rows">
           {main.length > 0 && <ListingRow key={filters.sort} id="sorted" title={SORT_LABELS[filters.sort]} listings={main} now={now} startOpen aside={viewSwitch} />}
+          {sponsorSlot}
           {commercialRow}
         </div>
       )}
